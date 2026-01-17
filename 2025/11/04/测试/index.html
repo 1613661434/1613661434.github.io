@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="学会测试技能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试">
+<meta property="og:url" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="学会测试技能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801084757233.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801084941143.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085208846.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085633742.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085844545.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090231283.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090402050.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090613161.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090813574.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801091247408.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801092840256.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801093843614.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801094411878.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801095505951.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801095757184.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100712535.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100742461.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100901439.png">
+<meta property="article:published_time" content="2025-11-04T11:04:21.000Z">
+<meta property="article:modified_time" content="2026-01-17T12:06:02.131Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801084757233.png">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/","path":"2025/11/04/测试/","title":"测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>测试 | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%8A%80%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">测试技能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">测试分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.</span> <span class="nav-text">测试流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-number">1.5.</span> <span class="nav-text">测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E4%BE%8B"><span class="nav-number">1.5.1.</span> <span class="nav-text">一、什么是用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">二、什么是测试用例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%94%A8%E4%BE%8B%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.5.3.</span> <span class="nav-text">三、用例的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99%E6%A0%BC%E5%BC%8F%EF%BC%88%E5%B8%B8%E7%94%A8%E6%A8%A1%E6%9D%BF%EF%BC%8C%E5%8F%AF%E7%81%B5%E6%B4%BB%E8%B0%83%E6%95%B4-%EF%BC%89"><span class="nav-number">1.5.4.</span> <span class="nav-text">四、用例编写格式（常用模板，可灵活调整 ）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">说明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%92%E5%88%86%E6%B5%8B%E8%AF%95%E7%82%B9"><span class="nav-number">1.6.</span> <span class="nav-text">划分测试点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AD%89%E4%BB%B7%E7%B1%BB%E5%88%92%E5%88%86%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">一、等价类划分法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">（一）核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E5%B9%B4%E9%BE%84%E8%BE%93%E5%85%A5%E6%A1%86%EF%BC%8C%E8%A6%81%E6%B1%82-18-60-%E5%B2%81%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">（二）示例（以 “年龄输入框，要求 18 - 60 岁” 为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%9C%E7%94%A8"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">（三）作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BE%B9%E7%95%8C%E5%80%BC%E5%88%86%E6%9E%90%E6%B3%95"><span class="nav-number">1.6.2.</span> <span class="nav-text">二、边界值分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-2"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">（一）核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E5%AF%86%E7%A0%81%E9%95%BF%E5%BA%A6-6-16-%E4%BD%8D%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">（二）示例（以 “密码长度 6 - 16 位” 为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%9C%E7%94%A8-2"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">（三）作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%A4%E5%AE%9A%E8%A1%A8%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">三、判定表法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-3"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">（一）核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E7%94%B5%E5%95%86%E8%AE%A2%E5%8D%95%E6%8F%90%E4%BA%A4%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">（二）示例（以 “电商订单提交” 为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%9C%E7%94%A8-3"><span class="nav-number">1.6.3.3.</span> <span class="nav-text">（三）作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%9C%BA%E6%99%AF%E6%B3%95"><span class="nav-number">1.6.4.</span> <span class="nav-text">四、场景法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-4"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">（一）核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E6%89%93%E8%BD%A6-App-%E6%B5%81%E7%A8%8B%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">（二）示例（以 “打车 App 流程” 为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%9C%E7%94%A8-4"><span class="nav-number">1.6.4.3.</span> <span class="nav-text">（三）作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%94%99%E8%AF%AF%E6%8E%A8%E6%B5%8B%E6%B3%95"><span class="nav-number">1.6.5.</span> <span class="nav-text">五、错误推测法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-5"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">（一）核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E7%A4%BA%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.5.2.</span> <span class="nav-text">（二）示例（以 “文件上传功能” 为例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%9C%E7%94%A8-5"><span class="nav-number">1.6.5.3.</span> <span class="nav-text">（三）作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%EF%BC%88%E4%BB%A5-%E2%80%9C%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD-%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E2%80%9D-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.6.6.</span> <span class="nav-text">六、综合案例（以 “登录功能 - 账号密码登录” 为例）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90"><span class="nav-number">1.7.</span> <span class="nav-text">测试工具推荐</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/11/04/%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="测试 | ol木子李lo的博客">
+      <meta itemprop="description" content="学会测试技能">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-11-04 19:04:21" itemprop="dateCreated datePublished" datetime="2025-11-04T19:04:21+08:00">2025-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-17 20:06:02" itemprop="dateModified" datetime="2026-01-17T20:06:02+08:00">2026-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">教学</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">学会测试技能</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>测试</h1>
+<h2 id="测试技能">测试技能</h2>
+<ul>
+<li>功能测试</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801084757233.png" alt="image-20250801084757233"></p>
+<ul>
+<li>自动化测试</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801084941143.png" alt="image-20250801084941143"></p>
+<ul>
+<li>接口测试</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085208846.png" alt="image-20250801085208846"></p>
+<ul>
+<li>性能测试</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085633742.png" alt="image-20250801085633742"></p>
+<ul>
+<li>总结</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801085844545.png" alt="image-20250801085844545"></p>
+<h2 id="测试分类">测试分类</h2>
+<ul>
+<li>按测试阶段划分</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090231283.png" alt="image-20250801090231283"></p>
+<ul>
+<li>按代码可见度划分</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090402050.png" alt="image-20250801090402050"></p>
+<ul>
+<li>总结</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090613161.png" alt="image-20250801090613161"></p>
+<h2 id="模型">模型</h2>
+<ul>
+<li>质量模型</li>
+</ul>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801090813574.png" alt="image-20250801090813574"></p>
+<h2 id="测试流程">测试流程</h2>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801091247408.png" alt="image-20250801091247408"></p>
+<h2 id="测试用例">测试用例</h2>
+<h3 id="一、什么是用例">一、什么是用例</h3>
+<p>广义的 “用例”，是为达成某个特定目标、场景而设计的一系列操作步骤、条件及预期结果的集合，可应用于不同领域。像业务流程梳理里，用于描述用户办理业务的流程步骤；在软件测试场景中，聚焦软件功能验证，进而延伸出 “测试用例” 。简单来说，它是一种规范化、结构化描述 “怎么做以及期望怎样” 的文档或概念 。</p>
+<h3 id="二、什么是测试用例">二、什么是测试用例</h3>
+<p>在软件测试领域，测试用例是<strong>为验证软件某一功能（或特性）、模块，预先设计的详细测试方案</strong> ，包含输入数据、操作步骤、预设环境、预期结果等要素 。比如测试电商 App 购物车 “添加商品” 功能，测试用例要写清：在登录状态、网络正常环境下，点击商品详情页 “加入购物车” 按钮（操作），输入商品数量（如 1 件，输入数据 ），预期购物车数量更新、商品信息正确显示（预期结果 ） 。通过这种精准设计，覆盖软件功能验证点，找出潜在缺陷 。</p>
+<h3 id="三、用例的作用">三、用例的作用</h3>
+<ol>
+<li><strong>指导测试执行</strong>：测试人员按用例步骤、数据操作，避免测试遗漏、随意性，让测试过程标准化 。</li>
+<li><strong>发现软件缺陷</strong>：清晰的输入、预期结果对比，能快速识别实际结果与预期不符的情况，精准定位问题 。</li>
+<li><strong>评估测试覆盖率</strong>：通过梳理用例覆盖的功能点、场景，判断是否覆盖软件需求（如功能需求、非功能需求 ），评估测试完整性 。</li>
+<li><strong>回归测试依据</strong>：软件迭代更新后，复用历史用例执行回归测试，验证修改是否引入新问题、原有功能是否正常 。</li>
+<li><strong>团队协作与知识传承</strong>：用例是需求、测试、开发沟通的 “共同语言” ，新成员也能通过用例快速了解测试重点 。</li>
+</ol>
+<h3 id="四、用例编写格式（常用模板，可灵活调整-）">四、用例编写格式（常用模板，可灵活调整 ）</h3>
+<table>
+<thead>
+<tr>
+<th>用例编号</th>
+<th>测试模块 / 功能</th>
+<th>测试标题</th>
+<th>前置条件</th>
+<th>测试步骤</th>
+<th>预期结果</th>
+<th>实际结果</th>
+<th>测试人员</th>
+<th>测试时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC-001</td>
+<td>电商 App - 购物车</td>
+<td>验证添加商品到购物车功能</td>
+<td>1. 手机已安装目标 App 2. 用户已登录 3. 网络连接正常</td>
+<td>1. 打开 App，进入商品详情页（如某款手机详情 ） 2. 点击 “加入购物车” 按钮 3. 在购物车弹窗，输入购买数量（如 2 台 ），点击 “确认”</td>
+<td>1. 购物车页面数量显示为 2 2. 商品名称、价格、数量与选择一致 3. 底部 “去结算” 按钮可点击</td>
+<td>待测试执行后填写</td>
+<td>[测试人员姓名]</td>
+<td>[具体日期，如 2025-08-01]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="说明：">说明：</h4>
+<ul>
+<li><strong>用例编号</strong>：唯一标识，方便管理、检索，如按模块 + 序号规则（TC 代表 Test Case ）。</li>
+<li><strong>测试模块 / 功能</strong>：明确归属，便于分类、筛选。</li>
+<li><strong>测试标题</strong>：简洁概括测试点（如 “验证登录功能 - 密码错误提示” ）。</li>
+<li><strong>前置条件</strong>：执行用例前需满足的环境、状态（如登录状态、网络要求、数据准备 ）。</li>
+<li><strong>测试步骤</strong>：清晰、有序的操作流程，步骤要具体可执行 。</li>
+<li><strong>预期结果</strong>：基于需求，明确、可验证的期望输出（不能模糊，要量化、精准 ）。</li>
+<li><strong>实际结果</strong>：测试执行后填写，对比预期判断是否通过 。</li>
+<li><strong>测试人员 &amp; 时间</strong>：记录执行信息，方便追溯 。</li>
+</ul>
+<h2 id="划分测试点">划分测试点</h2>
+<h3 id="一、等价类划分法">一、等价类划分法</h3>
+<h4 id="（一）核心思想">（一）核心思想</h4>
+<p>将输入数据（或操作场景）划分为若干 <strong>“等价类”</strong>，每个等价类内的测试数据具有相同测试效果。只需选取**代表性数据 ** 测试，即可覆盖该类所有情况，减少用例数量。</p>
+<h4 id="（二）示例（以-“年龄输入框，要求-18-60-岁”-为例）">（二）示例（以 “年龄输入框，要求 18 - 60 岁” 为例）</h4>
+<ul>
+<li>
+<p><strong>有效等价类</strong>：18≤年龄≤60（如 <code>25 岁</code>、<code>40 岁</code> ）</p>
+</li>
+<li>
+<p>无效等价类：</p>
+<ul>
+<li>年龄 &lt; 18（如 <code>15 岁</code> ）</li>
+<li>年龄 &gt; 60（如 <code>65 岁</code> ）</li>
+<li>非数字（如 <code>“abc”</code> ）</li>
+</ul>
+</li>
+</ul>
+<p>测试时，从每个等价类选 1 - 2 个数据验证，即可覆盖该类逻辑。</p>
+<h4 id="（三）作用">（三）作用</h4>
+<ol>
+<li>
+<p>大幅减少测试用例数量，避免冗余测试。</p>
+</li>
+<li>
+<p>聚焦关键边界与规则，优先覆盖核心逻辑。</p>
+</li>
+</ol>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801092840256.png" alt="image-20250801092840256"></p>
+<hr>
+<h3 id="二、边界值分析法">二、边界值分析法</h3>
+<h4 id="（一）核心思想-2">（一）核心思想</h4>
+<p>软件对 <strong>“边界值”</strong>（如输入范围的最小值、最大值、临界值 ）更敏感，易出现缺陷。专门针对**边界点及附近值 ** 设计用例，补充等价类划分法的不足。</p>
+<h4 id="（二）示例（以-“密码长度-6-16-位”-为例）">（二）示例（以 “密码长度 6 - 16 位” 为例）</h4>
+<ul>
+<li><strong>边界值</strong>：<code>6 位</code>、<code>7 位</code>、<code>15 位</code>、<code>16 位</code></li>
+<li><strong>边界附近值</strong>：<code>5 位</code>（比最小少 1 ）、<code>17 位</code>（比最大多 1 ）</li>
+</ul>
+<p>通过验证这些值，暴露 “边界处理逻辑漏洞”（如 6 位密码是否真的能通过，17 位是否被拦截 ）。</p>
+<h4 id="（三）作用-2">（三）作用</h4>
+<ol>
+<li>
+<p>精准打击 <strong>“边界漏洞”</strong>（这类问题在实际场景中高频出现，如数组越界、长度限制失效 ）。</p>
+</li>
+<li>
+<p>补充等价类划分法（等价类侧重 “区间覆盖”，边界值侧重 “临界点” ）。</p>
+</li>
+</ol>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801093843614.png" alt="image-20250801093843614"></p>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801094411878.png" alt="image-20250801094411878"></p>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801095505951.png" alt="image-20250801095505951"></p>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801095757184.png" alt="image-20250801095757184"></p>
+<hr>
+<h3 id="三、判定表法">三、判定表法</h3>
+<h4 id="（一）核心思想-3">（一）核心思想</h4>
+<p>当测试场景存在<strong>多个输入条件组合</strong>，且不同组合对应不同输出时，用 <strong>“判定表（表格）”</strong> 梳理所有条件组合及结果，再转化为测试用例。</p>
+<h4 id="（二）示例（以-“电商订单提交”-为例）">（二）示例（以 “电商订单提交” 为例）</h4>
+<table>
+<thead>
+<tr>
+<th>条件 1：库存是否充足</th>
+<th>条件 2：地址是否填写</th>
+<th>条件 3：支付方式是否可选</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>提交成功</td>
+</tr>
+<tr>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>提示 “支付方式不可用”</td>
+</tr>
+<tr>
+<td>是</td>
+<td>否</td>
+<td>是</td>
+<td>提示 “地址未填写”</td>
+</tr>
+<tr>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+<td>提示 “地址未填写”</td>
+</tr>
+<tr>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>提示 “库存不足”</td>
+</tr>
+<tr>
+<td>否</td>
+<td>是</td>
+<td>否</td>
+<td>提示 “库存不足”</td>
+</tr>
+<tr>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>提示 “库存不足、地址未填”</td>
+</tr>
+<tr>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>提示 “库存不足、地址未填”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="（三）作用-3">（三）作用</h4>
+<ol>
+<li>
+<p>解决 <strong>“多条件组合”</strong> 的复杂场景，避免遗漏关键组合。</p>
+</li>
+<li>
+<p>让测试逻辑可视化，方便评审与维护。</p>
+</li>
+</ol>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100712535.png" alt="image-20250801100712535"></p>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100742461.png" alt="image-20250801100742461"></p>
+<p><img src="/2025/11/04/%E6%B5%8B%E8%AF%95/image-20250801100901439.png" alt="image-20250801100901439"></p>
+<hr>
+<h3 id="四、场景法">四、场景法</h3>
+<h4 id="（一）核心思想-4">（一）核心思想</h4>
+<p>模拟用户<strong>实际使用流程（场景）</strong> ，覆盖<strong>正常流程</strong>和<strong>异常分支</strong>，验证软件在完整业务链路中的表现。</p>
+<h4 id="（二）示例（以-“打车-App-流程”-为例）">（二）示例（以 “打车 App 流程” 为例）</h4>
+<ul>
+<li>
+<p><strong>正常场景</strong>：<br>
+下单 → 司机接单 → 开始行程 → 结束行程 → 支付</p>
+</li>
+<li>
+<p>异常场景：</p>
+<ul>
+<li>下单后取消订单</li>
+<li>司机拒单后重新分配</li>
+<li>支付失败重试</li>
+</ul>
+</li>
+</ul>
+<h4 id="（三）作用-4">（三）作用</h4>
+<ol>
+<li>贴近用户真实行为，确保 <strong>“业务流程完整可用”</strong>。</li>
+<li>覆盖前端交互、后端逻辑联动的复杂场景，暴露 “流程断裂” 类问题（如取消订单后无法重新下单 ）。</li>
+</ol>
+<hr>
+<h3 id="五、错误推测法">五、错误推测法</h3>
+<h4 id="（一）核心思想-5">（一）核心思想</h4>
+<p>基于<strong>经验、历史缺陷、行业常见问题</strong>，“推测” 软件可能出现的错误场景，针对性设计用例。无固定流程，依赖测试人员经验。</p>
+<h4 id="（二）示例（以-“文件上传功能”-为例）">（二）示例（以 “文件上传功能” 为例）</h4>
+<p>根据经验推测以下场景：</p>
+<ul>
+<li>文件格式错误（如要求 PDF，传 PNG ）</li>
+<li>文件过大（超过系统限制 ）</li>
+<li>网络中断时上传</li>
+</ul>
+<h4 id="（三）作用-5">（三）作用</h4>
+<ol>
+<li>补充 <strong>“结构化方法（如等价类、判定表 ）”</strong> 的不足，覆盖经验性、隐蔽性问题。</li>
+<li>适合敏捷测试、探索性测试，快速挖掘潜在风险。</li>
+</ol>
+<hr>
+<h3 id="六、综合案例（以-“登录功能-账号密码登录”-为例）">六、综合案例（以 “登录功能 - 账号密码登录” 为例）</h3>
+<p>以下是结合多种方法设计的用例思路：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>设计思路 &amp; 用例示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等价类划分</td>
+<td>- 有效类：正确账号 + 正确密码 - 无效类：错误账号、错误密码、空账号 / 密码</td>
+</tr>
+<tr>
+<td>边界值分析</td>
+<td>密码长度边界（如要求 6 - 20 位：测 <code>5 位</code>、<code>6 位</code>、<code>20 位</code>、<code>21 位</code> ）</td>
+</tr>
+<tr>
+<td>判定表法</td>
+<td>条件：账号存在（是 / 否）、密码正确（是 / 否） 结果：登录成功、提示账号不存在、密码错误</td>
+</tr>
+<tr>
+<td>场景法</td>
+<td>- 正常场景：输入正确信息 → 登录成功 → 跳转首页 - 异常场景：输错密码后重试、登录中网络断开</td>
+</tr>
+<tr>
+<td>错误推测法</td>
+<td>模拟 “账号被锁定后登录”“密码含特殊字符（如 <code>&amp;*</code> ）” 等经验性场景</td>
+</tr>
+</tbody>
+</table>
+<p>这些方法可<strong>单独或组合使用</strong>，目标是用<strong>最少用例覆盖最多风险</strong>，提升测试效率与质量。实际项目中，需根据需求复杂度、业务场景灵活搭配 。</p>
+<h2 id="测试工具推荐">测试工具推荐</h2>
+<ol>
+<li>
+<p><strong>缺陷管理工具</strong>：禅道，JIRA，TFS</p>
+</li>
+<li>
+<p><strong>功能测试工具</strong>：Selenium</p>
+</li>
+<li>
+<p><strong>性能测试工具</strong>： JMeter</p>
+</li>
+<li>
+<p><strong>单元测试工具</strong>： JUnit、TestNG</p>
+</li>
+<li>
+<p><strong>集成测试工具</strong>：Spring Test</p>
+</li>
+<li>
+<p><strong>接口测试工具</strong>：RestAssured</p>
+</li>
+<li>
+<p><strong>UI 测试工具</strong>：Selenium、Appium</p>
+</li>
+<li>
+<p><strong>内存泄露测试工具</strong>：jmap、jconsole、jvisualvm</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag"># 测试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/10/29/Git%20Memo/" rel="prev" title="Git Memo">
+                  <i class="fa fa-angle-left"></i> Git Memo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/11/21/GCC%20Memo/" rel="next" title="GCC Memo">
+                  GCC Memo <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:12</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

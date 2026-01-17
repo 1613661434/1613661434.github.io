@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="快速查找Makefile的命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makefile Memo">
+<meta property="og:url" content="https://1613661434.github.io/2025/12/07/Makefile%20Memo/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="快速查找Makefile的命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-07T12:41:21.000Z">
+<meta property="article:modified_time" content="2026-01-17T11:47:39.212Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="Makefile">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/12/07/Makefile%20Memo/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/12/07/Makefile%20Memo/","path":"2025/12/07/Makefile Memo/","title":"Makefile Memo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Makefile Memo | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Makefile Memo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Makefile%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、Makefile的核心作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%A7%84%E5%88%99%EF%BC%88Makefile%E6%A1%86%E6%9E%B6%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、规则（Makefile框架核心）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. 基本格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%89%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2. 三部分组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3. 示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%A7%84%E5%88%99%E7%9A%84%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 规则的执行逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3%EF%BC%88%E9%87%8D%E7%BC%96%E8%AF%91%E5%88%A4%E6%96%AD%E4%BE%9D%E6%8D%AE%EF%BC%89"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 文件的时间戳（重编译判断依据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%AF%BC%EF%BC%88make%E7%9A%84%E9%BB%98%E8%AE%A4%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3. 自动推导（make的默认规则）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%98%E9%87%8F%EF%BC%88%E6%8F%90%E5%8D%87%E8%A7%84%E5%88%99%E7%81%B5%E6%B4%BB%E6%80%A7%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、变量（提升规则灵活性）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1. 自定义变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%97%A0%E9%9C%80%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2. 预定义变量（可直接使用，无需定义）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F%EF%BC%88%E4%BB%85%E5%9C%A8%E8%A7%84%E5%88%99%E5%91%BD%E4%BB%A4%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BB%A3%E8%A1%A8%E7%9B%AE%E6%A0%87-%E4%BE%9D%E8%B5%96%EF%BC%89"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">3. 自动变量（仅在规则命令中使用，代表目标&#x2F;依赖）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%B5%8B%E5%80%BC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.0.4.4.</span> <span class="nav-text">4. 赋值语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%EF%BC%88%E7%B2%BE%E7%AE%80%E5%86%97%E4%BD%99%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、模式匹配（精简冗余规则）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%9C%E7%94%A8"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">1. 作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A8%A1%E6%9D%BF%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">2. 模板格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%95%88%E6%9E%9C"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">3. 效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%88%E5%9D%87%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%8C%E6%A0%BC%E5%BC%8F%EF%BC%9A-%E5%87%BD%E6%95%B0%E5%90%8D-%E5%8F%82%E6%95%B01-%E5%8F%82%E6%95%B02-%E2%80%A6-%EF%BC%89"><span class="nav-number">1.0.6.</span> <span class="nav-text">六、常用函数（均有返回值，格式：$(函数名 参数1,参数2,…)）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-wildcard%EF%BC%88%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%8C%87%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">1. wildcard（获取指定目录下指定类型文件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-patsubst%EF%BC%88%E6%8C%89%E6%A8%A1%E5%BC%8F%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6%E5%90%8D%E5%90%8E%E7%BC%80%EF%BC%89"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">2. patsubst（按模式替换文件名后缀）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81Makefile%E7%BC%96%E5%86%99%E8%BF%9B%E5%8C%96%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%8E%E7%AE%80%E5%8D%95%E5%88%B0%E6%A0%87%E5%87%86%EF%BC%89"><span class="nav-number">1.0.7.</span> <span class="nav-text">七、Makefile编写进化过程（从简单到标准）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC1%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BD%86%E4%BD%8E%E6%95%88%EF%BC%88%E4%BF%AE%E6%94%B9%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%85%A8%E9%87%8F%E9%87%8D%E7%BC%96%E8%AF%91%EF%BC%89"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">版本1：简单但低效（修改一个文件全量重编译）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC2%EF%BC%9A%E5%88%86%E6%A8%A1%E5%9D%97%E7%BC%96%E8%AF%91%EF%BC%88%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87%EF%BC%8C%E8%A7%84%E5%88%99%E5%86%97%E4%BD%99%EF%BC%89"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">版本2：分模块编译（提升效率，规则冗余）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC3%EF%BC%9A%E5%8F%98%E9%87%8F-%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%EF%BC%88%E7%B2%BE%E7%AE%80%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">版本3：变量+模式匹配（精简规则）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC4%EF%BC%9A%E5%87%BD%E6%95%B0%E8%87%AA%E5%8A%A8%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%EF%BC%88%E8%A7%A3%E6%94%BE%E5%8F%8C%E6%89%8B%EF%BC%89"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">版本4：函数自动获取文件（解放双手）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC5%EF%BC%9A%E6%B7%BB%E5%8A%A0%E6%B8%85%E7%90%86%E8%A7%84%E5%88%99%EF%BC%88%E5%AD%98%E5%9C%A8%E4%BC%AA%E7%9B%AE%E6%A0%87%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">1.0.7.5.</span> <span class="nav-text">版本5：添加清理规则（存在伪目标问题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%88%E6%9C%AC6%EF%BC%9A%E6%9C%80%E7%BB%88%E7%89%88%EF%BC%88%E5%A3%B0%E6%98%8E%E4%BC%AA%E7%9B%AE%E6%A0%87%EF%BC%8C%E4%BC%98%E5%8C%96%E6%B8%85%E7%90%86%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="nav-number">1.0.7.6.</span> <span class="nav-text">版本6：最终版（声明伪目标，优化清理命令）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%88%E5%A4%9A%E7%9B%AE%E5%BD%95%E9%A1%B9%E7%9B%AEMakefile%EF%BC%89"><span class="nav-number">1.0.8.</span> <span class="nav-text">八、练习题（多目录项目Makefile）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">项目目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84Makefile"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">对应的Makefile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%A4%9A%E7%9B%AE%E5%BD%95%E5%B7%A5%E7%A8%8BMakefile%E6%A1%86%E6%9E%B6%EF%BC%88%E8%8C%83%E5%BC%8F%EF%BC%89"><span class="nav-number">1.0.9.</span> <span class="nav-text">九、多目录工程Makefile框架（范式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%8C%E6%95%B4%E6%A1%86%E6%9E%B6%E4%BB%A3%E7%A0%81"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">1. 完整框架代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A0%B8%E5%BF%83%E6%9E%84%E6%88%90%E4%B8%8E%E5%8A%9F%E8%83%BD%E6%8B%86%E8%A7%A3"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">2. 核心构成与功能拆解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-%E5%B7%A5%E5%85%B7%E9%93%BE%E4%B8%8E%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%AE%9A%E4%B9%89%EF%BC%88%E9%A1%B6%E5%B1%82Makefile%EF%BC%89"><span class="nav-number">1.0.9.2.1.</span> <span class="nav-text">2.1 工具链与全局变量定义（顶层Makefile）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-%E6%A0%B8%E5%BF%83%E7%9B%AE%E6%A0%87%E8%A7%84%E5%88%99%EF%BC%88%E9%A1%B6%E5%B1%82Makefile%EF%BC%89"><span class="nav-number">1.0.9.2.2.</span> <span class="nav-text">2.2 核心目标规则（顶层Makefile）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-%E9%80%92%E5%BD%92%E7%BC%96%E8%AF%91%E4%B8%8E%E6%89%93%E5%8C%85%E8%A7%84%E5%88%99%EF%BC%88Makefile-build%EF%BC%89"><span class="nav-number">1.0.9.2.3.</span> <span class="nav-text">2.3 递归编译与打包规则（Makefile.build）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.9.3.</span> <span class="nav-text">3. 核心工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.9.4.</span> <span class="nav-text">4. 关键配置说明</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/12/07/Makefile%20Memo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Makefile Memo | ol木子李lo的博客">
+      <meta itemprop="description" content="快速查找Makefile的命令">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Makefile Memo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-07 20:41:21" itemprop="dateCreated datePublished" datetime="2025-12-07T20:41:21+08:00">2025-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-17 19:47:39" itemprop="dateModified" datetime="2026-01-17T19:47:39+08:00">2026-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">备忘录</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">快速查找Makefile的命令</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>Makefile Memo</h1>
+<h3 id="一、Makefile的核心作用">一、Makefile的核心作用</h3>
+<ul>
+<li>
+<p>单文件工程用GCC命令编译便捷，多文件/大型工程中GCC力不从心，需借助make工具实现自动化编译</p>
+</li>
+<li>
+<p>make是解释makefile指令的命令工具，多数IDE内置（如VC++的nmake、QtCreator的qmake）</p>
+</li>
+<li>
+<p>makefile定义工程编译规则（文件编译顺序、重编译条件等），支持执行系统命令，类似Shell脚本</p>
+</li>
+<li>
+<p>优势：一旦写好，执行<code>make</code>命令即可完成全工程自动编译，大幅提升开发效率</p>
+</li>
+<li>
+<p>命名与位置：支持<code>makefile</code>和<code>Makefile</code>两种命名；<code>make</code>命令在哪个目录执行，就加载该目录下的makefile；一个项目可在不同目录放置多个makefile</p>
+</li>
+</ul>
+<h3 id="二、规则（Makefile框架核心）">二、规则（Makefile框架核心）</h3>
+<h4 id="1-基本格式">1. 基本格式</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每条规则的语法格式:</span></span><br><span class="line"><span class="section">target1,target2...: depend1, depend2, ...</span></span><br><span class="line">	command</span><br><span class="line">	......</span><br></pre></td></tr></table></figure>
+<h4 id="2-三部分组成">2. 三部分组成</h4>
+<ul>
+<li>
+<p>目标（target）：与命令对应，可生成同名文件；支持多目标；不生成文件仅执行动作的目标称为“伪目标”</p>
+</li>
+<li>
+<p>依赖（depend）：规则执行的必需条件，可使用目标文件（如*.o）；依赖可为空；可引用其他规则的目标，形成规则嵌套；支持多个依赖</p>
+</li>
+<li>
+<p>命令（command）：规则的执行动作（如编译、生成库、进入目录等），多为Shell命令；支持多个命令，每个命令前必须有Tab缩进且独占一行</p>
+</li>
+</ul>
+<h4 id="3-示例">3. 示例</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例1：单目标、多依赖、单命令（源文件a.c/b.c/c.c生成可执行程序app）</span></span><br><span class="line"><span class="section">app:a.c b.c c.c</span></span><br><span class="line">	gcc a.c b.c c.c -o app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例2：多目标、多依赖、多命令</span></span><br><span class="line"><span class="section">app,app1:a.c b.c c.c d.c</span></span><br><span class="line">	gcc a.c b.c -o app</span><br><span class="line">	gcc c.c d.c -o app1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例3：规则嵌套（通过子规则生成依赖文件*.o）</span></span><br><span class="line"><span class="section">app:a.o b.o c.o</span></span><br><span class="line">	gcc a.o b.o c.o -o app</span><br><span class="line"><span class="section">a.o:a.c</span></span><br><span class="line">	gcc -c a.c</span><br><span class="line"><span class="section">b.o:b.c</span></span><br><span class="line">	gcc -c b.c</span><br><span class="line"><span class="section">c.o:c.c</span></span><br><span class="line">	gcc -c c.c</span><br></pre></td></tr></table></figure>
+<h3 id="三、工作原理">三、工作原理</h3>
+<h4 id="1-规则的执行逻辑">1. 规则的执行逻辑</h4>
+<ul>
+<li>
+<p>make命令优先查找Makefile中第一条规则，分析并执行动作</p>
+</li>
+<li>
+<p>若规则依赖不存在，该规则命令无法执行，需新增规则将缺失依赖作为目标，生成依赖后再执行原规则</p>
+</li>
+<li>
+<p>执行非第一条规则：需在make后指定目标，如<code>make b.o</code>（仅执行生成b.o的规则）</p>
+</li>
+</ul>
+<h4 id="2-文件的时间戳（重编译判断依据）">2. 文件的时间戳（重编译判断依据）</h4>
+<ul>
+<li>
+<p>正常情况：目标时间戳 &gt; 所有依赖时间戳 → 不执行规则命令</p>
+</li>
+<li>
+<p>依赖更新：目标时间戳 &lt; 部分依赖时间戳 → 重新执行规则命令生成目标</p>
+</li>
+<li>
+<p>目标不存在：必执行规则命令生成目标</p>
+</li>
+</ul>
+<p>示例：修改a.c后执行make，仅重新生成a.o和app，其他目标（b.o、c.o）不重新编译</p>
+<h4 id="3-自动推导（make的默认规则）">3. 自动推导（make的默认规则）</h4>
+<ul>
+<li>
+<p>编译.c文件时，无需手动写.c→.o的规则，make会自动匹配默认规则：用<code>cc -c</code>编译.c文件生成对应的.o文件</p>
+</li>
+<li>
+<p>只需指定.o目标，make会自动寻找对应的.c依赖并执行默认编译命令</p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目目录含add.c/div.c/main.c/mult.c/sub.c/head.h/makefile</span></span><br><span class="line"><span class="comment"># makefile仅一条规则，make会自动推导生成所有.o依赖</span></span><br><span class="line"><span class="section">calc:add.o  div.o  main.o  mult.o  sub.o</span></span><br><span class="line">        gcc  add.o  div.o  main.o  mult.o  sub.o -o calc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行make的输出（自动调用cc -c生成.o）：</span></span><br><span class="line"><span class="comment"># cc    -c -o add.o add.c</span></span><br><span class="line"><span class="comment"># cc    -c -o div.o div.c</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="comment"># gcc  add.o  div.o  main.o  mult.o  sub.o -o calc</span></span><br></pre></td></tr></table></figure>
+<h3 id="四、变量（提升规则灵活性）">四、变量（提升规则灵活性）</h3>
+<p>分为自定义变量、预定义变量、自动变量三类</p>
+<h4 id="1-自定义变量">1. 自定义变量</h4>
+<ul>
+<li>
+<p>定义：<code>变量名=变量值</code>（无类型，必须赋值）</p>
+</li>
+<li>
+<p>引用：<code>$(变量名)</code></p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：用自定义变量简化规则</span></span><br><span class="line">obj=add.o  div.o  main.o  mult.o  sub.o</span><br><span class="line">target=calc</span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc  <span class="variable">$(obj)</span> -o <span class="variable">$(target)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-预定义变量（可直接使用，无需定义）">2. 预定义变量（可直接使用，无需定义）</h4>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>含义</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AR</td>
+<td>生成静态库的程序名称</td>
+<td>ar</td>
+</tr>
+<tr>
+<td>CC</td>
+<td>C语言编译器名称</td>
+<td>cc</td>
+</tr>
+<tr>
+<td>CXX</td>
+<td>C++语言编译器名称</td>
+<td>g++</td>
+</tr>
+<tr>
+<td>RM</td>
+<td>删除文件程序名称</td>
+<td>rm -f</td>
+</tr>
+<tr>
+<td>CFLAGS</td>
+<td>C语言编译器选项</td>
+<td>无</td>
+</tr>
+<tr>
+<td>CXXFLAGS</td>
+<td>C++语言编译器选项</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：结合自定义变量和预定义变量</span></span><br><span class="line">obj=add.o  div.o  main.o  mult.o  sub.o</span><br><span class="line">target=calc</span><br><span class="line">CFLAGS=-O3 <span class="comment"># 代码优化选项</span></span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        <span class="variable">$(CC)</span>  <span class="variable">$(obj)</span> -o <span class="variable">$(target)</span> <span class="variable">$(CFLAGS)</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-自动变量（仅在规则命令中使用，代表目标-依赖）">3. 自动变量（仅在规则命令中使用，代表目标/依赖）</h4>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$*</td>
+<td>目标文件名（不含扩展名）</td>
+</tr>
+<tr>
+<td>$+</td>
+<td>所有依赖文件（按顺序，含重复）</td>
+</tr>
+<tr>
+<td>$&lt;</td>
+<td>第一个依赖文件名称</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>所有比目标时间戳晚的依赖文件</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>目标文件名（含扩展名）</td>
+</tr>
+<tr>
+<td>$^</td>
+<td>所有不重复的依赖文件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：用自动变量简化命令</span></span><br><span class="line"><span class="section">calc:add.o  div.o  main.o  mult.o  sub.o</span></span><br><span class="line">	gcc <span class="variable">$^</span> -o <span class="variable">$@</span> <span class="comment"># 等价于 gcc add.o div.o main.o mult.o sub.o -o calc</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-赋值语法">4. 赋值语法</h4>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>含义</th>
+<th>示例</th>
+<th>最终值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>延迟赋值（使用变量时才展开）</td>
+<td><code>A = $(B)``B = hello</code></td>
+<td><code>A = hello</code></td>
+</tr>
+<tr>
+<td><code>:=</code></td>
+<td>立即赋值（定义时就展开）</td>
+<td><code>A := $(B)``B = hello</code></td>
+<td><code>A = </code>（定义 A 时 B 还未赋值）</td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>追加赋值（基于现有值加新内容）</td>
+<td><code>A = a``A += b c</code></td>
+<td><code>A = a b c</code></td>
+</tr>
+<tr>
+<td><code>?=</code></td>
+<td>仅变量未定义时赋值（避免覆盖）</td>
+<td><code>A ?= hello``A ?= world</code></td>
+<td><code>A = hello</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="五、模式匹配（精简冗余规则）">五、模式匹配（精简冗余规则）</h3>
+<h4 id="1-作用">1. 作用</h4>
+<p>多个.c→.o的规则语法重复（命令均为<code>gcc *.c -c</code>），可通过模式匹配整理为一个规则模板</p>
+<h4 id="2-模板格式">2. 模板格式</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">%.o:%.c  # %是通配符，匹配文件名（不含后缀）</span></span><br><span class="line">	gcc <span class="variable">$&lt;</span> -c  <span class="comment"># $&lt; 指代第一个依赖文件（即%.c）</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-效果">3. 效果</h4>
+<p>替代所有单个.c→.o的规则，如add.o:add.c、div.o:div.c等，大幅精简makefile</p>
+<h3 id="六、常用函数（均有返回值，格式：-函数名-参数1-参数2-…-）">六、常用函数（均有返回值，格式：$(函数名 参数1,参数2,…)）</h3>
+<h4 id="1-wildcard（获取指定目录下指定类型文件）">1. wildcard（获取指定目录下指定类型文件）</h4>
+<ul>
+<li>
+<p>原型：<code>$(wildcard PATTERN...)</code></p>
+</li>
+<li>
+<p>参数：PATTERN为目录+文件类型（如*.c、./sub/*.c），多目录用空格分隔</p>
+</li>
+<li>
+<p>返回值：空格分隔的符合条件的文件名列表</p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：搜索3个目录下的.c文件</span></span><br><span class="line">src = <span class="variable">$(<span class="built_in">wildcard</span> /home/robin/a/*.c /home/robin/b/*.c *.c)</span></span><br><span class="line"><span class="comment"># 返回值：/home/robin/a/a.c /home/robin/a/b.c ... e.c f.c</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-patsubst（按模式替换文件名后缀）">2. patsubst（按模式替换文件名后缀）</h4>
+<ul>
+<li>
+<p>原型：<code>$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)</code></p>
+</li>
+<li>
+<p>参数：pattern（待替换后缀模式，如%.c）、replacement（新后缀模式，如%.o）、text（原始文件列表）</p>
+</li>
+<li>
+<p>返回值：替换后的文件名列表</p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：将src中的.cpp后缀替换为.o</span></span><br><span class="line">src = a.cpp b.cpp c.cpp e.cpp</span><br><span class="line">obj = <span class="variable">$(<span class="built_in">patsubst</span> %.cpp, %.o, <span class="variable">$(src)</span>)</span> </span><br><span class="line"><span class="comment"># obj值：a.o b.o c.o e.o</span></span><br></pre></td></tr></table></figure>
+<h3 id="七、Makefile编写进化过程（从简单到标准）">七、Makefile编写进化过程（从简单到标准）</h3>
+<p>项目目录：add.c/div.c/main.c/mult.c/sub.c/head.h</p>
+<h4 id="版本1：简单但低效（修改一个文件全量重编译）">版本1：简单但低效（修改一个文件全量重编译）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">calc:add.c  div.c  main.c  mult.c  sub.c</span></span><br><span class="line">        gcc add.c  div.c  main.c  mult.c  sub.c -o calc</span><br></pre></td></tr></table></figure>
+<h4 id="版本2：分模块编译（提升效率，规则冗余）">版本2：分模块编译（提升效率，规则冗余）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">calc:add.o  div.o  main.o  mult.o  sub.o</span></span><br><span class="line">        gcc  add.o  div.o  main.o  mult.o  sub.o -o calc</span><br><span class="line"><span class="section">add.o:add.c</span></span><br><span class="line">        gcc add.c -c</span><br><span class="line"><span class="section">div.o:div.c</span></span><br><span class="line">        gcc div.c -c</span><br><span class="line"><span class="section">main.o:main.c</span></span><br><span class="line">        gcc main.c -c</span><br><span class="line"><span class="section">sub.o:sub.c</span></span><br><span class="line">        gcc sub.c -c</span><br><span class="line"><span class="section">mult.o:mult.c</span></span><br><span class="line">        gcc mult.c -c</span><br></pre></td></tr></table></figure>
+<h4 id="版本3：变量-模式匹配（精简规则）">版本3：变量+模式匹配（精简规则）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">obj=add.o  div.o  main.o  mult.o  sub.o</span><br><span class="line">target=calc</span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc <span class="variable">$(obj)</span>  -o <span class="variable">$(target)</span></span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">        gcc <span class="variable">$&lt;</span> -c</span><br></pre></td></tr></table></figure>
+<h4 id="版本4：函数自动获取文件（解放双手）">版本4：函数自动获取文件（解放双手）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">src=<span class="variable">$(<span class="built_in">wildcard</span> *.c)</span>  <span class="comment"># 自动搜索当前目录所有.c文件</span></span><br><span class="line">obj=<span class="variable">$(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(src)</span>)</span>  <span class="comment"># 自动替换为.o</span></span><br><span class="line">target=calc</span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc <span class="variable">$(obj)</span>  -o <span class="variable">$(target)</span></span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">        gcc <span class="variable">$&lt;</span> -c</span><br></pre></td></tr></table></figure>
+<h4 id="版本5：添加清理规则（存在伪目标问题）">版本5：添加清理规则（存在伪目标问题）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">src=<span class="variable">$(<span class="built_in">wildcard</span> *.c)</span></span><br><span class="line">obj=<span class="variable">$(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(src)</span>)</span></span><br><span class="line">target=calc</span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc <span class="variable">$(obj)</span>  -o <span class="variable">$(target)</span></span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">        gcc <span class="variable">$&lt;</span> -c</span><br><span class="line"><span class="comment"># 清理生成文件（伪目标，无对应实体文件）</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">        rm <span class="variable">$(obj)</span> <span class="variable">$(target)</span></span><br></pre></td></tr></table></figure>
+<p>问题：若目录存在clean文件，make clean会提示“clean is up to date”，无法执行删除</p>
+<h4 id="版本6：最终版（声明伪目标，优化清理命令）">版本6：最终版（声明伪目标，优化清理命令）</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">src=<span class="variable">$(<span class="built_in">wildcard</span> *.c)</span></span><br><span class="line">obj=<span class="variable">$(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(src)</span>)</span></span><br><span class="line">target=calc</span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc <span class="variable">$(obj)</span>  -o <span class="variable">$(target)</span></span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">        gcc <span class="variable">$&lt;</span> -c</span><br><span class="line"><span class="comment"># 声明clean为伪目标，make不检测时间戳</span></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>:clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">        -rm <span class="variable">$(obj)</span> <span class="variable">$(target)</span>  <span class="comment"># -表示强制执行，失败不终止</span></span><br><span class="line">        echo <span class="string">&quot;清理完成&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="八、练习题（多目录项目Makefile）">八、练习题（多目录项目Makefile）</h3>
+<h4 id="项目目录结构">项目目录结构</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h  # 声明加减乘除函数</span><br><span class="line">├── main.c      # 测试程序，调用head.h函数</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c   # 加法实现</span><br><span class="line">    ├── div.c   # 除法实现</span><br><span class="line">    ├── mult.c  # 乘法实现</span><br><span class="line">    └── sub.c   # 减法实现</span><br></pre></td></tr></table></figure>
+<h4 id="对应的Makefile">对应的Makefile</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">target = app  <span class="comment"># 最终目标名</span></span><br><span class="line">src=<span class="variable">$(<span class="built_in">wildcard</span> *.c ./src/*.c)</span>  <span class="comment"># 搜索当前目录和src目录的.c文件</span></span><br><span class="line">obj=<span class="variable">$(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(src)</span>)</span>  <span class="comment"># 替换为.o文件</span></span><br><span class="line">include=./<span class="keyword">include</span>  <span class="comment"># 头文件目录</span></span><br><span class="line"><span class="variable">$(target)</span>:<span class="variable">$(obj)</span></span><br><span class="line">        gcc <span class="variable">$^</span> -o <span class="variable">$@</span>  <span class="comment"># 链接所有.o生成可执行程序</span></span><br><span class="line"><span class="comment"># 编译时指定头文件目录（-I选项）</span></span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">        gcc <span class="variable">$&lt;</span> -c -I <span class="variable">$(include)</span> -o <span class="variable">$@</span></span><br><span class="line"><span class="comment"># 声明伪目标，清理生成文件</span></span><br><span class="line"><span class="meta"><span class="keyword">.PHONY</span>:clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">        -rm <span class="variable">$(obj)</span> <span class="variable">$(target)</span> -f</span><br></pre></td></tr></table></figure>
+<h3 id="九、多目录工程Makefile框架（范式）">九、多目录工程Makefile框架（范式）</h3>
+<p>本框架是复杂多目录项目的标准化编译方案，整合「顶层Makefile」和「顶层Makefile.build」核心功能，只需在各级子目录通过<code>obj-y</code>指定编译文件/子目录，即可实现全工程一键编译/清理，支持交叉编译和精细化编译控制。</p>
+<h4 id="1-完整框架代码">1. 完整框架代码</h4>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一、工具链与全局变量定义（顶层Makefile核心）</span></span><br><span class="line">CROSS_COMPILE = </span><br><span class="line">AS		= <span class="variable">$(CROSS_COMPILE)</span>as</span><br><span class="line">LD		= <span class="variable">$(CROSS_COMPILE)</span>ld</span><br><span class="line">CC		= <span class="variable">$(CROSS_COMPILE)</span>gcc</span><br><span class="line">CPP		= <span class="variable">$(CC)</span> -E</span><br><span class="line">AR		= <span class="variable">$(CROSS_COMPILE)</span>ar</span><br><span class="line">NM		= <span class="variable">$(CROSS_COMPILE)</span>nm</span><br><span class="line"></span><br><span class="line">STRIP		= <span class="variable">$(CROSS_COMPILE)</span>strip</span><br><span class="line">OBJCOPY		= <span class="variable">$(CROSS_COMPILE)</span>objcopy</span><br><span class="line">OBJDUMP		= <span class="variable">$(CROSS_COMPILE)</span>objdump</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出变量，使子目录Makefile可使用</span></span><br><span class="line"><span class="keyword">export</span> AS LD CC CPP AR NM</span><br><span class="line"><span class="keyword">export</span> STRIP OBJCOPY OBJDUMP</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译选项：-Wall开启所有警告，-O2优化，-g生成调试信息；追加头文件目录</span></span><br><span class="line">CFLAGS := -Wall -O2 -g</span><br><span class="line">CFLAGS += -I <span class="variable">$(<span class="built_in">shell</span> pwd)</span>/<span class="keyword">include</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 链接选项（可根据需求添加，如-l指定链接库）</span></span><br><span class="line">LDFLAGS := </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> CFLAGS LDFLAGS</span><br><span class="line"></span><br><span class="line"><span class="comment"># 项目根目录（当前目录）</span></span><br><span class="line">TOPDIR := <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line"><span class="keyword">export</span> TOPDIR</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最终生成的可执行程序名称</span></span><br><span class="line">TARGET := test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定要编译的文件和子目录：obj-y += 文件名 或 子目录/</span></span><br><span class="line">obj-y += main.o</span><br><span class="line">obj-y += sub.o</span><br><span class="line">obj-y += a/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二、核心目标规则（顶层Makefile核心）</span></span><br><span class="line">all : start_recursive_build <span class="variable">$(TARGET)</span></span><br><span class="line">	@echo <span class="variable">$(TARGET)</span> has been built!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发递归编译（调用Makefile.build处理子目录和当前目录编译）</span></span><br><span class="line"><span class="section">start_recursive_build:</span></span><br><span class="line">	make -C ./ -f <span class="variable">$(TOPDIR)</span>/Makefile.build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成最终目标：链接built-in.o（所有目标文件的打包文件）</span></span><br><span class="line"><span class="variable">$(TARGET)</span> : start_recursive_build</span><br><span class="line">	<span class="variable">$(CC)</span> -o <span class="variable">$(TARGET)</span> built-in.o <span class="variable">$(LDFLAGS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理目标文件和可执行程序</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f <span class="variable">$(<span class="built_in">shell</span> find -name <span class="string">&quot;*.o&quot;</span>)</span></span><br><span class="line">	rm -f <span class="variable">$(TARGET)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 彻底清理：含依赖文件（.xxx.o.d）</span></span><br><span class="line"><span class="section">distclean:</span></span><br><span class="line">	rm -f <span class="variable">$(<span class="built_in">shell</span> find -name <span class="string">&quot;*.o&quot;</span>)</span></span><br><span class="line">	rm -f <span class="variable">$(<span class="built_in">shell</span> find -name <span class="string">&quot;*.d&quot;</span>)</span></span><br><span class="line">	rm -f <span class="variable">$(TARGET)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 三、递归编译与打包规则（Makefile.build核心）</span></span><br><span class="line"><span class="section">Makefile.build: PHONY := __build</span></span><br><span class="line"><span class="section">__build:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化变量</span></span><br><span class="line">obj-y :=</span><br><span class="line">subdir-y :=</span><br><span class="line">EXTRA_CFLAGS :=</span><br><span class="line"></span><br><span class="line"><span class="comment"># 包含当前目录的Makefile（获取该目录的obj-y定义）</span></span><br><span class="line"><span class="keyword">include</span> Makefile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 处理子目录：从obj-y中筛选出子目录（以/结尾），去掉/得到子目录名</span></span><br><span class="line">__subdir-y	:= <span class="variable">$(<span class="built_in">patsubst</span> %/,%,$(<span class="built_in">filter</span> %/, $(obj-y)</span>))</span><br><span class="line">subdir-y	+= $(__subdir-y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子目录编译产物：每个子目录生成的built-in.o</span></span><br><span class="line">subdir_objs := <span class="variable">$(<span class="built_in">foreach</span> f,$(subdir-y)</span>,<span class="variable">$(f)</span>/built-in.o)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 处理当前目录目标文件：从obj-y中筛选出非目录文件（即.c对应的.o）</span></span><br><span class="line">cur_objs := <span class="variable">$(<span class="built_in">filter</span>-out %/, $(obj-y)</span>)</span><br><span class="line"><span class="comment"># 依赖文件：每个.o对应一个.d文件（记录该.o的依赖关系）</span></span><br><span class="line">dep_files := <span class="variable">$(<span class="built_in">foreach</span> f,<span class="variable">$(cur_objs)</span>,.<span class="variable">$(f)</span>.d)</span></span><br><span class="line">dep_files := <span class="variable">$(<span class="built_in">wildcard</span> <span class="variable">$(dep_files)</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 包含依赖文件（若存在），使修改头文件时能触发对应.o重编译</span></span><br><span class="line"><span class="keyword">ifneq</span> (<span class="variable">$(dep_files)</span>,)</span><br><span class="line">  <span class="keyword">include</span> <span class="variable">$(dep_files)</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 声明伪目标（子目录为伪目标，确保每次都递归编译）</span></span><br><span class="line">PHONY += $(subdir-y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 核心编译目标：先编译子目录，再打包当前目录和子目录的目标文件为built-in.o</span></span><br><span class="line">__build : $(subdir-y) built-in.o</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归编译子目录：进入子目录，执行顶层的Makefile.build</span></span><br><span class="line"><span class="section">$(subdir-y):</span></span><br><span class="line">	make -C <span class="variable">$@</span> -f <span class="variable">$(TOPDIR)</span>/Makefile.build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包目标文件：将当前目录obj和所有子目录的built-in.o合并为当前目录的built-in.o</span></span><br><span class="line">built-in.o : $(subdir-y) <span class="variable">$(cur_objs)</span></span><br><span class="line">	<span class="variable">$(LD)</span> -r -o <span class="variable">$@</span> <span class="variable">$(cur_objs)</span> <span class="variable">$(subdir_objs)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 编译规则：生成.o文件并自动生成依赖文件</span></span><br><span class="line">dep_file = .<span class="variable">$@</span>.d</span><br><span class="line">%.o : %.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> <span class="variable">$(EXTRA_CFLAGS)</span> $(CFLAGS_<span class="variable">$@</span>) -Wp,-MD,<span class="variable">$(dep_file)</span> -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br><span class="line">	</span><br><span class="line"><span class="comment"># 声明所有PHONY伪目标，避免与同名文件冲突</span></span><br><span class="line">.PHONY : <span class="variable">$(PHONY)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-核心构成与功能拆解">2. 核心构成与功能拆解</h4>
+<h5 id="2-1-工具链与全局变量定义（顶层Makefile）">2.1 工具链与全局变量定义（顶层Makefile）</h5>
+<ul>
+<li>
+<p>工具链前缀<code>CROSS_COMPILE</code>：支持交叉编译（如ARM交叉编译可设为<code>arm-linux-gcc-</code>），未设置则使用本地工具链</p>
+</li>
+<li>
+<p>工具定义：<code>AS、LD、CC</code>等编译链接工具，通过<code>CROSS_COMPILE</code>拼接，确保工具链统一</p>
+</li>
+<li>
+<p>全局编译/链接选项：<code>CFLAGS</code>指定警告、优化、头文件目录；<code>LDFLAGS</code>指定链接规则（如链接动态库）</p>
+</li>
+<li>
+<p>导出变量：通过<code>export</code>使子目录的Makefile能继承使用这些变量，保证全工程编译规则一致</p>
+</li>
+</ul>
+<h5 id="2-2-核心目标规则（顶层Makefile）">2.2 核心目标规则（顶层Makefile）</h5>
+<ul>
+<li>
+<p>总目标<code>all</code>：触发递归编译（<code>start_recursive_build</code>）和最终目标生成，执行<code>make</code>时默认执行</p>
+</li>
+<li>
+<p>递归编译触发：<code>start_recursive_build</code>调用<code>Makefile.build</code>，递归处理所有子目录的编译</p>
+</li>
+<li>
+<p>最终目标生成：链接<code>built-in.o</code>（全工程所有目标文件的打包文件）生成可执行程序</p>
+</li>
+<li>
+<p>清理目标：<code>clean</code>清理.o和可执行程序；<code>distclean</code>额外清理依赖文件（.d），适合工程重构</p>
+</li>
+</ul>
+<h5 id="2-3-递归编译与打包规则（Makefile-build）">2.3 递归编译与打包规则（Makefile.build）</h5>
+<p>核心作用：标准化各级目录的编译流程，自动处理子目录编译和目标文件打包，无需手动编写每个目录的编译规则。</p>
+<ul>
+<li>
+<p>子目录处理：自动筛选<code>obj-y</code>中的子目录，递归进入子目录执行<code>Makefile.build</code>，生成子目录的<code>built-in.o</code></p>
+</li>
+<li>
+<p>当前目录目标文件处理：筛选<code>obj-y</code>中的.o文件，自动生成依赖文件（.xxx.o.d），确保修改头文件时触发对应.o重编译</p>
+</li>
+<li>
+<p>目标文件打包：通过<code>LD -r</code>（部分链接）将当前目录的.o和所有子目录的<code>built-in.o</code>合并为当前目录的<code>built-in.o</code>，最终顶层目录的<code>built-in.o</code>包含全工程目标文件</p>
+</li>
+<li>
+<p>精细化编译控制：支持<code>EXTRA_CFLAGS</code>（当前目录额外编译选项）、<code>CFLAGS_xxx.o</code>（单个文件专属编译选项）</p>
+</li>
+</ul>
+<h4 id="3-核心工作流程">3. 核心工作流程</h4>
+<ol>
+<li>
+<p>执行<code>make</code>：默认执行顶层Makefile的<code>all</code>目标</p>
+</li>
+<li>
+<p>触发递归编译：调用<code>Makefile.build</code>，从顶层目录开始，递归进入所有<code>obj-y</code>指定的子目录</p>
+</li>
+<li>
+<p>子目录编译：每个子目录生成自身的<code>built-in.o</code>，并向上级目录传递</p>
+</li>
+<li>
+<p>顶层打包与链接：顶层目录合并所有子目录的<code>built-in.o</code>和自身.o，生成顶层<code>built-in.o</code>，最终链接为可执行程序</p>
+</li>
+</ol>
+<h4 id="4-关键配置说明">4. 关键配置说明</h4>
+<ul>
+<li>
+<p><code>obj-y</code> += 文件名/子目录/：核心配置项（y=yes，编译），指定当前目录要编译的文件（如main.o）或要递归编译的子目录（如a/）；多目录框架中约定用obj-y标记“需要参与编译的内容”</p>
+</li>
+<li>
+<p><code>obj-n</code> += 文件名：辅助配置项（n=no，不编译），指定当前目录需排除、不参与编译的文件；需配合filter-out函数过滤，框架不会自动识别，仅为行业约定命名</p>
+</li>
+<li>
+<p><code>obj-m</code> += 文件名：拓展配置项（m=module，模块），常见于Linux内核/驱动开发，指定将文件编译为可加载内核模块（生成.ko文件，而非链接到主程序）</p>
+</li>
+<li>
+<p><code>CROSS_COMPILE</code>：交叉编译时设置，如ARM架构设为<code>arm-none-linux-gnueabi-</code></p>
+</li>
+<li>
+<p><code>CFLAGS += -I 目录</code>：添加头文件搜索目录，确保编译器能找到#include的头文件</p>
+</li>
+<li>
+<p><code>LDFLAGS</code>：添加链接选项，如链接动态库可设为<code>-L ./lib -lm</code>（-L指定库目录，-lm链接数学库）</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Makefile/" rel="tag"># Makefile</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/07/VIM%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/" rel="prev" title="VIM 使用教学">
+                  <i class="fa fa-angle-left"></i> VIM 使用教学
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/12/07/CMake%20Memo/" rel="next" title="CMake Memo">
+                  CMake Memo <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:12</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="快速查找Linux的命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-Command Memo">
+<meta property="og:url" content="https://1613661434.github.io/2025/12/19/Linux-Command%20Memo/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="快速查找Linux的命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-19T07:03:00.000Z">
+<meta property="article:modified_time" content="2026-01-17T11:54:01.149Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/12/19/Linux-Command%20Memo/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/12/19/Linux-Command%20Memo/","path":"2025/12/19/Linux-Command Memo/","title":"Linux-Command Memo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux-Command Memo | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux-Command Memo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BA-%E5%85%B3%E9%97%AD%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%9Ainit-0"><span class="nav-number">1.1.</span> <span class="nav-text">退出 &#x2F; 关闭虚拟机：init 0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%90%AF%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%9Ainit-6-reboot"><span class="nav-number">1.2.</span> <span class="nav-text">重启虚拟机：init 6 &#x2F;reboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%EF%BC%9Apwd"><span class="nav-number">1.3.</span> <span class="nav-text">查看当前工作目录：pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95%EF%BC%9Acd"><span class="nav-number">1.4.</span> <span class="nav-text">切换目录：cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9%EF%BC%9Als"><span class="nav-number">1.5.</span> <span class="nav-text">列出目录内容：ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%B1%8F%EF%BC%9Aclear"><span class="nav-number">1.6.</span> <span class="nav-text">清屏：clear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%EF%BC%9Adate"><span class="nav-number">1.7.</span> <span class="nav-text">查看 &#x2F; 设置系统时间：date</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B-%E6%94%BE%E5%BC%83%E8%BE%93%E5%85%A5%EF%BC%9ACtrl-C"><span class="nav-number">1.8.</span> <span class="nav-text">终止进程 &#x2F; 放弃输入：Ctrl+C</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%A4%A7%E6%96%87%E4%BB%B6-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E5%88%86%E6%9E%90%EF%BC%9Adu-find"><span class="nav-number">1.9.</span> <span class="nav-text">查找大文件 &#x2F; 磁盘空间分析：du &#x2F;find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%A1%E7%AE%97%E5%99%A8%EF%BC%9Abc"><span class="nav-number">1.10.</span> <span class="nav-text">命令行计算器：bc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3%EF%BC%88firewalld%EF%BC%89%EF%BC%9Afirewall-cmd"><span class="nav-number">1.11.</span> <span class="nav-text">开放端口（firewalld）：firewall-cmd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%EF%BC%9ASSH"><span class="nav-number">1.12.</span> <span class="nav-text">远程连接：SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E6%A0%B8%E6%97%A5%E5%BF%97%EF%BC%9Admesg"><span class="nav-number">1.13.</span> <span class="nav-text">查看内核日志：dmesg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%EF%BC%9Asource"><span class="nav-number">1.14.</span> <span class="nav-text">加载脚本配置：source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4%E8%B7%AF%E5%BE%84%EF%BC%9Awhich"><span class="nav-number">1.15.</span> <span class="nav-text">查找命令路径：which</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%9Acurl"><span class="nav-number">1.16.</span> <span class="nav-text">网络数据传输：curl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95-%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%EF%BC%9Atelnet"><span class="nav-number">1.17.</span> <span class="nav-text">端口测试 &#x2F; 远程登录：telnet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%9Aexport"><span class="nav-number">1.18.</span> <span class="nav-text">设置环境变量：export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%EF%BC%9Amkdir"><span class="nav-number">1.19.</span> <span class="nav-text">创建目录：mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%EF%BC%9Arm"><span class="nav-number">1.20.</span> <span class="nav-text">删除文件 &#x2F; 目录：rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%EF%BC%9Acp"><span class="nav-number">1.21.</span> <span class="nav-text">复制文件 &#x2F; 目录：cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8-%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%EF%BC%9Amv"><span class="nav-number">1.22.</span> <span class="nav-text">移动 &#x2F; 重命名文件：mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%9Acat"><span class="nav-number">1.23.</span> <span class="nav-text">查看文件内容：cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2%EF%BC%9Agrep"><span class="nav-number">1.24.</span> <span class="nav-text">文本搜索：grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%EF%BC%9Aps"><span class="nav-number">1.25.</span> <span class="nav-text">查看进程：ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B%EF%BC%9Akill"><span class="nav-number">1.26.</span> <span class="nav-text">终止进程：kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%EF%BC%9Adf"><span class="nav-number">1.27.</span> <span class="nav-text">查看磁盘空间：df</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%EF%BC%9Achmod"><span class="nav-number">1.28.</span> <span class="nav-text">修改文件权限：chmod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7%EF%BC%9Asu-sudo"><span class="nav-number">1.29.</span> <span class="nav-text">切换用户：su &#x2F;sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%EF%BC%9Aftp"><span class="nav-number">1.30.</span> <span class="nav-text">FTP 文件传输：ftp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-FTP-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.30.1.</span> <span class="nav-text">1. 安装 FTP 客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%99%BB%E5%BD%95-FTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%883-%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%89"><span class="nav-number">1.30.2.</span> <span class="nav-text">2. 登录 FTP 服务器（3 种方法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%EF%BC%88%E7%99%BB%E5%BD%95%E5%90%8E%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="nav-number">1.30.3.</span> <span class="nav-text">3. 目录操作（登录后执行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8B-FTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95"><span class="nav-number">1.30.4.</span> <span class="nav-text">4. 查看 FTP 服务器文件 &#x2F; 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%BF%85%E8%AE%BE%EF%BC%81%EF%BC%89"><span class="nav-number">1.30.5.</span> <span class="nav-text">5. 文件传输模式（必设！）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%EF%BC%88%E4%BB%8E-FTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%B0%E6%9C%AC%E5%9C%B0%EF%BC%89"><span class="nav-number">1.30.6.</span> <span class="nav-text">6. 下载文件（从 FTP 服务器到本地）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%EF%BC%88%E4%BB%8E%E6%9C%AC%E5%9C%B0%E5%88%B0-FTP-%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-number">1.30.7.</span> <span class="nav-text">7. 上传文件（从本地到 FTP 服务器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8-FTP-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.30.8.</span> <span class="nav-text">8. 其他常用 FTP 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.30.9.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%9E%84%E5%BB%BA%EF%BC%9Amake"><span class="nav-number">1.31.</span> <span class="nav-text">编译构建：make</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-%E7%BC%96%E8%AF%91%EF%BC%9Agcc-g"><span class="nav-number">1.32.</span> <span class="nav-text">C&#x2F;C++ 编译：gcc&#x2F;g++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E7%9B%91%E6%8E%A7%EF%BC%9Atop"><span class="nav-number">1.33.</span> <span class="nav-text">系统资源监控：top</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%EF%BC%9Avi-vim"><span class="nav-number">1.34.</span> <span class="nav-text">文本编辑：vi&#x2F;vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%8E%86%EF%BC%9Acal"><span class="nav-number">1.35.</span> <span class="nav-text">查看日历：cal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-IPC-%E6%9F%A5%E7%9C%8B%EF%BC%9Aipcs"><span class="nav-number">1.36.</span> <span class="nav-text">进程间通信 (IPC) 查看：ipcs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-IPC-%E5%88%A0%E9%99%A4%EF%BC%9Aipcrm"><span class="nav-number">1.37.</span> <span class="nav-text">进程间通信 (IPC) 删除：ipcrm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%B7%9F%E8%B8%AA%EF%BC%9Astrace"><span class="nav-number">1.38.</span> <span class="nav-text">系统调用跟踪：strace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%EF%BC%88CentOS-RHEL%EF%BC%89%EF%BC%9Ayum"><span class="nav-number">1.39.</span> <span class="nav-text">包管理（CentOS&#x2F;RHEL）：yum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%EF%BC%88Ubuntu-Debian%EF%BC%89%EF%BC%9Aapt-apt-get"><span class="nav-number">1.40.</span> <span class="nav-text">包管理（Ubuntu&#x2F;Debian）：apt&#x2F;apt-get</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%86%8C%E6%9F%A5%E8%AF%A2%EF%BC%9Aman"><span class="nav-number">1.41.</span> <span class="nav-text">手册查询：man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%88%A0%E9%99%A4%EF%BC%9Aunset"><span class="nav-number">1.42.</span> <span class="nav-text">环境变量删除：unset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%B0%BE%E9%83%A8%EF%BC%9Atail"><span class="nav-number">1.43.</span> <span class="nav-text">查看文件尾部：tail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%A0%91%E6%9F%A5%E7%9C%8B%EF%BC%9Atree"><span class="nav-number">1.44.</span> <span class="nav-text">目录树查看：tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-%E8%A7%A3%E6%9E%90%EF%BC%9Anslookup-getent"><span class="nav-number">1.45.</span> <span class="nav-text">DNS 解析：nslookup&#x2F;getent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95%EF%BC%9Aping"><span class="nav-number">1.46.</span> <span class="nav-text">网络连通性测试：ping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%EF%BC%9Asystemctl"><span class="nav-number">1.47.</span> <span class="nav-text">系统服务管理：systemctl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B%EF%BC%9Apkill"><span class="nav-number">1.48.</span> <span class="nav-text">批量终止进程：pkill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%EF%BC%9Aecho"><span class="nav-number">1.49.</span> <span class="nav-text">创建 &#x2F; 写入文件：echo &gt;&#x2F;&gt;&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90%EF%BC%9Achmod-R"><span class="nav-number">1.50.</span> <span class="nav-text">递归修改权限：chmod -R</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%E6%9C%AC%E8%BA%AB%E6%9D%83%E9%99%90%EF%BC%9Als-ld"><span class="nav-number">1.51.</span> <span class="nav-text">查看目录本身权限：ls -ld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E9%A2%84%E5%8A%A0%E8%BD%BD%EF%BC%9ALD-PRELOAD"><span class="nav-number">1.52.</span> <span class="nav-text">动态库预加载：LD_PRELOAD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E8%B7%AF%E5%BE%84%EF%BC%9A-proc-self-exe"><span class="nav-number">1.53.</span> <span class="nav-text">查看进程可执行路径：&#x2F;proc&#x2F;self&#x2F;exe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E7%A9%BA-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%EF%BC%9Arm-rf"><span class="nav-number">1.54.</span> <span class="nav-text">清空 &#x2F; 删除目录：rm -rf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%9F%A5%E7%9C%8B%EF%BC%9Aifconfig%EF%BC%88%E8%A1%A5%E5%85%85-ipconfig%EF%BC%89"><span class="nav-number">1.55.</span> <span class="nav-text">网络配置查看：ifconfig（补充 ipconfig）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-CPU-%E4%BF%A1%E6%81%AF%EF%BC%9A-proc-cpuinfo"><span class="nav-number">1.56.</span> <span class="nav-text">查看 CPU 信息：&#x2F;proc&#x2F;cpuinfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%EF%BC%9Afind"><span class="nav-number">1.57.</span> <span class="nav-text">文件搜索：find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%90%9C%E7%B4%A2%EF%BC%9Agrep"><span class="nav-number">1.58.</span> <span class="nav-text">字符串搜索：grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%EF%BC%9Alocate"><span class="nav-number">1.59.</span> <span class="nav-text">快速文件搜索：locate</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/12/19/Linux-Command%20Memo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux-Command Memo | ol木子李lo的博客">
+      <meta itemprop="description" content="快速查找Linux的命令">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux-Command Memo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-19 15:03:00" itemprop="dateCreated datePublished" datetime="2025-12-19T15:03:00+08:00">2025-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-17 19:54:01" itemprop="dateModified" datetime="2026-01-17T19:54:01+08:00">2026-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">备忘录</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>33 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">快速查找Linux的命令</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>Linux-Command Memo</h1>
+<h2 id="退出-关闭虚拟机：init-0">退出 / 关闭虚拟机：init 0</h2>
+<p><code>init</code>是 Linux 系统初始化进程，运行级别<code>0</code>代表关机（仅 root 权限可执行），用于安全关闭虚拟机 / 服务器，区别于强制断电，会先终止进程、同步数据后关机。</p>
+<ul>
+<li>
+<p>基础用法：<code>init 0</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">init 0  <span class="comment"># 以root身份执行，安全关闭虚拟机（普通用户需加sudo：sudo init 0）</span></span><br><span class="line"><span class="comment"># 补充：CentOS7+也可使用shutdown命令（更灵活）</span></span><br><span class="line">shutdown -h now  <span class="comment"># 立即关机（等价于init 0）</span></span><br><span class="line">shutdown -h 10  <span class="comment"># 10分钟后关机</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="重启虚拟机：init-6-reboot">重启虚拟机：init 6 /reboot</h2>
+<p><code>init 6</code>是传统运行级别重启（执行系统重启流程），<code>reboot</code>是通用重启命令，两者均可安全重启虚拟机，优先推荐<code>reboot</code>更易记。</p>
+<ul>
+<li>
+<p>基础用法：<code>init 6</code> 或 <code>reboot</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">init 6  <span class="comment"># root权限重启虚拟机（普通用户：sudo init 6）</span></span><br><span class="line">reboot  <span class="comment"># 通用重启命令（无需记运行级别，root/普通用户加sudo均可）</span></span><br><span class="line">reboot -f  <span class="comment"># 强制重启（紧急情况使用，可能丢失未保存数据）</span></span><br><span class="line"><span class="comment"># 补充：shutdown也可实现重启</span></span><br><span class="line">shutdown -r now  <span class="comment"># 立即重启</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看当前工作目录：pwd">查看当前工作目录：pwd</h2>
+<p><code>pwd</code>（Print Working Directory）用于显示当前 Shell 会话所在的绝对路径，解决 “不知道自己在哪个目录” 的问题，是最基础的路径定位命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>pwd</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span>  <span class="comment"># 输出当前目录（如/home/ubuntu/test）</span></span><br><span class="line"><span class="built_in">pwd</span> -P  <span class="comment"># 显示真实路径（若当前目录是软链接，会指向链接的原始目录）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="切换目录：cd">切换目录：cd</h2>
+<p><code>cd</code>（Change Directory）用于切换 Shell 的工作目录，支持绝对路径、相对路径、快捷路径，是目录操作的核心命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>cd [目标目录路径]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local  <span class="comment"># 绝对路径：切换到/usr/local目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="built_in">test</span>  <span class="comment"># 相对路径：切换到当前目录下的test子目录</span></span><br><span class="line"><span class="built_in">cd</span> ..  <span class="comment"># 切换到上级目录（..代表父目录）</span></span><br><span class="line"><span class="built_in">cd</span> ~  <span class="comment"># 切换到当前用户的家目录（如/home/ubuntu）</span></span><br><span class="line"><span class="built_in">cd</span> -  <span class="comment"># 切换到上一次所在的目录（快速回切）</span></span><br><span class="line"><span class="built_in">cd</span> /  <span class="comment"># 切换到系统根目录（最顶层目录）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="列出目录内容：ls">列出目录内容：ls</h2>
+<p><code>ls</code>（List）用于列出指定目录下的文件 / 目录，默认列出当前目录，搭配参数可显示权限、大小、隐藏文件等详细信息。</p>
+<ul>
+<li>
+<p>基础用法：<code>ls [参数] [目标目录]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span>  <span class="comment"># 列出当前目录的文件/目录（仅名称）</span></span><br><span class="line"><span class="built_in">ls</span> /usr/bin  <span class="comment"># 列出/usr/bin目录下的内容</span></span><br><span class="line"><span class="built_in">ls</span> -l  <span class="comment"># 长格式显示（包含权限、所有者、大小、修改时间，简称ll）</span></span><br><span class="line"><span class="built_in">ls</span> -a  <span class="comment"># 显示所有文件（包含隐藏文件，以.开头的文件）</span></span><br><span class="line"><span class="built_in">ls</span> -lh  <span class="comment"># 人性化显示文件大小（如100M、2G，替代字节数）</span></span><br><span class="line"><span class="built_in">ls</span> -lt  <span class="comment"># 按修改时间排序（最新的在前）</span></span><br><span class="line"><span class="built_in">ls</span> /dir1 /dir2  <span class="comment"># 叠加目录：同时列出dir1和dir2的内容</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="清屏：clear">清屏：clear</h2>
+<p>清空终端当前显示的内容，仅隐藏历史输出（并非删除），快捷键<code>Ctrl+L</code>等价于<code>clear</code>，适合终端内容过多时整理界面。</p>
+<ul>
+<li>
+<p>基础用法：<code>clear</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clear  <span class="comment"># 清空终端界面</span></span><br><span class="line"><span class="comment"># 快捷键：Ctrl+L（无需输入命令，更快捷）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看-设置系统时间：date">查看 / 设置系统时间：date</h2>
+<p>显示或修改系统当前时间，设置时间需 root 权限，常用于时间同步、日志排查时的时间校准。</p>
+<ul>
+<li>
+<p>基础用法：<code>date [参数] [时间格式/设置值]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">date</span>  <span class="comment"># 显示当前系统时间（如 Thu Dec 18 10:00:00 CST 2025）</span></span><br><span class="line"><span class="built_in">date</span> +<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>  <span class="comment"># 自定义格式显示（如 2025-12-18 10:05:30）</span></span><br><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;2025-12-18 10:08:00&quot;</span>  <span class="comment"># root权限设置系统时间（普通用户：sudo date -s &quot;...&quot;)</span></span><br><span class="line"><span class="built_in">date</span> -s <span class="string">&quot;2025/12/18 10:08:00&quot;</span>  <span class="comment"># 另一种日期格式，效果同上</span></span><br><span class="line"><span class="comment"># 补充：同步硬件时间（避免重启后时间还原）</span></span><br><span class="line">hwclock -w  <span class="comment"># 将系统时间写入硬件时钟（root权限）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="终止进程-放弃输入：Ctrl-C">终止进程 / 放弃输入：Ctrl+C</h2>
+<p>终端快捷键，核心作用有两个：① 放弃当前正在输入的命令内容；② 终止前台运行的进程（如正在执行的脚本、curl 请求、ping 命令等）。</p>
+<ul>
+<li>
+<p>基础用法：输入过程中 / 进程运行时按 <code>Ctrl+C</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景1：放弃输入（输入一半不想执行）</span></span><br><span class="line">[root@localhost ~]# <span class="built_in">ls</span> /usr/xxx  <span class="comment"># 输入到一半，按Ctrl+C直接清空输入行</span></span><br><span class="line">[root@localhost ~]#  <span class="comment"># 回到空白输入行</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 场景2：终止前台进程（比如持续ping百度）</span></span><br><span class="line">ping www.baidu.com  <span class="comment"># 执行后会持续输出，按Ctrl+C终止</span></span><br><span class="line">^C  <span class="comment"># 终端显示^C，进程停止，回到输入行</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查找大文件-磁盘空间分析：du-find">查找大文件 / 磁盘空间分析：du /find</h2>
+<p><code>du</code>（Disk Usage）用于统计目录 / 文件的磁盘占用，<code>find</code>用于精准查找指定大小的文件，两者结合可快速定位磁盘占用过大的文件。</p>
+<ul>
+<li>
+<p>基础用法：</p>
+<ul>
+<li><code>du [参数] 目录</code>：统计目录占用</li>
+<li><code>find 路径 -type f -size 大小条件</code>：查找指定大小文件</li>
+</ul>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 统计当前目录下一级目录的磁盘占用（按大小降序）</span></span><br><span class="line"><span class="built_in">du</span> -h --max-depth=1 | <span class="built_in">sort</span> -hr</span><br><span class="line"><span class="comment"># -h：人性化显示大小（K/M/G）；--max-depth=1：仅显示一级目录；sort -hr：按大小降序排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 查找当前目录下大于100M的所有文件（显示详细信息）</span></span><br><span class="line">find . -<span class="built_in">type</span> f -size +100M -<span class="built_in">exec</span> <span class="built_in">ls</span> -lh &#123;&#125; \;</span><br><span class="line"><span class="comment"># .：当前目录；-type f：仅查找文件（排除目录）；-size +100M：大于100M；-exec：执行后续ls命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 统计指定目录总占用（如/var/log）</span></span><br><span class="line"><span class="built_in">du</span> -sh /var/log  <span class="comment"># -s：汇总总大小；-h：人性化显示</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="命令行计算器：bc">命令行计算器：bc</h2>
+<p><code>bc</code>是交互式算术计算器，支持整数 / 小数运算、逻辑运算，无需图形界面即可完成简单 / 复杂计算，也可非交互式执行计算。</p>
+<ul>
+<li>
+<p>基础用法：<code>bc</code>（交互式） / <code>echo &quot;计算式&quot; | bc</code>（非交互式）</p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 场景1：交互式计算（输入bc进入计算器，输入算式回车计算，quit退出）</span></span><br><span class="line">bc</span><br><span class="line">10 + 20  <span class="comment"># 输入后回车，输出30</span></span><br><span class="line">100 / 3  <span class="comment"># 整数除法，输出33</span></span><br><span class="line">scale=2; 100 / 3  <span class="comment"># 设置小数位数为2，输出33.33</span></span><br><span class="line">quit  <span class="comment"># 退出计算器</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 场景2：非交互式计算（直接输出结果）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;5 * 8 + 20&quot;</span> | bc  <span class="comment"># 输出60</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;scale=3; (20 - 5) * 2 / 7&quot;</span> | bc  <span class="comment"># 输出4.285</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="开放端口（firewalld）：firewall-cmd">开放端口（firewalld）：firewall-cmd</h2>
+<p><code>firewall-cmd</code>是 CentOS7+/RHEL7 + 默认的防火墙管理命令（firewalld），用于配置端口放行、查看防火墙状态，Ubuntu 系统需用<code>ufw</code>（补充在示例中）。</p>
+<ul>
+<li>
+<p>基础用法：<code>firewall-cmd [参数] [端口/协议]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 放行80端口（TCP），永久生效（--permanent）</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 重新加载防火墙配置（使永久规则生效）</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查看已开放的所有端口</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --list-ports</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 补充：删除已开放的端口（如删除80端口）</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --zone=public --remove-port=80/tcp --permanent</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 查看防火墙状态</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --state  <span class="comment"># 输出running（运行中）/not running（未运行）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. Ubuntu系统（ufw防火墙）开放端口示例</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 80/tcp  <span class="comment"># 放行80端口</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload  <span class="comment"># 重载配置</span></span><br><span class="line"><span class="built_in">sudo</span> ufw status  <span class="comment"># 查看开放端口</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="远程连接：SSH">远程连接：SSH</h2>
+<p>SSH（Secure Shell）是加密的远程登录协议，用于安全访问 Linux 服务器（替代明文传输的 Telnet），默认端口 22，是远程管理 Linux 的核心方式。</p>
+<ul>
+<li>
+<p>基础用法：<code>ssh [参数] 用户名@目标IP/主机名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 基础连接（默认端口22，需输入密码）</span></span><br><span class="line">ssh root@192.168.1.100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 指定端口连接（服务器SSH端口非22时，如端口2222）</span></span><br><span class="line">ssh -p 2222 root@192.168.1.100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 免密登录配置（无需输入密码，推荐）</span></span><br><span class="line"><span class="comment"># 第一步：本地生成密钥对（一路回车即可，无需设置密码）</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"><span class="comment"># 第二步：将公钥复制到远程服务器（需输入一次服务器密码）</span></span><br><span class="line">ssh-copy-id root@192.168.1.100</span><br><span class="line"><span class="comment"># 配置完成后，直接ssh root@192.168.1.100即可免密登录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 断开SSH连接</span></span><br><span class="line"><span class="built_in">exit</span>  <span class="comment"># 或按Ctrl+D</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 后台保持SSH连接（避免超时断开，临时生效）</span></span><br><span class="line">ssh -o ServerAliveInterval=60 root@192.168.1.100</span><br><span class="line"><span class="comment"># 永久生效：编辑~/.ssh/config，添加以下内容</span></span><br><span class="line"><span class="comment"># Host *</span></span><br><span class="line"><span class="comment">#   ServerAliveInterval 60</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看内核日志：dmesg">查看内核日志：dmesg</h2>
+<p>用于查看 Linux 内核环形缓冲区的日志信息，包含系统启动时的硬件检测、驱动加载、内核报错 / 警告等内容，是排查硬件、驱动、内核相关问题的核心命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>dmesg</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dmesg  <span class="comment"># 输出所有内核日志</span></span><br><span class="line">dmesg | grep -i error  <span class="comment"># 筛选包含&quot;error&quot;的内核错误日志（忽略大小写）</span></span><br><span class="line">dmesg -T  <span class="comment"># 以人类可读的时间格式显示日志（默认是启动后的时间戳）</span></span><br><span class="line">dmesg | <span class="built_in">head</span> -20  <span class="comment"># 仅查看前20行内核日志</span></span><br><span class="line">dmesg | <span class="built_in">tail</span> -10  <span class="comment"># 仅查看最后10行（最新的内核日志）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="加载脚本配置：source">加载脚本配置：source</h2>
+<p>在当前 Shell 会话中执行指定脚本，等价于<code>.</code>（点号），区别于直接执行脚本（会新建子 Shell），执行后脚本中的环境变量、别名等会立即生效。</p>
+<ul>
+<li>
+<p>基础用法：<code>source 脚本路径</code> 或 <code>. 脚本路径</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc  <span class="comment"># 重新加载bash配置文件，使配置修改立即生效</span></span><br><span class="line">. /etc/profile  <span class="comment"># 等价于source，加载系统全局环境配置</span></span><br><span class="line"><span class="comment"># 示例：修改~/.bashrc后生效（添加别名）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;alias ll=&quot;ls -lh&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc  <span class="comment"># 执行后ll命令即可使用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查找命令路径：which">查找命令路径：which</h2>
+<p>查找指定命令的可执行文件绝对路径，仅检索<code>$PATH</code>环境变量中配置的目录，用于确认命令是否安装、以及当前执行的是哪个版本。</p>
+<ul>
+<li>
+<p>基础用法：<code>which 命令名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> python  <span class="comment"># 查找python命令的可执行路径（如/usr/bin/python3）</span></span><br><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span>  <span class="comment"># 查找ls命令路径（通常为/bin/ls）</span></span><br><span class="line"><span class="built_in">which</span> nginx  <span class="comment"># 若未安装则无输出，安装则显示nginx可执行文件路径</span></span><br><span class="line"><span class="built_in">which</span> -a java  <span class="comment"># 列出所有名为java的可执行文件路径（多个版本时）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="网络数据传输：curl">网络数据传输：curl</h2>
+<p>命令行网络工具，支持 HTTP/HTTPS/FTP 等协议，可用于测试接口、下载文件、模拟 HTTP 请求，无需图形界面即可完成网络交互。</p>
+<ul>
+<li>
+<p>基础用法：<code>curl [参数] URL</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl https://www.baidu.com  <span class="comment"># 访问百度并输出页面内容</span></span><br><span class="line">curl -o baidu.html https://www.baidu.com  <span class="comment"># 下载页面内容保存为baidu.html</span></span><br><span class="line">curl -X POST -d <span class="string">&quot;username=test&amp;pwd=123&quot;</span> https://api.example.com/login  <span class="comment"># 发送POST请求并携带参数</span></span><br><span class="line">curl -I https://www.baidu.com  <span class="comment"># 仅获取HTTP响应头（查看状态码、服务器信息等）</span></span><br><span class="line">curl -s https://www.baidu.com  <span class="comment"># 静默模式（不输出进度条、错误信息）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="端口测试-远程登录：telnet">端口测试 / 远程登录：telnet</h2>
+<p>基于 TCP 协议的工具，主要用于测试目标主机的端口是否开放，也可用于简单的远程登录（需先安装 telnet）。</p>
+<ul>
+<li>
+<p>基础用法：<code>telnet 目标IP 端口号</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先安装telnet（CentOS/Ubuntu）</span></span><br><span class="line"><span class="built_in">sudo</span> yum install telnet -y  <span class="comment"># CentOS/RHEL</span></span><br><span class="line"><span class="built_in">sudo</span> apt install telnet -y  <span class="comment"># Ubuntu/Debian</span></span><br><span class="line"></span><br><span class="line">telnet 192.168.1.100 80  <span class="comment"># 测试192.168.1.100的80端口是否开放</span></span><br><span class="line">telnet www.baidu.com 443  <span class="comment"># 测试百度443端口（HTTPS）是否可达</span></span><br><span class="line"><span class="comment"># 若端口开放：显示&quot;Connected to www.baidu.com&quot;；关闭：显示&quot;Connection refused&quot;</span></span><br><span class="line"><span class="comment"># 退出telnet：按Ctrl+]，再输入quit回车</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="设置环境变量：export">设置环境变量：export</h2>
+<p>用于定义 / 导出环境变量，使变量在当前 Shell 及子 Shell 中生效；若需永久生效，需将命令写入<code>~/.bashrc</code>/<code>/etc/profile</code>等配置文件。</p>
+<ul>
+<li>
+<p>基础用法：<code>export 变量名=值</code>（临时生效）</p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/mybin  <span class="comment"># 新增自定义路径到PATH（临时生效）</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk  <span class="comment"># 设置Java环境变量</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span>  <span class="comment"># 将Java命令加入PATH（可直接执行java -version）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久生效（追加到bash配置文件）：</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export JAVA_HOME=/usr/lib/jvm/java-11-openjdk&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=$JAVA_HOME/bin:$PATH&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc  <span class="comment"># 重新加载配置使永久变量生效</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已定义的环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span>  <span class="comment"># 输出Java环境变量路径</span></span><br><span class="line"><span class="built_in">env</span> | grep PATH  <span class="comment"># 筛选查看PATH变量</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="创建目录：mkdir">创建目录：mkdir</h2>
+<p><code>mkdir</code>（Make Directory）用于创建新目录，支持递归创建多级目录，是文件管理基础命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>mkdir [参数] 目录名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">test</span>  <span class="comment"># 在当前目录创建test目录</span></span><br><span class="line"><span class="built_in">mkdir</span> /usr/local/test  <span class="comment"># 绝对路径创建test目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p a/b/c  <span class="comment"># 递归创建多级目录（a目录下的b，b下的c）</span></span><br><span class="line"><span class="built_in">mkdir</span> -m 777 public  <span class="comment"># 创建目录并直接设置权限（777为所有用户可读可写可执行）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="删除文件-目录：rm">删除文件 / 目录：rm</h2>
+<p><code>rm</code>（Remove）用于删除文件或目录，<code>-r</code>递归删除目录，<code>-f</code>强制删除（无提示），使用时需谨慎（避免误删系统文件）。</p>
+<ul>
+<li>
+<p>基础用法：<code>rm [参数] 文件/目录</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> test.txt  <span class="comment"># 删除当前目录下的test.txt文件（会提示确认，按y回车）</span></span><br><span class="line"><span class="built_in">rm</span> -f test.txt  <span class="comment"># 强制删除test.txt（无提示）</span></span><br><span class="line"><span class="built_in">rm</span> -r testdir  <span class="comment"># 递归删除testdir目录及其中所有内容（需确认）</span></span><br><span class="line"><span class="built_in">rm</span> -rf testdir  <span class="comment"># 强制递归删除目录（无提示，高危！避免执行rm -rf /）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="复制文件-目录：cp">复制文件 / 目录：cp</h2>
+<p><code>cp</code>（Copy）用于复制文件或目录，<code>-r</code>递归复制目录，是数据备份常用命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>cp [参数] 源文件/目录 目标路径</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> test.txt /tmp/  <span class="comment"># 复制test.txt到/tmp目录下</span></span><br><span class="line"><span class="built_in">cp</span> -r testdir /tmp/  <span class="comment"># 递归复制testdir目录到/tmp下</span></span><br><span class="line"><span class="built_in">cp</span> -p test.txt /tmp/  <span class="comment"># 复制文件并保留原文件的权限、修改时间</span></span><br><span class="line"><span class="built_in">cp</span> test.txt /tmp/newtest.txt  <span class="comment"># 复制并改名（目标文件名为newtest.txt）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="移动-重命名文件：mv">移动 / 重命名文件：mv</h2>
+<p><code>mv</code>（Move）用于移动文件 / 目录，也可用于重命名（同一目录下移动 = 重命名），移动后原路径文件消失。</p>
+<ul>
+<li>
+<p>基础用法：<code>mv 源文件/目录 目标路径/新名称</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> test.txt /tmp/  <span class="comment"># 将test.txt移动到/tmp目录</span></span><br><span class="line"><span class="built_in">mv</span> test.txt newtest.txt  <span class="comment"># 同一目录下重命名（test.txt→newtest.txt）</span></span><br><span class="line"><span class="built_in">mv</span> testdir /usr/local/  <span class="comment"># 移动目录到/usr/local</span></span><br><span class="line"><span class="built_in">mv</span> -f test.txt /tmp/  <span class="comment"># 强制移动（目标存在则覆盖）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看文件内容：cat">查看文件内容：cat</h2>
+<p><code>cat</code>（Concatenate）用于查看文件全部内容，适合小文件；大文件推荐用<code>less/more</code>，<code>-n</code>可显示行号。</p>
+<ul>
+<li>
+<p>基础用法：<code>cat [参数] 文件名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> test.txt  <span class="comment"># 查看test.txt全部内容</span></span><br><span class="line"><span class="built_in">cat</span> -n test.txt  <span class="comment"># 显示内容并标注行号</span></span><br><span class="line"><span class="built_in">cat</span> file1.txt file2.txt &gt; file3.txt  <span class="comment"># 合并file1和file2内容到file3</span></span><br><span class="line"><span class="built_in">cat</span> /dev/null &gt; test.txt  <span class="comment"># 清空test.txt内容（保留文件）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文本搜索：grep">文本搜索：grep</h2>
+<p><code>grep</code>是文本过滤工具，用于在文件 / 命令输出中查找包含指定关键词的行，支持正则表达式，是排查日志、配置文件的核心命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>grep [参数] 关键词 文件名/命令输出</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;error&quot;</span> /var/log/messages  <span class="comment"># 在日志文件中查找包含error的行</span></span><br><span class="line">grep -i <span class="string">&quot;error&quot;</span> /var/log/messages  <span class="comment"># 忽略大小写查找</span></span><br><span class="line">grep -n <span class="string">&quot;error&quot;</span> /var/log/messages  <span class="comment"># 显示匹配行的行号</span></span><br><span class="line">grep -v <span class="string">&quot;error&quot;</span> /var/log/messages  <span class="comment"># 反向匹配（排除含error的行）</span></span><br><span class="line"><span class="comment"># 结合管道过滤命令输出</span></span><br><span class="line">ps -ef | grep nginx  <span class="comment"># 查找nginx相关进程</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看进程：ps">查看进程：ps</h2>
+<p><code>ps</code>（Process Status）用于查看系统中运行的进程，<code>ps -ef</code>/<code>ps aux</code>是最常用的全量进程查看方式。</p>
+<ul>
+<li>
+<p>基础用法：<code>ps [参数]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps  <span class="comment"># 查看当前Shell的进程</span></span><br><span class="line">ps -ef  <span class="comment"># 全量查看所有进程（UID/PID/PPID/COMMAND等）</span></span><br><span class="line">ps aux  <span class="comment"># 以BSD格式查看所有进程（更详细的CPU/内存占用）</span></span><br><span class="line">ps -ef | grep java  <span class="comment"># 筛选java相关进程</span></span><br><span class="line">ps -p 1234  <span class="comment"># 仅查看PID为1234的进程</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="终止进程：kill">终止进程：kill</h2>
+<p><code>kill</code>用于向进程发送信号，默认发送<code>TERM</code>（终止）信号，<code>-9</code>发送强制终止信号（<code>KILL</code>），需知道进程 PID（通过 ps 获取）。</p>
+<ul>
+<li>
+<p>基础用法：<code>kill [参数] 进程PID</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> 1234  <span class="comment"># 向PID为1234的进程发送终止信号（进程可优雅退出）</span></span><br><span class="line"><span class="built_in">kill</span> -9 1234  <span class="comment"># 强制终止PID为1234的进程（无法拦截，紧急使用）</span></span><br><span class="line"><span class="built_in">kill</span> -l  <span class="comment"># 查看所有可用的信号（如1=HUP，9=KILL，15=TERM）</span></span><br><span class="line"><span class="comment"># 批量终止进程（如终止所有nginx进程）</span></span><br><span class="line">ps -ef | grep nginx | grep -v grep | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs <span class="built_in">kill</span> -9</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看磁盘空间：df">查看磁盘空间：df</h2>
+<p><code>df</code>（Disk Free）用于查看文件系统的磁盘空间使用情况，<code>-h</code>人性化显示大小（K/M/G），是排查磁盘满的核心命令。</p>
+<ul>
+<li>
+<p>基础用法：<code>df [参数]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span>  <span class="comment"># 查看所有文件系统磁盘占用（默认字节数）</span></span><br><span class="line"><span class="built_in">df</span> -h  <span class="comment"># 人性化显示（如/dev/sda1 50G 20G 30G 40% /）</span></span><br><span class="line"><span class="built_in">df</span> -i  <span class="comment"># 查看inode使用情况（inode满也会导致磁盘无法写入）</span></span><br><span class="line"><span class="built_in">df</span> -h /  <span class="comment"># 仅查看根目录（/）的磁盘占用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改文件权限：chmod">修改文件权限：chmod</h2>
+<p><code>chmod</code>（Change Mode）用于修改文件 / 目录的访问权限，支持数字权限（777/755 等）和符号权限（u+r、g-w 等），仅文件所有者 /root 可修改。</p>
+<ul>
+<li>
+<p>基础用法：<code>chmod [权限] 文件名/目录</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数字权限（r=4，w=2，x=1；u=所有者，g=组，o=其他）</span></span><br><span class="line"><span class="built_in">chmod</span> 755 test.sh  <span class="comment"># 所有者可读可写可执行，组/其他可读可执行（脚本常用）</span></span><br><span class="line"><span class="built_in">chmod</span> 644 test.txt  <span class="comment"># 所有者可读可写，组/其他仅可读（普通文件常用）</span></span><br><span class="line"><span class="built_in">chmod</span> 777 public  <span class="comment"># 所有用户可读可写可执行（测试用，不推荐生产环境）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 符号权限</span></span><br><span class="line"><span class="built_in">chmod</span> u+x test.sh  <span class="comment"># 给所有者添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> g-w test.txt  <span class="comment"># 移除组的写入权限</span></span><br><span class="line"><span class="built_in">chmod</span> o+r test.txt  <span class="comment"># 给其他用户添加读取权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 testdir  <span class="comment"># 递归修改目录及所有子文件权限</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="切换用户：su-sudo">切换用户：su /sudo</h2>
+<p><code>su</code>（Switch User）用于切换到其他用户（默认切换到 root），<code>sudo</code>用于以 root 权限执行单条命令（无需切换用户），是权限管理核心命令。</p>
+<ul>
+<li>
+<p>基础用法：</p>
+<ul>
+<li><code>su [用户名]</code>：切换用户</li>
+<li><code>sudo [命令]</code>：以 root 权限执行命令</li>
+</ul>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">su root  <span class="comment"># 切换到root用户（需输入root密码）</span></span><br><span class="line">su - root  <span class="comment"># 切换到root并加载root的环境变量（推荐）</span></span><br><span class="line">su ubuntu  <span class="comment"># 从root切换到普通用户ubuntu（无需密码）</span></span><br><span class="line"><span class="built_in">exit</span>  <span class="comment"># 退出切换后的用户，回到原用户</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">ls</span> /root  <span class="comment"># 以root权限查看/root目录（普通用户默认无权限）</span></span><br><span class="line"><span class="built_in">sudo</span> -i  <span class="comment"># 切换到root Shell（等价于su - root）</span></span><br><span class="line"><span class="built_in">sudo</span> passwd ubuntu  <span class="comment"># 重置ubuntu用户密码（root权限）</span></span><br><span class="line"><span class="comment"># 配置sudo免密（需修改/etc/sudoers）</span></span><br><span class="line"><span class="built_in">sudo</span> visudo  <span class="comment"># 编辑sudo配置，添加：ubuntu ALL=(ALL) NOPASSWD: ALL</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="FTP-文件传输：ftp">FTP 文件传输：ftp</h2>
+<p>FTP（File Transfer Protocol）是用于服务器与本地之间文件传输的协议，<code>ftp</code>命令是 Linux 下的 FTP 客户端工具，支持文件上传、下载、目录管理等操作，需先安装客户端，默认使用 21 端口。</p>
+<ul>
+<li>基础用法：<code>ftp [参数] 服务器IP</code>（登录 FTP 服务器），登录后执行内部命令操作文件</li>
+<li>常用示例：</li>
+</ul>
+<h3 id="1-安装-FTP-客户端">1. 安装 FTP 客户端</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS/RHEL系统</span></span><br><span class="line"><span class="built_in">sudo</span> yum install ftp -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu/Debian系统</span></span><br><span class="line"><span class="built_in">sudo</span> apt install ftp -y</span><br></pre></td></tr></table></figure>
+<h3 id="2-登录-FTP-服务器（3-种方法）">2. 登录 FTP 服务器（3 种方法）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1：直接登录（需后续输入用户名和密码）</span></span><br><span class="line">ftp 192.168.126.131</span><br><span class="line"><span class="comment"># 按提示输入用户名（Name）和密码（Password），登录成功后进入ftp&gt;交互模式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：先启动ftp，再连接服务器</span></span><br><span class="line">ftp</span><br><span class="line">ftp&gt; open 192.168.126.131  <span class="comment"># 连接目标IP</span></span><br><span class="line"><span class="comment"># 输入用户名和密码登录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法3：免交互前置登录（直接指定用户和密码）</span></span><br><span class="line">ftp -n 192.168.126.131</span><br><span class="line">ftp&gt; user oracle pwdoracle  <span class="comment"># 格式：user 用户名 密码，直接登录</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：root 用户权限过大，默认不允许登录 FTP 服务器，需使用普通用户。</p>
+</blockquote>
+<h3 id="3-目录操作（登录后执行）">3. 目录操作（登录后执行）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看FTP服务器当前工作目录</span></span><br><span class="line">ftp&gt; <span class="built_in">pwd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换FTP服务器上的目录（目录名含空格需用双引号包裹）</span></span><br><span class="line">ftp&gt; <span class="built_in">cd</span> /freecplus  <span class="comment"># 切换到服务器的/freecplus目录</span></span><br><span class="line">ftp&gt; <span class="built_in">cd</span> <span class="string">&quot;test dir&quot;</span>  <span class="comment"># 切换含空格的目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换本地（自己电脑）的工作目录（下载/上传的默认路径）</span></span><br><span class="line">ftp&gt; lcd /tmp  <span class="comment"># 本地文件操作默认路径改为/tmp</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-查看-FTP-服务器文件-目录">4. 查看 FTP 服务器文件 / 目录</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出服务器目录/文件的详细信息（类似Linux ls -l）</span></span><br><span class="line">ftp&gt; <span class="built_in">ls</span> /freecplus  <span class="comment"># 查看/freecplus目录详情</span></span><br><span class="line">ftp&gt; <span class="built_in">dir</span> /freecplus  <span class="comment"># 与ls功能一致，用法相同</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 仅列出文件名（不显示详细信息）</span></span><br><span class="line">ftp&gt; nlist /freecplus/*.h  <span class="comment"># 列出服务器/freecplus下所有.h文件</span></span><br><span class="line"><span class="comment"># 列出文件名并保存到本地文件</span></span><br><span class="line">ftp&gt; nlist /freecplus/*.h /tmp/freecplus.list  <span class="comment"># 结果输出到本地/tmp/freecplus.list</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-文件传输模式（必设！）">5. 文件传输模式（必设！）</h3>
+<p>FTP 支持二进制（推荐）和 ASCII 模式，二进制可传输所有文件（压缩包、图片、程序等），ASCII 仅支持文本文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前传输模式</span></span><br><span class="line">ftp&gt; <span class="built_in">type</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换为二进制模式（优先使用，适配所有文件）</span></span><br><span class="line">ftp&gt; bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换为ASCII模式（仅传输.txt/.htm等文本文件）</span></span><br><span class="line">ftp&gt; ascii</span><br></pre></td></tr></table></figure>
+<h3 id="6-下载文件（从-FTP-服务器到本地）">6. 下载文件（从 FTP 服务器到本地）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载单个文件（get/recv通用）</span></span><br><span class="line">ftp&gt; get /freecplus/_ftp.h  <span class="comment"># 下载到本地当前目录（lcd设置的路径）</span></span><br><span class="line">ftp&gt; recv /freecplus/_ftp.h /tmp/ftp.h  <span class="comment"># 下载并指定本地保存路径+文件名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载多个文件（支持通配符）</span></span><br><span class="line">ftp&gt; prompt  <span class="comment"># 关闭逐一确认提示（批量下载必备）</span></span><br><span class="line">ftp&gt; mget /freecplus/*.h  <span class="comment"># 下载服务器/freecplus下所有.h文件到本地</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-上传文件（从本地到-FTP-服务器）">7. 上传文件（从本地到 FTP 服务器）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上传单个文件（put/send通用）</span></span><br><span class="line">ftp&gt; put /tmp/test.txt  <span class="comment"># 上传本地/tmp/test.txt到服务器当前目录</span></span><br><span class="line">ftp&gt; send /tmp/test.txt /freecplus/newtest.txt  <span class="comment"># 上传并指定服务器保存路径+文件名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传多个文件（支持通配符）</span></span><br><span class="line">ftp&gt; prompt  <span class="comment"># 关闭逐一确认提示</span></span><br><span class="line">ftp&gt; mput /tmp/*.txt  <span class="comment"># 上传本地/tmp下所有.txt文件到服务器</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-其他常用-FTP-命令">8. 其他常用 FTP 命令</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重命名服务器上的文件</span></span><br><span class="line">ftp&gt; rename oldname.txt newname.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除服务器上单个文件</span></span><br><span class="line">ftp&gt; delete test.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 批量删除服务器上的文件</span></span><br><span class="line">ftp&gt; mdelete *.txt  <span class="comment"># 删除服务器当前目录下所有.txt文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在服务器上创建目录</span></span><br><span class="line">ftp&gt; <span class="built_in">mkdir</span> newdir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除服务器上的目录</span></span><br><span class="line">ftp&gt; <span class="built_in">rmdir</span> newdir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看FTP命令帮助（不输入命令名则显示所有帮助）</span></span><br><span class="line">ftp&gt; <span class="built_in">help</span>  <span class="comment"># 显示所有FTP命令帮助</span></span><br><span class="line">ftp&gt; <span class="built_in">help</span> get  <span class="comment"># 查看get命令的具体用法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出FTP连接</span></span><br><span class="line">ftp&gt; <span class="built_in">bye</span>  <span class="comment"># 或quit，断开连接并退出ftp模式</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意事项">注意事项</h3>
+<ol>
+<li>目录名含特殊字符（如空格）需用双引号包裹；</li>
+<li>批量上传 / 下载前执行<code>prompt</code>关闭确认提示，提高效率；</li>
+<li>本地操作权限由执行 ftp 命令的用户决定，服务器操作权限由 FTP 登录用户决定；</li>
+<li>若连接失败，需检查服务器 21 端口是否开放（<code>firewall-cmd --list-ports</code>）。</li>
+</ol>
+<h2 id="编译构建：make">编译构建：make</h2>
+<p><code>make</code>是基于 Makefile 的项目构建工具，自动执行编译、链接等操作，简化多文件项目的编译流程，支持并行编译、清理编译产物等核心操作。</p>
+<ul>
+<li>
+<p>基础用法：<code>make [参数/目标]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">make  <span class="comment"># 执行Makefile默认目标（通常编译生成可执行文件）</span></span><br><span class="line">make -j4  <span class="comment"># 并行编译（4线程，加快速度，j后接CPU核心数）</span></span><br><span class="line">make clean  <span class="comment"># 清理编译生成的目标文件、可执行文件等产物</span></span><br><span class="line">make all  <span class="comment"># 执行Makefile中all目标（编译所有产物）</span></span><br><span class="line">make <span class="built_in">test</span>  <span class="comment"># 执行Makefile中test目标（运行测试用例）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="C-C-编译：gcc-g">C/C++ 编译：gcc/g++</h2>
+<p><code>gcc</code>是 C 语言编译器，<code>g++</code>是 C++ 编译器，支持编译、链接、生成动态库 / 静态库，可指定编译标准、链接第三方库等参数。</p>
+<ul>
+<li>
+<p>基础用法：</p>
+<ul>
+<li><code>gcc [参数] 源文件 -o 可执行文件</code></li>
+<li><code>g++ [参数] 源文件 -o 可执行文件</code></li>
+</ul>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译C++程序（链接pthread线程库，指定C++17标准）</span></span><br><span class="line">g++ -o test_ol_ThreadPool test_ol_ThreadPool.cpp -lpthread -std=c++17</span><br><span class="line"><span class="comment"># 生成动态共享库（-shared：共享库，-fPIC：位置无关代码，-ldl：链接动态链接库）</span></span><br><span class="line">gcc -shared -fPIC -o libfile_hook.so file_hook.c -ldl</span><br><span class="line"><span class="comment"># 查看gcc版本</span></span><br><span class="line">gcc -v</span><br><span class="line"><span class="comment"># 编译C程序生成可执行文件</span></span><br><span class="line">gcc -o test_unlink test_unlink.c</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统资源监控：top">系统资源监控：top</h2>
+<p><code>top</code>是交互式系统监控工具，实时显示进程的 CPU、内存、PID 等资源占用情况，支持排序、筛选、终止进程，是排查资源占用的核心工具。</p>
+<ul>
+<li>
+<p>基础用法：<code>top</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">top  <span class="comment"># 启动监控界面（默认按CPU占用降序）</span></span><br><span class="line"><span class="comment"># top界面常用操作：</span></span><br><span class="line"><span class="comment"># P：按CPU占用率排序 | M：按内存占用率排序</span></span><br><span class="line"><span class="comment"># 输入PID后按k，再输入9：强制终止指定进程</span></span><br><span class="line"><span class="comment"># q：退出top界面</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文本编辑：vi-vim">文本编辑：vi/vim</h2>
+<p><code>vim</code>是<code>vi</code>的增强版文本编辑器，支持命令模式、插入模式、末行模式，是 Linux 无图形界面下的核心编辑工具。</p>
+<ul>
+<li>
+<p>基础用法：<code>vim [文件名]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim /proc/cpuinfo  <span class="comment"># 打开CPU信息文件查看/编辑</span></span><br><span class="line">vim /etc/vsftpd.conf  <span class="comment"># 编辑FTP服务配置文件</span></span><br><span class="line">vim file.txt  <span class="comment"># 打开当前目录的file.txt</span></span><br><span class="line"><span class="comment"># 核心操作：</span></span><br><span class="line"><span class="comment"># i：进入插入模式（输入内容） | Esc：退出插入模式</span></span><br><span class="line"><span class="comment"># :w：保存 | :q：退出 | :wq：保存并退出 | :q!：强制退出（放弃修改）</span></span><br><span class="line"><span class="comment"># /关键词：搜索关键词 | dd：删除当前行</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看日历：cal">查看日历：cal</h2>
+<p><code>cal</code>用于显示系统日历，默认显示当前月份，可指定年份 / 月份查看特定日历。</p>
+<ul>
+<li>
+<p>基础用法：<code>cal [参数] [年份/月份]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cal  <span class="comment"># 显示当前月份日历</span></span><br><span class="line">cal 2025  <span class="comment"># 显示2025年全年日历</span></span><br><span class="line">cal 12 2025  <span class="comment"># 显示2025年12月日历</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="进程间通信-IPC-查看：ipcs">进程间通信 (IPC) 查看：ipcs</h2>
+<p><code>ipcs</code>用于查看 Linux 系统中 IPC 资源（共享内存、信号量、消息队列），是排查 IPC 资源泄漏的核心工具。</p>
+<ul>
+<li>
+<p>基础用法：<code>ipcs [参数]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ipcs  <span class="comment"># 显示所有IPC资源</span></span><br><span class="line">ipcs -m  <span class="comment"># 仅显示共享内存</span></span><br><span class="line">ipcs -s  <span class="comment"># 仅显示信号量</span></span><br><span class="line">ipcs -q  <span class="comment"># 仅显示消息队列</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="进程间通信-IPC-删除：ipcrm">进程间通信 (IPC) 删除：ipcrm</h2>
+<p><code>ipcrm</code>用于删除无用的 IPC 资源（共享内存、信号量、消息队列），释放系统资源。</p>
+<ul>
+<li>
+<p>基础用法：<code>ipcrm [资源类型] [资源ID]</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ipcrm -m 0  <span class="comment"># 删除ID为0的共享内存（-m=共享内存）</span></span><br><span class="line">ipcrm -s 2  <span class="comment"># 删除ID为2的信号量（-s=信号量）</span></span><br><span class="line">ipcrm -q 5  <span class="comment"># 删除ID为5的消息队列（-q=消息队列）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统调用跟踪：strace">系统调用跟踪：strace</h2>
+<p><code>strace</code>用于跟踪进程的系统调用和信号，可指定跟踪特定调用，是排查程序运行异常的核心工具。</p>
+<ul>
+<li>
+<p>基础用法：<code>strace [参数] 命令</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 跟踪ls命令的stat/open等系统调用</span></span><br><span class="line">strace -e trace=<span class="built_in">stat</span>,statat,lstat,open,openat /usr/bin/ls /tmp/protected.txt 2&gt;&amp;1</span><br><span class="line"><span class="comment"># 详细输出并保存跟踪结果到文件</span></span><br><span class="line">strace -v -o ls_trace.log /usr/bin/ls /tmp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="包管理（CentOS-RHEL）：yum">包管理（CentOS/RHEL）：yum</h2>
+<p><code>yum</code>是 RHEL/CentOS 的包管理工具，自动解决依赖，用于安装 / 更新 / 卸载软件包。</p>
+<ul>
+<li>
+<p>基础用法：<code>yum [参数] 操作 软件包名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install -y strace coreutils  <span class="comment"># 安装软件（-y：自动确认）</span></span><br><span class="line"><span class="built_in">sudo</span> yum install -y ftp  <span class="comment"># 普通用户加sudo获取权限</span></span><br><span class="line">yum remove -y ftp  <span class="comment"># 卸载软件</span></span><br><span class="line">yum update -y  <span class="comment"># 更新所有软件包</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="包管理（Ubuntu-Debian）：apt-apt-get">包管理（Ubuntu/Debian）：apt/apt-get</h2>
+<p><code>apt</code>（<code>apt-get</code>简化版）是 Ubuntu/Debian 的包管理工具，需先更新源再安装软件。</p>
+<ul>
+<li>
+<p>基础用法：</p>
+<ul>
+<li><code>apt [参数] 操作 软件包名</code></li>
+<li><code>apt-get [参数] 操作 软件包名</code></li>
+</ul>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update  <span class="comment"># 更新软件源（必须先执行）</span></span><br><span class="line"><span class="built_in">sudo</span> apt install ftp  <span class="comment"># 安装ftp</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install vsftpd  <span class="comment"># 安装FTP服务</span></span><br><span class="line"><span class="built_in">sudo</span> apt remove vsftpd  <span class="comment"># 卸载软件</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="手册查询：man">手册查询：man</h2>
+<p><code>man</code>用于查看命令 / 系统调用 / 函数的官方手册，不同章节对应不同类型文档（1 = 用户命令，2 = 系统调用，3 = 库函数）。</p>
+<ul>
+<li>
+<p>基础用法：<code>man [章节] 命令/函数名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">man <span class="built_in">read</span>  <span class="comment"># 查看read默认手册</span></span><br><span class="line">man 1 <span class="built_in">read</span>  <span class="comment"># 第1章（用户命令）的read手册</span></span><br><span class="line">man 2 <span class="built_in">read</span>  <span class="comment"># 第2章（系统调用）的read手册</span></span><br><span class="line">man memcmp  <span class="comment"># 查看memcmp库函数手册</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="环境变量删除：unset">环境变量删除：unset</h2>
+<p><code>unset</code>用于删除已定义的环境变量，删除后变量立即失效。</p>
+<ul>
+<li>
+<p>基础用法：<code>unset 变量名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> LD_PRELOAD  <span class="comment"># 删除动态库预加载变量</span></span><br><span class="line"><span class="built_in">unset</span> JAVA_HOME  <span class="comment"># 删除Java环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$LD_PRELOAD</span>  <span class="comment"># 验证变量是否删除（无输出则成功）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看文件尾部：tail">查看文件尾部：tail</h2>
+<p><code>tail</code>用于查看文件尾部内容，默认显示最后 10 行，<code>-f</code>可实时监控日志。</p>
+<ul>
+<li>
+<p>基础用法：<code>tail [参数] 文件名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> /home/mysql/Projects/File_Protector/test/prot.txt  <span class="comment"># 显示最后10行</span></span><br><span class="line"><span class="built_in">tail</span> -n 20 /tmp/log.txt  <span class="comment"># 显示最后20行</span></span><br><span class="line"><span class="built_in">tail</span> -f /var/log/vsftpd.log  <span class="comment"># 实时跟踪日志（Ctrl+C退出）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="目录树查看：tree">目录树查看：tree</h2>
+<p><code>tree</code>以树形结构显示目录层级，直观展示文件 / 子目录，需先安装。</p>
+<ul>
+<li>
+<p>基础用法：<code>tree [参数] 目录</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install tree -y  <span class="comment"># CentOS安装</span></span><br><span class="line"><span class="built_in">sudo</span> apt install tree -y  <span class="comment"># Ubuntu安装</span></span><br><span class="line">tree  <span class="comment"># 查看当前目录树</span></span><br><span class="line">tree /home/mysql/Projects/File_Protector  <span class="comment"># 查看指定目录树</span></span><br><span class="line">tree -d /home/mysql/OL  <span class="comment"># 仅显示目录（不显示文件）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="DNS-解析：nslookup-getent">DNS 解析：nslookup/getent</h2>
+<p><code>nslookup</code>查询域名 DNS 解析结果，<code>getent hosts</code>查询主机名 / IP 映射（优先 /etc/hosts）。</p>
+<ul>
+<li>
+<p>基础用法：</p>
+<ul>
+<li><code>nslookup 域名/IP</code></li>
+<li><code>getent hosts 域名/IP</code></li>
+</ul>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nslookup www.baidu.com  <span class="comment"># 查询百度DNS解析结果</span></span><br><span class="line">getent hosts www.baidu.com  <span class="comment"># 查询百度主机映射</span></span><br><span class="line">getent hosts 1.1.1.1  <span class="comment"># 反向查询IP对应的域名</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="网络连通性测试：ping">网络连通性测试：ping</h2>
+<p><code>ping</code>基于 ICMP 协议测试主机连通性，默认持续发送数据包，Ctrl+C 终止。</p>
+<ul>
+<li>
+<p>基础用法：<code>ping [参数] 目标IP/域名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com  <span class="comment"># 测试百度连通性</span></span><br><span class="line">ping -c 5 192.168.1.100  <span class="comment"># 发送5个数据包后停止</span></span><br><span class="line">ping -W 2 192.168.0.157  <span class="comment"># 超时2秒，测试内网主机</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统服务管理：systemctl">系统服务管理：systemctl</h2>
+<p><code>systemctl</code>是 systemd 系统的服务管理工具，用于启动 / 停止 / 重启系统服务（如 vsftpd）。</p>
+<ul>
+<li>
+<p>基础用法：<code>systemctl [操作] 服务名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd  <span class="comment"># 重启FTP服务</span></span><br><span class="line">systemctl start vsftpd  <span class="comment"># 启动服务</span></span><br><span class="line">systemctl stop vsftpd  <span class="comment"># 停止服务</span></span><br><span class="line">systemctl status vsftpd  <span class="comment"># 查看服务状态</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="批量终止进程：pkill">批量终止进程：pkill</h2>
+<p><code>pkill</code>根据进程名批量终止进程，无需手动查找 PID，比<code>kill</code>更便捷。</p>
+<ul>
+<li>
+<p>基础用法：<code>pkill [参数] 进程名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkill -9 File_Protector.exe  <span class="comment"># 强制终止所有该进程</span></span><br><span class="line">pkill -9 test_tcp_server  <span class="comment"># 终止包含该名称的进程</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="创建-写入文件：echo">创建 / 写入文件：echo &gt;/&gt;&gt;</h2>
+<p><code>echo</code>输出字符串，结合<code>&gt;</code>（覆盖）/<code>&gt;&gt;</code>（追加）可快速创建 / 修改文件。</p>
+<ul>
+<li>
+<p>基础用法：<code>echo &quot;内容&quot; &gt; 文件名</code> 或 <code>echo &quot;内容&quot; &gt;&gt; 文件名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;我是受保护文件&quot;</span> &gt; /tmp/protected.txt  <span class="comment"># 创建并写入（覆盖原有内容）</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;新增内容&quot;</span> &gt;&gt; /tmp/protected.txt  <span class="comment"># 追加内容到文件末尾</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt; /tmp/log.txt  <span class="comment"># 清空文件内容（保留文件）</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="递归修改权限：chmod-R">递归修改权限：chmod -R</h2>
+<p><code>chmod -R</code>递归修改目录及所有子文件 / 子目录的权限，适用于批量设置。</p>
+<ul>
+<li>
+<p>基础用法：<code>chmod -R 权限 目录</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> -R 777 .ssh  <span class="comment"># 递归设置.ssh目录为777权限</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/mysql/Projects  <span class="comment"># 递归设置项目目录为755</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看目录本身权限：ls-ld">查看目录本身权限：ls -ld</h2>
+<p><code>ls -ld</code>仅显示目录本身的权限 / 属性，而非目录内文件，常用于检查目录权限。</p>
+<ul>
+<li>
+<p>基础用法：<code>ls -ld 目录名</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -ld .ssh  <span class="comment"># 查看.ssh目录本身权限</span></span><br><span class="line"><span class="built_in">ls</span> -ld /home/mysql/OL  <span class="comment"># 查看OL目录权限和所有者</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="动态库预加载：LD-PRELOAD">动态库预加载：LD_PRELOAD</h2>
+<p><code>LD_PRELOAD</code>是 Linux 环境变量，指定优先加载的动态库，可覆盖系统默认库函数。</p>
+<ul>
+<li>
+<p>基础用法：<code>export LD_PRELOAD=动态库路径</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_PRELOAD=/home/mysql/Projects/File_Protector/4/libfile_protector.so</span><br><span class="line"><span class="comment"># 仅当前命令生效的预加载</span></span><br><span class="line">LD_PRELOAD=./libfile_hook.so /usr/bin/cat /tmp/protected.txt</span><br><span class="line"><span class="built_in">unset</span> LD_PRELOAD  <span class="comment"># 取消预加载</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看进程可执行路径：-proc-self-exe">查看进程可执行路径：/proc/self/exe</h2>
+<p><code>/proc/self/exe</code>是指向当前进程可执行文件的符号链接，用于排查进程来源。</p>
+<ul>
+<li>
+<p>基础用法：<code>ls -l /proc/self/exe</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l /proc/self/exe  <span class="comment"># 查看当前Shell进程的可执行路径</span></span><br><span class="line"><span class="built_in">ls</span> -l /proc/1234/exe  <span class="comment"># 查看PID=1234进程的可执行路径</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="清空-删除目录：rm-rf">清空 / 删除目录：rm -rf</h2>
+<p><code>rm -rf</code>递归强制删除目录及所有内容（无提示），需谨慎使用。</p>
+<ul>
+<li>
+<p>基础用法：<code>rm -rf 目录名/文件</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /home/mysql/OL/build/*  <span class="comment"># 清空build目录（保留目录）</span></span><br><span class="line"><span class="built_in">rm</span> -rf /home/mysql/OL/build  <span class="comment"># 删除整个build目录</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="网络配置查看：ifconfig（补充-ipconfig）">网络配置查看：ifconfig（补充 ipconfig）</h2>
+<p><code>ipconfig</code>是 Windows 命令，Linux 等价命令是<code>ifconfig</code>（需安装 net-tools），用于查看 / 配置网卡信息。</p>
+<ul>
+<li>
+<p>基础用法：<code>ifconfig</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install net-tools -y  <span class="comment"># CentOS安装</span></span><br><span class="line"><span class="built_in">sudo</span> apt install net-tools -y  <span class="comment"># Ubuntu安装</span></span><br><span class="line">ifconfig  <span class="comment"># 查看所有网卡信息</span></span><br><span class="line">ifconfig eth0  <span class="comment"># 查看eth0网卡信息</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="查看-CPU-信息：-proc-cpuinfo">查看 CPU 信息：/proc/cpuinfo</h2>
+<p><code>/proc/cpuinfo</code>是伪文件，存储 CPU 硬件信息（核心数、型号等），通过<code>cat/vi</code>查看。</p>
+<ul>
+<li>
+<p>基础用法：<code>cat /proc/cpuinfo</code> 或 <code>vi /proc/cpuinfo</code></p>
+</li>
+<li>
+<p>常用示例：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/cpuinfo  <span class="comment"># 查看所有CPU信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | <span class="built_in">uniq</span>  <span class="comment"># 筛选CPU型号</span></span><br><span class="line"><span class="built_in">cat</span> /proc/cpuinfo | grep <span class="string">&quot;cpu cores&quot;</span> | <span class="built_in">uniq</span>  <span class="comment"># 筛选CPU核心数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文件搜索：find">文件搜索：find</h2>
+<p><code>find</code>是 Linux 中功能强大的文件搜索工具，可根据文件属性（文件名、类型、大小、目录深度等）查找磁盘文件，通过指定对应参数即可实现精准搜索。</p>
+<p>- 基础用法：<code>find 搜索路径 [搜索参数] 搜索条件</code></p>
+<p>- 常用示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 按文件名搜索（-name）：支持精确和模糊查询，模糊查询建议用引号包裹通配符</span></span><br><span class="line">find /root -name <span class="string">&quot;*.txt&quot;</span>  <span class="comment"># 模糊查询：搜索/root目录下后缀为txt的文件</span></span><br><span class="line">find /root -name <span class="string">&quot;onepiece.txt&quot;</span>  <span class="comment"># 精确查询：搜索/root目录下名为onepiece.txt的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 按文件类型搜索（-type）：常用类型字符：f(普通文件)、d(目录)、l(软链接)</span></span><br><span class="line">find /root -<span class="built_in">type</span> l  <span class="comment"># 搜索/root目录下的软链接文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 按文件大小搜索（-size）：单位：k(小写)、M(大写)、G(大写)；+大于、-小于、无符号则是区间(大小-1, 大小]</span></span><br><span class="line">find ./ -size +3M  <span class="comment"># 搜索当前目录下大于3M的文件</span></span><br><span class="line">find ./ -size -3M  <span class="comment"># 搜索当前目录下小于等于2M的文件（区间：[0M, 2M]）</span></span><br><span class="line">find ./ -size 3M   <span class="comment"># 搜索当前目录下2M~3M的文件（区间：(2M, 3M]）</span></span><br><span class="line">find ./ -size +1M -size -4M  <span class="comment"># 搜索当前目录下1M~3M的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 按目录层级搜索：-maxdepth(最多层级)、-mindepth(最少层级)，需配合其他条件使用</span></span><br><span class="line"><span class="built_in">sudo</span> find / -maxdepth 5 -name <span class="string">&quot;*.txt&quot;</span>  <span class="comment"># 从根目录开始，最多搜索5层，查找txt文件</span></span><br><span class="line"><span class="built_in">sudo</span> find / -mindepth 5 -name <span class="string">&quot;*.txt&quot;</span>  <span class="comment"># 从根目录开始，至少从第5层开始，查找txt文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 搜索后执行后续操作：exec(直接执行)、ok(交互式执行)、xargs(高效批量执行)</span></span><br><span class="line">find ./ -maxdepth 2 -name <span class="string">&quot;*.txt&quot;</span> -<span class="built_in">exec</span> <span class="built_in">ls</span> -l &#123;&#125; \;  <span class="comment"># 查找2层内txt文件并查看详细信息</span></span><br><span class="line">find ./ -maxdepth 1 -name <span class="string">&quot;*.txt&quot;</span> -ok <span class="built_in">rm</span> -rf &#123;&#125; \;   <span class="comment"># 交互式删除1层内txt文件（需确认）</span></span><br><span class="line">find ./ -maxdepth 1 -name <span class="string">&quot;*.cpp&quot;</span> | xargs <span class="built_in">ls</span> -l      <span class="comment"># 用xargs批量查看1层内cpp文件详细信息</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件类型</th>
+<th style="text-align:center">类型的字符描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">普通文件类型</td>
+<td style="text-align:center">f</td>
+</tr>
+<tr>
+<td style="text-align:center">目录类型</td>
+<td style="text-align:center">d</td>
+</tr>
+<tr>
+<td style="text-align:center">软连接类型</td>
+<td style="text-align:center">l</td>
+</tr>
+<tr>
+<td style="text-align:center">字符设备类型</td>
+<td style="text-align:center">c</td>
+</tr>
+<tr>
+<td style="text-align:center">块设备类型</td>
+<td style="text-align:center">b</td>
+</tr>
+<tr>
+<td style="text-align:center">管道类型</td>
+<td style="text-align:center">p</td>
+</tr>
+<tr>
+<td style="text-align:center">本地套接字类型</td>
+<td style="text-align:center">s</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串搜索：grep">字符串搜索：grep</h2>
+<p><code>grep</code>用于查找文件中符合条件的字符串，支持递归搜索、忽略大小写、显示行号等功能，是文本内容检索的常用命令。搜索内容建议用引号包裹，避免特殊字符解析错误。</p>
+<p>- 基础用法：<code>grep &quot;搜索内容&quot; 搜索路径/文件 [参数]</code></p>
+<p>- 常用参数：</p>
+<ul>
+<li>-r：递归搜索目录下的所有文件</li>
+<li>-i：忽略搜索内容的大小写</li>
+<li>-n：显示匹配内容所在的行号</li>
+</ul>
+<p>- 常用示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;include&quot;</span> a.c  <span class="comment"># 搜索a.c文件中是否包含&quot;include&quot;字符串</span></span><br><span class="line">grep <span class="string">&quot;INCLUDE&quot;</span> a.c -i  <span class="comment"># 忽略大小写，搜索a.c文件中的&quot;INCLUDE&quot;（含小写include）</span></span><br><span class="line">grep <span class="string">&quot;include&quot;</span> ./ -rn  <span class="comment"># 递归搜索当前目录下所有文件，显示含&quot;include&quot;的文件路径和行号</span></span><br></pre></td></tr></table></figure>
+<h2 id="快速文件搜索：locate">快速文件搜索：locate</h2>
+<p><code>locate</code>是简化版find，通过搜索本地文件数据库实现快速查找（效率远高于find），数据库默认每日自动更新，新增/修改文件后需用<code>updatedb</code>手动更新。</p>
+<p>- 基础用法：<code>locate [参数] 搜索关键字</code></p>
+<p>- 常用参数：</p>
+<ul>
+<li>-i：忽略文件名大小写</li>
+<li>-n N：仅显示前N条匹配结果</li>
+<li>-r：基于正则表达式匹配文件名</li>
+</ul>
+<p>- 常用示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> updatedb  <span class="comment"># 手动更新文件数据库（普通用户需加sudo）</span></span><br><span class="line">locate <span class="built_in">test</span>  <span class="comment"># 搜索所有以&quot;test&quot;开头的文件</span></span><br><span class="line">locate /home/robin/test  <span class="comment"># 精确搜索/home/robin/目录下以&quot;test&quot;开头的文件</span></span><br><span class="line">locate TEST -i  <span class="comment"># 忽略大小写，搜索以&quot;TEST&quot;或&quot;test&quot;开头的文件</span></span><br><span class="line">locate <span class="built_in">test</span> -n 5  <span class="comment"># 搜索以&quot;test&quot;开头的文件，仅显示前5条结果</span></span><br><span class="line">locate -r <span class="string">&quot;\.cpp$&quot;</span>  <span class="comment"># 用正则表达式搜索以&quot;.cpp&quot;结尾的文件</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/19/OL/" rel="prev" title="OL">
+                  <i class="fa fa-angle-left"></i> OL
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/12/19/ASCII%E7%A0%81%E8%A1%A8/" rel="next" title="ASCII码表">
+                  ASCII码表 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:12</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

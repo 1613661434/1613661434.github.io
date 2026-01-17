@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="快速查找CMake的命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMake Memo">
+<meta property="og:url" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="快速查找CMake的命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251125194546681-1764071149278-1.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251121193142690-1763724707050-1.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251121212323593-1763731407488-1.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123214601992-1763905563767-13.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251121223113174-1763735476917-1.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251121224016569-1763736018033-3.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251121224233527-1763736154891-5.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123211243249-1763903566276-1.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123211327749.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123211450821-1763903693214-3.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123211623958-1763903785883-5.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123214025313-1763905226655-7.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123214302686-1763905386222-9.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251123214358551-1763905439877-11.png">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251125170609319-1764061572541-1.png">
+<meta property="article:published_time" content="2025-12-07T12:41:21.000Z">
+<meta property="article:modified_time" content="2026-01-17T11:47:54.399Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="CMake">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1613661434.github.io/2025/12/07/CMake%20Memo/image-20251125194546681-1764071149278-1.png">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/12/07/CMake%20Memo/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/12/07/CMake%20Memo/","path":"2025/12/07/CMake Memo/","title":"CMake Memo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CMake Memo | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">CMake Memo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">命令行命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">CMake语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake-minimum-required-VERSION-major-minor-patch"><span class="nav-number">1.2.1.</span> <span class="nav-text">- cmake_minimum_required(VERSION major.minor[.patch])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#project-%E9%A1%B9%E7%9B%AE%E5%90%8D-VERSION-%E7%89%88%E6%9C%AC%E5%8F%B7-DESCRIPTION-%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0-LANGUAGES-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="nav-number">1.2.2.</span> <span class="nav-text">- project(项目名 [VERSION 版本号] [DESCRIPTION &quot;项目描述&quot;] [LANGUAGES 编程语言...])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#target%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.3.</span> <span class="nav-text">- target相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9B%AE%E6%A0%87%EF%BC%88ADD-EXECUTABLE%EF%BC%89"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">1. 创建可执行目标（ADD_EXECUTABLE）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%BA%93%E7%9B%AE%E6%A0%87%EF%BC%88ADD-LIBRARY%EF%BC%89"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">2. 创建库目标（ADD_LIBRARY）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87%E5%8C%85%E5%90%AB%E7%9B%AE%E5%BD%95%EF%BC%88TARGET-INCLUDE-DIRECTORIES%EF%BC%89"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">3. 设置目标包含目录（TARGET_INCLUDE_DIRECTORIES）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E9%A2%84%E7%BC%96%E8%AF%91%E5%AE%8F%EF%BC%88TARGET-COMPILE-DEFINITIONS%EF%BC%89"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">4. 设置预编译宏（TARGET_COMPILE_DEFINITIONS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%AE%BE%E7%BD%AE%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9%EF%BC%88TARGET-COMPILE-OPTIONS%EF%BC%89"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">5. 设置编译选项（TARGET_COMPILE_OPTIONS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%93%BE%E6%8E%A5%E4%BE%9D%E8%B5%96%E5%BA%93-%E9%80%89%E9%A1%B9%EF%BC%88TARGET-LINK-LIBRARIES%EF%BC%89"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">6. 链接依赖库 &#x2F; 选项（TARGET_LINK_LIBRARIES）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E8%AE%BE%E7%BD%AE%E7%9B%AE%E6%A0%87%E5%B1%9E%E6%80%A7%EF%BC%88SET-TARGET-PROPERTIES%EF%BC%89"><span class="nav-number">1.2.3.7.</span> <span class="nav-text">7. 设置目标属性（SET_TARGET_PROPERTIES）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E8%A1%A5%E5%85%85%E7%9B%AE%E6%A0%87%E6%BA%90%E6%96%87%E4%BB%B6%EF%BC%88TARGET-SOURCES%EF%BC%89"><span class="nav-number">1.2.3.8.</span> <span class="nav-text">8. 补充目标源文件（TARGET_SOURCES）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E5%88%9B%E5%BB%BA%E5%88%AB%E5%90%8D%E7%9B%AE%E6%A0%87%EF%BC%88ALIAS%EF%BC%89"><span class="nav-number">1.2.3.9.</span> <span class="nav-text">9. 创建别名目标（ALIAS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.4.</span> <span class="nav-text">- 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message"><span class="nav-number">1.2.5.</span> <span class="nav-text">- message()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9Fblock-%E5%92%8Cendblock"><span class="nav-number">1.2.6.</span> <span class="nav-text">- 作用域block()和endblock()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="nav-number">1.2.7.</span> <span class="nav-text">- 条件判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.8.</span> <span class="nav-text">- 逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.9.</span> <span class="nav-text">- 比较运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.2.10.</span> <span class="nav-text">- 循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.11.</span> <span class="nav-text">- 注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.12.</span> <span class="nav-text">- 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8F"><span class="nav-number">1.2.13.</span> <span class="nav-text">- 宏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">1.2.14.</span> <span class="nav-text">- List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8"><span class="nav-number">1.2.14.1.</span> <span class="nav-text">1. 定义列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AE%BF%E9%97%AE%E5%85%83%E7%B4%A0%E4%B8%8E%E9%95%BF%E5%BA%A6"><span class="nav-number">1.2.14.2.</span> <span class="nav-text">2. 访问元素与长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%EF%BC%88APPEND-PREPEND%EF%BC%89"><span class="nav-number">1.2.14.3.</span> <span class="nav-text">3. 添加元素（APPEND&#x2F;PREPEND）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0%EF%BC%88REMOVE-AT-REMOVE-ITEM-REMOVE-DUPLICATES%EF%BC%89"><span class="nav-number">1.2.14.4.</span> <span class="nav-text">4. 删除元素（REMOVE_AT&#x2F;REMOVE_ITEM&#x2F;REMOVE_DUPLICATES）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%9F%A5%E6%89%BE%EF%BC%88FIND%EF%BC%89"><span class="nav-number">1.2.14.5.</span> <span class="nav-text">5. 查找（FIND）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%8B%BC%E6%8E%A5%E5%92%8C%E5%88%87%E7%89%87%EF%BC%88JOIN-SUBLIST%EF%BC%89"><span class="nav-number">1.2.14.6.</span> <span class="nav-text">6. 拼接和切片（JOIN&#x2F;SUBLIST）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%8E%92%E5%BA%8F%EF%BC%88SROT%EF%BC%89"><span class="nav-number">1.2.14.7.</span> <span class="nav-text">7. 排序（SROT）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E7%BF%BB%E8%BD%AC%E5%88%97%E8%A1%A8%EF%BC%88REVERSE%EF%BC%89"><span class="nav-number">1.2.14.8.</span> <span class="nav-text">8. 翻转列表（REVERSE）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#math"><span class="nav-number">1.2.15.</span> <span class="nav-text">- math()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.16.</span> <span class="nav-text">- 搜索文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">实用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E6%AD%A2%E5%9C%A8%E6%BA%90%E6%A0%91%E6%9E%84%E5%BB%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">- 防止在源树构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E4%BF%9DCMAKE-BUILD-TYPE%E4%B8%BA%E5%8D%95%E9%85%8D%E7%BD%AE%E7%94%9F%E6%88%90%E5%99%A8%E6%8C%87%E5%AE%9A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">1.3.2.</span> <span class="nav-text">- 确保CMAKE_BUILD_TYPE为单配置生成器指定默认值</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/12/07/CMake%20Memo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CMake Memo | ol木子李lo的博客">
+      <meta itemprop="description" content="快速查找CMake的命令">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CMake Memo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-07 20:41:21" itemprop="dateCreated datePublished" datetime="2025-12-07T20:41:21+08:00">2025-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-17 19:47:54" itemprop="dateModified" datetime="2026-01-17T19:47:54+08:00">2026-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">备忘录</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">快速查找CMake的命令</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>CMake Memo</h1>
+<blockquote>
+<p>作者：OL</p>
+<p>本文档是参考了以下作者</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/80353385">编程Cat加加</a></li>
+<li><a target="_blank" rel="noopener" href="https://subingwen.cn/">爱编程的大丙</a></li>
+</ul>
+<p>相关链接：</p>
+<ul>
+<li>编程Cat加加的CMake教程视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1rqPYehEsW">https://www.bilibili.com/video/BV1rqPYehEsW</a></li>
+<li>爱编程的大丙的CMake教程文章：<a target="_blank" rel="noopener" href="https://subingwen.cn/cmake/CMake-primer/">https://subingwen.cn/cmake/CMake-primer/</a></li>
+<li>CMake 教程 | 菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/cmake/cmake-tutorial.html">https://www.runoob.com/cmake/cmake-tutorial.html</a></li>
+<li>CMake 官网：<a target="_blank" rel="noopener" href="https://cmake.org/">https://cmake.org/</a></li>
+<li>CMake 官方文档：<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/guide/tutorial/index.html">https://cmake.org/cmake/help/latest/guide/tutorial/index.html</a></li>
+<li>CMake 源码：<a target="_blank" rel="noopener" href="https://github.com/Kitware/CMake">https://github.com/Kitware/CMake</a></li>
+<li>CMake 源码：<a target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmakeku">https://gitlab.kitware.com/cmake/cmakeku</a></li>
+</ul>
+<p>[]和&lt;&gt;中为可选项</p>
+</blockquote>
+<h2 id="命令行命令">命令行命令</h2>
+<ul>
+<li>
+<p><code>cmake -G</code></p>
+<p>可以查看所有的生成器</p>
+<p>默认使用<code>Visual Studio 17 2022</code>，前面带<code>*</code>的就是默认的生成器</p>
+</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt;cmake <span class="literal">-G</span></span><br><span class="line">CMake Error: No generator specified <span class="keyword">for</span> <span class="literal">-G</span></span><br><span class="line"></span><br><span class="line">Generators</span><br><span class="line">* Visual Studio <span class="number">17</span> <span class="number">2022</span>        = Generates Visual Studio <span class="number">2022</span> project files. <span class="comment"># 默认生成器</span></span><br><span class="line">                                 Use <span class="literal">-A</span> option to specify architecture.</span><br><span class="line">  Visual Studio <span class="number">16</span> <span class="number">2019</span>        = Generates Visual Studio <span class="number">2019</span> project files.</span><br><span class="line">                                 Use <span class="literal">-A</span> option to specify architecture.</span><br><span class="line">  Visual Studio <span class="number">15</span> <span class="number">2017</span>        = Generates Visual Studio <span class="number">2017</span> project files.</span><br><span class="line">                                 Use <span class="literal">-A</span> option to specify architecture.</span><br><span class="line">  Visual Studio <span class="number">14</span> <span class="number">2015</span>        = Generates Visual Studio <span class="number">2015</span> project files.</span><br><span class="line">                                 Use <span class="literal">-A</span> option to specify architecture.</span><br><span class="line">  Borland Makefiles            = Generates Borland makefiles.</span><br><span class="line">  NMake Makefiles              = Generates NMake makefiles.</span><br><span class="line">  NMake Makefiles JOM          = Generates JOM makefiles.</span><br><span class="line">  MSYS Makefiles               = Generates MSYS makefiles.</span><br><span class="line">  MinGW Makefiles              = Generates a make file <span class="keyword">for</span> use with</span><br><span class="line">                                 mingw32<span class="literal">-make</span>.</span><br><span class="line">  Green Hills MULTI            = Generates Green Hills MULTI files</span><br><span class="line">                                 (experimental, work<span class="operator">-in</span><span class="literal">-progress</span>).</span><br><span class="line">  Unix Makefiles               = Generates standard UNIX makefiles.</span><br><span class="line">  Ninja                        = Generates build.ninja files.</span><br><span class="line">  Ninja Multi<span class="literal">-Config</span>           = Generates build-&lt;Config&gt;.ninja files.</span><br><span class="line">  Watcom WMake                 = Generates Watcom WMake makefiles.</span><br><span class="line">  CodeBlocks - MinGW Makefiles = Generates CodeBlocks project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeBlocks - NMake Makefiles = Generates CodeBlocks project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeBlocks - NMake Makefiles JOM</span><br><span class="line">                               = Generates CodeBlocks project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeBlocks - Ninja           = Generates CodeBlocks project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeBlocks - Unix Makefiles  = Generates CodeBlocks project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeLite - MinGW Makefiles   = Generates CodeLite project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeLite - NMake Makefiles   = Generates CodeLite project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeLite - Ninja             = Generates CodeLite project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  CodeLite - Unix Makefiles    = Generates CodeLite project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Eclipse CDT4 - NMake Makefiles</span><br><span class="line">                               = Generates Eclipse CDT <span class="number">4.0</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Eclipse CDT4 - MinGW Makefiles</span><br><span class="line">                               = Generates Eclipse CDT <span class="number">4.0</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Eclipse CDT4 - Ninja         = Generates Eclipse CDT <span class="number">4.0</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Eclipse CDT4 - Unix Makefiles= Generates Eclipse CDT <span class="number">4.0</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Kate - MinGW Makefiles       = Generates Kate project files (deprecated).</span><br><span class="line">  Kate - NMake Makefiles       = Generates Kate project files (deprecated).</span><br><span class="line">  Kate - Ninja                 = Generates Kate project files (deprecated).</span><br><span class="line">  Kate - Ninja Multi<span class="literal">-Config</span>    = Generates Kate project files (deprecated).</span><br><span class="line">  Kate - Unix Makefiles        = Generates Kate project files (deprecated).</span><br><span class="line">  Sublime Text <span class="number">2</span> - MinGW Makefiles</span><br><span class="line">                               = Generates Sublime Text <span class="number">2</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Sublime Text <span class="number">2</span> - NMake Makefiles</span><br><span class="line">                               = Generates Sublime Text <span class="number">2</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Sublime Text <span class="number">2</span> - Ninja       = Generates Sublime Text <span class="number">2</span> project files</span><br><span class="line">                                 (deprecated).</span><br><span class="line">  Sublime Text <span class="number">2</span> - Unix Makefiles</span><br><span class="line">                               = Generates Sublime Text <span class="number">2</span> project files</span><br><span class="line">                                 (deprecated).</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#cmdoption-cmake-S"><code>cmake -S </code></a></p>
+<p>指定项目根目录，CMake 将在那里被建造。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#cmdoption-cmake-B"><code>cmake -B </code></a></p>
+<p>指定构建目录，CMake 将输出生成的构建系统，以及当构建系统已经运行。未指定时，默认为当前工作目录。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#cmdoption-cmake-build"><code>cmake --build</code></a></p>
+<p>在指定的构建目录中运行构建系统。这是通用的所有生成器的命令。对于多配置生成器，期望的配置请求可通过以下方式进行：</p>
+<p><code>cmake --build &lt;dir&gt; --config &lt;cfg&gt;</code></p>
+<p><code>&lt;dir&gt;</code>是生成器的目录</p>
+<p><code>&lt;cfg&gt;</code>可以是<code>Release</code>、<code>Debug</code></p>
+<p>例如<code>MinGW Makefiles</code>要使用<code>make</code>编译，此命令可以将所有的生成器的命令统一</p>
+</li>
+<li>
+<p><code>cmake -D</code></p>
+<p><code>cmake -D</code> 是 CMake 中<strong>运行时手动设置 / 覆盖变量</strong>的核心命令，作用是：在执行 <code>cmake</code> 生成构建文件（Makefile、VS 项目等）时，直接指定 CMake 变量的值，无需修改 <code>CMakeLists.txt</code>。</p>
+<p>它的使用场景非常广泛（比如启用测试、切换构建类型、指定路径等）</p>
+<p><strong>核心语法:</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -D&lt;变量名&gt;=&lt;变量值&gt; ..</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>-D</code>：固定前缀，后面紧跟「变量名 = 变量值」（<strong>无空格</strong>，<code>=</code> 前后不能有空格）；</p>
+</li>
+<li>
+<p><code>&lt;变量名&gt;</code>：可以是 CMake 内置变量（如 <code>CMAKE_BUILD_TYPE</code>），也可以是你自定义的选项（如 <code>OL_WITH_TESTS</code>）；</p>
+</li>
+<li>
+<p><code>&lt;变量值&gt;</code>：根据变量类型不同，支持 3 类值（布尔、字符串、路径）；</p>
+</li>
+<li>
+<p><code>..</code>：最后是源文件目录（即 <code>CMakeLists.txt</code> 所在的上级目录，固定写法，除非你的目录结构特殊）。</p>
+<p><strong>关键细节：</strong></p>
+</li>
+<li>
+<p>变量名<strong>大小写敏感</strong>（<code>OL_WITH_TESTS</code> ≠ <code>ol_with_tests</code>）；</p>
+</li>
+<li>
+<p>多个 <code>-D</code> 可以叠加（设置多个变量）；</p>
+</li>
+<li>
+<p>变量值如果包含空格或特殊字符，需要用引号包裹（如 <code>-DINSTALL_PATH=&quot;C:/Program Files/ol&quot;</code>）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CMake语法">CMake语法</h2>
+<h3 id="cmake-minimum-required-VERSION-major-minor-patch">- <code>cmake_minimum_required(VERSION major.minor[.patch])</code></h3>
+<p>CMake要求的最低版本号，通常只需要<strong>主版本号和次版本号</strong></p>
+<h3 id="project-项目名-VERSION-版本号-DESCRIPTION-项目描述-LANGUAGES-编程语言">- <code>project(项目名 [VERSION 版本号] [DESCRIPTION &quot;项目描述&quot;] [LANGUAGES 编程语言...])</code></h3>
+<p>编程语言默认是C/C++，选择C++的话应该填<strong>CXX</strong></p>
+<h3 id="target相关命令">- target相关命令</h3>
+<p>可以把target当做编程语言的类和对象看待</p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251125194546681-1764071149278-1.png" alt=""></p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251121193142690-1763724707050-1.png" alt=""></p>
+<h4 id="1-创建可执行目标（ADD-EXECUTABLE）">1. 创建可执行目标（ADD_EXECUTABLE）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(&lt;<span class="keyword">target</span>&gt; [WIN32] [MACOSX_BUNDLE] &lt;source1&gt; [&lt;source2&gt; ...])</span><br><span class="line"><span class="keyword">add_executable</span>(&lt;<span class="keyword">target</span>&gt; <span class="string">&quot;&quot;</span>) <span class="comment"># 空目标，后续用target_sources补充</span></span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：目标名称（全局唯一）。</li>
+<li><code>WIN32</code>：Windows 下创建 GUI 程序（无控制台窗口）。</li>
+<li><code>MACOSX_BUNDLE</code>：macOS 下创建应用 bundle 包。</li>
+<li><code>&lt;sourceN&gt;</code>：源文件路径列表，可空。</li>
+</ul>
+<h4 id="2-创建库目标（ADD-LIBRARY）">2. 创建库目标（ADD_LIBRARY）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;<span class="keyword">target</span>&gt; &lt;type&gt; &lt;source1&gt; [&lt;source2&gt; ...])</span><br><span class="line"><span class="keyword">add_library</span>(&lt;<span class="keyword">target</span>&gt; <span class="string">&quot;&quot;</span>) <span class="comment"># 空目标，后续补充源文件</span></span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：库目标名称（全局唯一）。</li>
+<li><code>&lt;type&gt;</code>：库类型（必填）：
+<ul>
+<li><code>STATIC</code>：静态库（.a/.lib）。</li>
+<li><code>SHARED</code>：动态库（.so/.dll）。</li>
+<li><code>MODULE</code>：模块库（动态加载插件）。</li>
+<li><code>OBJECT</code>：对象库（仅编译不归档）。</li>
+</ul>
+</li>
+<li><code>&lt;sourceN&gt;</code>：源文件路径列表，可空。</li>
+</ul>
+<h4 id="3-设置目标包含目录（TARGET-INCLUDE-DIRECTORIES）">3. 设置目标包含目录（TARGET_INCLUDE_DIRECTORIES）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_include_directories</span>(&lt;<span class="keyword">target</span>&gt; &lt;scope&gt; &lt;dir1&gt; [&lt;dir2&gt; ...])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：目标名称。</li>
+<li><code>&lt;scope&gt;</code>：作用域（必填）：
+<ul>
+<li><code>PRIVATE</code>：仅当前目标编译生效。</li>
+<li><code>INTERFACE</code>：仅依赖该目标的目标生效。</li>
+<li><code>PUBLIC</code>：当前目标 + 依赖目标均生效。</li>
+</ul>
+</li>
+<li><code>&lt;dirN&gt;</code>：头文件搜索目录路径。</li>
+</ul>
+<h4 id="4-设置预编译宏（TARGET-COMPILE-DEFINITIONS）">4. 设置预编译宏（TARGET_COMPILE_DEFINITIONS）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_compile_definitions</span>(&lt;<span class="keyword">target</span>&gt; &lt;scope&gt; &lt;def1&gt; [&lt;def2&gt; ...])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：目标名称。</li>
+<li><code>&lt;scope&gt;</code>：作用域（必填）：PRIVATE/INTERFACE/PUBLIC（同上方）。</li>
+<li><code>&lt;defN&gt;</code>：预编译宏，格式如 <code>MY_DEF</code> 或 <code>MY_DEF=1</code>。</li>
+</ul>
+<h4 id="5-设置编译选项（TARGET-COMPILE-OPTIONS）">5. 设置编译选项（TARGET_COMPILE_OPTIONS）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_compile_options</span>(&lt;<span class="keyword">target</span>&gt; &lt;scope&gt; &lt;opt1&gt; [&lt;opt2&gt; ...])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：目标名称。</li>
+<li><code>&lt;scope&gt;</code>：作用域（必填）：PRIVATE/INTERFACE/PUBLIC（同上方）。</li>
+<li><code>&lt;optN&gt;</code>：编译选项，如 <code>-Wall</code>（Linux）、<code>/W4</code>（MSVC）。</li>
+</ul>
+<h4 id="6-链接依赖库-选项（TARGET-LINK-LIBRARIES）">6. 链接依赖库 / 选项（TARGET_LINK_LIBRARIES）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_link_libraries</span>(&lt;<span class="keyword">target</span>&gt; &lt;scope&gt; &lt;dep1&gt; [&lt;dep2&gt; ...])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：目标名称。</li>
+<li><code>&lt;scope&gt;</code>：作用域（必填）：PRIVATE/INTERFACE/PUBLIC（同上方）。</li>
+<li><code>&lt;depN&gt;</code>：依赖项，可是：
+<ul>
+<li>自定义库目标名（如 <code>MyLib</code>）。</li>
+<li>系统库名（如 <code>pthread</code>）。</li>
+<li>链接选项（需引号包裹，如 <code>-Wl,-rpath=./lib</code>）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-设置目标属性（SET-TARGET-PROPERTIES）">7. 设置目标属性（SET_TARGET_PROPERTIES）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_target_properties</span>(&lt;target1&gt; [&lt;target2&gt; ...] PROPERTIES &lt;prop1&gt; &lt;val1&gt; &lt;prop2&gt; &lt;val2&gt; ...)</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;targetN&gt;</code>：一个 / 多个目标名称。</li>
+<li><code>&lt;propN&gt;</code>：常用属性：
+<ul>
+<li><code>CXX_STANDARD</code>：C++ 标准（如 17、20）。</li>
+<li><code>CXX_STANDARD_REQUIRED</code>：是否强制标准（ON/OFF）。</li>
+<li><code>OUTPUT_NAME</code>：目标输出文件名（覆盖默认名）。</li>
+<li><code>RUNTIME_OUTPUT_DIRECTORY</code>：可执行 / 动态库输出目录（Windows）。</li>
+<li><code>LIBRARY_OUTPUT_DIRECTORY</code>：动态库输出目录（Linux/Mac）。</li>
+<li><code>ARCHIVE_OUTPUT_DIRECTORY</code>：静态库输出目录。</li>
+</ul>
+</li>
+<li><code>&lt;valN&gt;</code>：属性对应值。</li>
+</ul>
+<h4 id="8-补充目标源文件（TARGET-SOURCES）">8. 补充目标源文件（TARGET_SOURCES）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_sources</span>(&lt;<span class="keyword">target</span>&gt; &lt;scope&gt; &lt;source1&gt; [&lt;source2&gt; ...])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;target&gt;</code>：已创建的目标名称。</li>
+<li><code>&lt;scope&gt;</code>：作用域（必填）：PRIVATE/INTERFACE/PUBLIC（INTERFACE 仅适用于库）。</li>
+<li><code>&lt;sourceN&gt;</code>：需补充的源文件路径列表。</li>
+</ul>
+<h4 id="9-创建别名目标（ALIAS）">9. 创建别名目标（ALIAS）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(&lt;alias&gt; ALIAS &lt;<span class="keyword">target</span>&gt;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>&lt;alias&gt;</code>：别名（规范格式：<code>&lt;命名空间&gt;::&lt;目标名&gt;</code>，如 <code>MyLib::Core</code>）。</li>
+<li><code>&lt;target&gt;</code>：已创建的库 / 可执行目标名称。</li>
+</ul>
+<h3 id="变量">- 变量</h3>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251121212323593-1763731407488-1.png" alt=""></p>
+<p><strong>CMAKE_开头的变量</strong>是<strong>CMAKE预定义的变量</strong></p>
+<p>还有其他的，如：</p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123214601992-1763905563767-13.png" alt=""></p>
+<p>变量存储的都是字符串，且用<strong>列表</strong>存储，<code>;</code>是专门用于<strong>列表的分隔符</strong></p>
+<ul>
+<li>
+<p><code>set(varName value... [PARENT_SCOPE])</code> 定义变量</p>
+<p>例如 <code>set(myVar hello world)</code>，相当于myVar=hello;world</p>
+<p>下列语句与之等价：</p>
+<ul>
+<li><code>set(myVar hello;world)</code></li>
+<li><code>set(myVar &quot;hello;world&quot;)</code></li>
+</ul>
+<p>如果<strong>不需要将<code>;</code>用于列表的分隔符</strong>，可以用转义字符<code>\;</code>，例如<code>set(myVar &quot;hello\;world&quot;)</code></p>
+<p>如果**需要在字符串有空格<code> </code>**可以用双引号<code>&quot;&quot;</code>包裹字符串，例如<code>set(myVar &quot;hello world&quot;)</code></p>
+<p>当需要<strong>引用变量</strong>，可以使用<code>$&#123;变量名&#125;</code>，可以出现在<code>&quot;&quot;</code>中，例如<code>$&#123;myVar&#125;</code>，<code>set(pet &quot;$&#123;myVar&#125;&quot;)</code></p>
+<p>字符串也可以用<code>[[]]</code>,也可以<code>[=^n[]=^n]</code>(n&gt;=0)，其中<code>=^n</code>表示可以任意<code>=</code>但左右两边必须一样，这种方式不会进行替换，所以可以打印<code>$&#123;&#125;</code></p>
+</li>
+<li>
+<p><code>set(varName)</code>、<code>unset(varName)</code>设置未定义变量，<code>set(varName &quot;&quot;)</code>清空变量的值</p>
+</li>
+<li>
+<p><code>set(ENV&#123;varName&#125; value)</code> 设置环境变量</p>
+<p>这种方式只是临时添加环境变量，不会改变系统环境变量</p>
+</li>
+<li>
+<p><code>set(varName value... CACHE type &quot;helpString&quot; [FORCE])</code> 定义缓存变量（Cache Variable）</p>
+<p>存放在<code>\build\CMakeCache.txt</code></p>
+<ol>
+<li>参数<code>type</code>主要用于图形界面的处理，<strong>虽然变量都为字符串，但是图形界面中会将变量分为以下类型：</strong></li>
+</ol>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251121223113174-1763735476917-1.png" alt=""></p>
+<p>BOOL类型值的设置</p>
+<ul>
+<li>
+<p>真：true、yes、Y、1</p>
+</li>
+<li>
+<p>假：false、no、n、0</p>
+<p>对于BOOL，也可以使用<code>option(optVar &quot;helpString&quot; [初始值])</code>，相当于没有<code>FORCE</code>的BOOL值，</p>
+<p>即<code>set(optVar [初始值] CACHE BOOL helpString)</code></p>
+</li>
+</ul>
+<p>例如下面示例：</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.10</span>)</span><br><span class="line"><span class="keyword">project</span>(LearnCMake VERSION <span class="number">0.1</span> LANGUAGES CXX)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(DEMO_VAR <span class="keyword">off</span> CACHE BOOL <span class="string">&quot;is test&quot;</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;DEMO_VAR = $&#123;DEMO_VAR&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ON</th>
+<th style="text-align:center">OFF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/2025/12/07/CMake%20Memo/image-20251121224016569-1763736018033-3.png" alt=""></td>
+<td style="text-align:center"><img src="/2025/12/07/CMake%20Memo/image-20251121224233527-1763736154891-5.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p>参数<code>&quot;helpString&quot;</code>是说明变量的用途</p>
+</li>
+<li>
+<p>参数<code>FORCE</code>是用于强制刷新变量</p>
+<ul>
+<li>
+<p>无<code>FORCE</code>，则当缓存没有这个变量才写入，有则不会更新</p>
+</li>
+<li>
+<p>有<code>FORCE</code>，则会强制更新缓存中的值</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>
+<p>普通变量 VS 缓存变量</p>
+<ul>
+<li>对于同名的普通变量和缓存变量，优先使用普通变量，例子：</li>
+</ul>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(myVar <span class="string">&quot;Hello World!&quot;</span> CACHE <span class="keyword">STRING</span> <span class="string">&quot;My Variable&quot;</span> FORCE)</span><br><span class="line"><span class="keyword">set</span>(myVar <span class="string">&quot;normal variable&quot;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;myVar=&quot;</span> <span class="variable">$&#123;myVar&#125;</span>)</span><br><span class="line"><span class="keyword">unset</span>(myVar)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;myVar=&quot;</span> <span class="variable">$&#123;myVar&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># myVar=normal variable</span></span><br><span class="line"><span class="comment"># myVar=Hello World!</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>推荐的命名规范：<strong>普通变量用驼峰命名，缓存变量用纯大写字母</strong></p>
+</li>
+<li>
+<p>作用域：<strong>普通变量是局部（函数，子目录），缓存变量是全局</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>命令行定义缓存变量</p>
+<ul>
+<li>
+<p><code>cmake -D &quot;varName:type=value&quot;</code> 定义缓存变量</p>
+</li>
+<li>
+<p><code>cmake -U &quot;&quot;</code> 删除缓存变量</p>
+<p>例如：</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake -D <span class="string">&quot;MY_VAR:STRING=hello world&quot;</span> <span class="comment"># 定义MY_VAR缓存变量</span></span><br><span class="line">cmake -U <span class="string">&quot;MY*&quot;</span> <span class="comment"># 删除所有MY开头的缓存变量</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="message">- <code>message()</code></h3>
+<p>为用户显示一条消息</p>
+<p><code>message([STATUS|WARNING|AUTHOR_WARNING|FATAL_ERROR|SEND_ERROR] &quot;message to display&quot; ...)</code></p>
+<ul>
+<li>(无) ：重要消息</li>
+<li>STATUS ：非重要消息</li>
+<li>WARNING：CMake 警告, 会继续执行</li>
+<li>AUTHOR_WARNING：CMake 警告 (dev), 会继续执行</li>
+<li>SEND_ERROR：CMake 错误, 继续执行，但是会跳过生成的步骤</li>
+<li>FATAL_ERROR：CMake 错误, 终止所有处理过程</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(a <span class="string">&quot;hello&quot;</span>)</span><br><span class="line"><span class="keyword">set</span>(b hello)</span><br><span class="line"><span class="keyword">set</span>(c &#x27;hello&#x27;)</span><br><span class="line"><span class="keyword">set</span>(d &#x27;hello)</span><br><span class="line"><span class="keyword">set</span>(e [[hello]])</span><br><span class="line"></span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;a=&quot;</span> <span class="variable">$&#123;a&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;b=&quot;</span> <span class="variable">$&#123;b&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;c=&quot;</span> <span class="variable">$&#123;c&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;d=&quot;</span> <span class="variable">$&#123;d&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;e=&quot;</span> <span class="variable">$&#123;e&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># -- a=hello</span></span><br><span class="line"><span class="comment"># -- b=hello</span></span><br><span class="line"><span class="comment"># -- c=&#x27;hello&#x27;</span></span><br><span class="line"><span class="comment"># -- d=&#x27;hello</span></span><br><span class="line"><span class="comment"># -- e=hello</span></span><br></pre></td></tr></table></figure>
+<h3 id="作用域block-和endblock">- 作用域<code>block()</code>和<code>endblock()</code></h3>
+<p>例子1：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(myVar cat)</span><br><span class="line">block()</span><br><span class="line">	<span class="keyword">set</span>(myVar dog)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line">endblock()</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># myVar=dog</span></span><br><span class="line"><span class="comment"># myVar=cat</span></span><br></pre></td></tr></table></figure>
+<p>例子2：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(myVar cat)</span><br><span class="line">block() <span class="comment"># 进入局部，相当于拷贝父作用域的变量，值传递</span></span><br><span class="line">	<span class="keyword">set</span>(myVar dog PARENT_SCOPE) <span class="comment"># 使用父作用域的引用，引用传递</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;[block]myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line">endblock()</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;[outer]myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># [block]myVar=cat</span></span><br><span class="line"><span class="comment"># [outer]myVar=dog</span></span><br></pre></td></tr></table></figure>
+<p>例子3：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(myVar cat)</span><br><span class="line">block(SCOPE_FOR VARIABLES PROPAGATE myVar) <span class="comment"># PROPAGATE 后面的变量都是父作用域的引用 </span></span><br><span class="line">	<span class="keyword">set</span>(myVar dog)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;[block]myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line">endblock()</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;[outer]myVar=$&#123;myVar&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="comment"># [block]myVar=dog</span></span><br><span class="line"><span class="comment"># [outer]myVar=dog</span></span><br></pre></td></tr></table></figure>
+<h3 id="条件判断">- 条件判断</h3>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(expr)</span><br><span class="line">	<span class="comment"># expr == true</span></span><br><span class="line"><span class="keyword">elseif</span>(expr2)</span><br><span class="line">	<span class="comment"># expr == false &amp;&amp; expr2 == true</span></span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">	<span class="comment"># otherwise</span></span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<p>expr:</p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123211243249-1763903566276-1.png" alt=""></p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123211327749.png" alt=""></p>
+<p>如果expr为字符串，那么是TRUE常量带引号模式才为真</p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123211450821-1763903693214-3.png" alt=""></p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123211623958-1763903785883-5.png" alt=""></p>
+<p>例子：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(v <span class="string">&quot;hello&quot;</span>) <span class="comment"># 变量规则：此时v的值不是FALSE常量，所以为TRUE</span></span><br><span class="line"><span class="keyword">if</span>(v)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;$&#123;v&#125; is true&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;$&#123;v&#125; if false&quot;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$&#123;v&#125;</span>) <span class="comment"># 字符串规则：此时$&#123;v&#125;字符串不是TRUE常量，所以为FALSE</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;&#x27;$&#123;v&#125;&#x27; is true&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;&#x27;$&#123;v&#125;&#x27; is false&quot;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="逻辑运算符">- 逻辑运算符</h3>
+<ul>
+<li>与：<code>AND</code></li>
+<li>或：<code>OR</code></li>
+<li>非：<code>NOT</code></li>
+</ul>
+<h3 id="比较运算符">- 比较运算符</h3>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123214025313-1763905226655-7.png" alt=""></p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123214302686-1763905386222-9.png" alt=""></p>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251123214358551-1763905439877-11.png" alt=""></p>
+<h3 id="循环语句">- 循环语句</h3>
+<ul>
+<li>
+<p><code>continue()</code>：跳过循环</p>
+</li>
+<li>
+<p><code>break()</code>：退出循环</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>foreach循环</p>
+ <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>(&lt;loop_var&gt; &lt;items&gt;)</span><br><span class="line">	&lt;commands&gt;</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example1</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;Example1:&quot;</span>)</span><br><span class="line"><span class="keyword">foreach</span>(v a b c)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;v=$&#123;v&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example2 使用IN和LISTS关键字</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;Example2:&quot;</span>)</span><br><span class="line"><span class="keyword">set</span>(list1 <span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span>)</span><br><span class="line"><span class="keyword">set</span>(list2 <span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(v IN LISTS list1 list2) <span class="comment"># 也可以 foreach(v IN ITEMS $&#123;list1&#125; $&#123;list2&#125;) 注意这里是ITEMS</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;v=$&#123;v&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example3 使用IN和ITEMS关键字 等价于 Example1</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;Example3:&quot;</span>)</span><br><span class="line"><span class="keyword">foreach</span>(v IN ITEMS a b c)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;v=$&#123;v&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example4 使用IN和ZIP_LISTS关键字，同时获取不同列表的相同位置</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;Example4:&quot;</span>)</span><br><span class="line"><span class="keyword">set</span>(list3 <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"><span class="keyword">set</span>(list4 <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(v IN ZIP_LISTS list3 list4)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;v=($&#123;v_0&#125;,$&#123;v_1&#125;)&quot;</span>) <span class="comment"># 变量名_数字 来分别获取不同列表的元素</span></span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example5 使用RANGE关键字，设定开始和结尾</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;Example5:&quot;</span>)</span><br><span class="line"><span class="keyword">set</span>(start <span class="number">1</span>)</span><br><span class="line"><span class="keyword">set</span>(end <span class="number">8</span>)</span><br><span class="line"><span class="keyword">set</span>(step <span class="number">2</span>) <span class="comment"># 可选项</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(v RANGE <span class="variable">$&#123;start&#125;</span> <span class="variable">$&#123;end&#125;</span> <span class="variable">$&#123;step&#125;</span>) <span class="comment"># step是缺省值，默认是1</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;v=$&#123;v&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endforeach</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>while循环</p>
+ <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(&lt;condition&gt;)</span><br><span class="line">	&lt;commands&gt;</span><br><span class="line"><span class="keyword">endwhile</span>()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="注释">- 注释</h3>
+<ul>
+<li><code>#</code>：行注释</li>
+<li><code>#[[]]</code>：块注释</li>
+</ul>
+<h3 id="函数">- 函数</h3>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(function_name args...)</span><br><span class="line">	<span class="comment"># do something</span></span><br><span class="line"><span class="keyword">endfunction</span>()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>
+<p><strong>传参方式：</strong></p>
+<ul>
+<li>命名参数</li>
+</ul>
+ <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(my_function a b) <span class="comment"># a 和 b 是命名参数</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;============= my_function =============&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;a:$&#123;a&#125;,b:$&#123;b&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endfunction</span>()</span><br><span class="line"></span><br><span class="line">my_function(hello world) <span class="comment"># 调用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line">============= my_function =============</span><br><span class="line">a:hello,b:world</span><br></pre></td></tr></table></figure>
+<ul>
+<li>未命名参数</li>
+</ul>
+ <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(my_function2 a b) <span class="comment"># a 和 b 是命名参数</span></span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;============= my_function2 =============&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;a:$&#123;a&#125;,b:$&#123;b&#125;&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;ARGC:$&#123;ARGC&#125;&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;ARGV:$&#123;ARGV&#125;&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;ARGV0:$&#123;ARGV0&#125;,ARGV1:$&#123;ARGV1&#125;&quot;</span>)</span><br><span class="line">	<span class="keyword">message</span>(<span class="string">&quot;argn:$&#123;ARGN&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">endfunction</span>()</span><br><span class="line"></span><br><span class="line">my_function2(hello world <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>) <span class="comment"># 调用，这里多出来的参数就是未命名参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line">============= my_function2 =============</span><br><span class="line">a:hello,b:world</span><br><span class="line">ARGC:<span class="number">5</span></span><br><span class="line">ARGV:hello;world;<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span></span><br><span class="line">ARGV0:hello,ARGV1:world</span><br><span class="line">argn:<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2025/12/07/CMake%20Memo/image-20251125170609319-1764061572541-1.png" alt=""></p>
+<p><code>ARGVn</code>，n是访问第几个未命名参数，以0开始(0-based)，<strong>n&lt;ARGC，否则未定义行为</strong></p>
+<ul>
+<li>关键字参数</li>
+</ul>
+<p>这个比较复杂，可以查相关资料，个人觉得用处不大</p>
+</li>
+<li>
+<p>函数返回值：</p>
+</li>
+</ol>
+<p>返回值获取例子（引用）：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example_func3</span></span><br><span class="line"><span class="comment"># 类似C++函数传引用获取返回值</span></span><br><span class="line"><span class="keyword">function</span>(my_function3 returnValue)</span><br><span class="line">	<span class="keyword">set</span>(<span class="variable">$&#123;returnValue&#125;</span> <span class="string">&quot;hello world&quot;</span> PARENT_SCOPE)</span><br><span class="line"><span class="keyword">endfunction</span>()</span><br><span class="line"></span><br><span class="line">my_function3(result) <span class="comment"># 调用</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;result:$&#123;result&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line">result:hello world</span><br></pre></td></tr></table></figure>
+<h3 id="宏">- 宏</h3>
+<p>和C++的宏类似，都是用字符串替换</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">macro</span>(myMacro arg...)</span><br><span class="line">	<span class="comment"># commands</span></span><br><span class="line"><span class="keyword">endmacro</span>()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CMake中常用的预定义宏：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">宏</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">PROJECT_SOURCE_DIR</td>
+<td style="text-align:left">使用cmake命令后紧跟的目录，一般是工程的根目录</td>
+</tr>
+<tr>
+<td style="text-align:left">PROJECT_BINARY_DIR</td>
+<td style="text-align:left">执行cmake命令的目录</td>
+</tr>
+<tr>
+<td style="text-align:left">CMAKE_CURRENT_SOURCE_DIR</td>
+<td style="text-align:left">当前处理的CMakeLists.txt所在的路径</td>
+</tr>
+<tr>
+<td style="text-align:left">CMAKE_CURRENT_BINARY_DIR</td>
+<td style="text-align:left">target 编译目录</td>
+</tr>
+<tr>
+<td style="text-align:left">EXECUTABLE_OUTPUT_PATH</td>
+<td style="text-align:left">重新定义目标二进制可执行文件的存放位置</td>
+</tr>
+<tr>
+<td style="text-align:left">LIBRARY_OUTPUT_PATH</td>
+<td style="text-align:left">重新定义目标链接库文件的存放位置</td>
+</tr>
+<tr>
+<td style="text-align:left">PROJECT_NAME</td>
+<td style="text-align:left">返回通过PROJECT指令定义的项目名称</td>
+</tr>
+<tr>
+<td style="text-align:left">CMAKE_BINARY_DIR</td>
+<td style="text-align:left">项目实际构建路径，假设在build目录进行的构建，那么得到的就是这个目录的路径</td>
+</tr>
+</tbody>
+</table>
+<h3 id="List">- List</h3>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/latest/command/list.html">list — CMake 4.2.0 Documentation</a></p>
+<h4 id="1-定义列表">1. 定义列表</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 空列表</span></span><br><span class="line"><span class="keyword">set</span>(my_list <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 初始化（空格分隔，含空格元素用引号）</span></span><br><span class="line"><span class="keyword">set</span>(numbers <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"><span class="keyword">set</span>(strings <span class="string">&quot;a b&quot;</span> c <span class="string">&quot;d e&quot;</span>)  <span class="comment"># 实际元素：&quot;a b&quot;、c、&quot;d e&quot;（共3个元素）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 从变量拼接生成列表</span></span><br><span class="line"><span class="keyword">set</span>(prefix <span class="string">&quot;file_&quot;</span>)</span><br><span class="line"><span class="keyword">set</span>(suffixes <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>)</span><br><span class="line"><span class="keyword">set</span>(files <span class="variable">$&#123;prefix&#125;</span><span class="number">1</span> <span class="variable">$&#123;prefix&#125;</span><span class="number">2</span>)  <span class="comment"># files = &quot;file_1 file_2&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-访问元素与长度">2. 访问元素与长度</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义列表</span></span><br><span class="line"><span class="keyword">set</span>(my_list <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取列表长度</span></span><br><span class="line"><span class="keyword">list</span>(LENGTH my_list len)  <span class="comment"># len = 元素个数</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;len:$&#123;len&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按索引访问（0开始，负索引则是反的）</span></span><br><span class="line"><span class="keyword">list</span>(GET my_list <span class="number">0</span> first_elem)  <span class="comment"># 获取第1个元素</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;first_elem:$&#123;first_elem&#125;&quot;</span>)</span><br><span class="line"><span class="keyword">list</span>(GET my_list -<span class="number">1</span> last_elem)  <span class="comment"># 倒数第1个元素</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;last_elem:$&#123;last_elem&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3-添加元素（APPEND-PREPEND）">3. 添加元素（APPEND/PREPEND）</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(my_list <span class="number">1</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;初始列表: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 末尾添加（单个/多个元素）</span></span><br><span class="line"><span class="keyword">list</span>(APPEND my_list <span class="number">3</span> <span class="number">4</span>)  <span class="comment"># my_list = 1 2 3 4</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;APPEND 后: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开头添加</span></span><br><span class="line"><span class="keyword">list</span>(PREPEND my_list <span class="number">0</span>)  <span class="comment"># my_list = 0 1 2 3 4</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;PREPEND 后: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入到指定索引（索引2位置插入5）</span></span><br><span class="line"><span class="keyword">list</span>(INSERT my_list <span class="number">2</span> <span class="number">5</span>)  <span class="comment"># my_list = 0 1 5 2 3 4</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;INSERT 后: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="4-删除元素（REMOVE-AT-REMOVE-ITEM-REMOVE-DUPLICATES）">4. 删除元素（REMOVE_AT/REMOVE_ITEM/REMOVE_DUPLICATES）</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(my_list <span class="number">0</span> <span class="number">1</span> <span class="number">5</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;初始列表: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按索引删除（删除第3个元素，索引2）</span></span><br><span class="line"><span class="keyword">list</span>(REMOVE_AT my_list <span class="number">2</span>)  <span class="comment"># my_list = 0 1 2 3 4 2</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;REMOVE_AT 后: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按值删除（删除所有值为2的元素）</span></span><br><span class="line"><span class="keyword">list</span>(REMOVE_ITEM my_list <span class="number">2</span>)  <span class="comment"># my_list = 0 1 3 4</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;REMOVE_ITEM 后: &#x27;$&#123;my_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去重（保留首次出现的元素）</span></span><br><span class="line"><span class="keyword">set</span>(dup_list a b a c b)</span><br><span class="line"><span class="keyword">list</span>(REMOVE_DUPLICATES dup_list) <span class="comment"># dup_list = a b c</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;REMOVE_DUPLICATES 后: &#x27;$&#123;dup_list&#125;&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="5-查找（FIND）">5. 查找（FIND）</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(my_list a b c d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找元素位置（返回索引，未找到返回-1）</span></span><br><span class="line"><span class="keyword">list</span>(FIND my_list <span class="string">&quot;c&quot;</span> idx)  <span class="comment"># idx = 2</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;元素 &#x27;c&#x27; 的索引: $&#123;idx&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">list</span>(FIND my_list <span class="string">&quot;x&quot;</span> idx)  <span class="comment"># idx = -1</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;元素 &#x27;x&#x27; 的索引: $&#123;idx&#125;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="6-拼接和切片（JOIN-SUBLIST）">6. 拼接和切片（JOIN/SUBLIST）</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(my_list <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片：从索引1开始，取3个元素（索引1、2、3）</span></span><br><span class="line"><span class="keyword">list</span>(SUBLIST my_list <span class="number">1</span> <span class="number">3</span> sub_list)  <span class="comment"># sub_list = 1 2 3</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;SUBLIST 结果: &#x27;$&#123;sub_list&#125;&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接：用指定字符连接列表为字符串</span></span><br><span class="line"><span class="keyword">list</span>(JOIN my_list <span class="string">&quot;,&quot;</span> str)  <span class="comment"># str = &quot;0,1,2,3,4&quot;</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;JOIN 结果: &#x27;$&#123;str&#125;&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="7-排序（SROT）">7. 排序（SROT）</h4>
+<p>命令格式：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">list</span>(SORT &lt;<span class="keyword">list</span>&gt; [COMPARE &lt;compare&gt;] [CASE &lt;case&gt;] [ORDER &lt;order&gt;])</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li>
+<p><code>COMPARE &lt;compare&gt;</code>：排序规则（默认 <code>STRING</code>）：</p>
+<ul>
+<li><code>STRING</code>：按字母 / 数字字符串排序（默认）。</li>
+<li><code>FILE_BASENAME</code>：按文件基名排序（如 <code>a/1.txt</code>、<code>b/2.txt</code> 按 <code>1.txt</code>、<code>2.txt</code> 排序）。</li>
+<li><code>NATURAL</code>：自然排序（如 <code>file10.txt</code> 排在 <code>file2.txt</code> 后，默认 <code>STRING</code> 会相反）。</li>
+</ul>
+</li>
+<li>
+<p><code>CASE &lt;case&gt;</code>：大小写敏感度（默认 <code>SENSITIVE</code>）：</p>
+<ul>
+<li><code>SENSITIVE</code>：区分大小写（默认，<code>A</code> &lt; <code>a</code>）。</li>
+<li><code>INSENSITIVE</code>：不区分大小写（<code>A</code> = <code>a</code>）。</li>
+</ul>
+</li>
+<li>
+<p><code>ORDER &lt;order&gt;</code>：排序顺序（默认 <code>ASCENDING</code>）：</p>
+<ul>
+<li><code>ASCENDING</code>：升序（默认）。</li>
+<li><code>DESCENDING</code>：降序。</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 默认排序（STRING + SENSITIVE + ASCENDING）</span></span><br><span class="line"><span class="keyword">set</span>(strings Z a B <span class="number">10</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">list</span>(SORT strings)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;默认排序：$&#123;strings&#125;&quot;</span>)  <span class="comment"># 输出结果：默认排序：10 2 B Z a</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 自然排序（解决数字字符串排序问题）</span></span><br><span class="line"><span class="keyword">list</span>(SORT strings COMPARE NATURAL)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;自然排序：$&#123;strings&#125;&quot;</span>)  <span class="comment"># 输出结果：自然排序：2 10 a B Z</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 不区分大小写 + 降序</span></span><br><span class="line"><span class="keyword">set</span>(letters A b C a)</span><br><span class="line"><span class="keyword">list</span>(SORT letters CASE INSENSITIVE ORDER DESCENDING)</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;不区分大小写降序：$&#123;letters&#125;&quot;</span>)  <span class="comment"># 输出结果：不区分大小写降序：C b A a</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-翻转列表（REVERSE）">8. 翻转列表（REVERSE）</h4>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(order <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br><span class="line"><span class="keyword">list</span>(REVERSE order)  <span class="comment"># 翻转列表</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;翻转后：$&#123;order&#125;&quot;</span>)  <span class="comment"># 输出结果：翻转后：4 3 2 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="math">- math()</h3>
+<p><strong>命令格式</strong>：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">math</span>(EXPR &lt;输出变量&gt; <span class="string">&quot;&lt;算术表达式&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>支持的运算符</strong>：<code>+</code>（加）、<code>-</code>（减）、<code>*</code>（乘）、<code>/</code>（整数除法）、<code>%</code>（取模）</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(a <span class="number">10</span>)</span><br><span class="line"><span class="keyword">set</span>(b <span class="number">3</span>)</span><br><span class="line"><span class="keyword">math</span>(EXPR sum <span class="string">&quot;$&#123;a&#125; + $&#123;b&#125;&quot;</span>)        <span class="comment"># 加法：13</span></span><br><span class="line"><span class="keyword">math</span>(EXPR diff <span class="string">&quot;$&#123;a&#125; - $&#123;b&#125;&quot;</span>)       <span class="comment"># 减法：7</span></span><br><span class="line"><span class="keyword">math</span>(EXPR product <span class="string">&quot;$&#123;a&#125; * $&#123;b&#125;&quot;</span>)    <span class="comment"># 乘法：30</span></span><br><span class="line"><span class="keyword">math</span>(EXPR quotient <span class="string">&quot;$&#123;a&#125; / $&#123;b&#125;&quot;</span>)   <span class="comment"># 整数除法：3（10/3=3.333，取整）</span></span><br><span class="line"><span class="keyword">math</span>(EXPR remainder <span class="string">&quot;$&#123;a&#125; % $&#123;b&#125;&quot;</span>)  <span class="comment"># 取模：1（10%3=1）</span></span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;和：$&#123;sum&#125;，商：$&#123;quotient&#125;，余数：$&#123;remainder&#125;&quot;</span>)</span><br><span class="line"><span class="comment"># 输出：和：13，商：3，余数：1</span></span><br></pre></td></tr></table></figure>
+<h3 id="搜索文件">- 搜索文件</h3>
+<p>如果一个项目里边的源文件很多，在编写<strong>CMakeLists.txt</strong>文件的时候不可能将项目目录的各个文件一一罗列出来，这样太麻烦也不现实。所以，在CMake中为我们提供了搜索文件的命令，可以使用<code>aux_source_directory</code>命令或者<code>file</code>命令。</p>
+<ol>
+<li>方式1<br>
+在 CMake 中使用<code>aux_source_directory</code> 命令可以查找某个路径下的所有源文件，命令格式为：<br>
+<code>aux_source_directory(&lt; dir &gt; &lt; variable &gt;)</code></li>
+</ol>
+<ul>
+<li>
+<p>dir：要搜索的目录</p>
+</li>
+<li>
+<p>variable：将从dir目录下搜索到的源文件列表存储到该变量中</p>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="keyword">project</span>(CALC)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>)</span><br><span class="line"><span class="comment"># 搜索 src 目录下的源文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(<span class="variable">$&#123;CMAKE_CURRENT_SOURC&#125;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>方式2<br>
+如果一个项目里边的源文件很多，在编写<strong>CMakeLists.txt</strong>文件的时候不可能将项目目录的各个文件一一罗列出来，这样太麻烦了。所以，在CMake中为我们提供了搜索文件的命令，他就是<strong>file（当然，除了搜索以外通过 file 还可以做其他事情）</strong>。</li>
+</ol>
+<p><code>file(GLOB/GLOB_RECURSE 变量名 要搜索的文件路径和文件类型)</code></p>
+<ul>
+<li>
+<p>GLOB: 将指定目录下搜索到的满足条件的所有文件名生成一个列表，并将其存储到变量中。</p>
+</li>
+<li>
+<p>GLOB_RECURSE：递归搜索指定目录，将搜索到的满足条件的文件名生成一个列表，并将其存储到变量中。</p>
+</li>
+</ul>
+<p>搜索当前目录的src目录下所有的源文件，并存储到变量中</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">file</span>(GLOB MAIN_SRC <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/src/*.cpp)</span><br><span class="line"><span class="keyword">file</span>(GLOB MAIN_HEAD <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/<span class="keyword">include</span>/*.h)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>CMAKE_CURRENT_SOURCE_DIR 宏表示当前访问的 CMakeLists.txt 文件所在的路径。</p>
+</li>
+<li>
+<p>关于要搜索的文件路径和类型可加双引号，也可不加:</p>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">file</span>(GLOB MAIN_HEAD <span class="string">&quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/src/*.h&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="实用示例">实用示例</h2>
+<h3 id="防止在源树构建">- 防止在源树构建</h3>
+<ul>
+<li>
+<p><code>CMAKE_SOURCE_DIR</code>：CMakeLists.txt 所在目录（源树）</p>
+</li>
+<li>
+<p><code>CMAKE_BINARY_DIR</code>：CMake构建目录</p>
+</li>
+<li>
+<p><code>FATAL_ERROR</code>：严重错误，会中断CMake后面的命令</p>
+</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 避免在源树创建</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;$&#123;CMAKE_SOURCE_DIR&#125;&quot;</span> <span class="keyword">STREQUAL</span> <span class="string">&quot;$&#123;CMAKE_BINARY_DIR&#125;&quot;</span>)</span><br><span class="line">    <span class="keyword">message</span>(FATAL_ERROR <span class="string">&quot;Error: In-source builds are not allowed.</span></span><br><span class="line"><span class="string">    Please create a separate directory for build files, such as a &#x27;build&#x27; directory.&quot;</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="确保CMAKE-BUILD-TYPE为单配置生成器指定默认值">- 确保CMAKE_BUILD_TYPE为单配置生成器指定默认值</h3>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 确保CMAKE_BUILD_TYPE为单配置生成器指定默认值</span></span><br><span class="line"><span class="keyword">if</span>((<span class="keyword">NOT</span> <span class="keyword">DEFINED</span> CMAKE_BUILD_TYPE <span class="keyword">OR</span> CMAKE_BUILD_TYPE <span class="keyword">STREQUAL</span> <span class="string">&quot;&quot;</span>) <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">DEFINED</span> CMAKE_CONFIGURATION_TYPES)</span><br><span class="line">    <span class="keyword">set</span>(CMAKE_BUILD_TYPE Release CACHE <span class="keyword">STRING</span></span><br><span class="line">        <span class="string">&quot;Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel Coverage.&quot;</span></span><br><span class="line">        FORCE)  <span class="comment"># FORCE 强制覆盖已定义但为空的情况</span></span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/CMake/" rel="tag"># CMake</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/07/Makefile%20Memo/" rel="prev" title="Makefile Memo">
+                  <i class="fa fa-angle-left"></i> Makefile Memo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/12/11/%E6%B1%87%E7%BC%96%20Memo/" rel="next" title="汇编 Memo">
+                  汇编 Memo <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:12</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

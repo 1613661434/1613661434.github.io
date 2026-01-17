@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="生成代码文档的工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Doxygen 使用教学">
+<meta property="og:url" content="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="生成代码文档的工具">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/assets/Snipaste_2025-08-14_11-49-39.png">
+<meta property="article:published_time" content="2025-12-30T10:56:35.000Z">
+<meta property="article:modified_time" content="2026-01-17T12:04:14.328Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="Doxygen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/assets/Snipaste_2025-08-14_11-49-39.png">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/","path":"2025/12/30/Doxygen 使用教学/","title":"Doxygen 使用教学"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Doxygen 使用教学 | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Doxygen 入门指南：从注释到自动文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85-Doxygen"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装 Doxygen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Windows"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. Windows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-macOS"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. macOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E6%B3%A8%E9%87%8A%E8%A7%84%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">二、基本注释规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0-%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 函数 &#x2F; 方法注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B1%BB-%E7%BB%93%E6%9E%84%E4%BD%93%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 类 &#x2F; 结构体注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%96%87%E4%BB%B6%E5%A4%B4%E9%83%A8%E6%B3%A8%E9%87%8A"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 文件头部注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">三、常用标签速查表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.</span> <span class="nav-text">四、生成文档步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-1%EF%BC%9A%E4%BD%BF%E7%94%A8-doxywizard%EF%BC%88%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">方法 1：使用 doxywizard（图形化工具）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-2%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%88%E6%8E%A8%E8%8D%90%E7%86%9F%E7%BB%83%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">方法 2：使用命令行（推荐熟练后使用）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7"><span class="nav-number">1.5.</span> <span class="nav-text">五、高级技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.6.</span> <span class="nav-text">六、常见问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Doxygen 使用教学 | ol木子李lo的博客">
+      <meta itemprop="description" content="生成代码文档的工具">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Doxygen 使用教学
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-30 18:56:35" itemprop="dateCreated datePublished" datetime="2025-12-30T18:56:35+08:00">2025-12-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-01-17 20:04:14" itemprop="dateModified" datetime="2026-01-17T20:04:14+08:00">2026-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">教学</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">生成代码文档的工具</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>Doxygen 入门指南：从注释到自动文档</h1>
+<p>Doxygen 是一款用于生成代码文档的工具，支持 C、C++、Python 等多种语言，尤其适合 C/C++ 项目。本文将介绍如何使用 Doxygen 规范注释并生成 API 文档。</p>
+<h2 id="一、安装-Doxygen">一、安装 Doxygen</h2>
+<h3 id="1-Windows">1. Windows</h3>
+<ul>
+<li>下载安装包：<a target="_blank" rel="noopener" href="https://www.doxygen.nl/download.html">Doxygen 官网</a>（选择 <code>doxygen-&lt;version&gt;.setup.exe</code>）</li>
+<li>安装时勾选 <code>doxywizard</code>（图形化配置工具，推荐新手使用）</li>
+</ul>
+<h3 id="2-Linux">2. Linux</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ubuntu/Debian</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install doxygen graphviz  <span class="comment"># graphviz 用于生成图表</span></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line"><span class="built_in">sudo</span> yum install doxygen graphviz</span><br></pre></td></tr></table></figure>
+<h3 id="3-macOS">3. macOS</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install doxygen graphviz</span><br></pre></td></tr></table></figure>
+<h2 id="二、基本注释规则">二、基本注释规则</h2>
+<p>Doxygen 通过识别特定格式的注释生成文档，核心是 <strong><code>/\** ... \*/</code></strong> 风格的注释块，配合标签（<code>@tag</code>）描述代码信息。</p>
+<h3 id="1-函数-方法注释">1. 函数 / 方法注释</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 计算两个整数的和</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 支持正数、负数和零的加法运算，返回结果不会溢出（假设输入在 int 范围内）</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param a 第一个加数</span></span><br><span class="line"><span class="comment"> * @param b 第二个加数</span></span><br><span class="line"><span class="comment"> * @return 两数之和（int 类型）</span></span><br><span class="line"><span class="comment"> * @note 若输入超出 int 范围，可能导致未定义行为</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-类-结构体注释">2. 类 / 结构体注释</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 表示二维坐标的结构体</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 存储 x 和 y 坐标，提供基础的坐标运算方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;  <span class="comment">///&lt; x 坐标（成员变量注释用 ///&lt;）</span></span><br><span class="line">    <span class="type">int</span> y;  <span class="comment">///&lt; y 坐标</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @brief 初始化坐标</span></span><br><span class="line"><span class="comment">     * @param x_ x 坐标值</span></span><br><span class="line"><span class="comment">     * @param y_ y 坐标值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Point</span>(<span class="type">int</span> x_, <span class="type">int</span> y_) : <span class="built_in">x</span>(x_), <span class="built_in">y</span>(y_) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="3-文件头部注释">3. 文件头部注释</h3>
+<p>每个 <code>.h</code> 或 <code>.cpp</code> 文件建议添加头部注释，说明文件功能：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file math_utils.h</span></span><br><span class="line"><span class="comment"> * @brief 数学工具函数集合</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 包含加法、减法、乘法等基础运算，以及向量、矩阵操作</span></span><br><span class="line"><span class="comment"> * @author 你的名字</span></span><br><span class="line"><span class="comment"> * @date 2024-05-01</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、常用标签速查表">三、常用标签速查表</h2>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@brief</code></td>
+<td>简短描述（一句话功能说明）</td>
+<td><code>@brief 计算绝对值</code></td>
+</tr>
+<tr>
+<td><code>@param</code></td>
+<td>描述函数参数</td>
+<td><code>@param num 待计算的数字</code></td>
+</tr>
+<tr>
+<td><code>@return</code></td>
+<td>描述返回值</td>
+<td><code>@return 非负结果</code></td>
+</tr>
+<tr>
+<td><code>@note</code></td>
+<td>补充说明（注意事项）</td>
+<td><code>@note 输入不能为nullptr</code></td>
+</tr>
+<tr>
+<td><code>@warning</code></td>
+<td>警告信息（危险操作）</td>
+<td><code>@warning 此函数会修改原始数组</code></td>
+</tr>
+<tr>
+<td><code>@file</code></td>
+<td>标记文件注释</td>
+<td><code>@file string_utils.h</code></td>
+</tr>
+<tr>
+<td><code>@author</code></td>
+<td>作者信息</td>
+<td><code>@author 张三 &lt;zhangsan@example.com&gt;</code></td>
+</tr>
+<tr>
+<td><code>@date</code></td>
+<td>日期</td>
+<td><code>@date 2024-05-01</code></td>
+</tr>
+<tr>
+<td><code>@see</code></td>
+<td>关联内容（参考其他函数 / 类）</td>
+<td><code>@see add()</code></td>
+</tr>
+</tbody>
+</table>
+<img src="./assets/Snipaste_2025-08-14_11-49-39.png" alt="标签" style="zoom:33%;" />
+<h2 id="四、生成文档步骤">四、生成文档步骤</h2>
+<h3 id="方法-1：使用-doxywizard（图形化工具）">方法 1：使用 doxywizard（图形化工具）</h3>
+<ol>
+<li>打开 <code>doxywizard</code>（Windows 可在开始菜单找到，Linux/macOS 终端输入 <code>doxywizard</code>）</li>
+<li>Step 1: 配置输入输出
+<ul>
+<li><code>Working directory</code>：选择项目根目录</li>
+<li><code>Input</code>：添加代码目录（如 <code>./src</code>）</li>
+<li><code>Output directory</code>：设置文档输出路径（如 <code>./docs</code>）</li>
+</ul>
+</li>
+<li>Step 2: 选择输出格式
+<ul>
+<li>在 <code>Output</code> 标签页勾选 <code>HTML</code>（必选）和 <code>LaTeX</code>（如需 PDF）</li>
+</ul>
+</li>
+<li>Step 3: 生成文档
+<ul>
+<li>点击 <code>Run doxygen</code>，等待生成完成</li>
+<li>打开 <code>./docs/html/index.html</code> 查看文档</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-2：使用命令行（推荐熟练后使用）">方法 2：使用命令行（推荐熟练后使用）</h3>
+<ol>
+<li>
+<p>在项目根目录创建配置文件 <code>Doxyfile</code> :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doxygen -g Doxyfile  <span class="comment"># 生成默认配置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编辑<code>Doxyfile</code>关键配置（可选，默认也可生成文档）：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">PROJECT_NAME</span>           = <span class="string">&quot;OL库&quot;</span>  <span class="comment"># 项目名称</span></span><br><span class="line"><span class="attr">INPUT</span>                  = ./src   <span class="comment"># 代码目录</span></span><br><span class="line"><span class="attr">OUTPUT_DIRECTORY</span>       = ./docs  <span class="comment"># 文档输出目录</span></span><br><span class="line"><span class="attr">RECURSIVE</span>              = <span class="literal">YES</span>     <span class="comment"># 递归处理子目录</span></span><br><span class="line"><span class="attr">GENERATE_HTML</span>          = <span class="literal">YES</span>     <span class="comment"># 生成HTML文档</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>生成文档：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doxygen Doxyfile  <span class="comment"># 执行配置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="五、高级技巧">五、高级技巧</h2>
+<ol>
+<li>
+<p><strong>生成调用关系图</strong><br>
+在 <code>Doxyfile</code> 中开启：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">HAVE_DOT</span>               = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALL_GRAPH</span>             = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALLER_GRAPH</span>           = <span class="literal">YES</span></span><br></pre></td></tr></table></figure>
+<p>需提前安装 <code>graphviz</code>（见步骤一）。</p>
+</li>
+<li>
+<p><strong>忽略不需要的代码</strong><br>
+用 <code>/// @cond</code> 和 <code>/// @endcond</code> 包裹无需生成文档的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// @cond</span></span><br><span class="line"><span class="comment">// 内部辅助函数，不对外暴露</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">helper</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">/// @endcond</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>集成到 CMake 构建流程</strong><br>
+在 <code>CMakeLists.txt</code> 中添加：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(Doxygen)</span><br><span class="line"><span class="keyword">if</span>(DOXYGEN_FOUND)</span><br><span class="line">    <span class="keyword">add_custom_target</span>(docs</span><br><span class="line">        <span class="keyword">COMMAND</span> doxygen Doxyfile</span><br><span class="line">        WORKING_DIRECTORY <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span></span><br><span class="line">        COMMENT <span class="string">&quot;生成API文档&quot;</span></span><br><span class="line">    )</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<p>之后可通过 <code>make docs</code>（Linux）或 <code>cmake --build . --target docs</code> 生成文档。</p>
+</li>
+</ol>
+<h2 id="六、常见问题">六、常见问题</h2>
+<ul>
+<li><strong>注释不生效？</strong><br>
+确保注释块以 <code>/**</code> 开头（不是 <code>/*</code> 或 <code>//</code>），且标签拼写正确（区分大小写）。</li>
+<li><strong>中文乱码？</strong><br>
+在 <code>Doxyfile</code> 中设置 <code>DOXYFILE_ENCODING = UTF-8</code> 和 <code>OUTPUT_LANGUAGE = Chinese</code>。</li>
+<li><strong>文档缺少函数？</strong><br>
+检查函数是否在 <code>.h</code> 头文件中声明（Doxygen 通常优先解析头文件）。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Doxygen/" rel="tag"># Doxygen</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/19/GDB%E8%B0%83%E8%AF%95%20Memo/" rel="prev" title="GDB调试 Memo">
+                  <i class="fa fa-angle-left"></i> GDB调试 Memo
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:12</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
