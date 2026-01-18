@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://1613661434.github.io/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/assets/Snipaste_2025-08-14_11-49-39.png">
 <meta property="article:published_time" content="2025-12-30T10:56:35.000Z">
-<meta property="article:modified_time" content="2026-01-17T12:04:14.328Z">
+<meta property="article:modified_time" content="2026-01-18T10:35:53.290Z">
 <meta property="article:author" content="ol木子李lo">
 <meta property="article:tag" content="Doxygen">
 <meta name="twitter:card" content="summary">
@@ -264,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-17 20:04:14" itemprop="dateModified" datetime="2026-01-17T20:04:14+08:00">2026-01-17</time>
+      <time title="修改时间：2026-01-18 18:35:53" itemprop="dateModified" datetime="2026-01-18T18:35:53+08:00">2026-01-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -314,7 +314,7 @@
 <h3 id="3-macOS">3. macOS</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install doxygen graphviz</span><br></pre></td></tr></table></figure>
 <h2 id="二、基本注释规则">二、基本注释规则</h2>
-<p>Doxygen 通过识别特定格式的注释生成文档，核心是 <strong><code>/\** ... \*/</code></strong> 风格的注释块，配合标签（<code>@tag</code>）描述代码信息。</p>
+<p>Doxygen 通过识别特定格式的注释生成文档，核心是 <strong><code>/** ... */</code></strong> 风格的注释块，配合标签（<code>@tag</code>）描述代码信息。</p>
 <h3 id="1-函数-方法注释">1. 函数 / 方法注释</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 计算两个整数的和</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 支持正数、负数和零的加法运算，返回结果不会溢出（假设输入在 int 范围内）</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param a 第一个加数</span></span><br><span class="line"><span class="comment"> * @param b 第二个加数</span></span><br><span class="line"><span class="comment"> * @return 两数之和（int 类型）</span></span><br><span class="line"><span class="comment"> * @note 若输入超出 int 范围，可能导致未定义行为</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-类-结构体注释">2. 类 / 结构体注释</h3>
