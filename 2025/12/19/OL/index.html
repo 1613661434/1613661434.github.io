@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="ol木子李lo的博客">
 <meta property="og:description" content="一个C++工具库，提供基础功能、多数据库交互、FTP 客户端支持及 Linux 专属的高性能网络通信能力">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg">
+<meta property="og:image" content="https://img.shields.io/badge/License-MIT-blue.svg">
 <meta property="article:published_time" content="2025-12-19T07:03:00.000Z">
-<meta property="article:modified_time" content="2026-01-17T11:57:58.695Z">
+<meta property="article:modified_time" content="2026-01-20T11:25:03.788Z">
 <meta property="article:author" content="ol木子李lo">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg">
+<meta name="twitter:image" content="https://img.shields.io/badge/License-MIT-blue.svg">
 
 
 <link rel="canonical" href="https://1613661434.github.io/2025/12/19/OL/">
@@ -163,7 +163,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">OL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9C-%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">📜 许可证信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CC-BY-4-0-%E6%A0%B8%E5%BF%83%E6%9D%A1%E6%AC%BE%EF%BC%88%E9%80%9A%E4%BF%97%E8%A7%A3%E8%AF%BB%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">CC BY 4.0 核心条款（通俗解读）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">🎯 核心功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9A-%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3%E8%A7%84%E8%8C%83"><span class="nav-number">1.3.</span> <span class="nav-text">📚 代码文档规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%B3%A8%E9%87%8A%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.3.1.</span> <span class="nav-text">示例注释风格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9A%99%EF%B8%8F-%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.</span> <span class="nav-text">⚙️ 环境依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.1.</span> <span class="nav-text">基础依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%89%B9%E5%AE%9A%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.2.</span> <span class="nav-text">模块特定依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A7-CMake-%E7%BC%93%E5%AD%98%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">1.5.</span> <span class="nav-text">🔧 CMake 缓存变量说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 通用配置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ollib-%E5%BA%93%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. ollib 库配置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-oldblib-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. oldblib 数据库模块配置变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL-%E6%A8%A1%E5%9D%97%EF%BC%88%E9%9C%80%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FMYSQL-HOME%EF%BC%89"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">MySQL 模块（需依赖环境变量MYSQL_HOME）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Oracle-%E6%A8%A1%E5%9D%97%EF%BC%88%E9%9C%80%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FORACLE-HOME%EF%BC%89"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Oracle 模块（需依赖环境变量ORACLE_HOME）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.5.4.</span> <span class="nav-text">变量使用示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9D-%E7%BC%96%E7%A0%81%E4%B8%8E%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83"><span class="nav-number">1.6.</span> <span class="nav-text">📝 编码与格式规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A8-%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.7.</span> <span class="nav-text">🔨 编译步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E5%B9%B3%E5%8F%B0%EF%BC%88%E5%90%AB%E7%BD%91%E7%BB%9C%E5%BA%93%E7%BC%96%E8%AF%91%EF%BC%89"><span class="nav-number">1.7.1.</span> <span class="nav-text">Linux 平台（含网络库编译）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-%E5%B9%B3%E5%8F%B0%EF%BC%88%E4%B8%8D%E5%90%AB%E7%BD%91%E7%BB%9C%E5%BA%93%EF%BC%89"><span class="nav-number">1.7.2.</span> <span class="nav-text">Windows 平台（不含网络库）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MSVC-%E7%BC%96%E8%AF%91"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">MSVC 编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MinGW-%E7%BC%96%E8%AF%91"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">MinGW 编译</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9A%A0%EF%B8%8F-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.8.</span> <span class="nav-text">⚠️ 注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3"><span class="nav-number">1.8.1.</span> <span class="nav-text">终端乱码解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8B-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="nav-number">1.9.</span> <span class="nav-text">📋 目录结构说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8B-%E7%BD%91%E7%BB%9C%E5%BA%93%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%BB%85%E9%99%90-Linux%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">📋 网络库详细介绍（仅限 Linux）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.10.1.</span> <span class="nav-text">1. 架构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">1.10.2.</span> <span class="nav-text">2. 核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B8%E5%9E%8B%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.10.3.</span> <span class="nav-text">3. 典型使用场景</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">OL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9C-%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">📜 许可证信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MIT-License-%E6%A0%B8%E5%BF%83%E6%9D%A1%E6%AC%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">MIT License 核心条款</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8E%AF-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">🎯 核心功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9A-%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3%E8%A7%84%E8%8C%83"><span class="nav-number">1.3.</span> <span class="nav-text">📚 代码文档规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%B3%A8%E9%87%8A%E9%A3%8E%E6%A0%BC"><span class="nav-number">1.3.1.</span> <span class="nav-text">示例注释风格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9A%99%EF%B8%8F-%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.</span> <span class="nav-text">⚙️ 环境依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.1.</span> <span class="nav-text">基础依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%89%B9%E5%AE%9A%E4%BE%9D%E8%B5%96"><span class="nav-number">1.4.2.</span> <span class="nav-text">模块特定依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A7-CMake-%E7%BC%93%E5%AD%98%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">1.5.</span> <span class="nav-text">🔧 CMake 缓存变量说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">1. 通用配置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-ollib-%E5%BA%93%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. ollib 库配置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-oldblib-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. oldblib 数据库模块配置变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL-%E6%A8%A1%E5%9D%97%EF%BC%88%E9%9C%80%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FMYSQL-HOME%EF%BC%89"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">MySQL 模块（需依赖环境变量MYSQL_HOME）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Oracle-%E6%A8%A1%E5%9D%97%EF%BC%88%E9%9C%80%E4%BE%9D%E8%B5%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8FORACLE-HOME%EF%BC%89"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Oracle 模块（需依赖环境变量ORACLE_HOME）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.5.4.</span> <span class="nav-text">变量使用示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%9D-%E7%BC%96%E7%A0%81%E4%B8%8E%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83"><span class="nav-number">1.6.</span> <span class="nav-text">📝 编码与格式规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A8-%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.7.</span> <span class="nav-text">🔨 编译步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-%E5%B9%B3%E5%8F%B0%EF%BC%88%E5%90%AB%E7%BD%91%E7%BB%9C%E5%BA%93%E7%BC%96%E8%AF%91%EF%BC%89"><span class="nav-number">1.7.1.</span> <span class="nav-text">Linux 平台（含网络库编译）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-%E5%B9%B3%E5%8F%B0%EF%BC%88%E4%B8%8D%E5%90%AB%E7%BD%91%E7%BB%9C%E5%BA%93%EF%BC%89"><span class="nav-number">1.7.2.</span> <span class="nav-text">Windows 平台（不含网络库）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MSVC-%E7%BC%96%E8%AF%91"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">MSVC 编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MinGW-%E7%BC%96%E8%AF%91"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">MinGW 编译</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9A%A0%EF%B8%8F-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.8.</span> <span class="nav-text">⚠️ 注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3"><span class="nav-number">1.8.1.</span> <span class="nav-text">终端乱码解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8B-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="nav-number">1.9.</span> <span class="nav-text">📋 目录结构说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8B-%E7%BD%91%E7%BB%9C%E5%BA%93%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%BB%85%E9%99%90-Linux%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">📋 网络库详细介绍（仅限 Linux）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.10.1.</span> <span class="nav-text">1. 架构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">1.10.2.</span> <span class="nav-text">2. 核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B8%E5%9E%8B%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.10.3.</span> <span class="nav-text">3. 典型使用场景</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-01-17 19:57:58" itemprop="dateModified" datetime="2026-01-17T19:57:58+08:00">2026-01-17</time>
+      <time title="修改时间：2026-01-20 19:25:03" itemprop="dateModified" datetime="2026-01-20T19:25:03+08:00">2026-01-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,21 +307,15 @@
 <p>一个包含 <code>ollib</code>（含<strong>主从 Reactor 多线程网络库</strong>）、<code>oldblib</code>（MySQL/Oracle 数据库交互）及 FTP 功能的 C++ 工具库，提供基础功能、多数据库交互、FTP 客户端支持及 Linux 专属的高性能网络通信能力。</p>
 <p><strong>项目地址</strong>：<a target="_blank" rel="noopener" href="https://github.com/1613661434/OL">https://github.com/1613661434/OL</a></p>
 <h2 id="📜-许可证信息">📜 许可证信息</h2>
-<p><img src="https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg" alt="License: CC BY 4.0"></p>
-<p>本项目所有代码（含基础功能、网络库、数据库交互模块、FTP 客户端模块及内置依赖）均以 <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong> 许可证发布，完整法律文本见 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/legalcode">CC BY 4.0 官方协议</a>。</p>
-<h3 id="CC-BY-4-0-核心条款（通俗解读）">CC BY 4.0 核心条款（通俗解读）</h3>
+<p><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></p>
+<p>本项目所有代码均以 <strong>MIT License</strong> 许可证发布，完整法律文本见 <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">MIT 官方协议</a>。</p>
+<h3 id="MIT-License-核心条款">MIT License 核心条款</h3>
 <p>你可以<strong>自由地</strong>：</p>
 <ul>
-<li>
-<p><strong>共享</strong>：以任何媒介 / 格式复制、分发本项目代码或文档（包括商业用途）；</p>
-</li>
-<li>
-<p><strong>改编</strong>：对代码进行修改、扩展、集成到其他项目（包括商业项目），无需额外申请授权。</p>
-</li>
-</ul>
-<p>需遵守的<strong>唯一核心义务</strong>：</p>
-<ul>
-<li><strong>署名（Attribution）</strong>：使用或分发本项目代码 / 衍生作品时，需注明本项目来源（格式建议：“基于 ol 木子李 lo 开发的 OL 库”），并提供 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 许可证链接</a>。</li>
+<li><strong>使用</strong>：以任何目的（包括商业用途）运行、复制、使用本项目代码或文档；</li>
+<li><strong>修改</strong>：对代码进行修改、扩展、集成到其他项目（包括商业项目），无需额外申请授权；</li>
+<li><strong>分发</strong>：复制、分发本项目代码或衍生作品（包括商用分发）。 需遵守的<strong>唯一核心义务</strong>：</li>
+<li><strong>保留声明</strong>：使用、修改或分发本项目代码 / 衍生作品时，需在所有副本或实质性部分中保留原始的版权声明和 MIT 许可证权限通知（无需指定固定署名格式，可自愿标注来源）。</li>
 </ul>
 <h2 id="🎯-核心功能">🎯 核心功能</h2>
 <ul>
@@ -348,7 +342,7 @@
 </ul>
 </li>
 <li>
-<p><code>ol_ftp</code>：FTP 客户端模块，基于内置<a target="_blank" rel="noopener" href="https://github.com/codebrainz/ftplib">ft</a><a target="_blank" rel="noopener" href="https://github.com/codebrainz/ftplib">plib</a>（路径<code>third_party/ftplib</code>），支持文件上传 / 下载、目录操作、文件列表获取。</p>
+<p><code>ol_ftp</code>：FTP 客户端模块，基于内置<a target="_blank" rel="noopener" href="https://github.com/codebrainz/ftplib">ftplib</a>（路径<code>third_party/ftplib</code>），支持文件上传 / 下载、目录操作、文件列表获取。</p>
 </li>
 </ul>
 <h2 id="📚-代码文档规范">📚 代码文档规范</h2>
@@ -663,13 +657,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/12/11/%E6%B1%87%E7%BC%96%20Memo/" rel="prev" title="汇编 Memo">
-                  <i class="fa fa-angle-left"></i> 汇编 Memo
+                <a href="/2025/12/19/Linux-Command%20Memo/" rel="prev" title="Linux-Command Memo">
+                  <i class="fa fa-angle-left"></i> Linux-Command Memo
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/12/19/Linux-Command%20Memo/" rel="next" title="Linux-Command Memo">
-                  Linux-Command Memo <i class="fa fa-angle-right"></i>
+                <a href="/2025/12/19/ASCII%E7%A0%81%E8%A1%A8/" rel="next" title="ASCII码表">
+                  ASCII码表 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
