@@ -3464,8 +3464,8 @@
 <p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTUxYmM4YjNiMWRkNDI0ZTAwNTdjNGQzZDNjZjYyYjdfNjA0ZGQ1YmZkNGE2YWYyOTM3YmFiNjA4MzhjNGVmODBfSUQ6NzYzNzczNTA0MzIzNDA0MDc2OF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDAzNTIxZTYwZjBjZmVlOTNlNjJkMmZmNTdlMGNiOGFfYjZhZmJmMDZjYTg4MjU5YjE2OTU1MDFkMzBmODYyMGZfSUQ6NzYzNzczNTAzODYxMzkxNjY0MF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDk2MjFjMDU4YzI2MDQ0YzAxNDI5M2EyOWZlZGFkNzJfZTZhZTUwNzJiNTkyMTAzMWQyYWFlZDhhMjQyOGRkZGFfSUQ6NzYzNzczNTA0MzQ1NjQ2OTk2Nl8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OWZhYzRjMWFjOTRhZGNkYzVhNjdiMzQ0ZTJmYTZmODRfYzU2NDdkMjVmYzA2ZDQ4YjJhNWMxYWYyY2Y0MzM5MTRfSUQ6NzYzNzczNTA0MDI0ODAwNzYyN18xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"></p>
 <p>一个包含 <code>ol_core</code>（基础工具库）、<code>ol_network</code>（<strong>Linux 主从 Reactor 多线程网络库</strong>）、<code>ol_database</code>（MySQL/Oracle 数据库交互）及 <code>ol_ftp</code>（FTP 客户端）的 C++ 工具库，提供模块化编译、跨平台支持及 Linux 专属高性能网络通信能力。</p>
 <blockquote>
-<p><strong>作者：ol木子李lo（简称:ol）</strong><br>
-<strong>GitHub项目地址</strong>：<a href="https://github.com/1613661434/OL">https://github.com/1613661434/OL</a></p>
+<p><strong>作者：ol木子李lo（简称:ol）</strong></p>
+<p><strong>GitHub项目地址</strong>：<a href="https://github.com/1613661434/OL">https://github.com/1613661434/OL</a></p>
 </blockquote>
 <h2 id="📜-许可证信息">📜 许可证信息</h2>
 <p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTUxYmM4YjNiMWRkNDI0ZTAwNTdjNGQzZDNjZjYyYjdfNjA0ZGQ1YmZkNGE2YWYyOTM3YmFiNjA4MzhjNGVmODBfSUQ6NzYzNzczNTA0MzIzNDA0MDc2OF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"></p>
@@ -3507,7 +3507,7 @@
 <p>MySQL：基于 MySQL C API 封装，支持连接管理、SQL 执行、BLOB/TEXT 大字段；</p>
 </li>
 <li>
-<p>Oracle：基于 OCI 接口封装，支持连接管理、SQL 执行、BLOB/CLOB 大字段。<strong>(暂不支持连接池，未改为新版本，请等待作者更新)</strong></p>
+<p>Oracle：基于 OCI 接口封装，支持连接管理、SQL 执行、BLOB/CLOB 大字段。</p>
 </li>
 </ul>
 </li>
@@ -3751,8 +3751,8 @@
 </ol>
 <h3 id="Windows-终端乱码修复">Windows 终端乱码修复</h3>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$OutputEncoding</span> = [<span class="type">Console</span>::<span class="type">InputEncoding</span>] = [<span class="type">Console</span>::<span class="type">OutputEncoding</span>] = [<span class="type">System.Text.UTF8Encoding</span>]::UTF8</span><br></pre></td></tr></table></figure>
-<h2 id="📋-新版项目目录结构">📋 新版项目目录结构</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── ol_core/          <span class="comment"># 核心基础工具库（必选）</span></span><br><span class="line">├── ol_ftp/           <span class="comment"># FTP客户端模块（可选）</span></span><br><span class="line">├── ol_network/       <span class="comment"># Linux主从Reactor网络库（可选）</span></span><br><span class="line">├── ol_database/      <span class="comment"># 数据库模块（MySQL/Oracle，可选）</span></span><br><span class="line">│   ├── mysql/        <span class="comment"># MySQL子模块</span></span><br><span class="line">│   └── oracle/       <span class="comment"># Oracle子模块（老版本，暂不支持连接池）</span></span><br><span class="line">├── third_party/      <span class="comment"># 第三方依赖库</span></span><br><span class="line">│   └── ftplib/       <span class="comment"># FTP底层依赖库</span></span><br><span class="line">├── docs/             <span class="comment"># 项目文档</span></span><br><span class="line">└── CMakeLists.txt    <span class="comment"># 新版主构建配置</span></span><br></pre></td></tr></table></figure>
+<h2 id="📋-项目目录结构">📋 项目目录结构</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── ol_core/          <span class="comment"># 核心基础工具库（必选）</span></span><br><span class="line">├── ol_ftp/           <span class="comment"># FTP客户端模块（可选）</span></span><br><span class="line">├── ol_network/       <span class="comment"># Linux主从Reactor网络库（可选）</span></span><br><span class="line">├── ol_database/      <span class="comment"># 数据库模块（MySQL/Oracle，可选）</span></span><br><span class="line">│   ├── mysql/        <span class="comment"># MySQL子模块</span></span><br><span class="line">│   └── oracle/       <span class="comment"># Oracle子模块</span></span><br><span class="line">├── third_party/      <span class="comment"># 第三方依赖库</span></span><br><span class="line">│   └── ftplib/       <span class="comment"># FTP底层依赖库</span></span><br><span class="line">├── docs/             <span class="comment"># 项目文档</span></span><br><span class="line">└── CMakeLists.txt    <span class="comment"># 新版主构建配置</span></span><br></pre></td></tr></table></figure>
 <h2 id="📋-ol-network-网络库详解（Linux-专属）">📋 ol_network 网络库详解（Linux 专属）</h2>
 <h3 id="架构设计">架构设计</h3>
 <p><strong>主从 Reactor 多线程模型</strong>：</p>
