@@ -3461,27 +3461,26 @@
     <title>OL</title>
     <url>/2025/12/19/OL/</url>
     <content><![CDATA[<h1>OL</h1>
-<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTUxYmM4YjNiMWRkNDI0ZTAwNTdjNGQzZDNjZjYyYjdfNjA0ZGQ1YmZkNGE2YWYyOTM3YmFiNjA4MzhjNGVmODBfSUQ6NzYzNzczNTA0MzIzNDA0MDc2OF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDAzNTIxZTYwZjBjZmVlOTNlNjJkMmZmNTdlMGNiOGFfYjZhZmJmMDZjYTg4MjU5YjE2OTU1MDFkMzBmODYyMGZfSUQ6NzYzNzczNTAzODYxMzkxNjY0MF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDk2MjFjMDU4YzI2MDQ0YzAxNDI5M2EyOWZlZGFkNzJfZTZhZTUwNzJiNTkyMTAzMWQyYWFlZDhhMjQyOGRkZGFfSUQ6NzYzNzczNTA0MzQ1NjQ2OTk2Nl8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"> <img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OWZhYzRjMWFjOTRhZGNkYzVhNjdiMzQ0ZTJmYTZmODRfYzU2NDdkMjVmYzA2ZDQ4YjJhNWMxYWYyY2Y0MzM5MTRfSUQ6NzYzNzczNTA0MDI0ODAwNzYyN18xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"></p>
-<p>一个包含 <code>ol_core</code>（基础工具库）、<code>ol_network</code>（<strong>Linux 主从 Reactor 多线程网络库</strong>）、<code>ol_database</code>（MySQL/Oracle 数据库交互）及 <code>ol_ftp</code>（FTP 客户端）的 C++ 工具库，提供模块化编译、跨平台支持及 Linux 专属高性能网络通信能力。</p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a><br>
+<a href="https://isocpp.org/"><img src="https://img.shields.io/badge/C%2B%2B-17%2B-%2300599C?logo=c%2B%2B" alt="C++"></a><br>
+<a href="https://github.com/1613661434/OL"><img src="https://img.shields.io/badge/platform-Linux%20%7C%20Windows-%23808080?logo=linux" alt="Platform"></a><br>
+<a href="https://cmake.org/"><img src="https://img.shields.io/badge/build-CMake%203.10%2B-%23064F8C?logo=cmake" alt="CMake"></a><br>
+<a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/database-MySQL%205.7%2B-%234479A1?logo=mysql" alt="MySQL"></a><br>
+<a href="https://www.oracle.com/database/"><img src="https://img.shields.io/badge/database-Oracle%2011g%2B-%23F80000?logo=oracle" alt="Oracle"></a></p>
+<p>一个包含 <code>ol_core</code>（基础工具库）、<code>ol_network</code>（<strong>Linux 主从 Reactor 多线程网络库</strong>）、<code>ol_database</code>（MySQL/Oracle 数据库交互）及 <code>ol_ftp</code>（FTP 客户端）的 C++17 工具库，提供模块化编译、跨平台支持及 Linux 专属高性能网络通信能力。</p>
 <blockquote>
 <p><strong>作者：ol木子李lo（简称:ol）</strong></p>
 <p><strong>GitHub项目地址</strong>：<a href="https://github.com/1613661434/OL">https://github.com/1613661434/OL</a></p>
 </blockquote>
 <h2 id="📜-许可证信息">📜 许可证信息</h2>
-<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTUxYmM4YjNiMWRkNDI0ZTAwNTdjNGQzZDNjZjYyYjdfNjA0ZGQ1YmZkNGE2YWYyOTM3YmFiNjA4MzhjNGVmODBfSUQ6NzYzNzczNTA0MzIzNDA0MDc2OF8xNzc4Mjk4Nzc1OjE3NzgzODUxNzVfVjM" alt="Image"></p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a></p>
 <p>本项目所有代码均以 <strong>MIT License</strong> 许可证发布，完整法律文本见 <a href="https://opensource.org/licenses/MIT">MIT 官方协议</a>。</p>
 <h3 id="MIT-License-核心条款">MIT License 核心条款</h3>
 <p>你可以<strong>自由地</strong>：</p>
 <ul>
-<li>
-<p><strong>使用</strong>：以任何目的（包括商业用途）运行、复制、使用本项目代码或文档；</p>
-</li>
-<li>
-<p><strong>修改</strong>：对代码进行修改、扩展、集成到其他项目（包括商业项目），无需额外申请授权；</p>
-</li>
-<li>
-<p><strong>分发</strong>：复制、分发本项目代码或衍生作品（包括商用分发）。</p>
-</li>
+<li><strong>使用</strong>：以任何目的（包括商业用途）运行、复制、使用本项目代码或文档；</li>
+<li><strong>修改</strong>：对代码进行修改、扩展、集成到其他项目（包括商业项目），无需额外申请授权；</li>
+<li><strong>分发</strong>：复制、分发本项目代码或衍生作品（包括商用分发）。</li>
 </ul>
 <p>需遵守的<strong>唯一核心义务</strong>：</p>
 <ul>
@@ -3492,7 +3491,7 @@
 <ul>
 <li>
 <p><code>ol_core</code>：<strong>核心基础库（必选）</strong><br>
-提供高频通用能力：文件 IO、时间处理、字符串操作、线程池、通用数据结构（哈希、前缀树等）。</p>
+提供高频通用能力：文件 IO、时间处理、字符串操作、动态线程池（支持固定/动态扩缩容双模式）、通用数据结构（哈希、前缀树等）。</p>
 </li>
 <li>
 <p><code>ol_network</code>：<strong>高性能网络库（仅限 Linux）</strong><br>
@@ -3501,7 +3500,7 @@
 </li>
 <li>
 <p><code>ol_database</code>：<strong>多数据库交互模块</strong><br>
-统一接口封装，支持双数据库，可独立开关：</p>
+统一接口封装，支持双数据库，已适配连接池，可独立开关：</p>
 <ul>
 <li>
 <p>MySQL：基于 MySQL C API 封装，支持连接管理、SQL 执行、BLOB/TEXT 大字段；</p>
@@ -3519,36 +3518,22 @@
 <h2 id="📚-代码文档规范">📚 代码文档规范</h2>
 <p>本项目所有头文件（<code>.h</code>）均遵循 <strong>Doxygen 注释规范</strong>：</p>
 <ul>
-<li>
-<p>函数 / 类 / 结构体包含 <code>@brief</code>（功能）、<code>@param</code>（参数）、<code>@return</code>（返回值）、<code>@note</code>（注意事项）；</p>
-</li>
-<li>
-<p>支持自动生成 HTML/PDF API 文档；</p>
-</li>
-<li>
-<p>主流 IDE（VS Code、CLion）原生支持智能提示。</p>
-</li>
+<li>函数 / 类 / 结构体包含 <code>@brief</code>（功能）、<code>@param</code>（参数）、<code>@return</code>（返回值）、<code>@note</code>（注意事项）；</li>
+<li>描述文字使用中文，面向开发者的信息（异常、断言、错误消息）使用英文；</li>
+<li>支持自动生成 HTML/PDF API 文档；</li>
+<li>主流 IDE（VS Code、CLion）原生支持智能提示。</li>
 </ul>
 <h3 id="示例注释">示例注释</h3>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 根据绝对路径逐级创建目录</span></span><br><span class="line"><span class="comment"> * @param pathorfilename 绝对路径的文件名或目录名</span></span><br><span class="line"><span class="comment"> * @param bisfilename 指定pathorfilename类型（true-文件名，false-目录名，默认true）</span></span><br><span class="line"><span class="comment"> * @return true-成功，false-失败</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">newdir</span><span class="params">(<span class="type">const</span> std::string&amp; pathorfilename, <span class="type">bool</span> bisfilename = <span class="literal">true</span>)</span></span>;</span><br></pre></td></tr></table></figure>
 <h2 id="⚙️-环境依赖">⚙️ 环境依赖</h2>
 <h3 id="基础依赖">基础依赖</h3>
 <ul>
-<li>
-<p>构建工具：CMake 3.10+</p>
-</li>
-<li>
-<p>编译器：C++17 兼容（GCC 8+/Clang 7+/MSVC 2019+/MinGW 8+）</p>
-</li>
-<li>
-<p>操作系统：</p>
+<li>构建工具：CMake 3.10+</li>
+<li>编译器：C++17 兼容（GCC 8+/Clang 7+/MSVC 2019+/MinGW 8+）</li>
+<li>操作系统：
 <ul>
-<li>
-<p><code>ol_network</code>：<strong>仅限 Linux（内核 2.6+，支持 epoll）</strong></p>
-</li>
-<li>
-<p>其他模块：Windows 10+/Linux CentOS 7+/Ubuntu 18.04+</p>
-</li>
+<li><code>ol_network</code>：<strong>仅限 Linux（内核 2.6+，支持 epoll）</strong></li>
+<li>其他模块：Windows 10+/Linux CentOS 7+/Ubuntu 18.04+</li>
 </ul>
 </li>
 </ul>
@@ -3710,18 +3695,13 @@
 </tbody>
 </table>
 <h3 id="配置示例">配置示例</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 示例1：Linux 编译 Debug 版 + 开启网络库 + 启用网络测试</span></span><br><span class="line">cmake .. -DCMAKE_BUILD_TYPE=Debug -DOL_BUILD_NETWORK=ON -DOL_NETWORK_WITH_TESTS=ON</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2：Windows 仅编译核心+MySQL，关闭动态库</span></span><br><span class="line">cmake .. -DOL_BUILD_DATABASE=ON -DOL_BUILD_MYSQL=ON -DOL_BUILD_ORACLE=OFF -DOL_BUILD_SHARED_LIBS=OFF</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例3：全功能开启（核心+网络+数据库+FTP+所有测试）</span></span><br><span class="line">cmake .. -DOL_BUILD_FTP=ON -DOL_BUILD_NETWORK=ON -DOL_BUILD_ORACLE=ON -D*_WITH_TESTS=ON</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 示例1：Linux 编译 Debug 版 + 开启网络库 + 启用网络测试</span></span><br><span class="line">cmake .. -DCMAKE_BUILD_TYPE=Debug -DOL_BUILD_NETWORK=ON -DOL_NETWORK_WITH_TESTS=ON</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例2：Windows 仅编译核心+MySQL，关闭动态库</span></span><br><span class="line">cmake .. -DOL_BUILD_DATABASE=ON -DOL_BUILD_MYSQL=ON -DOL_BUILD_ORACLE=OFF -DOL_BUILD_SHARED_LIBS=OFF</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例3：Linux 开启 Oracle + 测试（关闭 MySQL）</span></span><br><span class="line">cmake .. -DOL_BUILD_DATABASE=ON -DOL_BUILD_MYSQL=OFF -DOL_BUILD_ORACLE=ON -DOL_ORACLE_WITH_TESTS=ON</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例4：全功能开启（核心+网络+数据库+FTP+所有测试）</span></span><br><span class="line">cmake .. -DOL_BUILD_FTP=ON -DOL_BUILD_NETWORK=ON -DOL_BUILD_MYSQL=ON -DOL_BUILD_ORACLE=ON -D*_WITH_TESTS=ON</span><br></pre></td></tr></table></figure>
 <h2 id="📝-编码规范">📝 编码规范</h2>
 <ol>
-<li>
-<p><strong>字符集</strong>：所有文件采用 <strong>UTF-8（无 BOM）</strong>，跨平台无乱码；</p>
-</li>
-<li>
-<p><strong>换行符</strong>：统一使用 <strong>LF（\n）</strong>，避免 Git 冲突；</p>
-</li>
-<li>
-<p><strong>编译约束</strong>：禁止源码内编译（out-of-source build），必须创建独立 build 目录。</p>
-</li>
+<li><strong>字符集</strong>：所有文件采用 <strong>UTF-8（无 BOM）</strong>，跨平台无乱码；</li>
+<li><strong>换行符</strong>：统一使用 <strong>LF（\n）</strong>，避免 Git 冲突；</li>
+<li><strong>编译约束</strong>：禁止源码内编译（out-of-source build），必须创建独立 build 目录；</li>
+<li><strong>调试宏</strong>：项目使用 <code>OL_DEBUG</code> 宏控制调试输出，不与编译器 <code>DEBUG</code> 宏冲突。</li>
 </ol>
 <h2 id="🔨-编译步骤">🔨 编译步骤</h2>
 <h3 id="Linux-平台（支持网络库）">Linux 平台（支持网络库）</h3>
@@ -3733,39 +3713,32 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/1613661434/OL.git</span><br><span class="line"><span class="built_in">cd</span> OL</span><br><span class="line"><span class="built_in">mkdir</span> build &amp;&amp; <span class="built_in">cd</span> build</span><br><span class="line">cmake .. -G <span class="string">&quot;MinGW Makefiles&quot;</span></span><br><span class="line">mingw32-make -j4</span><br></pre></td></tr></table></figure>
 <h2 id="⚠️-注意事项">⚠️ 注意事项</h2>
 <ol>
-<li>
-<p><strong>平台限制</strong>：<code>ol_network</code> 仅支持 Linux，Windows 下自动跳过编译；</p>
-</li>
-<li>
-<p><strong>测试依赖</strong>：开启任意测试后，CMake <strong>强制启用静态库编译</strong>；</p>
-</li>
-<li>
-<p><strong>第三方库</strong>：<code>third_party/ftplib</code> 为内置依赖，禁止修改目录结构；</p>
-</li>
-<li>
-<p><strong>数据库适配</strong>：编译前必须配置对应数据库的环境变量（<code>MYSQL_HOME</code>/<code>ORACLE_HOME</code>）；</p>
-</li>
-<li>
-<p><strong>Windows 乱码</strong>：PowerShell 执行编码命令可修复中文乱码。</p>
-</li>
+<li><strong>平台限制</strong>：<code>ol_network</code> 仅支持 Linux，Windows 下自动跳过编译；</li>
+<li><strong>测试依赖</strong>：开启任意测试后，CMake <strong>强制启用静态库编译</strong>；</li>
+<li><strong>第三方库</strong>：<code>third_party/ftplib</code> 为内置依赖，禁止修改目录结构；</li>
+<li><strong>数据库适配</strong>：编译前必须配置对应数据库的环境变量（<code>MYSQL_HOME</code>/<code>ORACLE_HOME</code>）；</li>
+<li><strong>Windows 乱码</strong>：PowerShell 执行编码命令可修复中文乱码。</li>
 </ol>
 <h3 id="Windows-终端乱码修复">Windows 终端乱码修复</h3>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$OutputEncoding</span> = [<span class="type">Console</span>::<span class="type">InputEncoding</span>] = [<span class="type">Console</span>::<span class="type">OutputEncoding</span>] = [<span class="type">System.Text.UTF8Encoding</span>]::UTF8</span><br></pre></td></tr></table></figure>
 <h2 id="📋-项目目录结构">📋 项目目录结构</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── ol_core/          <span class="comment"># 核心基础工具库（必选）</span></span><br><span class="line">├── ol_ftp/           <span class="comment"># FTP客户端模块（可选）</span></span><br><span class="line">├── ol_network/       <span class="comment"># Linux主从Reactor网络库（可选）</span></span><br><span class="line">├── ol_database/      <span class="comment"># 数据库模块（MySQL/Oracle，可选）</span></span><br><span class="line">│   ├── mysql/        <span class="comment"># MySQL子模块</span></span><br><span class="line">│   └── oracle/       <span class="comment"># Oracle子模块</span></span><br><span class="line">├── third_party/      <span class="comment"># 第三方依赖库</span></span><br><span class="line">│   └── ftplib/       <span class="comment"># FTP底层依赖库</span></span><br><span class="line">├── docs/             <span class="comment"># 项目文档</span></span><br><span class="line">└── CMakeLists.txt    <span class="comment"># 新版主构建配置</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── CMakeLists.txt            # 顶层构建配置</span><br><span class="line">├── README.md                 # 项目说明文档</span><br><span class="line">├── LICENSE                   # MIT 许可证</span><br><span class="line">├── clang-format.txt          # 代码格式化配置</span><br><span class="line">├── OL_Doxygen                # Doxygen 文档生成配置</span><br><span class="line">│</span><br><span class="line">├── ol_core/                  # 核心基础工具库（必选）</span><br><span class="line">│   ├── include/              #   头文件（ThreadPool、容器、字符串等）</span><br><span class="line">│   ├── src/                  #   源文件</span><br><span class="line">│   └── test/                 #   测试程序</span><br><span class="line">│</span><br><span class="line">├── ol_database/              # 数据库模块</span><br><span class="line">│   ├── include/              #   IDBConn 抽象接口 + DBPool 连接池</span><br><span class="line">│   ├── mysql/                #   MySQL 子模块</span><br><span class="line">│   │   ├── include/          #     头文件</span><br><span class="line">│   │   ├── src/              #     源文件</span><br><span class="line">│   │   └── test/             #     测试程序 + 测试数据</span><br><span class="line">│   └── oracle/               #   Oracle 子模块</span><br><span class="line">│       ├── include/          #     头文件</span><br><span class="line">│       ├── src/              #     源文件</span><br><span class="line">│       └── test/             #     测试程序 + 测试数据</span><br><span class="line">│</span><br><span class="line">├── ol_network/               # Linux 网络库</span><br><span class="line">│   ├── include/ol_net/       #   头文件</span><br><span class="line">│   ├── src/                  #   源文件</span><br><span class="line">│   └── test/                 #   测试程序（Echo/Bank 示例）</span><br><span class="line">│</span><br><span class="line">├── ol_ftp/                   # FTP 客户端模块</span><br><span class="line">│</span><br><span class="line">├── docs/                     # 项目文档</span><br><span class="line">└── third_party/              # 第三方依赖</span><br><span class="line">    └── ftplib/               #   FTP 底层库</span><br></pre></td></tr></table></figure>
+<h2 id="📋-ol-core-核心库详解">📋 ol_core 核心库详解</h2>
+<h3 id="动态线程池-ol-ThreadPool">动态线程池 <code>ol::ThreadPool</code></h3>
+<ul>
+<li><strong>固定模式</strong>：<code>ol::ThreadPool&lt;false&gt;</code> — 固定线程数，简单可靠；</li>
+<li><strong>动态模式</strong>：<code>ol::ThreadPool&lt;true&gt;</code> — 根据任务负载自动扩缩容，管理者线程定期检查；</li>
+<li><strong>队列策略</strong>：满队列时支持拒绝（kReject）、阻塞等待（kBlock）、超时等待（kTimeout）三种策略；</li>
+<li><strong>双任务接口</strong>：<code>addTask()</code> 无返回值，<code>submitTask()</code> 返回 <code>std::future</code>；</li>
+<li><strong>线程安全</strong>：全原子变量 + 互斥锁 + 条件变量，适配 <code>ol::DBPool</code> 等高性能场景。</li>
+</ul>
 <h2 id="📋-ol-network-网络库详解（Linux-专属）">📋 ol_network 网络库详解（Linux 专属）</h2>
 <h3 id="架构设计">架构设计</h3>
 <p><strong>主从 Reactor 多线程模型</strong>：</p>
 <ul>
-<li>
-<p>主 Reactor：单线程，负责监听新连接；</p>
-</li>
-<li>
-<p>从 Reactor：多线程（默认 = CPU 核心数），负责 IO 事件处理；</p>
-</li>
-<li>
-<p>IO 模型：epoll + 边缘触发（ET）+ 非阻塞 IO，高并发低延迟。</p>
-</li>
+<li>主 Reactor：单线程，负责监听新连接；</li>
+<li>从 Reactor：多线程（默认 = CPU 核心数），负责 IO 事件处理；</li>
+<li>IO 模型：epoll + 边缘触发（ET）+ 非阻塞 IO，高并发低延迟。</li>
 </ul>
 <h3 id="核心组件">核心组件</h3>
 <p><code>EventLoop</code>（事件循环）、<code>Acceptor</code>（连接接收器）、<code>Connection</code>（连接管理）、<code>Buffer</code>（网络缓冲区）、<code>TcpServer</code>（服务端入口）。</p>
