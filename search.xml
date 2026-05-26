@@ -3565,7 +3565,7 @@
 </tbody>
 </table>
 <h2 id="🔧-CMake-配置变量说明">🔧 CMake 配置变量说明</h2>
-<p>所有变量通过 <code>cmake -D&lt;变量名&gt;=&lt;值&gt;</code> 配置，<strong>模块化开关为新版核心特性</strong>。</p>
+<p>所有变量通过 <code>cmake -D&lt;变量名&gt;=&lt;值&gt;</code> 配置。</p>
 <h3 id="1-通用配置">1. 通用配置</h3>
 <table>
 <thead>
@@ -3701,7 +3701,7 @@
 <li><strong>字符集</strong>：所有文件采用 <strong>UTF-8（无 BOM）</strong>，跨平台无乱码；</li>
 <li><strong>换行符</strong>：统一使用 <strong>LF（\n）</strong>，避免 Git 冲突；</li>
 <li><strong>编译约束</strong>：禁止源码内编译（out-of-source build），必须创建独立 build 目录；</li>
-<li><strong>调试宏</strong>：项目使用 <code>OL_DEBUG</code> 宏控制调试输出，不与编译器 <code>DEBUG</code> 宏冲突。</li>
+<li><strong>调试宏</strong>：项目使用 <code>OL_DEBUG</code> 宏控制调试输出。</li>
 </ol>
 <h2 id="🔨-编译步骤">🔨 编译步骤</h2>
 <h3 id="Linux-平台（支持网络库）">Linux 平台（支持网络库）</h3>
