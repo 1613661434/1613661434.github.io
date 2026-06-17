@@ -3722,7 +3722,7 @@
 <h3 id="Windows-终端乱码修复">Windows 终端乱码修复</h3>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$OutputEncoding</span> = [<span class="type">Console</span>::<span class="type">InputEncoding</span>] = [<span class="type">Console</span>::<span class="type">OutputEncoding</span>] = [<span class="type">System.Text.UTF8Encoding</span>]::UTF8</span><br></pre></td></tr></table></figure>
 <h2 id="📋-项目目录结构">📋 项目目录结构</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── CMakeLists.txt            # 顶层构建配置</span><br><span class="line">├── README.md                 # 项目说明文档</span><br><span class="line">├── LICENSE                   # 许可证</span><br><span class="line">├── clang-format.txt          # 代码格式化配置</span><br><span class="line">│</span><br><span class="line">├── ol_core/                  # 核心基础工具库（必选）</span><br><span class="line">│   ├── include/              ## 头文件（ThreadPool、容器、字符串等）</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序</span><br><span class="line">│</span><br><span class="line">├── ol_database/              # 数据库模块</span><br><span class="line">│   ├── include/              ## IDBConn 抽象接口 + DBPool 连接池</span><br><span class="line">│   ├── mysql/                ## MySQL 子模块</span><br><span class="line">│   │   ├── include/          ### 头文件</span><br><span class="line">│   │   ├── src/              ### 源文件</span><br><span class="line">│   │   └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│   └── oracle/               ## Oracle 子模块</span><br><span class="line">│       ├── include/          ### 头文件</span><br><span class="line">│       ├── src/              ### 源文件</span><br><span class="line">│       └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│</span><br><span class="line">├── ol_network/               # Linux 网络库</span><br><span class="line">│   ├── include/ol_net/       ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序（Echo/Bank 示例）</span><br><span class="line">│</span><br><span class="line">├── ol_ftp/                   # FTP 客户端模块</span><br><span class="line">│   ├── include/              ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   ├── test/                 ## 测试程序</span><br><span class="line">│   └── third_party/ftplib/   ## FTP 底层库（内置依赖）</span><br><span class="line">│</span><br><span class="line">└── docs/                     # 项目文档</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OL</span><br><span class="line">├── CMakeLists.txt            # 顶层构建配置</span><br><span class="line">├── README.md                 # 项目说明文档（中文）</span><br><span class="line">├── README_EN.md              # 项目说明文档（英文）</span><br><span class="line">├── LICENSE                   # 许可证</span><br><span class="line">├── clang-format.txt          # 代码格式化配置</span><br><span class="line">│</span><br><span class="line">├── ol_core/                  # 核心基础工具库（必选）</span><br><span class="line">│   ├── include/              ## 头文件（ThreadPool、容器、字符串等）</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序</span><br><span class="line">│</span><br><span class="line">├── ol_database/              # 数据库模块</span><br><span class="line">│   ├── include/              ## IDBConn 抽象接口 + DBPool 连接池</span><br><span class="line">│   ├── mysql/                ## MySQL 子模块</span><br><span class="line">│   │   ├── include/          ### 头文件</span><br><span class="line">│   │   ├── src/              ### 源文件</span><br><span class="line">│   │   └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│   └── oracle/               ## Oracle 子模块</span><br><span class="line">│       ├── include/          ### 头文件</span><br><span class="line">│       ├── src/              ### 源文件</span><br><span class="line">│       └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│</span><br><span class="line">├── ol_network/               # Linux 网络库</span><br><span class="line">│   ├── include/ol_net/       ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序（Echo/Bank 示例）</span><br><span class="line">│</span><br><span class="line">├── ol_ftp/                   # FTP 客户端模块</span><br><span class="line">│   ├── include/              ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   ├── test/                 ## 测试程序</span><br><span class="line">│   └── third_party/ftplib/   ## FTP 底层库（内置依赖）</span><br><span class="line">│</span><br><span class="line">└── docs/                     # 项目文档</span><br></pre></td></tr></table></figure>
 <h2 id="📋-ol-core-核心库详解">📋 ol_core 核心库详解</h2>
 <h3 id="动态线程池-ol-ThreadPool">动态线程池 <code>ol::ThreadPool</code></h3>
 <ul>
@@ -5891,6 +5891,155 @@
       <tags>
         <tag>C++</tag>
         <tag>Qt6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Claude Code</title>
+    <url>/2026/06/17/Claude-Code/</url>
+    <content><![CDATA[<h1>Claude Code</h1>
+<blockquote>
+<p>作者：OL</p>
+<p>参考：</p>
+<p><a href="https://www.bilibili.com/video/BV16YRLB7Exd/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">5分钟安装ClaudeCode并接入DeepSeek</a></p>
+<p><a href="https://www.bilibili.com/video/BV1SddcBFESs/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">10分钟学会24个ClaudeCode使用技巧</a></p>
+<p><a href="https://www.bilibili.com/video/BV1AU5L6dEDC/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">8个Skills平台 + 3种安装方法，一次学会</a></p>
+</blockquote>
+<h2 id="名词解释">名词解释</h2>
+<p><code>Skills</code>:说明书</p>
+<p><code>Agents</code>:智能体</p>
+<p><code>Hooks</code>:勾子</p>
+<p><code>MCP</code>:模型上下文协议（Model Context Protocol）</p>
+<p><code>Plugins</code>:插件</p>
+<h2 id="快捷键">快捷键</h2>
+<p><code>Shift + Tab</code>: 切换模式（<strong>计划模式</strong> 或者 <strong>自动同意编辑模式</strong>）</p>
+<p><code>Ctrl + J</code>:换行</p>
+<p><code>Ctrl + G</code>:打开文本编辑器编辑</p>
+<h2 id="命令">命令</h2>
+<p><code>!</code>:使用shell模式</p>
+<p><code>@</code>:选中文件或者Agent</p>
+<p><code>claude --dangerously-skip-permissions</code>:跳过所有同意（不推荐，非常危险）</p>
+<p><code>/effort</code>:切换思考强度</p>
+<p><code>/exit</code>:退出</p>
+<p><code>/resume</code>:查看最近历史</p>
+<p><code>/init</code>:初始化 <a href="http://CLAUDE.md">CLAUDE.md</a> 文件并写入代码库相关文档（可以把项目规则和技术栈写在里面，每次对话会把这个文件发给模型，文件可能是全英文的，可以使用<code>@CLAUDE.md 帮我翻译成中文</code>的命令来翻译）</p>
+<p><code>/context</code>:查看上下文情况</p>
+<p><code>/compact</code>:压缩上下文空间</p>
+<p><code>/clear</code>:清空上下文</p>
+<p><code>/skills</code>:查看安装的Skill</p>
+<p><code>/agent</code>:管理Agent设置</p>
+<p><code>/plugin</code>:管理 Claude Code 插件</p>
+<h2 id="Skills">Skills</h2>
+<p>可以安装Skill在<code>.claude/skills/</code>(项目级别) 或者 <code>~/.claude/skills/</code>(用户级别)</p>
+<h3 id="Skills下载网站：">Skills下载网站：</h3>
+<p><a href="https://agentskill.sh">AgentSkill</a>:<code>https://agentskill.sh</code></p>
+<p><a href="https://skillsmp.com">~/skillsmp</a>:<code>https://skillsmp.com</code></p>
+<p><a href="https://clawhub.ai">ClawHub</a>:<code>https://clawhub.ai</code></p>
+<p><a href="https://skills.sh">Skills</a>:<code>https://skills.sh</code></p>
+<p><a href="https://claudemarketplaces.com">Claude Market Places</a>:<code>https://claudemarketplaces.com</code></p>
+<p><a href="https://lobehub.com/zh/skills">LobeHub</a>:<code>https://lobehub.com/zh/skills</code></p>
+<p><img src="/2026/06/17/Claude-Code/image-20260516172725823.png" alt="image-20260516172725823"></p>
+<h2 id="Agents">Agents</h2>
+<h2 id="Plugins">Plugins</h2>
+<p>Plugins = Skills + Agents + MCP + Hooks</p>
+<h2 id="六种权限模式">六种权限模式</h2>
+<p>设置方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">claude --permission-mode default</span><br><span class="line">claude --permission-mode acceptEdits</span><br><span class="line">claude --permission-mode plan</span><br><span class="line">claude --permission-mode auto</span><br><span class="line">claude --permission-mode dontAsk</span><br><span class="line">claude --permission-mode bypassPermissions</span><br></pre></td></tr></table></figure>
+<p>启动的时候通过参数传递，会覆盖 settings 文件里的 defaultMode！</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>含义</th>
+<th>适合场景</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>标准权限模式</td>
+<td>日常开发、最稳妥</td>
+<td>低</td>
+</tr>
+<tr>
+<td>acceptEdits</td>
+<td>自动接受文件编辑</td>
+<td>写代码、批量改文件</td>
+<td>中低</td>
+</tr>
+<tr>
+<td>plan</td>
+<td>规划模式</td>
+<td>大重构、复杂任务、先看方案</td>
+<td>低</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>自动模式</td>
+<td>想减少确认，又不想完全放开</td>
+<td>中</td>
+</tr>
+<tr>
+<td>dontAsk</td>
+<td>不询问模式</td>
+<td>非交互、自动化、CI、脚本环境</td>
+<td>中</td>
+</tr>
+<tr>
+<td>bypassPermissions</td>
+<td>跳过权限检查</td>
+<td>容器、沙盒、临时测试环境</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>教学</category>
+      </categories>
+      <tags>
+        <tag>Claude Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>斗地主</title>
+    <url>/2026/06/17/%E6%96%97%E5%9C%B0%E4%B8%BB/</url>
+    <content><![CDATA[<h1>Landlords（斗地主）</h1>
+<p>基于 Qt6 的欢乐斗地主单机游戏，由<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程改编而来，进行了代码优化并适配 Qt6。</p>
+<h2 id="特性">特性</h2>
+<ul>
+<li>🎴 完整的斗地主玩法：叫地主、抢地主、出牌、炸弹、飞机、顺子等</li>
+<li>🤖 智能 AI 对手，支持叫牌和出牌策略</li>
+<li>🎨 多套随机背景，丰富的卡牌动画效果（炸弹、飞机、顺子、连对）</li>
+<li>🎵 背景音乐与音效（出牌、抢地主、倒计时提醒等）</li>
+<li>⏱️ 出牌倒计时，增加游戏紧张感</li>
+<li>💯 得分结算面板，支持连续多局对战</li>
+</ul>
+<h2 id="技术栈">技术栈</h2>
+<ul>
+<li><strong>语言：</strong> C++17</li>
+<li><strong>框架：</strong> Qt 6.5+（Core / Widgets / Multimedia）</li>
+<li><strong>构建：</strong> CMake 3.19+</li>
+<li><strong>平台：</strong> Windows</li>
+</ul>
+<h2 id="构建">构建</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/1613661434/Landlords</span><br><span class="line"><span class="built_in">cd</span> Landlords</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">cmake --build build --config Release</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要安装 Qt 6.5 及以上版本，并确保 CMake 能找到 Qt 安装路径。</p>
+</blockquote>
+<h2 id="运行">运行</h2>
+<p>编译完成后，双击 <code>Landlords.exe</code>，点击&quot;开始游戏&quot;即可开始对战。</p>
+<h2 id="致谢">致谢</h2>
+<p>本项目基于<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程，在原课程基础上进行了代码优化、语法简化和 Qt6 适配。感谢老师的精彩课程！</p>
+<h2 id="许可">许可</h2>
+<p><a href="LICENSE">LGPL v3.0</a> © 2026 <a href="https://1613661434.github.io/">ol木子李lo</a></p>
+]]></content>
+      <categories>
+        <category>个人项目</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
 </search>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Claude Code小白教学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code">
+<meta property="og:url" content="https://1613661434.github.io/2026/06/17/Claude-Code/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="Claude Code小白教学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1613661434.github.io/2026/06/17/Claude-Code/image-20260516172725823.png">
+<meta property="article:published_time" content="2026-06-17T03:48:45.000Z">
+<meta property="article:modified_time" content="2026-06-17T03:53:15.030Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="Claude Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1613661434.github.io/2026/06/17/Claude-Code/image-20260516172725823.png">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2026/06/17/Claude-Code/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2026/06/17/Claude-Code/","path":"2026/06/17/Claude-Code/","title":"Claude Code"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Claude Code | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Claude Code</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.2.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skills"><span class="nav-number">1.4.</span> <span class="nav-text">Skills</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Skills%E4%B8%8B%E8%BD%BD%E7%BD%91%E7%AB%99%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">Skills下载网站：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents"><span class="nav-number">1.5.</span> <span class="nav-text">Agents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugins"><span class="nav-number">1.6.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E7%A7%8D%E6%9D%83%E9%99%90%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.7.</span> <span class="nav-text">六种权限模式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2026/06/17/Claude-Code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Claude Code | ol木子李lo的博客">
+      <meta itemprop="description" content="Claude Code小白教学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Claude Code
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 11:48:45 / 修改时间：11:53:15" itemprop="dateCreated datePublished" datetime="2026-06-17T11:48:45+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">教学</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>502</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Claude Code小白教学</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>Claude Code</h1>
+<blockquote>
+<p>作者：OL</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16YRLB7Exd/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">5分钟安装ClaudeCode并接入DeepSeek</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SddcBFESs/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">10分钟学会24个ClaudeCode使用技巧</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AU5L6dEDC/?share_source=copy_web&amp;vd_source=ca9b60cf240586ea52bbc59b3756a3df">8个Skills平台 + 3种安装方法，一次学会</a></p>
+</blockquote>
+<h2 id="名词解释">名词解释</h2>
+<p><code>Skills</code>:说明书</p>
+<p><code>Agents</code>:智能体</p>
+<p><code>Hooks</code>:勾子</p>
+<p><code>MCP</code>:模型上下文协议（Model Context Protocol）</p>
+<p><code>Plugins</code>:插件</p>
+<h2 id="快捷键">快捷键</h2>
+<p><code>Shift + Tab</code>: 切换模式（<strong>计划模式</strong> 或者 <strong>自动同意编辑模式</strong>）</p>
+<p><code>Ctrl + J</code>:换行</p>
+<p><code>Ctrl + G</code>:打开文本编辑器编辑</p>
+<h2 id="命令">命令</h2>
+<p><code>!</code>:使用shell模式</p>
+<p><code>@</code>:选中文件或者Agent</p>
+<p><code>claude --dangerously-skip-permissions</code>:跳过所有同意（不推荐，非常危险）</p>
+<p><code>/effort</code>:切换思考强度</p>
+<p><code>/exit</code>:退出</p>
+<p><code>/resume</code>:查看最近历史</p>
+<p><code>/init</code>:初始化 <a target="_blank" rel="noopener" href="http://CLAUDE.md">CLAUDE.md</a> 文件并写入代码库相关文档（可以把项目规则和技术栈写在里面，每次对话会把这个文件发给模型，文件可能是全英文的，可以使用<code>@CLAUDE.md 帮我翻译成中文</code>的命令来翻译）</p>
+<p><code>/context</code>:查看上下文情况</p>
+<p><code>/compact</code>:压缩上下文空间</p>
+<p><code>/clear</code>:清空上下文</p>
+<p><code>/skills</code>:查看安装的Skill</p>
+<p><code>/agent</code>:管理Agent设置</p>
+<p><code>/plugin</code>:管理 Claude Code 插件</p>
+<h2 id="Skills">Skills</h2>
+<p>可以安装Skill在<code>.claude/skills/</code>(项目级别) 或者 <code>~/.claude/skills/</code>(用户级别)</p>
+<h3 id="Skills下载网站：">Skills下载网站：</h3>
+<p><a target="_blank" rel="noopener" href="https://agentskill.sh">AgentSkill</a>:<code>https://agentskill.sh</code></p>
+<p><a target="_blank" rel="noopener" href="https://skillsmp.com">~/skillsmp</a>:<code>https://skillsmp.com</code></p>
+<p><a target="_blank" rel="noopener" href="https://clawhub.ai">ClawHub</a>:<code>https://clawhub.ai</code></p>
+<p><a target="_blank" rel="noopener" href="https://skills.sh">Skills</a>:<code>https://skills.sh</code></p>
+<p><a target="_blank" rel="noopener" href="https://claudemarketplaces.com">Claude Market Places</a>:<code>https://claudemarketplaces.com</code></p>
+<p><a target="_blank" rel="noopener" href="https://lobehub.com/zh/skills">LobeHub</a>:<code>https://lobehub.com/zh/skills</code></p>
+<p><img src="/2026/06/17/Claude-Code/image-20260516172725823.png" alt="image-20260516172725823"></p>
+<h2 id="Agents">Agents</h2>
+<h2 id="Plugins">Plugins</h2>
+<p>Plugins = Skills + Agents + MCP + Hooks</p>
+<h2 id="六种权限模式">六种权限模式</h2>
+<p>设置方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">claude --permission-mode default</span><br><span class="line">claude --permission-mode acceptEdits</span><br><span class="line">claude --permission-mode plan</span><br><span class="line">claude --permission-mode auto</span><br><span class="line">claude --permission-mode dontAsk</span><br><span class="line">claude --permission-mode bypassPermissions</span><br></pre></td></tr></table></figure>
+<p>启动的时候通过参数传递，会覆盖 settings 文件里的 defaultMode！</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>含义</th>
+<th>适合场景</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>标准权限模式</td>
+<td>日常开发、最稳妥</td>
+<td>低</td>
+</tr>
+<tr>
+<td>acceptEdits</td>
+<td>自动接受文件编辑</td>
+<td>写代码、批量改文件</td>
+<td>中低</td>
+</tr>
+<tr>
+<td>plan</td>
+<td>规划模式</td>
+<td>大重构、复杂任务、先看方案</td>
+<td>低</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>自动模式</td>
+<td>想减少确认，又不想完全放开</td>
+<td>中</td>
+</tr>
+<tr>
+<td>dontAsk</td>
+<td>不询问模式</td>
+<td>非交互、自动化、CI、脚本环境</td>
+<td>中</td>
+</tr>
+<tr>
+<td>bypassPermissions</td>
+<td>跳过权限检查</td>
+<td>容器、沙盒、临时测试环境</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Claude-Code/" rel="tag"># Claude Code</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/17/%E6%96%97%E5%9C%B0%E4%B8%BB/" rel="prev" title="斗地主">
+                  <i class="fa fa-angle-left"></i> 斗地主
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">39k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:20</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

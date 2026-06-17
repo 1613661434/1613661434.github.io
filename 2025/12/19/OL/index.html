@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://img.shields.io/badge/database-Oracle%2011g%2B-%23F80000?logo=oracle">
 <meta property="og:image" content="https://img.shields.io/badge/license-MIT-blue.svg">
 <meta property="article:published_time" content="2025-12-19T07:03:00.000Z">
-<meta property="article:modified_time" content="2026-06-06T07:40:35.320Z">
+<meta property="article:modified_time" content="2026-06-17T03:44:50.182Z">
 <meta property="article:author" content="ol木子李lo">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Linux">
@@ -184,7 +184,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -195,7 +195,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -272,7 +272,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-06-06 15:40:35" itemprop="dateModified" datetime="2026-06-06T15:40:35+08:00">2026-06-06</time>
+      <time title="修改时间：2026-06-17 11:44:50" itemprop="dateModified" datetime="2026-06-17T11:44:50+08:00">2026-06-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -571,7 +571,7 @@
 <h3 id="Windows-终端乱码修复">Windows 终端乱码修复</h3>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$OutputEncoding</span> = [<span class="type">Console</span>::<span class="type">InputEncoding</span>] = [<span class="type">Console</span>::<span class="type">OutputEncoding</span>] = [<span class="type">System.Text.UTF8Encoding</span>]::UTF8</span><br></pre></td></tr></table></figure>
 <h2 id="📋-项目目录结构">📋 项目目录结构</h2>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">OL</span><br><span class="line">├── CMakeLists.txt            # 顶层构建配置</span><br><span class="line">├── README.md                 # 项目说明文档</span><br><span class="line">├── LICENSE                   # 许可证</span><br><span class="line">├── clang-format.txt          # 代码格式化配置</span><br><span class="line">│</span><br><span class="line">├── ol_core/                  # 核心基础工具库（必选）</span><br><span class="line">│   ├── include/              ## 头文件（ThreadPool、容器、字符串等）</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序</span><br><span class="line">│</span><br><span class="line">├── ol_database/              # 数据库模块</span><br><span class="line">│   ├── include/              ## IDBConn 抽象接口 + DBPool 连接池</span><br><span class="line">│   ├── mysql/                ## MySQL 子模块</span><br><span class="line">│   │   ├── include/          ### 头文件</span><br><span class="line">│   │   ├── src/              ### 源文件</span><br><span class="line">│   │   └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│   └── oracle/               ## Oracle 子模块</span><br><span class="line">│       ├── include/          ### 头文件</span><br><span class="line">│       ├── src/              ### 源文件</span><br><span class="line">│       └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│</span><br><span class="line">├── ol_network/               # Linux 网络库</span><br><span class="line">│   ├── include/ol_net/       ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序（Echo/Bank 示例）</span><br><span class="line">│</span><br><span class="line">├── ol_ftp/                   # FTP 客户端模块</span><br><span class="line">│   ├── include/              ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   ├── test/                 ## 测试程序</span><br><span class="line">│   └── third_party/ftplib/   ## FTP 底层库（内置依赖）</span><br><span class="line">│</span><br><span class="line">└── docs/                     # 项目文档</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">OL</span><br><span class="line">├── CMakeLists.txt            # 顶层构建配置</span><br><span class="line">├── README.md                 # 项目说明文档（中文）</span><br><span class="line">├── README_EN.md              # 项目说明文档（英文）</span><br><span class="line">├── LICENSE                   # 许可证</span><br><span class="line">├── clang-format.txt          # 代码格式化配置</span><br><span class="line">│</span><br><span class="line">├── ol_core/                  # 核心基础工具库（必选）</span><br><span class="line">│   ├── include/              ## 头文件（ThreadPool、容器、字符串等）</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序</span><br><span class="line">│</span><br><span class="line">├── ol_database/              # 数据库模块</span><br><span class="line">│   ├── include/              ## IDBConn 抽象接口 + DBPool 连接池</span><br><span class="line">│   ├── mysql/                ## MySQL 子模块</span><br><span class="line">│   │   ├── include/          ### 头文件</span><br><span class="line">│   │   ├── src/              ### 源文件</span><br><span class="line">│   │   └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│   └── oracle/               ## Oracle 子模块</span><br><span class="line">│       ├── include/          ### 头文件</span><br><span class="line">│       ├── src/              ### 源文件</span><br><span class="line">│       └── test/             ### 测试程序 + 测试数据</span><br><span class="line">│</span><br><span class="line">├── ol_network/               # Linux 网络库</span><br><span class="line">│   ├── include/ol_net/       ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   └── test/                 ## 测试程序（Echo/Bank 示例）</span><br><span class="line">│</span><br><span class="line">├── ol_ftp/                   # FTP 客户端模块</span><br><span class="line">│   ├── include/              ## 头文件</span><br><span class="line">│   ├── src/                  ## 源文件</span><br><span class="line">│   ├── test/                 ## 测试程序</span><br><span class="line">│   └── third_party/ftplib/   ## FTP 底层库（内置依赖）</span><br><span class="line">│</span><br><span class="line">└── docs/                     # 项目文档</span><br></pre></td></tr></table></figure>
 <h2 id="📋-ol-core-核心库详解">📋 ol_core 核心库详解</h2>
 <h3 id="动态线程池-ol-ThreadPool">动态线程池 <code>ol::ThreadPool</code></h3>
 <ul>
@@ -664,14 +664,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">39k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:17</span>
+    <span title="站点阅读时长">2:20</span>
   </span>
 </div>
 
