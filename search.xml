@@ -922,6 +922,416 @@
       </tags>
   </entry>
   <entry>
+    <title>Doxygen 使用教学</title>
+    <url>/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/</url>
+    <content><![CDATA[<h1>Doxygen 入门指南：从注释到自动文档</h1>
+<p>Doxygen 是一款用于生成代码文档的工具，支持 C、C++、Python 等多种语言，尤其适合 C/C++ 项目。本文将介绍如何使用 Doxygen 规范注释并生成 API 文档。</p>
+<h2 id="一、安装-Doxygen">一、安装 Doxygen</h2>
+<h3 id="1-Windows">1. Windows</h3>
+<ul>
+<li>下载安装包：<a href="https://www.doxygen.nl/download.html">Doxygen 官网</a>（选择 <code>doxygen-&lt;version&gt;.setup.exe</code>）</li>
+<li>安装时勾选 <code>doxywizard</code>（图形化配置工具，推荐新手使用）</li>
+</ul>
+<h3 id="2-Linux">2. Linux</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Ubuntu/Debian</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install doxygen graphviz  <span class="comment"># graphviz 用于生成图表</span></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line"><span class="built_in">sudo</span> yum install doxygen graphviz</span><br></pre></td></tr></table></figure>
+<h3 id="3-macOS">3. macOS</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install doxygen graphviz</span><br></pre></td></tr></table></figure>
+<h2 id="二、基本注释规则">二、基本注释规则</h2>
+<p>Doxygen 通过识别特定格式的注释生成文档，核心是 <strong><code>/** ... */</code></strong> 风格的注释块，配合标签（<code>@tag</code>）描述代码信息。</p>
+<h3 id="1-函数-方法注释">1. 函数 / 方法注释</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 计算两个整数的和</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 支持正数、负数和零的加法运算，返回结果不会溢出（假设输入在 int 范围内）</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param a 第一个加数</span></span><br><span class="line"><span class="comment"> * @param b 第二个加数</span></span><br><span class="line"><span class="comment"> * @return 两数之和（int 类型）</span></span><br><span class="line"><span class="comment"> * @note 若输入超出 int 范围，可能导致未定义行为</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-类-结构体注释">2. 类 / 结构体注释</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 表示二维坐标的结构体</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 存储 x 和 y 坐标，提供基础的坐标运算方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;  <span class="comment">///&lt; x 坐标（成员变量注释用 ///&lt;）</span></span><br><span class="line">    <span class="type">int</span> y;  <span class="comment">///&lt; y 坐标</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @brief 初始化坐标</span></span><br><span class="line"><span class="comment">     * @param x_ x 坐标值</span></span><br><span class="line"><span class="comment">     * @param y_ y 坐标值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Point</span>(<span class="type">int</span> x_, <span class="type">int</span> y_) : <span class="built_in">x</span>(x_), <span class="built_in">y</span>(y_) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="3-文件头部注释">3. 文件头部注释</h3>
+<p>每个 <code>.h</code> 或 <code>.cpp</code> 文件建议添加头部注释，说明文件功能：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file math_utils.h</span></span><br><span class="line"><span class="comment"> * @brief 数学工具函数集合</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 包含加法、减法、乘法等基础运算，以及向量、矩阵操作</span></span><br><span class="line"><span class="comment"> * @author 你的名字</span></span><br><span class="line"><span class="comment"> * @date 2024-05-01</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、常用标签速查表">三、常用标签速查表</h2>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@brief</code></td>
+<td>简短描述（一句话功能说明）</td>
+<td><code>@brief 计算绝对值</code></td>
+</tr>
+<tr>
+<td><code>@param</code></td>
+<td>描述函数参数</td>
+<td><code>@param num 待计算的数字</code></td>
+</tr>
+<tr>
+<td><code>@return</code></td>
+<td>描述返回值</td>
+<td><code>@return 非负结果</code></td>
+</tr>
+<tr>
+<td><code>@note</code></td>
+<td>补充说明（注意事项）</td>
+<td><code>@note 输入不能为nullptr</code></td>
+</tr>
+<tr>
+<td><code>@warning</code></td>
+<td>警告信息（危险操作）</td>
+<td><code>@warning 此函数会修改原始数组</code></td>
+</tr>
+<tr>
+<td><code>@file</code></td>
+<td>标记文件注释</td>
+<td><code>@file string_utils.h</code></td>
+</tr>
+<tr>
+<td><code>@author</code></td>
+<td>作者信息</td>
+<td><code>@author 张三 &lt;zhangsan@example.com&gt;</code></td>
+</tr>
+<tr>
+<td><code>@date</code></td>
+<td>日期</td>
+<td><code>@date 2024-05-01</code></td>
+</tr>
+<tr>
+<td><code>@see</code></td>
+<td>关联内容（参考其他函数 / 类）</td>
+<td><code>@see add()</code></td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/Snipaste_2025-08-14_11-49-39.png" alt="标签"></p>
+<h2 id="四、生成文档步骤">四、生成文档步骤</h2>
+<h3 id="方法-1：使用-doxywizard（图形化工具）">方法 1：使用 doxywizard（图形化工具）</h3>
+<ol>
+<li>打开 <code>doxywizard</code>（Windows 可在开始菜单找到，Linux/macOS 终端输入 <code>doxywizard</code>）</li>
+<li>Step 1: 配置输入输出
+<ul>
+<li><code>Working directory</code>：选择项目根目录</li>
+<li><code>Input</code>：添加代码目录（如 <code>./src</code>）</li>
+<li><code>Output directory</code>：设置文档输出路径（如 <code>./docs</code>）</li>
+</ul>
+</li>
+<li>Step 2: 选择输出格式
+<ul>
+<li>在 <code>Output</code> 标签页勾选 <code>HTML</code>（必选）和 <code>LaTeX</code>（如需 PDF）</li>
+</ul>
+</li>
+<li>Step 3: 生成文档
+<ul>
+<li>点击 <code>Run doxygen</code>，等待生成完成</li>
+<li>打开 <code>./docs/html/index.html</code> 查看文档</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-2：使用命令行（推荐熟练后使用）">方法 2：使用命令行（推荐熟练后使用）</h3>
+<ol>
+<li>
+<p>在项目根目录创建配置文件 <code>Doxyfile</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doxygen -g Doxyfile  <span class="comment"># 生成默认配置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>编辑<code>Doxyfile</code>关键配置（可选，默认也可生成文档）：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">PROJECT_NAME</span>           = <span class="string">&quot;OL库&quot;</span>  <span class="comment"># 项目名称</span></span><br><span class="line"><span class="attr">INPUT</span>                  = ./src   <span class="comment"># 代码目录</span></span><br><span class="line"><span class="attr">OUTPUT_DIRECTORY</span>       = ./docs  <span class="comment"># 文档输出目录</span></span><br><span class="line"><span class="attr">RECURSIVE</span>              = <span class="literal">YES</span>     <span class="comment"># 递归处理子目录</span></span><br><span class="line"><span class="attr">GENERATE_HTML</span>          = <span class="literal">YES</span>     <span class="comment"># 生成HTML文档</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>生成文档：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doxygen Doxyfile  <span class="comment"># 执行配置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="五、高级技巧">五、高级技巧</h2>
+<ol>
+<li>
+<p><strong>生成调用关系图</strong><br>
+在 <code>Doxyfile</code> 中开启：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">HAVE_DOT</span>               = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALL_GRAPH</span>             = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALLER_GRAPH</span>           = <span class="literal">YES</span></span><br></pre></td></tr></table></figure>
+<p>需提前安装 <code>graphviz</code>（见步骤一）。</p>
+</li>
+<li>
+<p><strong>忽略不需要的代码</strong><br>
+用 <code>/// @cond</code> 和 <code>/// @endcond</code> 包裹无需生成文档的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// @cond</span></span><br><span class="line"><span class="comment">// 内部辅助函数，不对外暴露</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">helper</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">/// @endcond</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>集成到 CMake 构建流程</strong><br>
+在 <code>CMakeLists.txt</code> 中添加：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(Doxygen)</span><br><span class="line"><span class="keyword">if</span>(DOXYGEN_FOUND)</span><br><span class="line">    <span class="keyword">add_custom_target</span>(docs</span><br><span class="line">        <span class="keyword">COMMAND</span> doxygen Doxyfile</span><br><span class="line">        WORKING_DIRECTORY <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span></span><br><span class="line">        COMMENT <span class="string">&quot;生成API文档&quot;</span></span><br><span class="line">    )</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<p>之后可通过 <code>make docs</code>（Linux）或 <code>cmake --build . --target docs</code> 生成文档。</p>
+</li>
+</ol>
+<h2 id="六、常见问题">六、常见问题</h2>
+<ul>
+<li><strong>注释不生效？</strong><br>
+确保注释块以 <code>/**</code> 开头（不是 <code>/*</code> 或 <code>//</code>），且标签拼写正确（区分大小写）。</li>
+<li><strong>中文乱码？</strong><br>
+在 <code>Doxyfile</code> 中设置 <code>DOXYFILE_ENCODING = UTF-8</code> 和 <code>OUTPUT_LANGUAGE = Chinese</code>。</li>
+<li><strong>文档缺少函数？</strong><br>
+检查函数是否在 <code>.h</code> 头文件中声明（Doxygen 通常优先解析头文件）。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>教学</category>
+      </categories>
+      <tags>
+        <tag>Doxygen</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GDB调试 Memo</title>
+    <url>/2025/12/19/GDB%E8%B0%83%E8%AF%95%20Memo/</url>
+    <content><![CDATA[<h1>GDB调试 Memo</h1>
+<h3 id="核心概述">核心概述</h3>
+<p>GDB是GNU开源调试器，与GCC配套，支持多语言（C/C++/Ada等）、多系统，为字符界面操作。核心功能：程序启停控制、断点管理、代码查看、变量监控、单步调试等。</p>
+<p>吉祥物：射手鱼（Archer Fish），寓意“精准捕杀bug”。</p>
+<h2 id="一、调试准备（关键前提）">一、调试准备（关键前提）</h2>
+<p>编译程序时必须添加调试选项，否则无法使用GDB调试。</p>
+<p>- 核心选项：<code>-g</code>（在可执行文件中嵌入源代码关联信息，不嵌入完整源文件，调试时需保证源文件可访问）</p>
+<p>- 推荐可选选项：</p>
+<ul>
+<li><code>-O0</code>：关闭编译器优化，避免代码执行逻辑与源码不一致</li>
+<li><code>-Wall</code>：开启所有警告，提前规避潜在bug</li>
+</ul>
+<p>- 编译示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># C程序编译</span></span><br><span class="line">gcc -g -O0 -Wall args.c -o app</span><br><span class="line"><span class="comment"># C++程序编译</span></span><br><span class="line">g++ -g -O0 -Wall test.cpp -o test_app</span><br></pre></td></tr></table></figure>
+<p>注意：带<code>-g</code>的可执行文件体积会略大（如示例中app 9816字节 vs 无-g的app1 8608字节）。</p>
+<h2 id="二、GDB启停与参数设置">二、GDB启停与参数设置</h2>
+<h3 id="2-1-启动GDB">2.1 启动GDB</h3>
+<p>- 命令格式：<code>gdb 可执行程序名</code></p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb app  <span class="comment"># 启动GDB并关联app程序，此时程序未执行</span></span><br><span class="line">(gdb)  <span class="comment"># 进入GDB交互模式，等待输入调试命令</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-给程序传命令行参数">2.2 给程序传命令行参数</h3>
+<p>适用场景：调试需要命令行参数的程序（如main(int argc, char* argv[])），需在程序启动前设置。</p>
+<p>- 核心命令：</p>
+<ul>
+<li>设置参数：<code>set args 参数1 参数2 ...</code></li>
+<li>查看参数：<code>show args</code></li>
+</ul>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> args 11 22 33 44 55  <span class="comment"># 给app设置命令行参数11-55</span></span><br><span class="line">(gdb) show args  <span class="comment"># 验证参数</span></span><br><span class="line">Argument list to give program being debugged when it is started is <span class="string">&quot;11 22 33 44 55&quot;</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-启动被调试程序">2.3 启动被调试程序</h3>
+<p>调试中仅能启动一次，两种启动方式：</p>
+<ul>
+<li><code>run</code>（缩写<code>r</code>）：无断点则执行完程序；有断点则停在第一个断点</li>
+<li><code>start</code>：停在main函数第一行，等待后续调试命令</li>
+</ul>
+<p>- 后续继续运行：<code>continue</code>（缩写<code>c</code>），从当前阻塞位置继续，直到下一个有效断点</p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) start  <span class="comment"># 启动程序，停在main第一行</span></span><br><span class="line">(gdb) c       <span class="comment"># 继续运行程序</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-4-退出GDB">2.4 退出GDB</h3>
+<p>- 命令：<code>quit</code>（缩写<code>q</code>）</p>
+<p>- 示例：<code>(gdb) q  # 终止GDB进程，退出调试</code></p>
+<h2 id="三、代码查看命令（list-l）">三、代码查看命令（list/l）</h2>
+<p>无可视化界面时，通过命令查看源码，辅助定位断点位置。命令：<code>list</code>（缩写<code>l</code>），默认一次显示10行。</p>
+<h3 id="3-1-查看当前文件（默认main函数所在文件）">3.1 查看当前文件（默认main函数所在文件）</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) l          <span class="comment"># 从第一行开始显示</span></span><br><span class="line">(gdb) l 15       <span class="comment"># 显示第15行附近的代码</span></span><br><span class="line">(gdb) l main     <span class="comment"># 显示main函数附近的代码</span></span><br><span class="line"><span class="comment"># 回车：重复上一次list命令，查看后续内容</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-切换并查看其他文件">3.2 切换并查看其他文件</h3>
+<p>- 命令格式：<code>l 文件名:行号</code> 或 <code>l 文件名:函数名</code></p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) l insert.cpp:8    <span class="comment"># 切换到insert.cpp，显示第8行附近代码</span></span><br><span class="line">(gdb) l test.cpp:<span class="built_in">sort</span>   <span class="comment"># 切换到test.cpp，显示sort函数附近代码</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-3-调整显示行数">3.3 调整显示行数</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> listsize 20  <span class="comment"># 设置一次显示20行</span></span><br><span class="line">(gdb) show listsize     <span class="comment"># 查看当前显示行数设置</span></span><br><span class="line">listsize is 20.</span><br></pre></td></tr></table></figure>
+<h2 id="四、断点操作（核心调试功能）">四、断点操作（核心调试功能）</h2>
+<p>断点命令：<code>break</code>（缩写<code>b</code>），用于让程序在指定位置阻塞，便于观察状态。</p>
+<h3 id="4-1-设置断点">4.1 设置断点</h3>
+<ul>
+<li>普通断点（当前文件）：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b 12        <span class="comment"># 在当前文件第12行设断点</span></span><br><span class="line">(gdb) b main      <span class="comment"># 在main函数第一行设断点</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>普通断点（非当前文件）：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b test.cpp:16    <span class="comment"># 在test.cpp第16行设断点</span></span><br><span class="line">(gdb) b insert.cpp:insertionSort  <span class="comment"># 在insert.cpp的insertionSort函数设断点</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>条件断点（仅满足条件时阻塞，常用于循环）：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b 20 <span class="keyword">if</span> i==10  <span class="comment"># 第20行设断点，仅当变量i等于10时生效</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-查看断点信息">4.2 查看断点信息</h3>
+<p>- 命令：<code>info break</code>（缩写<code>i b</code>）</p>
+<p>- 示例及字段说明：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) i b</span><br><span class="line">Num  Type        Disp Enb Address         What</span><br><span class="line">1    breakpoint  keep y   0x0000000000400cb5 <span class="keyword">in</span> main() at test.cpp:12</span><br><span class="line"><span class="comment"># Num：断点编号（操作断点的关键标识）</span></span><br><span class="line"><span class="comment"># Enb：状态（y=可用，n=不可用）</span></span><br><span class="line"><span class="comment"># What：断点位置（文件+行号/函数）</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-3-删除断点">4.3 删除断点</h3>
+<p>- 命令：<code>delete</code>（缩写<code>del/d</code>）+ 断点编号/区间</p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) d 1          <span class="comment"># 删除编号1的断点</span></span><br><span class="line">(gdb) d 2 4 6      <span class="comment"># 删除编号2、4、6的断点</span></span><br><span class="line">(gdb) d 1-5        <span class="comment"># 删除编号1到5的连续断点</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-4-切换断点状态（启用-禁用）">4.4 切换断点状态（启用/禁用）</h3>
+<p>临时不用的断点无需删除，可设置为禁用状态。</p>
+<ul>
+<li>禁用断点：<code>disable</code>（缩写<code>dis</code>）+ 编号/区间</li>
+<li>启用断点：<code>enable</code>（缩写<code>ena</code>）+ 编号/区间</li>
+</ul>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) dis 2 4      <span class="comment"># 禁用编号2、4的断点</span></span><br><span class="line">(gdb) ena 2-5      <span class="comment"># 启用编号2到5的断点</span></span><br><span class="line">(gdb) i b          <span class="comment"># 验证状态（Enb列变为y/n）</span></span><br></pre></td></tr></table></figure>
+<h2 id="五、核心调试命令（程序阻塞后使用）">五、核心调试命令（程序阻塞后使用）</h2>
+<h3 id="5-1-变量查看与打印">5.1 变量查看与打印</h3>
+<h4 id="5-1-1-手动打印变量值（print-p）">5.1.1 手动打印变量值（print/p）</h4>
+<p>- 命令：<code>print</code>（缩写<code>p</code>），支持格式化输出。</p>
+<p>- 格式化字符表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式化字符（/fmt）</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/x</td>
+<td style="text-align:left">十六进制（整数）</td>
+</tr>
+<tr>
+<td style="text-align:left">/d</td>
+<td style="text-align:left">有符号十进制（整数）</td>
+</tr>
+<tr>
+<td style="text-align:left">/u</td>
+<td style="text-align:left">无符号十进制（整数）</td>
+</tr>
+<tr>
+<td style="text-align:left">/o</td>
+<td style="text-align:left">八进制（整数）</td>
+</tr>
+<tr>
+<td style="text-align:left">/t</td>
+<td style="text-align:left">二进制（整数）</td>
+</tr>
+<tr>
+<td style="text-align:left">/f</td>
+<td style="text-align:left">浮点数格式</td>
+</tr>
+<tr>
+<td style="text-align:left">/c</td>
+<td style="text-align:left">字符格式</td>
+</tr>
+</tbody>
+</table>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) p i          <span class="comment"># 十进制打印变量i</span></span><br><span class="line"><span class="variable">$5</span> = 3</span><br><span class="line">(gdb) p/x i        <span class="comment"># 十六进制打印变量i</span></span><br><span class="line"><span class="variable">$6</span> = 0x3</span><br><span class="line">(gdb) p/o i        <span class="comment"># 八进制打印变量i</span></span><br><span class="line"><span class="variable">$7</span> = 03</span><br></pre></td></tr></table></figure>
+<h4 id="5-1-2-查看变量类型（ptype）">5.1.2 查看变量类型（ptype）</h4>
+<p>- 命令：<code>ptype 变量名</code></p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) ptype i       <span class="comment"># 查看变量i的类型</span></span><br><span class="line"><span class="built_in">type</span> = int</span><br><span class="line">(gdb) ptype array   <span class="comment"># 查看数组array的类型</span></span><br><span class="line"><span class="built_in">type</span> = int [12]</span><br></pre></td></tr></table></figure>
+<h4 id="5-1-3-自动打印变量（display）">5.1.3 自动打印变量（display）</h4>
+<p>区别于print：程序每次暂停（如单步、断点）时自动打印，适合跟踪变量变化。</p>
+<ul>
+<li>设置自动打印：<code>display 变量名</code> 或 <code>display/fmt 变量名</code></li>
+<li>查看自动打印列表：<code>info display</code>（缩写<code>i display</code>）</li>
+<li>取消自动打印：<code>undisplay 编号</code> 或 <code>delete display 编号</code></li>
+<li>禁用/启用自动打印：<code>disable display 编号</code> / <code>enable display 编号</code></li>
+</ul>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) display i        <span class="comment"># 自动打印变量i</span></span><br><span class="line">(gdb) display/x array[i]  <span class="comment"># 十六进制自动打印array[i]</span></span><br><span class="line">(gdb) i display        <span class="comment"># 查看列表</span></span><br><span class="line">Auto-display expressions now <span class="keyword">in</span> effect:</span><br><span class="line">Num Enb Expression</span><br><span class="line">1:   y  i</span><br><span class="line">2:   y  /x array[i]</span><br><span class="line">(gdb) undisplay 1      <span class="comment"># 取消编号1的自动打印</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-2-单步调试">5.2 单步调试</h3>
+<p>程序阻塞后，逐行/逐函数调试，观察执行流程。</p>
+<ul>
+<li><code>step</code>（缩写<code>s</code>）：逐行执行，<strong>会进入函数体内部</strong></li>
+<li><code>next</code>（缩写<code>n</code>）：逐行执行，<strong>不进入函数体内部</strong>（函数整体执行）</li>
+<li><code>finish</code>：从当前函数体内部跳出（需确保函数内无有效断点）</li>
+<li><code>until</code>：直接跳出循环体（条件：循环内无有效断点，需在循环开始/结束行执行）</li>
+</ul>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) s          <span class="comment"># 单步执行，进入函数</span></span><br><span class="line">(gdb) finish     <span class="comment"># 跳出当前函数</span></span><br><span class="line">(gdb) n          <span class="comment"># 单步执行，不进入函数</span></span><br><span class="line">(gdb) <span class="keyword">until</span>      <span class="comment"># 跳出循环</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-3-手动设置变量值">5.3 手动设置变量值</h3>
+<p>适用场景：快速让变量达到目标值（如循环因子、特殊条件值），提高调试效率。</p>
+<p>- 命令：<code>set var 变量名=目标值</code></p>
+<p>- 示例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> var i=90  <span class="comment"># 直接将变量i设为90</span></span><br><span class="line">(gdb) <span class="built_in">set</span> var count=0  <span class="comment"># 将循环因子count设为0，重新执行循环</span></span><br></pre></td></tr></table></figure>
+<h2 id="六、高频命令速查表">六、高频命令速查表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">完整命令</th>
+<th style="text-align:left">缩写</th>
+<th style="text-align:left">核心用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">启动GDB</td>
+<td style="text-align:left">gdb 可执行程序</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">gdb app</td>
+</tr>
+<tr>
+<td style="text-align:left">启动程序</td>
+<td style="text-align:left">run</td>
+<td style="text-align:left">r</td>
+<td style="text-align:left">r（停在第一个断点）</td>
+</tr>
+<tr>
+<td style="text-align:left">启动停main函数</td>
+<td style="text-align:left">start</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">start</td>
+</tr>
+<tr>
+<td style="text-align:left">继续运行</td>
+<td style="text-align:left">continue</td>
+<td style="text-align:left">c</td>
+<td style="text-align:left">c（到下一个断点）</td>
+</tr>
+<tr>
+<td style="text-align:left">设断点</td>
+<td style="text-align:left">break</td>
+<td style="text-align:left">b</td>
+<td style="text-align:left">b 12、b main、b test.cpp:8</td>
+</tr>
+<tr>
+<td style="text-align:left">查看断点</td>
+<td style="text-align:left">info break</td>
+<td style="text-align:left">i b</td>
+<td style="text-align:left">i b（查编号、状态）</td>
+</tr>
+<tr>
+<td style="text-align:left">删除断点</td>
+<td style="text-align:left">delete</td>
+<td style="text-align:left">d</td>
+<td style="text-align:left">d 1、d 2-5</td>
+</tr>
+<tr>
+<td style="text-align:left">单步（进函数）</td>
+<td style="text-align:left">step</td>
+<td style="text-align:left">s</td>
+<td style="text-align:left">s</td>
+</tr>
+<tr>
+<td style="text-align:left">单步（不进函数）</td>
+<td style="text-align:left">next</td>
+<td style="text-align:left">n</td>
+<td style="text-align:left">n</td>
+</tr>
+<tr>
+<td style="text-align:left">打印变量</td>
+<td style="text-align:left">print</td>
+<td style="text-align:left">p</td>
+<td style="text-align:left">p i、p/x i</td>
+</tr>
+<tr>
+<td style="text-align:left">查看代码</td>
+<td style="text-align:left">list</td>
+<td style="text-align:left">l</td>
+<td style="text-align:left">l、l 15、l test.cpp:main</td>
+</tr>
+<tr>
+<td style="text-align:left">退出GDB</td>
+<td style="text-align:left">quit</td>
+<td style="text-align:left">q</td>
+<td style="text-align:left">q</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>GDB</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Claude Code</title>
     <url>/2026/06/17/Claude%20Code/</url>
     <content><![CDATA[<h1>Claude Code</h1>
@@ -1591,259 +2001,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GDB调试 Memo</title>
-    <url>/2025/12/19/GDB%E8%B0%83%E8%AF%95%20Memo/</url>
-    <content><![CDATA[<h1>GDB调试 Memo</h1>
-<h3 id="核心概述">核心概述</h3>
-<p>GDB是GNU开源调试器，与GCC配套，支持多语言（C/C++/Ada等）、多系统，为字符界面操作。核心功能：程序启停控制、断点管理、代码查看、变量监控、单步调试等。</p>
-<p>吉祥物：射手鱼（Archer Fish），寓意“精准捕杀bug”。</p>
-<h2 id="一、调试准备（关键前提）">一、调试准备（关键前提）</h2>
-<p>编译程序时必须添加调试选项，否则无法使用GDB调试。</p>
-<p>- 核心选项：<code>-g</code>（在可执行文件中嵌入源代码关联信息，不嵌入完整源文件，调试时需保证源文件可访问）</p>
-<p>- 推荐可选选项：</p>
-<ul>
-<li><code>-O0</code>：关闭编译器优化，避免代码执行逻辑与源码不一致</li>
-<li><code>-Wall</code>：开启所有警告，提前规避潜在bug</li>
-</ul>
-<p>- 编译示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># C程序编译</span></span><br><span class="line">gcc -g -O0 -Wall args.c -o app</span><br><span class="line"><span class="comment"># C++程序编译</span></span><br><span class="line">g++ -g -O0 -Wall test.cpp -o test_app</span><br></pre></td></tr></table></figure>
-<p>注意：带<code>-g</code>的可执行文件体积会略大（如示例中app 9816字节 vs 无-g的app1 8608字节）。</p>
-<h2 id="二、GDB启停与参数设置">二、GDB启停与参数设置</h2>
-<h3 id="2-1-启动GDB">2.1 启动GDB</h3>
-<p>- 命令格式：<code>gdb 可执行程序名</code></p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gdb app  <span class="comment"># 启动GDB并关联app程序，此时程序未执行</span></span><br><span class="line">(gdb)  <span class="comment"># 进入GDB交互模式，等待输入调试命令</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-2-给程序传命令行参数">2.2 给程序传命令行参数</h3>
-<p>适用场景：调试需要命令行参数的程序（如main(int argc, char* argv[])），需在程序启动前设置。</p>
-<p>- 核心命令：</p>
-<ul>
-<li>设置参数：<code>set args 参数1 参数2 ...</code></li>
-<li>查看参数：<code>show args</code></li>
-</ul>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> args 11 22 33 44 55  <span class="comment"># 给app设置命令行参数11-55</span></span><br><span class="line">(gdb) show args  <span class="comment"># 验证参数</span></span><br><span class="line">Argument list to give program being debugged when it is started is <span class="string">&quot;11 22 33 44 55&quot;</span>.</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-启动被调试程序">2.3 启动被调试程序</h3>
-<p>调试中仅能启动一次，两种启动方式：</p>
-<ul>
-<li><code>run</code>（缩写<code>r</code>）：无断点则执行完程序；有断点则停在第一个断点</li>
-<li><code>start</code>：停在main函数第一行，等待后续调试命令</li>
-</ul>
-<p>- 后续继续运行：<code>continue</code>（缩写<code>c</code>），从当前阻塞位置继续，直到下一个有效断点</p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) start  <span class="comment"># 启动程序，停在main第一行</span></span><br><span class="line">(gdb) c       <span class="comment"># 继续运行程序</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-退出GDB">2.4 退出GDB</h3>
-<p>- 命令：<code>quit</code>（缩写<code>q</code>）</p>
-<p>- 示例：<code>(gdb) q  # 终止GDB进程，退出调试</code></p>
-<h2 id="三、代码查看命令（list-l）">三、代码查看命令（list/l）</h2>
-<p>无可视化界面时，通过命令查看源码，辅助定位断点位置。命令：<code>list</code>（缩写<code>l</code>），默认一次显示10行。</p>
-<h3 id="3-1-查看当前文件（默认main函数所在文件）">3.1 查看当前文件（默认main函数所在文件）</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) l          <span class="comment"># 从第一行开始显示</span></span><br><span class="line">(gdb) l 15       <span class="comment"># 显示第15行附近的代码</span></span><br><span class="line">(gdb) l main     <span class="comment"># 显示main函数附近的代码</span></span><br><span class="line"><span class="comment"># 回车：重复上一次list命令，查看后续内容</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-2-切换并查看其他文件">3.2 切换并查看其他文件</h3>
-<p>- 命令格式：<code>l 文件名:行号</code> 或 <code>l 文件名:函数名</code></p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) l insert.cpp:8    <span class="comment"># 切换到insert.cpp，显示第8行附近代码</span></span><br><span class="line">(gdb) l test.cpp:<span class="built_in">sort</span>   <span class="comment"># 切换到test.cpp，显示sort函数附近代码</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-3-调整显示行数">3.3 调整显示行数</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> listsize 20  <span class="comment"># 设置一次显示20行</span></span><br><span class="line">(gdb) show listsize     <span class="comment"># 查看当前显示行数设置</span></span><br><span class="line">listsize is 20.</span><br></pre></td></tr></table></figure>
-<h2 id="四、断点操作（核心调试功能）">四、断点操作（核心调试功能）</h2>
-<p>断点命令：<code>break</code>（缩写<code>b</code>），用于让程序在指定位置阻塞，便于观察状态。</p>
-<h3 id="4-1-设置断点">4.1 设置断点</h3>
-<ul>
-<li>普通断点（当前文件）：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b 12        <span class="comment"># 在当前文件第12行设断点</span></span><br><span class="line">(gdb) b main      <span class="comment"># 在main函数第一行设断点</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>普通断点（非当前文件）：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b test.cpp:16    <span class="comment"># 在test.cpp第16行设断点</span></span><br><span class="line">(gdb) b insert.cpp:insertionSort  <span class="comment"># 在insert.cpp的insertionSort函数设断点</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>条件断点（仅满足条件时阻塞，常用于循环）：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) b 20 <span class="keyword">if</span> i==10  <span class="comment"># 第20行设断点，仅当变量i等于10时生效</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-2-查看断点信息">4.2 查看断点信息</h3>
-<p>- 命令：<code>info break</code>（缩写<code>i b</code>）</p>
-<p>- 示例及字段说明：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) i b</span><br><span class="line">Num  Type        Disp Enb Address         What</span><br><span class="line">1    breakpoint  keep y   0x0000000000400cb5 <span class="keyword">in</span> main() at test.cpp:12</span><br><span class="line"><span class="comment"># Num：断点编号（操作断点的关键标识）</span></span><br><span class="line"><span class="comment"># Enb：状态（y=可用，n=不可用）</span></span><br><span class="line"><span class="comment"># What：断点位置（文件+行号/函数）</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-3-删除断点">4.3 删除断点</h3>
-<p>- 命令：<code>delete</code>（缩写<code>del/d</code>）+ 断点编号/区间</p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) d 1          <span class="comment"># 删除编号1的断点</span></span><br><span class="line">(gdb) d 2 4 6      <span class="comment"># 删除编号2、4、6的断点</span></span><br><span class="line">(gdb) d 1-5        <span class="comment"># 删除编号1到5的连续断点</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-4-切换断点状态（启用-禁用）">4.4 切换断点状态（启用/禁用）</h3>
-<p>临时不用的断点无需删除，可设置为禁用状态。</p>
-<ul>
-<li>禁用断点：<code>disable</code>（缩写<code>dis</code>）+ 编号/区间</li>
-<li>启用断点：<code>enable</code>（缩写<code>ena</code>）+ 编号/区间</li>
-</ul>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) dis 2 4      <span class="comment"># 禁用编号2、4的断点</span></span><br><span class="line">(gdb) ena 2-5      <span class="comment"># 启用编号2到5的断点</span></span><br><span class="line">(gdb) i b          <span class="comment"># 验证状态（Enb列变为y/n）</span></span><br></pre></td></tr></table></figure>
-<h2 id="五、核心调试命令（程序阻塞后使用）">五、核心调试命令（程序阻塞后使用）</h2>
-<h3 id="5-1-变量查看与打印">5.1 变量查看与打印</h3>
-<h4 id="5-1-1-手动打印变量值（print-p）">5.1.1 手动打印变量值（print/p）</h4>
-<p>- 命令：<code>print</code>（缩写<code>p</code>），支持格式化输出。</p>
-<p>- 格式化字符表：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">格式化字符（/fmt）</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">/x</td>
-<td style="text-align:left">十六进制（整数）</td>
-</tr>
-<tr>
-<td style="text-align:left">/d</td>
-<td style="text-align:left">有符号十进制（整数）</td>
-</tr>
-<tr>
-<td style="text-align:left">/u</td>
-<td style="text-align:left">无符号十进制（整数）</td>
-</tr>
-<tr>
-<td style="text-align:left">/o</td>
-<td style="text-align:left">八进制（整数）</td>
-</tr>
-<tr>
-<td style="text-align:left">/t</td>
-<td style="text-align:left">二进制（整数）</td>
-</tr>
-<tr>
-<td style="text-align:left">/f</td>
-<td style="text-align:left">浮点数格式</td>
-</tr>
-<tr>
-<td style="text-align:left">/c</td>
-<td style="text-align:left">字符格式</td>
-</tr>
-</tbody>
-</table>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) p i          <span class="comment"># 十进制打印变量i</span></span><br><span class="line"><span class="variable">$5</span> = 3</span><br><span class="line">(gdb) p/x i        <span class="comment"># 十六进制打印变量i</span></span><br><span class="line"><span class="variable">$6</span> = 0x3</span><br><span class="line">(gdb) p/o i        <span class="comment"># 八进制打印变量i</span></span><br><span class="line"><span class="variable">$7</span> = 03</span><br></pre></td></tr></table></figure>
-<h4 id="5-1-2-查看变量类型（ptype）">5.1.2 查看变量类型（ptype）</h4>
-<p>- 命令：<code>ptype 变量名</code></p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) ptype i       <span class="comment"># 查看变量i的类型</span></span><br><span class="line"><span class="built_in">type</span> = int</span><br><span class="line">(gdb) ptype array   <span class="comment"># 查看数组array的类型</span></span><br><span class="line"><span class="built_in">type</span> = int [12]</span><br></pre></td></tr></table></figure>
-<h4 id="5-1-3-自动打印变量（display）">5.1.3 自动打印变量（display）</h4>
-<p>区别于print：程序每次暂停（如单步、断点）时自动打印，适合跟踪变量变化。</p>
-<ul>
-<li>设置自动打印：<code>display 变量名</code> 或 <code>display/fmt 变量名</code></li>
-<li>查看自动打印列表：<code>info display</code>（缩写<code>i display</code>）</li>
-<li>取消自动打印：<code>undisplay 编号</code> 或 <code>delete display 编号</code></li>
-<li>禁用/启用自动打印：<code>disable display 编号</code> / <code>enable display 编号</code></li>
-</ul>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) display i        <span class="comment"># 自动打印变量i</span></span><br><span class="line">(gdb) display/x array[i]  <span class="comment"># 十六进制自动打印array[i]</span></span><br><span class="line">(gdb) i display        <span class="comment"># 查看列表</span></span><br><span class="line">Auto-display expressions now <span class="keyword">in</span> effect:</span><br><span class="line">Num Enb Expression</span><br><span class="line">1:   y  i</span><br><span class="line">2:   y  /x array[i]</span><br><span class="line">(gdb) undisplay 1      <span class="comment"># 取消编号1的自动打印</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-2-单步调试">5.2 单步调试</h3>
-<p>程序阻塞后，逐行/逐函数调试，观察执行流程。</p>
-<ul>
-<li><code>step</code>（缩写<code>s</code>）：逐行执行，<strong>会进入函数体内部</strong></li>
-<li><code>next</code>（缩写<code>n</code>）：逐行执行，<strong>不进入函数体内部</strong>（函数整体执行）</li>
-<li><code>finish</code>：从当前函数体内部跳出（需确保函数内无有效断点）</li>
-<li><code>until</code>：直接跳出循环体（条件：循环内无有效断点，需在循环开始/结束行执行）</li>
-</ul>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) s          <span class="comment"># 单步执行，进入函数</span></span><br><span class="line">(gdb) finish     <span class="comment"># 跳出当前函数</span></span><br><span class="line">(gdb) n          <span class="comment"># 单步执行，不进入函数</span></span><br><span class="line">(gdb) <span class="keyword">until</span>      <span class="comment"># 跳出循环</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-3-手动设置变量值">5.3 手动设置变量值</h3>
-<p>适用场景：快速让变量达到目标值（如循环因子、特殊条件值），提高调试效率。</p>
-<p>- 命令：<code>set var 变量名=目标值</code></p>
-<p>- 示例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(gdb) <span class="built_in">set</span> var i=90  <span class="comment"># 直接将变量i设为90</span></span><br><span class="line">(gdb) <span class="built_in">set</span> var count=0  <span class="comment"># 将循环因子count设为0，重新执行循环</span></span><br></pre></td></tr></table></figure>
-<h2 id="六、高频命令速查表">六、高频命令速查表</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">完整命令</th>
-<th style="text-align:left">缩写</th>
-<th style="text-align:left">核心用法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">启动GDB</td>
-<td style="text-align:left">gdb 可执行程序</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">gdb app</td>
-</tr>
-<tr>
-<td style="text-align:left">启动程序</td>
-<td style="text-align:left">run</td>
-<td style="text-align:left">r</td>
-<td style="text-align:left">r（停在第一个断点）</td>
-</tr>
-<tr>
-<td style="text-align:left">启动停main函数</td>
-<td style="text-align:left">start</td>
-<td style="text-align:left">-</td>
-<td style="text-align:left">start</td>
-</tr>
-<tr>
-<td style="text-align:left">继续运行</td>
-<td style="text-align:left">continue</td>
-<td style="text-align:left">c</td>
-<td style="text-align:left">c（到下一个断点）</td>
-</tr>
-<tr>
-<td style="text-align:left">设断点</td>
-<td style="text-align:left">break</td>
-<td style="text-align:left">b</td>
-<td style="text-align:left">b 12、b main、b test.cpp:8</td>
-</tr>
-<tr>
-<td style="text-align:left">查看断点</td>
-<td style="text-align:left">info break</td>
-<td style="text-align:left">i b</td>
-<td style="text-align:left">i b（查编号、状态）</td>
-</tr>
-<tr>
-<td style="text-align:left">删除断点</td>
-<td style="text-align:left">delete</td>
-<td style="text-align:left">d</td>
-<td style="text-align:left">d 1、d 2-5</td>
-</tr>
-<tr>
-<td style="text-align:left">单步（进函数）</td>
-<td style="text-align:left">step</td>
-<td style="text-align:left">s</td>
-<td style="text-align:left">s</td>
-</tr>
-<tr>
-<td style="text-align:left">单步（不进函数）</td>
-<td style="text-align:left">next</td>
-<td style="text-align:left">n</td>
-<td style="text-align:left">n</td>
-</tr>
-<tr>
-<td style="text-align:left">打印变量</td>
-<td style="text-align:left">print</td>
-<td style="text-align:left">p</td>
-<td style="text-align:left">p i、p/x i</td>
-</tr>
-<tr>
-<td style="text-align:left">查看代码</td>
-<td style="text-align:left">list</td>
-<td style="text-align:left">l</td>
-<td style="text-align:left">l、l 15、l test.cpp:main</td>
-</tr>
-<tr>
-<td style="text-align:left">退出GDB</td>
-<td style="text-align:left">quit</td>
-<td style="text-align:left">q</td>
-<td style="text-align:left">q</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>备忘录</category>
-      </categories>
-      <tags>
-        <tag>GDB</tag>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GCC Memo</title>
     <url>/2025/11/21/GCC%20Memo/</url>
     <content><![CDATA[<h1>GCC Memo</h1>
@@ -1968,160 +2125,273 @@
       </tags>
   </entry>
   <entry>
-    <title>Doxygen 使用教学</title>
-    <url>/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/</url>
-    <content><![CDATA[<h1>Doxygen 入门指南：从注释到自动文档</h1>
-<p>Doxygen 是一款用于生成代码文档的工具，支持 C、C++、Python 等多种语言，尤其适合 C/C++ 项目。本文将介绍如何使用 Doxygen 规范注释并生成 API 文档。</p>
-<h2 id="一、安装-Doxygen">一、安装 Doxygen</h2>
-<h3 id="1-Windows">1. Windows</h3>
+    <title>KeyScribe</title>
+    <url>/2026/06/17/KeyScribe/</url>
+    <content><![CDATA[<h1>KeyScribe</h1>
+<p><a href="https://github.com/1613661434/KeyScribe/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a><br>
+<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.8%2B-%233776AB?logo=python" alt="Python"></a><br>
+<a href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/platform-Windows-%230078D6?logo=windows" alt="Platform"></a><br>
+<a href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/dependencies-zero-brightgreen" alt="Dependencies"></a><br>
+<a href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/release-v1.0.0-%23FF6F00" alt="Release"></a></p>
+<p>模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置。</p>
+<p><strong>核心特点：完全不走剪贴板</strong>，通过 Windows <code>SendInput</code> API 注入真实键盘事件，不会被识别为粘贴操作。</p>
+<blockquote>
+<p><strong>作者：</strong> ol木子李lo · <a href="https://1613661434.github.io/">博客</a> · <a href="https://github.com/1613661434/KeyScribe">GitHub</a> · MIT License</p>
+</blockquote>
+<h2 id="适用场景">适用场景</h2>
 <ul>
-<li>下载安装包：<a href="https://www.doxygen.nl/download.html">Doxygen 官网</a>（选择 <code>doxygen-&lt;version&gt;.setup.exe</code>）</li>
-<li>安装时勾选 <code>doxywizard</code>（图形化配置工具，推荐新手使用）</li>
+<li>网页/应用中禁止了 Ctrl+V 粘贴</li>
+<li>远程桌面、虚拟机等无法共享剪贴板的环境</li>
+<li>需要模拟真实打字节奏的演示/测试</li>
 </ul>
-<h3 id="2-Linux">2. Linux</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Ubuntu/Debian</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install doxygen graphviz  <span class="comment"># graphviz 用于生成图表</span></span><br><span class="line"><span class="comment"># CentOS</span></span><br><span class="line"><span class="built_in">sudo</span> yum install doxygen graphviz</span><br></pre></td></tr></table></figure>
-<h3 id="3-macOS">3. macOS</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install doxygen graphviz</span><br></pre></td></tr></table></figure>
-<h2 id="二、基本注释规则">二、基本注释规则</h2>
-<p>Doxygen 通过识别特定格式的注释生成文档，核心是 <strong><code>/** ... */</code></strong> 风格的注释块，配合标签（<code>@tag</code>）描述代码信息。</p>
-<h3 id="1-函数-方法注释">1. 函数 / 方法注释</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 计算两个整数的和</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 支持正数、负数和零的加法运算，返回结果不会溢出（假设输入在 int 范围内）</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param a 第一个加数</span></span><br><span class="line"><span class="comment"> * @param b 第二个加数</span></span><br><span class="line"><span class="comment"> * @return 两数之和（int 类型）</span></span><br><span class="line"><span class="comment"> * @note 若输入超出 int 范围，可能导致未定义行为</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-类-结构体注释">2. 类 / 结构体注释</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief 表示二维坐标的结构体</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 存储 x 和 y 坐标，提供基础的坐标运算方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;  <span class="comment">///&lt; x 坐标（成员变量注释用 ///&lt;）</span></span><br><span class="line">    <span class="type">int</span> y;  <span class="comment">///&lt; y 坐标</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @brief 初始化坐标</span></span><br><span class="line"><span class="comment">     * @param x_ x 坐标值</span></span><br><span class="line"><span class="comment">     * @param y_ y 坐标值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Point</span>(<span class="type">int</span> x_, <span class="type">int</span> y_) : <span class="built_in">x</span>(x_), <span class="built_in">y</span>(y_) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="3-文件头部注释">3. 文件头部注释</h3>
-<p>每个 <code>.h</code> 或 <code>.cpp</code> 文件建议添加头部注释，说明文件功能：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file math_utils.h</span></span><br><span class="line"><span class="comment"> * @brief 数学工具函数集合</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 包含加法、减法、乘法等基础运算，以及向量、矩阵操作</span></span><br><span class="line"><span class="comment"> * @author 你的名字</span></span><br><span class="line"><span class="comment"> * @date 2024-05-01</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<h2 id="三、常用标签速查表">三、常用标签速查表</h2>
+<h2 id="环境要求">环境要求</h2>
+<ul>
+<li>Windows 系统</li>
+<li>Python 3.8 或更高版本</li>
+<li><strong>零第三方依赖</strong> — 只使用 Python 标准库</li>
+</ul>
+<h2 id="快速开始">快速开始</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 准备一个文本文件，写上要输入的内容</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;你好世界&#123;ENTER&#125;这是演示文本。&quot;</span> &gt; demo.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 运行脚本（默认 3 秒倒计时）</span></span><br><span class="line">python keyscribe.py demo.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在倒计时结束前，把光标放到输入位置（如记事本、浏览器输入框）</span></span><br><span class="line"><span class="comment"># 4. 倒计时归零 → 自动开始打字</span></span><br></pre></td></tr></table></figure>
+<h2 id="命令行选项">命令行选项</h2>
+<p>查看完整帮助：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python keyscribe.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p><code>--help</code> 会以中英双语显示所有参数说明和示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python keyscribe.py &lt;file&gt; [options]</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">  file                    要输入的文本文件路径</span><br><span class="line"></span><br><span class="line">选项:</span><br><span class="line">  --help, -h              显示中英双语帮助信息</span><br><span class="line">  --config PATH           从 JSON 文件加载配置（可与 CLI 参数混用）</span><br><span class="line">  -c, --countdown SEC     倒计时秒数（默认: 3）</span><br><span class="line">  -d, --delay MS          字符间延迟毫秒数（默认: 60，自动 ±30ms 随机）</span><br><span class="line">  -f, --filter MODE       过滤模式: no-chinese / ascii-only / no-numbers</span><br><span class="line">  --filter-mode MODE      过滤方式: remove / keep（默认: remove）</span><br><span class="line">  -e, --encoding ENC      文件编码（默认: utf-8）</span><br><span class="line">  -l, --lang LANG         显示语言: zh(中文) / en(English)，默认 zh</span><br><span class="line">  --no-random             关闭延迟随机化</span><br><span class="line">  --no-cancel-on-keypress 关闭按键中断功能（默认: 启用）</span><br><span class="line">  -r, --raw              原始模式: 逐字原样输入，不解析特殊按键标记</span><br><span class="line">  -V, --version           显示版本号</span><br></pre></td></tr></table></figure>
+<h2 id="原始模式（Raw-Mode）">原始模式（Raw Mode）</h2>
+<p>当你只想<strong>原封不动</strong>地输入文件内容，不想要 <code>&#123;ENTER&#125;</code> 等特殊按键解析时，使用 <code>-r</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python keyscribe.py input.txt -r</span><br></pre></td></tr></table></figure>
+<p>文件中所有字符——包括 <code>&#123;</code>、<code>&#125;</code>、<code>&#123;ENTER&#125;</code> 等——都会被<strong>逐字原样打出</strong>，不做任何特殊解析。</p>
 <table>
 <thead>
 <tr>
-<th>标签</th>
-<th>用途</th>
-<th>示例</th>
+<th>模式</th>
+<th style="text-align:center"><code>&#123;ENTER&#125;</code> 效果</th>
+<th style="text-align:center"><code>&#123;</code> <code>&#125;</code> 效果</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>@brief</code></td>
-<td>简短描述（一句话功能说明）</td>
-<td><code>@brief 计算绝对值</code></td>
+<td>正常模式</td>
+<td style="text-align:center">按下回车键</td>
+<td style="text-align:center">触发特殊键解析</td>
 </tr>
 <tr>
-<td><code>@param</code></td>
-<td>描述函数参数</td>
-<td><code>@param num 待计算的数字</code></td>
-</tr>
-<tr>
-<td><code>@return</code></td>
-<td>描述返回值</td>
-<td><code>@return 非负结果</code></td>
-</tr>
-<tr>
-<td><code>@note</code></td>
-<td>补充说明（注意事项）</td>
-<td><code>@note 输入不能为nullptr</code></td>
-</tr>
-<tr>
-<td><code>@warning</code></td>
-<td>警告信息（危险操作）</td>
-<td><code>@warning 此函数会修改原始数组</code></td>
-</tr>
-<tr>
-<td><code>@file</code></td>
-<td>标记文件注释</td>
-<td><code>@file string_utils.h</code></td>
-</tr>
-<tr>
-<td><code>@author</code></td>
-<td>作者信息</td>
-<td><code>@author 张三 &lt;zhangsan@example.com&gt;</code></td>
-</tr>
-<tr>
-<td><code>@date</code></td>
-<td>日期</td>
-<td><code>@date 2024-05-01</code></td>
-</tr>
-<tr>
-<td><code>@see</code></td>
-<td>关联内容（参考其他函数 / 类）</td>
-<td><code>@see add()</code></td>
+<td><code>-r</code> 原始模式</td>
+<td style="text-align:center">打出 <code>&#123;ENTER&#125;</code> 这几个字符</td>
+<td style="text-align:center">打出 <code>&#123;</code> <code>&#125;</code> 字符</td>
 </tr>
 </tbody>
 </table>
-<p><img src="/2025/12/30/Doxygen%20%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/Snipaste_2025-08-14_11-49-39.png" alt="标签"></p>
-<h2 id="四、生成文档步骤">四、生成文档步骤</h2>
-<h3 id="方法-1：使用-doxywizard（图形化工具）">方法 1：使用 doxywizard（图形化工具）</h3>
-<ol>
-<li>打开 <code>doxywizard</code>（Windows 可在开始菜单找到，Linux/macOS 终端输入 <code>doxywizard</code>）</li>
-<li>Step 1: 配置输入输出
+<blockquote>
+<p><strong>何时用？</strong> 你的文本文件本身就包含花括号 <code>&#123; &#125;</code> 时，用 <code>-r</code> 避免被误解析。不需要手动逐个加 <code>&#123;&#123;` `&#125;&#125;</code> 转义。</p>
+</blockquote>
+<h2 id="语言切换">语言切换</h2>
+<p>默认所有提示信息为中文。使用 <code>--lang en</code> 切换为英文：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 英文提示</span></span><br><span class="line">python keyscribe.py input.txt -l en</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中文提示（默认）</span></span><br><span class="line">python keyscribe.py input.txt -l zh</span><br></pre></td></tr></table></figure>
+<p>也支持在 JSON 配置中设置 <code>&quot;language&quot;: &quot;en&quot;</code>，这样该配置文件的所有输出都是英文。</p>
+<h2 id="按键中断（默认开启）">按键中断（默认开启）</h2>
+<p>这是 KeyScribe 最重要的安全特性。<strong>输入过程中，按下键盘上的任意键即可立即中断脚本。</strong></p>
+<p>原理：脚本通过 Windows 低级键盘钩子（<code>WH_KEYBOARD_LL</code>）监控键盘事件，利用 <code>LLKHF_INJECTED</code> 标志区分「脚本注入的按键」和「用户真实按键」——只有真实物理按键才会触发中断。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">打字中... → 按一下任意键（如 ESC、空格、任意字母）→ 脚本立即停止</span><br></pre></td></tr></table></figure>
+<p>不需要切回终端窗口按 <code>Ctrl+C</code>，只需在当前的输入框中按任意键即可。</p>
+<blockquote>
+<p><strong>关闭此功能：</strong> <code>--no-cancel-on-keypress</code>。如果你确定不需要中途打断，可以关闭它。</p>
+</blockquote>
+<h2 id="JSON-配置文件">JSON 配置文件</h2>
+<p>适合需要复用配置的场景。CLI 参数会覆盖 JSON 中的值。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;file&quot;</span><span class="punctuation">:</span> <span class="string">&quot;input.txt&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;countdown&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;delay&quot;</span><span class="punctuation">:</span> <span class="number">80</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;filter&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;filter_mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;remove&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;utf-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;no_random&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;cancel_on_keypress&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 JSON 配置</span></span><br><span class="line">python keyscribe.py --config example_config.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># JSON + CLI 覆盖（倒计时改为 10 秒）</span></span><br><span class="line">python keyscribe.py --config example_config.json -c 10</span><br></pre></td></tr></table></figure>
+<h2 id="特殊按键标记">特殊按键标记</h2>
+<p>在文本文件中使用 <code>&#123;键名&#125;</code> 格式插入特殊按键。不区分大小写。</p>
+<h3 id="基础按键">基础按键</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;ENTER&#125;</code> / <code>&#123;RETURN&#125;</code></td>
+<td>回车</td>
+</tr>
+<tr>
+<td><code>&#123;TAB&#125;</code></td>
+<td>Tab 键</td>
+</tr>
+<tr>
+<td><code>&#123;ESC&#125;</code> / <code>&#123;ESCAPE&#125;</code></td>
+<td>Escape</td>
+</tr>
+<tr>
+<td><code>&#123;BACKSPACE&#125;</code> / <code>&#123;BS&#125;</code></td>
+<td>退格</td>
+</tr>
+<tr>
+<td><code>&#123;DELETE&#125;</code> / <code>&#123;DEL&#125;</code></td>
+<td>Delete</td>
+</tr>
+<tr>
+<td><code>&#123;SPACE&#125;</code></td>
+<td>空格</td>
+</tr>
+<tr>
+<td><code>&#123;HOME&#125;</code></td>
+<td>跳到行首</td>
+</tr>
+<tr>
+<td><code>&#123;END&#125;</code></td>
+<td>跳到行尾</td>
+</tr>
+<tr>
+<td><code>&#123;PGUP&#125;</code> / <code>&#123;PAGEUP&#125;</code></td>
+<td>上翻页</td>
+</tr>
+<tr>
+<td><code>&#123;PGDN&#125;</code> / <code>&#123;PAGEDOWN&#125;</code></td>
+<td>下翻页</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方向键">方向键</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;UP&#125;</code> / <code>&#123;DOWN&#125;</code></td>
+<td>上/下</td>
+</tr>
+<tr>
+<td><code>&#123;LEFT&#125;</code> / <code>&#123;RIGHT&#125;</code></td>
+<td>左/右</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修饰键组合">修饰键组合</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;CTRL+A&#125;</code> ~ <code>&#123;CTRL+Z&#125;</code></td>
+<td>Ctrl 组合</td>
+</tr>
+<tr>
+<td><code>&#123;CTRL+HOME&#125;</code> / <code>&#123;CTRL+END&#125;</code></td>
+<td>Ctrl + 行首/行尾</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+TAB&#125;</code></td>
+<td>Shift + Tab</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+HOME&#125;</code> / <code>&#123;SHIFT+END&#125;</code></td>
+<td>Shift + 行首/行尾</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+UP&#125;</code> 等方向键</td>
+<td>Shift + 方向键（选中）</td>
+</tr>
+<tr>
+<td><code>&#123;ALT+F4&#125;</code></td>
+<td>Alt + F4（关闭窗口）</td>
+</tr>
+<tr>
+<td><code>&#123;ALT+TAB&#125;</code></td>
+<td>Alt + Tab（切换窗口）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;WAIT:500&#125;</code></td>
+<td>暂停 500 毫秒（数字可自定义）</td>
+</tr>
+<tr>
+<td><code>&#123;&#123;` | 输出字面量 `&#123;` |
+| `&#125;&#125;</code></td>
+<td>输出字面量 <code>&#125;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例文本">示例文本</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">用户名&#123;TAB&#125;admin@example.com&#123;ENTER&#125;</span><br><span class="line">密码&#123;TAB&#125;password123&#123;ENTER&#125;</span><br><span class="line">&#123;WAIT:300&#125;</span><br><span class="line">&#123;ENTER&#125;</span><br><span class="line">&#123;TAB&#125;&#123;TAB&#125;&#123;TAB&#125;&#123;SPACE&#125;&#123;ENTER&#125;  ← 勾选&quot;记住我&quot;复选框</span><br></pre></td></tr></table></figure>
+<h2 id="字符过滤">字符过滤</h2>
+<p>使用 <code>--filter</code> 选项过滤文本中的特定字符：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>no-chinese</code></td>
+<td>移除所有中文字符（包括 CJK 扩展区）</td>
+</tr>
+<tr>
+<td><code>ascii-only</code></td>
+<td>仅保留 ASCII 可打印字符（英文、数字、符号）</td>
+</tr>
+<tr>
+<td><code>no-numbers</code></td>
+<td>移除所有数字</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 去掉所有中文再输入</span></span><br><span class="line">python keyscribe.py mixed.txt --filter no-chinese</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只要英文和符号</span></span><br><span class="line">python keyscribe.py mixed.txt --filter ascii-only</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反向：只保留中文（删除非中文）</span></span><br><span class="line">python keyscribe.py mixed.txt --filter ascii-only --filter-mode keep</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong> <code>--filter-mode keep</code> 会反转过滤逻辑。如 <code>--filter ascii-only --filter-mode keep</code> 表示仅保留非 ASCII 字符（即中文等）。</p>
+</blockquote>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="Q-中文能正常输入吗？">Q: 中文能正常输入吗？</h3>
+<p>能。脚本使用 Windows <code>KEYEVENTF_UNICODE</code> 机制注入 Unicode 字符为真实键盘事件。只要目标应用接受键盘输入，就能正常输入中文。</p>
+<h3 id="Q-为什么中文输入不对-乱码？">Q: 为什么中文输入不对 / 乱码？</h3>
+<p>检查文件编码。用 <code>--encoding</code> 指定正确编码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python keyscribe.py text.txt -e gbk      <span class="comment"># GBK 编码的文件</span></span><br><span class="line">python keyscribe.py text.txt -e gb2312   <span class="comment"># GB2312 编码</span></span><br></pre></td></tr></table></figure>
+<h3 id="Q-会被检测为脚本-自动化吗？">Q: 会被检测为脚本/自动化吗？</h3>
+<p>本脚本产生的是 OS 层面的标准键盘事件，和物理键盘没有区别。但过于精确等速的输入可能不自然 — 默认启用的 ±30ms 随机延迟有助于模拟真人打字节奏。</p>
+<h3 id="Q-如何中途取消？">Q: 如何中途取消？</h3>
+<p><strong>最方便的方式：输入过程中直接按键盘上的任意键</strong>（如 ESC、空格等），脚本会立即停止，无需切换回终端。</p>
+<p>备选方式：</p>
 <ul>
-<li><code>Working directory</code>：选择项目根目录</li>
-<li><code>Input</code>：添加代码目录（如 <code>./src</code>）</li>
-<li><code>Output directory</code>：设置文档输出路径（如 <code>./docs</code>）</li>
+<li>倒计时阶段 → <code>Ctrl+C</code> 或任意键取消</li>
+<li>终端窗口 → <code>Ctrl+C</code> 始终有效</li>
+<li>如果不需要按键中断功能，使用 <code>--no-cancel-on-keypress</code> 关闭</li>
 </ul>
-</li>
-<li>Step 2: 选择输出格式
-<ul>
-<li>在 <code>Output</code> 标签页勾选 <code>HTML</code>（必选）和 <code>LaTeX</code>（如需 PDF）</li>
-</ul>
-</li>
-<li>Step 3: 生成文档
-<ul>
-<li>点击 <code>Run doxygen</code>，等待生成完成</li>
-<li>打开 <code>./docs/html/index.html</code> 查看文档</li>
-</ul>
-</li>
-</ol>
-<h3 id="方法-2：使用命令行（推荐熟练后使用）">方法 2：使用命令行（推荐熟练后使用）</h3>
-<ol>
-<li>
-<p>在项目根目录创建配置文件 <code>Doxyfile</code> :</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doxygen -g Doxyfile  <span class="comment"># 生成默认配置</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>编辑<code>Doxyfile</code>关键配置（可选，默认也可生成文档）：</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">PROJECT_NAME</span>           = <span class="string">&quot;OL库&quot;</span>  <span class="comment"># 项目名称</span></span><br><span class="line"><span class="attr">INPUT</span>                  = ./src   <span class="comment"># 代码目录</span></span><br><span class="line"><span class="attr">OUTPUT_DIRECTORY</span>       = ./docs  <span class="comment"># 文档输出目录</span></span><br><span class="line"><span class="attr">RECURSIVE</span>              = <span class="literal">YES</span>     <span class="comment"># 递归处理子目录</span></span><br><span class="line"><span class="attr">GENERATE_HTML</span>          = <span class="literal">YES</span>     <span class="comment"># 生成HTML文档</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>生成文档：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doxygen Doxyfile  <span class="comment"># 执行配置文件</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="五、高级技巧">五、高级技巧</h2>
-<ol>
-<li>
-<p><strong>生成调用关系图</strong><br>
-在 <code>Doxyfile</code> 中开启：</p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">HAVE_DOT</span>               = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALL_GRAPH</span>             = <span class="literal">YES</span></span><br><span class="line"><span class="attr">CALLER_GRAPH</span>           = <span class="literal">YES</span></span><br></pre></td></tr></table></figure>
-<p>需提前安装 <code>graphviz</code>（见步骤一）。</p>
-</li>
-<li>
-<p><strong>忽略不需要的代码</strong><br>
-用 <code>/// @cond</code> 和 <code>/// @endcond</code> 包裹无需生成文档的代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// @cond</span></span><br><span class="line"><span class="comment">// 内部辅助函数，不对外暴露</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">helper</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">/// @endcond</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>集成到 CMake 构建流程</strong><br>
-在 <code>CMakeLists.txt</code> 中添加：</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(Doxygen)</span><br><span class="line"><span class="keyword">if</span>(DOXYGEN_FOUND)</span><br><span class="line">    <span class="keyword">add_custom_target</span>(docs</span><br><span class="line">        <span class="keyword">COMMAND</span> doxygen Doxyfile</span><br><span class="line">        WORKING_DIRECTORY <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span></span><br><span class="line">        COMMENT <span class="string">&quot;生成API文档&quot;</span></span><br><span class="line">    )</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
-<p>之后可通过 <code>make docs</code>（Linux）或 <code>cmake --build . --target docs</code> 生成文档。</p>
-</li>
-</ol>
-<h2 id="六、常见问题">六、常见问题</h2>
-<ul>
-<li><strong>注释不生效？</strong><br>
-确保注释块以 <code>/**</code> 开头（不是 <code>/*</code> 或 <code>//</code>），且标签拼写正确（区分大小写）。</li>
-<li><strong>中文乱码？</strong><br>
-在 <code>Doxyfile</code> 中设置 <code>DOXYFILE_ENCODING = UTF-8</code> 和 <code>OUTPUT_LANGUAGE = Chinese</code>。</li>
-<li><strong>文档缺少函数？</strong><br>
-检查函数是否在 <code>.h</code> 头文件中声明（Doxygen 通常优先解析头文件）。</li>
-</ul>
-]]></content>
+<h3 id="Q-文件很大-10000-字符-怎么办？">Q: 文件很大 (&gt;10000 字符) 怎么办？</h3>
+<p>脚本会显示警告和预计时间，让你确认是否继续。你也可以随时按 <code>Ctrl+C</code> 中断。</p>
+<h3 id="Q-能在-macOS-Linux-上用吗？">Q: 能在 macOS / Linux 上用吗？</h3>
+<p>目前仅支持 Windows。macOS/Linux 需要不同的实现方式（如 <code>Quartz</code> 或 <code>uinput</code>），后续可扩展。</p>
+<h3 id="Q-有哪些参数？怎么查看帮助？">Q: 有哪些参数？怎么查看帮助？</h3>
+<p>运行 <code>python keyscribe.py --help</code>，会以中英双语显示所有参数、说明和使用示例。</p>
+<h3 id="Q-怎么切换成英文？">Q: 怎么切换成英文？</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 命令行方式</span></span><br><span class="line">python keyscribe.py input.txt -l en</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或在 JSON 配置中设置</span></span><br><span class="line">&#123; <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>教学</category>
+        <category>个人项目</category>
       </categories>
       <tags>
-        <tag>Doxygen</tag>
+        <tag>Python</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -3566,84 +3836,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Qt6 替代废弃 QMediaPlaylist 的解决方案</title>
-    <url>/2026/04/15/Qt6-%E6%9B%BF%E4%BB%A3%E5%BA%9F%E5%BC%83-QMediaPlaylist-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<h1>Qt6 替代废弃 QMediaPlaylist 的解决方案</h1>
-<blockquote>
-<p>参考：<a href="https://www.cnblogs.com/sprinining/p/18994305">替代 Qt6 废弃的 QMediaPlaylist - _Sylvan - 博客园</a><br>
-—— 之前使用Qt5，如今使用Qt6发现在Qt6里QMediaPlaylist已废弃，所以网上搜了一下，找到了该博主的博客，感想博主的代码，我在其基础上增加和修改，以适配Qt5的写法。</p>
-</blockquote>
-<h2 id="一、背景：Qt6-多媒体模块的重大变更">一、背景：Qt6 多媒体模块的重大变更</h2>
-<p>Qt5 中常用的 <code>QMediaPlaylist</code> 类在 Qt6 中被正式移除，这给大量依赖该类实现音频 / 视频播放列表管理的项目带来了兼容性问题。尤其对于棋牌、影音类应用（如本文的斗地主项目），播放列表是核心功能模块，急需一套轻量、兼容、易集成的替代方案。</p>
-<p>本文基于实际项目经验，从零实现了一套 Qt6 专属的 <code>MediaPlaylist</code> 类，完全复刻 <code>QMediaPlaylist</code> 核心能力，同时适配 Qt6 新的多媒体架构（<code>QMediaPlayer + QAudioOutput</code>），解决音频播放列表、循环切歌、播放模式控制等核心需求。</p>
-<h2 id="二、核心痛点分析">二、核心痛点分析</h2>
-<p>迁移 Qt5 音频播放逻辑到 Qt6 时，主要面临以下问题：</p>
-<ol>
-<li><code>QMediaPlaylist</code> 直接移除，无官方替代类；</li>
-<li>Qt6 多媒体架构调整，<code>QMediaPlayer</code> 需手动绑定 <code>QAudioOutput</code>，且播放状态监听逻辑变更；</li>
-<li>原有播放模式（单曲循环、列表循环、单次播放）需重新实现；</li>
-<li>音频索引切换、自动切歌等核心逻辑需手动封装。</li>
-</ol>
-<h2 id="三、解决方案：自定义-MediaPlaylist-类实现">三、解决方案：自定义 MediaPlaylist 类实现</h2>
-<h3 id="3-1-类设计思路">3.1 类设计思路</h3>
-<p>遵循 Qt 信号槽设计规范，封装播放列表核心能力，核心设计目标：</p>
-<ul>
-<li>兼容 Qt6 <code>QMediaPlayer</code> 新架构；</li>
-<li>支持三种经典播放模式；</li>
-<li>自动监听播放完成状态，实现无感切歌；</li>
-<li>提供简洁的外部接口，最小化项目改造成本。</li>
-</ul>
-<h3 id="3-2-完整代码实现">3.2 完整代码实现</h3>
-<ul>
-<li>头文件（ol_MediaPlaylist.h）</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 程序名：ol_MediaPlaylist.h</span></span><br><span class="line"><span class="comment"> * 功能描述：Qt6 媒体播放列表类，替代废弃的 QMediaPlaylist，支持以下特性：</span></span><br><span class="line"><span class="comment"> *          - 自动绑定 QMediaPlayer，监听播放完成状态</span></span><br><span class="line"><span class="comment"> *          - 三种播放模式：单次播放、单曲循环、列表循环</span></span><br><span class="line"><span class="comment"> *          - 播放结束自动切换曲目/循环播放</span></span><br><span class="line"><span class="comment"> *          - 索引/媒体资源自动管理，适配 Qt6</span></span><br><span class="line"><span class="comment"> *          - 支持信号通知索引变化，与音频播放器联动</span></span><br><span class="line"><span class="comment"> * 作者：ol</span></span><br><span class="line"><span class="comment"> * 适用标准：Qt 6.0及以上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> OL_MEDIAPLAYLIST_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OL_MEDIAPLAYLIST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QVector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QUrl&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QMediaPlayer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ol</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @brief 媒体播放列表类，适配 Qt6 QMediaPlayer</span></span><br><span class="line"><span class="comment">     * 实现播放列表管理、自动循环切歌、播放模式控制，无需手动处理音源切换</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">MediaPlaylist</span> : <span class="keyword">public</span> QObject</span><br><span class="line">    &#123;</span><br><span class="line">        Q_OBJECT</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 播放模式枚举</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">enum class</span> <span class="title class_">PlaybackMode</span> : <span class="type">char</span></span><br><span class="line">        &#123;</span><br><span class="line">            CurrentItemOnce, <span class="comment">/**&lt; 当前曲目播放一次后自动停止 */</span></span><br><span class="line">            CurrentItemLoop, <span class="comment">/**&lt; 当前曲目无限循环播放 */</span></span><br><span class="line">            SequentialLoop   <span class="comment">/**&lt; 列表顺序循环，尾首自动衔接 */</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        QVector&lt;QUrl&gt; m_mediaList;   <span class="comment">///&lt; 媒体资源 URL 列表</span></span><br><span class="line">        <span class="type">int</span> m_currentIndex;          <span class="comment">///&lt; 当前播放索引，-1 表示未选中</span></span><br><span class="line">        PlaybackMode m_playbackMode; <span class="comment">///&lt; 当前播放模式</span></span><br><span class="line">        QMediaPlayer* m_player;      <span class="comment">///&lt; 绑定的 Qt 媒体播放器</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 构造函数</span></span><br><span class="line"><span class="comment">         * @param parent 父对象</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">MediaPlaylist</span><span class="params">(QObject* parent = <span class="literal">nullptr</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 向播放列表添加媒体资源</span></span><br><span class="line"><span class="comment">         * @param media 媒体资源 URL（支持 qrc 资源/本地文件）</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">addMedia</span><span class="params">(<span class="type">const</span> QUrl&amp; media)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 清空播放列表，重置索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 设置当前播放索引（自动切换播放器音源）</span></span><br><span class="line"><span class="comment">         * @param index 目标播放索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setCurrentIndex</span><span class="params">(<span class="type">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放索引</span></span><br><span class="line"><span class="comment">         * @return 当前索引，-1 表示无效</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getCurrentIndex</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_currentIndex; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放的媒体 URL</span></span><br><span class="line"><span class="comment">         * @return 有效 URL / 空 QUrl</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">getCurrentMedia</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取列表总媒体数量</span></span><br><span class="line"><span class="comment">         * @return 媒体资源总数</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> qsizetype <span class="title">getMediaCount</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_mediaList.<span class="built_in">size</span>(); &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 设置播放模式</span></span><br><span class="line"><span class="comment">         * @param mode 目标播放模式</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">setPlaybackMode</span><span class="params">(PlaybackMode mode)</span> </span>&#123; m_playbackMode = mode; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放模式</span></span><br><span class="line"><span class="comment">         * @return 播放模式枚举值</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> PlaybackMode <span class="title">getPlaybackMode</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_playbackMode; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 绑定 Qt 媒体播放器</span></span><br><span class="line"><span class="comment">         * @param player 待绑定的 QMediaPlayer 对象</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setPlayer</span><span class="params">(QMediaPlayer* player)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 切换到下一首媒体</span></span><br><span class="line"><span class="comment">         * @return 下一首媒体的 URL</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">nextMedia</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 切换到上一首媒体</span></span><br><span class="line"><span class="comment">         * @return 上一首媒体的 URL</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">previousMedia</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    signals:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 播放索引改变信号，用于用户未来功能扩展</span></span><br><span class="line"><span class="comment">         * @param newIndex 新的播放索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">currentIndexChanged</span><span class="params">(<span class="type">int</span> newIndex)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> slots:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 监听播放器状态，播放完成自动处理切歌/循环</span></span><br><span class="line"><span class="comment">         * @param status 媒体播放状态</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">onMediaStatusChanged</span><span class="params">(QMediaPlayer::MediaStatus status)</span></span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// namespace ol</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// !OL_MEDIAPLAYLIST_H</span></span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>源文件（ol_MediaPlaylist.cpp）</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 程序名：ol_MediaPlaylist.cpp</span></span><br><span class="line"><span class="comment"> * 功能描述：媒体播放列表类实现文件</span></span><br><span class="line"><span class="comment"> * 作者：ol</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ol_MediaPlaylist.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QMediaPlayer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ol</span><br><span class="line">&#123;</span><br><span class="line">    MediaPlaylist::<span class="built_in">MediaPlaylist</span>(QObject* parent)</span><br><span class="line">        : <span class="built_in">QObject</span>(parent), <span class="built_in">m_currentIndex</span>(<span class="number">-1</span>), <span class="built_in">m_playbackMode</span>(PlaybackMode::CurrentItemOnce), <span class="built_in">m_player</span>(<span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::addMedia</span><span class="params">(<span class="type">const</span> QUrl&amp; media)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_mediaList.<span class="built_in">append</span>(media);</span><br><span class="line">        <span class="keyword">if</span> (m_currentIndex == <span class="number">-1</span>) <span class="built_in">setCurrentIndex</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::clear</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_mediaList.<span class="built_in">clear</span>();</span><br><span class="line">        m_currentIndex = <span class="number">-1</span>;</span><br><span class="line">        <span class="function">emit <span class="title">currentIndexChanged</span><span class="params">(m_currentIndex)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::setCurrentIndex</span><span class="params">(<span class="type">int</span> index)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= <span class="number">0</span> &amp;&amp; index &lt; m_mediaList.<span class="built_in">size</span>() &amp;&amp; index != m_currentIndex)</span><br><span class="line">        &#123;</span><br><span class="line">            m_currentIndex = index;</span><br><span class="line">            <span class="function">emit <span class="title">currentIndexChanged</span><span class="params">(m_currentIndex)</span></span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 自动切换播放器音源</span></span><br><span class="line">            <span class="keyword">if</span> (m_player) m_player-&gt;<span class="built_in">setSource</span>(<span class="built_in">getCurrentMedia</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::getCurrentMedia</span><span class="params">()</span> <span class="type">const</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_currentIndex &gt;= <span class="number">0</span> &amp;&amp; m_currentIndex &lt; m_mediaList.<span class="built_in">size</span>()) <span class="keyword">return</span> m_mediaList.<span class="built_in">at</span>(m_currentIndex);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::setPlayer</span><span class="params">(QMediaPlayer* player)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 断开旧播放器连接</span></span><br><span class="line">        <span class="keyword">if</span> (m_player) <span class="built_in">disconnect</span>(m_player, <span class="literal">nullptr</span>, <span class="keyword">this</span>, <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">        m_player = player;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绑定状态监听信号</span></span><br><span class="line">        <span class="keyword">if</span> (m_player)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">connect</span>(m_player, &amp;QMediaPlayer::mediaStatusChanged, <span class="keyword">this</span>, &amp;MediaPlaylist::onMediaStatusChanged);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 默认加载当前音源</span></span><br><span class="line">            <span class="type">const</span> QUrl url = <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">            <span class="keyword">if</span> (url.<span class="built_in">isValid</span>()) m_player-&gt;<span class="built_in">setSource</span>(url);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::nextMedia</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setCurrentIndex</span>((m_currentIndex + <span class="number">1</span>) % m_mediaList.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::previousMedia</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setCurrentIndex</span>((m_currentIndex - <span class="number">1</span> + m_mediaList.<span class="built_in">size</span>()) % m_mediaList.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::onMediaStatusChanged</span><span class="params">(QMediaPlayer::MediaStatus status)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 仅处理播放完成状态</span></span><br><span class="line">        <span class="keyword">if</span> (status != QMediaPlayer::EndOfMedia || !m_player) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (m_playbackMode)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::CurrentItemOnce:</span><br><span class="line">            m_player-&gt;<span class="built_in">stop</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::CurrentItemLoop:</span><br><span class="line">            m_player-&gt;<span class="built_in">play</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::SequentialLoop:</span><br><span class="line">            <span class="built_in">nextMedia</span>();</span><br><span class="line">            m_player-&gt;<span class="built_in">play</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// namespace ol</span></span><br></pre></td></tr></table></figure>
-<h2 id="四、核心功能解析">四、核心功能解析</h2>
-<h3 id="4-1-播放模式控制">4.1 播放模式控制</h3>
-<p>复刻 Qt5 <code>QMediaPlaylist</code> 三种经典模式，通过 <code>PlaybackMode</code> 枚举实现：</p>
-<ul>
-<li><code>CurrentItemOnce</code>：播放完成后自动停止；</li>
-<li><code>CurrentItemLoop</code>：单曲无限循环（播放完成后重新播放）；</li>
-<li><code>SequentialLoop</code>：列表循环（播放完成自动切下一首，最后一首切回第一首）。</li>
-</ul>
-<h3 id="4-2-自动绑定播放器">4.2 自动绑定播放器</h3>
-<p>通过 <code>setPlayer</code> 方法绑定 <code>QMediaPlayer</code>，实现两个核心能力：</p>
-<ol>
-<li>自动监听 <code>mediaStatusChanged</code> 信号，无需外部手动处理播放完成事件；</li>
-<li>切换索引时自动调用 <code>setSource</code>，避免外部重复编写音源切换逻辑。</li>
-</ol>
-<h3 id="4-3-索引安全管理">4.3 索引安全管理</h3>
-<p>所有索引操作（<code>setCurrentIndex</code>/<code>nextMedia</code>/<code>previousMedia</code>）均做合法性校验：</p>
-<ul>
-<li>索引越界时不执行任何操作；</li>
-<li>空列表时返回空 URL，避免程序崩溃；</li>
-<li>首次添加媒体自动选中第一个索引，降低使用成本。</li>
-</ul>
-<h2 id="五、项目集成示例">五、项目集成示例</h2>
-<p>以实际项目中的 <code>BGMControl</code> 类为例，展示如何快速集成自定义 <code>MediaPlaylist</code>：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 音频控制类中初始化播放列表</span></span><br><span class="line">BGMControl::<span class="built_in">BGMControl</span>(QObject* parent) : <span class="built_in">QObject</span>(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 初始化5组音频单元（男女音效/BGM/辅助音效/结束音效）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        QAudioOutput* output = <span class="keyword">new</span> <span class="built_in">QAudioOutput</span>(<span class="keyword">this</span>);</span><br><span class="line">        QMediaPlayer* player = <span class="keyword">new</span> <span class="built_in">QMediaPlayer</span>(<span class="keyword">this</span>);</span><br><span class="line">        ol::MediaPlaylist* playlist = <span class="keyword">new</span> ol::<span class="built_in">MediaPlaylist</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绑定播放器与播放列表</span></span><br><span class="line">        player-&gt;<span class="built_in">setAudioOutput</span>(output);</span><br><span class="line">        playlist-&gt;<span class="built_in">setPlayer</span>(player);</span><br><span class="line">        output-&gt;<span class="built_in">setVolume</span>(<span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 配置播放模式（BGM列表循环，其他单次播放）</span></span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">            playlist-&gt;<span class="built_in">setPlaybackMode</span>(ol::MediaPlaylist::PlaybackMode::SequentialLoop);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            playlist-&gt;<span class="built_in">setPlaybackMode</span>(ol::MediaPlaylist::PlaybackMode::CurrentItemOnce);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        m_outputs.<span class="built_in">push_back</span>(output);</span><br><span class="line">        m_players.<span class="built_in">push_back</span>(player);</span><br><span class="line">        m_playlists.<span class="built_in">push_back</span>(playlist);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载音频资源</span></span><br><span class="line">    <span class="built_in">initPlayList</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动BGM示例</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BGMControl::startBGM</span><span class="params">(<span class="type">float</span> volume)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    m_outputs[<span class="number">2</span>]-&gt;<span class="built_in">setVolume</span>(volume);</span><br><span class="line">    m_playlists[<span class="number">2</span>]-&gt;<span class="built_in">setCurrentIndex</span>(<span class="number">0</span>); <span class="comment">// 选中第一个BGM</span></span><br><span class="line">    m_players[<span class="number">2</span>]-&gt;<span class="built_in">play</span>();               <span class="comment">// 开始播放</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="六、总结">六、总结</h2>
-<p>本文实现的 <code>MediaPlaylist</code> 类完全适配 Qt6 多媒体架构，核心优势：</p>
-<ol>
-<li><strong>低改造成本</strong>：接口设计贴近 Qt5 <code>QMediaPlaylist</code>，项目迁移时无需大幅修改业务逻辑；</li>
-<li><strong>高稳定性</strong>：完善的索引校验、内存管理，避免空指针 / 越界崩溃；</li>
-<li><strong>强扩展性</strong>：保留 <code>currentIndexChanged</code> 信号，支持后续 UI 同步、日志记录等扩展；</li>
-<li><strong>零依赖</strong>：仅依赖 Qt6 Core 和 Multimedia 模块，无需第三方库。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>代码</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Qt6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OL</title>
     <url>/2025/12/19/OL/</url>
     <content><![CDATA[<h1>OL</h1>
@@ -3936,49 +4128,86 @@
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>Linux</tag>
         <tag>Windows</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
-    <title>斗地主</title>
-    <url>/2026/06/17/%E6%96%97%E5%9C%B0%E4%B8%BB/</url>
-    <content><![CDATA[<h1>Landlords（斗地主）</h1>
-<p>基于 Qt6 的欢乐斗地主单机游戏，由<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程改编而来，进行了代码优化并适配 Qt6。</p>
-<h2 id="特性">特性</h2>
-<ul>
-<li>🎴 完整的斗地主玩法：叫地主、抢地主、出牌、炸弹、飞机、顺子等</li>
-<li>🤖 智能 AI 对手，支持叫牌和出牌策略</li>
-<li>🎨 多套随机背景，丰富的卡牌动画效果（炸弹、飞机、顺子、连对）</li>
-<li>🎵 背景音乐与音效（出牌、抢地主、倒计时提醒等）</li>
-<li>⏱️ 出牌倒计时，增加游戏紧张感</li>
-<li>💯 得分结算面板，支持连续多局对战</li>
-</ul>
-<h2 id="技术栈">技术栈</h2>
-<ul>
-<li><strong>语言：</strong> C++17</li>
-<li><strong>框架：</strong> Qt 6.5+（Core / Widgets / Multimedia）</li>
-<li><strong>构建：</strong> CMake 3.19+</li>
-<li><strong>平台：</strong> Windows</li>
-</ul>
-<h2 id="构建">构建</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/1613661434/Landlords</span><br><span class="line"><span class="built_in">cd</span> Landlords</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">cmake --build build --config Release</span><br></pre></td></tr></table></figure>
+    <title>Qt6 替代废弃 QMediaPlaylist 的解决方案</title>
+    <url>/2026/04/15/Qt6-%E6%9B%BF%E4%BB%A3%E5%BA%9F%E5%BC%83-QMediaPlaylist-%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h1>Qt6 替代废弃 QMediaPlaylist 的解决方案</h1>
 <blockquote>
-<p>需要安装 Qt 6.5 及以上版本，并确保 CMake 能找到 Qt 安装路径。</p>
+<p>参考：<a href="https://www.cnblogs.com/sprinining/p/18994305">替代 Qt6 废弃的 QMediaPlaylist - _Sylvan - 博客园</a><br>
+—— 之前使用Qt5，如今使用Qt6发现在Qt6里QMediaPlaylist已废弃，所以网上搜了一下，找到了该博主的博客，感想博主的代码，我在其基础上增加和修改，以适配Qt5的写法。</p>
 </blockquote>
-<h2 id="运行">运行</h2>
-<p>编译完成后，双击 <code>Landlords.exe</code>，点击&quot;开始游戏&quot;即可开始对战。</p>
-<h2 id="致谢">致谢</h2>
-<p>本项目基于<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程，在原课程基础上进行了代码优化、语法简化和 Qt6 适配。感谢老师的精彩课程！</p>
-<h2 id="许可">许可</h2>
-<p><a href="LICENSE">LGPL v3.0</a> © 2026 <a href="https://1613661434.github.io/">ol木子李lo</a></p>
+<h2 id="一、背景：Qt6-多媒体模块的重大变更">一、背景：Qt6 多媒体模块的重大变更</h2>
+<p>Qt5 中常用的 <code>QMediaPlaylist</code> 类在 Qt6 中被正式移除，这给大量依赖该类实现音频 / 视频播放列表管理的项目带来了兼容性问题。尤其对于棋牌、影音类应用（如本文的斗地主项目），播放列表是核心功能模块，急需一套轻量、兼容、易集成的替代方案。</p>
+<p>本文基于实际项目经验，从零实现了一套 Qt6 专属的 <code>MediaPlaylist</code> 类，完全复刻 <code>QMediaPlaylist</code> 核心能力，同时适配 Qt6 新的多媒体架构（<code>QMediaPlayer + QAudioOutput</code>），解决音频播放列表、循环切歌、播放模式控制等核心需求。</p>
+<h2 id="二、核心痛点分析">二、核心痛点分析</h2>
+<p>迁移 Qt5 音频播放逻辑到 Qt6 时，主要面临以下问题：</p>
+<ol>
+<li><code>QMediaPlaylist</code> 直接移除，无官方替代类；</li>
+<li>Qt6 多媒体架构调整，<code>QMediaPlayer</code> 需手动绑定 <code>QAudioOutput</code>，且播放状态监听逻辑变更；</li>
+<li>原有播放模式（单曲循环、列表循环、单次播放）需重新实现；</li>
+<li>音频索引切换、自动切歌等核心逻辑需手动封装。</li>
+</ol>
+<h2 id="三、解决方案：自定义-MediaPlaylist-类实现">三、解决方案：自定义 MediaPlaylist 类实现</h2>
+<h3 id="3-1-类设计思路">3.1 类设计思路</h3>
+<p>遵循 Qt 信号槽设计规范，封装播放列表核心能力，核心设计目标：</p>
+<ul>
+<li>兼容 Qt6 <code>QMediaPlayer</code> 新架构；</li>
+<li>支持三种经典播放模式；</li>
+<li>自动监听播放完成状态，实现无感切歌；</li>
+<li>提供简洁的外部接口，最小化项目改造成本。</li>
+</ul>
+<h3 id="3-2-完整代码实现">3.2 完整代码实现</h3>
+<ul>
+<li>头文件（ol_MediaPlaylist.h）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 程序名：ol_MediaPlaylist.h</span></span><br><span class="line"><span class="comment"> * 功能描述：Qt6 媒体播放列表类，替代废弃的 QMediaPlaylist，支持以下特性：</span></span><br><span class="line"><span class="comment"> *          - 自动绑定 QMediaPlayer，监听播放完成状态</span></span><br><span class="line"><span class="comment"> *          - 三种播放模式：单次播放、单曲循环、列表循环</span></span><br><span class="line"><span class="comment"> *          - 播放结束自动切换曲目/循环播放</span></span><br><span class="line"><span class="comment"> *          - 索引/媒体资源自动管理，适配 Qt6</span></span><br><span class="line"><span class="comment"> *          - 支持信号通知索引变化，与音频播放器联动</span></span><br><span class="line"><span class="comment"> * 作者：ol</span></span><br><span class="line"><span class="comment"> * 适用标准：Qt 6.0及以上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> OL_MEDIAPLAYLIST_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OL_MEDIAPLAYLIST_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QVector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QUrl&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QMediaPlayer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ol</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @brief 媒体播放列表类，适配 Qt6 QMediaPlayer</span></span><br><span class="line"><span class="comment">     * 实现播放列表管理、自动循环切歌、播放模式控制，无需手动处理音源切换</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">MediaPlaylist</span> : <span class="keyword">public</span> QObject</span><br><span class="line">    &#123;</span><br><span class="line">        Q_OBJECT</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 播放模式枚举</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">enum class</span> <span class="title class_">PlaybackMode</span> : <span class="type">char</span></span><br><span class="line">        &#123;</span><br><span class="line">            CurrentItemOnce, <span class="comment">/**&lt; 当前曲目播放一次后自动停止 */</span></span><br><span class="line">            CurrentItemLoop, <span class="comment">/**&lt; 当前曲目无限循环播放 */</span></span><br><span class="line">            SequentialLoop   <span class="comment">/**&lt; 列表顺序循环，尾首自动衔接 */</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        QVector&lt;QUrl&gt; m_mediaList;   <span class="comment">///&lt; 媒体资源 URL 列表</span></span><br><span class="line">        <span class="type">int</span> m_currentIndex;          <span class="comment">///&lt; 当前播放索引，-1 表示未选中</span></span><br><span class="line">        PlaybackMode m_playbackMode; <span class="comment">///&lt; 当前播放模式</span></span><br><span class="line">        QMediaPlayer* m_player;      <span class="comment">///&lt; 绑定的 Qt 媒体播放器</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 构造函数</span></span><br><span class="line"><span class="comment">         * @param parent 父对象</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">MediaPlaylist</span><span class="params">(QObject* parent = <span class="literal">nullptr</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 向播放列表添加媒体资源</span></span><br><span class="line"><span class="comment">         * @param media 媒体资源 URL（支持 qrc 资源/本地文件）</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">addMedia</span><span class="params">(<span class="type">const</span> QUrl&amp; media)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 清空播放列表，重置索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 设置当前播放索引（自动切换播放器音源）</span></span><br><span class="line"><span class="comment">         * @param index 目标播放索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setCurrentIndex</span><span class="params">(<span class="type">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放索引</span></span><br><span class="line"><span class="comment">         * @return 当前索引，-1 表示无效</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getCurrentIndex</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_currentIndex; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放的媒体 URL</span></span><br><span class="line"><span class="comment">         * @return 有效 URL / 空 QUrl</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">getCurrentMedia</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取列表总媒体数量</span></span><br><span class="line"><span class="comment">         * @return 媒体资源总数</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> qsizetype <span class="title">getMediaCount</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_mediaList.<span class="built_in">size</span>(); &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 设置播放模式</span></span><br><span class="line"><span class="comment">         * @param mode 目标播放模式</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">setPlaybackMode</span><span class="params">(PlaybackMode mode)</span> </span>&#123; m_playbackMode = mode; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 获取当前播放模式</span></span><br><span class="line"><span class="comment">         * @return 播放模式枚举值</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> PlaybackMode <span class="title">getPlaybackMode</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> m_playbackMode; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 绑定 Qt 媒体播放器</span></span><br><span class="line"><span class="comment">         * @param player 待绑定的 QMediaPlayer 对象</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">setPlayer</span><span class="params">(QMediaPlayer* player)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 切换到下一首媒体</span></span><br><span class="line"><span class="comment">         * @return 下一首媒体的 URL</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">nextMedia</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 切换到上一首媒体</span></span><br><span class="line"><span class="comment">         * @return 上一首媒体的 URL</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function">QUrl <span class="title">previousMedia</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    signals:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 播放索引改变信号，用于用户未来功能扩展</span></span><br><span class="line"><span class="comment">         * @param newIndex 新的播放索引</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">currentIndexChanged</span><span class="params">(<span class="type">int</span> newIndex)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> slots:</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * @brief 监听播放器状态，播放完成自动处理切歌/循环</span></span><br><span class="line"><span class="comment">         * @param status 媒体播放状态</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">onMediaStatusChanged</span><span class="params">(QMediaPlayer::MediaStatus status)</span></span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// namespace ol</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// !OL_MEDIAPLAYLIST_H</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>源文件（ol_MediaPlaylist.cpp）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 程序名：ol_MediaPlaylist.cpp</span></span><br><span class="line"><span class="comment"> * 功能描述：媒体播放列表类实现文件</span></span><br><span class="line"><span class="comment"> * 作者：ol</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/****************************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ol_MediaPlaylist.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QMediaPlayer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ol</span><br><span class="line">&#123;</span><br><span class="line">    MediaPlaylist::<span class="built_in">MediaPlaylist</span>(QObject* parent)</span><br><span class="line">        : <span class="built_in">QObject</span>(parent), <span class="built_in">m_currentIndex</span>(<span class="number">-1</span>), <span class="built_in">m_playbackMode</span>(PlaybackMode::CurrentItemOnce), <span class="built_in">m_player</span>(<span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::addMedia</span><span class="params">(<span class="type">const</span> QUrl&amp; media)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_mediaList.<span class="built_in">append</span>(media);</span><br><span class="line">        <span class="keyword">if</span> (m_currentIndex == <span class="number">-1</span>) <span class="built_in">setCurrentIndex</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::clear</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_mediaList.<span class="built_in">clear</span>();</span><br><span class="line">        m_currentIndex = <span class="number">-1</span>;</span><br><span class="line">        <span class="function">emit <span class="title">currentIndexChanged</span><span class="params">(m_currentIndex)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::setCurrentIndex</span><span class="params">(<span class="type">int</span> index)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= <span class="number">0</span> &amp;&amp; index &lt; m_mediaList.<span class="built_in">size</span>() &amp;&amp; index != m_currentIndex)</span><br><span class="line">        &#123;</span><br><span class="line">            m_currentIndex = index;</span><br><span class="line">            <span class="function">emit <span class="title">currentIndexChanged</span><span class="params">(m_currentIndex)</span></span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 自动切换播放器音源</span></span><br><span class="line">            <span class="keyword">if</span> (m_player) m_player-&gt;<span class="built_in">setSource</span>(<span class="built_in">getCurrentMedia</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::getCurrentMedia</span><span class="params">()</span> <span class="type">const</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_currentIndex &gt;= <span class="number">0</span> &amp;&amp; m_currentIndex &lt; m_mediaList.<span class="built_in">size</span>()) <span class="keyword">return</span> m_mediaList.<span class="built_in">at</span>(m_currentIndex);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::setPlayer</span><span class="params">(QMediaPlayer* player)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 断开旧播放器连接</span></span><br><span class="line">        <span class="keyword">if</span> (m_player) <span class="built_in">disconnect</span>(m_player, <span class="literal">nullptr</span>, <span class="keyword">this</span>, <span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">        m_player = player;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绑定状态监听信号</span></span><br><span class="line">        <span class="keyword">if</span> (m_player)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">connect</span>(m_player, &amp;QMediaPlayer::mediaStatusChanged, <span class="keyword">this</span>, &amp;MediaPlaylist::onMediaStatusChanged);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 默认加载当前音源</span></span><br><span class="line">            <span class="type">const</span> QUrl url = <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">            <span class="keyword">if</span> (url.<span class="built_in">isValid</span>()) m_player-&gt;<span class="built_in">setSource</span>(url);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::nextMedia</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setCurrentIndex</span>((m_currentIndex + <span class="number">1</span>) % m_mediaList.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">QUrl <span class="title">MediaPlaylist::previousMedia</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span> <span class="built_in">QUrl</span>();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setCurrentIndex</span>((m_currentIndex - <span class="number">1</span> + m_mediaList.<span class="built_in">size</span>()) % m_mediaList.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getCurrentMedia</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">MediaPlaylist::onMediaStatusChanged</span><span class="params">(QMediaPlayer::MediaStatus status)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 仅处理播放完成状态</span></span><br><span class="line">        <span class="keyword">if</span> (status != QMediaPlayer::EndOfMedia || !m_player) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (m_mediaList.<span class="built_in">isEmpty</span>()) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (m_playbackMode)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::CurrentItemOnce:</span><br><span class="line">            m_player-&gt;<span class="built_in">stop</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::CurrentItemLoop:</span><br><span class="line">            m_player-&gt;<span class="built_in">play</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> PlaybackMode::SequentialLoop:</span><br><span class="line">            <span class="built_in">nextMedia</span>();</span><br><span class="line">            m_player-&gt;<span class="built_in">play</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// namespace ol</span></span><br></pre></td></tr></table></figure>
+<h2 id="四、核心功能解析">四、核心功能解析</h2>
+<h3 id="4-1-播放模式控制">4.1 播放模式控制</h3>
+<p>复刻 Qt5 <code>QMediaPlaylist</code> 三种经典模式，通过 <code>PlaybackMode</code> 枚举实现：</p>
+<ul>
+<li><code>CurrentItemOnce</code>：播放完成后自动停止；</li>
+<li><code>CurrentItemLoop</code>：单曲无限循环（播放完成后重新播放）；</li>
+<li><code>SequentialLoop</code>：列表循环（播放完成自动切下一首，最后一首切回第一首）。</li>
+</ul>
+<h3 id="4-2-自动绑定播放器">4.2 自动绑定播放器</h3>
+<p>通过 <code>setPlayer</code> 方法绑定 <code>QMediaPlayer</code>，实现两个核心能力：</p>
+<ol>
+<li>自动监听 <code>mediaStatusChanged</code> 信号，无需外部手动处理播放完成事件；</li>
+<li>切换索引时自动调用 <code>setSource</code>，避免外部重复编写音源切换逻辑。</li>
+</ol>
+<h3 id="4-3-索引安全管理">4.3 索引安全管理</h3>
+<p>所有索引操作（<code>setCurrentIndex</code>/<code>nextMedia</code>/<code>previousMedia</code>）均做合法性校验：</p>
+<ul>
+<li>索引越界时不执行任何操作；</li>
+<li>空列表时返回空 URL，避免程序崩溃；</li>
+<li>首次添加媒体自动选中第一个索引，降低使用成本。</li>
+</ul>
+<h2 id="五、项目集成示例">五、项目集成示例</h2>
+<p>以实际项目中的 <code>BGMControl</code> 类为例，展示如何快速集成自定义 <code>MediaPlaylist</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 音频控制类中初始化播放列表</span></span><br><span class="line">BGMControl::<span class="built_in">BGMControl</span>(QObject* parent) : <span class="built_in">QObject</span>(parent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 初始化5组音频单元（男女音效/BGM/辅助音效/结束音效）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        QAudioOutput* output = <span class="keyword">new</span> <span class="built_in">QAudioOutput</span>(<span class="keyword">this</span>);</span><br><span class="line">        QMediaPlayer* player = <span class="keyword">new</span> <span class="built_in">QMediaPlayer</span>(<span class="keyword">this</span>);</span><br><span class="line">        ol::MediaPlaylist* playlist = <span class="keyword">new</span> ol::<span class="built_in">MediaPlaylist</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 绑定播放器与播放列表</span></span><br><span class="line">        player-&gt;<span class="built_in">setAudioOutput</span>(output);</span><br><span class="line">        playlist-&gt;<span class="built_in">setPlayer</span>(player);</span><br><span class="line">        output-&gt;<span class="built_in">setVolume</span>(<span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 配置播放模式（BGM列表循环，其他单次播放）</span></span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">            playlist-&gt;<span class="built_in">setPlaybackMode</span>(ol::MediaPlaylist::PlaybackMode::SequentialLoop);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            playlist-&gt;<span class="built_in">setPlaybackMode</span>(ol::MediaPlaylist::PlaybackMode::CurrentItemOnce);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        m_outputs.<span class="built_in">push_back</span>(output);</span><br><span class="line">        m_players.<span class="built_in">push_back</span>(player);</span><br><span class="line">        m_playlists.<span class="built_in">push_back</span>(playlist);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载音频资源</span></span><br><span class="line">    <span class="built_in">initPlayList</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动BGM示例</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BGMControl::startBGM</span><span class="params">(<span class="type">float</span> volume)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    m_outputs[<span class="number">2</span>]-&gt;<span class="built_in">setVolume</span>(volume);</span><br><span class="line">    m_playlists[<span class="number">2</span>]-&gt;<span class="built_in">setCurrentIndex</span>(<span class="number">0</span>); <span class="comment">// 选中第一个BGM</span></span><br><span class="line">    m_players[<span class="number">2</span>]-&gt;<span class="built_in">play</span>();               <span class="comment">// 开始播放</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六、总结">六、总结</h2>
+<p>本文实现的 <code>MediaPlaylist</code> 类完全适配 Qt6 多媒体架构，核心优势：</p>
+<ol>
+<li><strong>低改造成本</strong>：接口设计贴近 Qt5 <code>QMediaPlaylist</code>，项目迁移时无需大幅修改业务逻辑；</li>
+<li><strong>高稳定性</strong>：完善的索引校验、内存管理，避免空指针 / 越界崩溃；</li>
+<li><strong>强扩展性</strong>：保留 <code>currentIndexChanged</code> 信号，支持后续 UI 同步、日志记录等扩展；</li>
+<li><strong>零依赖</strong>：仅依赖 Qt6 Core 和 Multimedia 模块，无需第三方库。</li>
+</ol>
 ]]></content>
       <categories>
-        <category>个人项目</category>
+        <category>代码</category>
       </categories>
       <tags>
         <tag>C++</tag>
-        <tag>Windows</tag>
+        <tag>Qt6</tag>
       </tags>
   </entry>
   <entry>
@@ -4500,6 +4729,47 @@
       </categories>
       <tags>
         <tag>VIM - Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>斗地主</title>
+    <url>/2026/06/17/%E6%96%97%E5%9C%B0%E4%B8%BB/</url>
+    <content><![CDATA[<h1>Landlords（斗地主）</h1>
+<p>基于 Qt6 的欢乐斗地主单机游戏，由<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程改编而来，进行了代码优化并适配 Qt6。</p>
+<h2 id="特性">特性</h2>
+<ul>
+<li>🎴 完整的斗地主玩法：叫地主、抢地主、出牌、炸弹、飞机、顺子等</li>
+<li>🤖 智能 AI 对手，支持叫牌和出牌策略</li>
+<li>🎨 多套随机背景，丰富的卡牌动画效果（炸弹、飞机、顺子、连对）</li>
+<li>🎵 背景音乐与音效（出牌、抢地主、倒计时提醒等）</li>
+<li>⏱️ 出牌倒计时，增加游戏紧张感</li>
+<li>💯 得分结算面板，支持连续多局对战</li>
+</ul>
+<h2 id="技术栈">技术栈</h2>
+<ul>
+<li><strong>语言：</strong> C++17</li>
+<li><strong>框架：</strong> Qt 6.5+（Core / Widgets / Multimedia）</li>
+<li><strong>构建：</strong> CMake 3.19+</li>
+<li><strong>平台：</strong> Windows</li>
+</ul>
+<h2 id="构建">构建</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/1613661434/Landlords</span><br><span class="line"><span class="built_in">cd</span> Landlords</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">cmake --build build --config Release</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要安装 Qt 6.5 及以上版本，并确保 CMake 能找到 Qt 安装路径。</p>
+</blockquote>
+<h2 id="运行">运行</h2>
+<p>编译完成后，双击 <code>Landlords.exe</code>，点击&quot;开始游戏&quot;即可开始对战。</p>
+<h2 id="致谢">致谢</h2>
+<p>本项目基于<a href="https://subingwen.cn/">爱编程的大丙</a>老师的 Qt5 斗地主课程，在原课程基础上进行了代码优化、语法简化和 Qt6 适配。感谢老师的精彩课程！</p>
+<h2 id="许可">许可</h2>
+<p><a href="LICENSE">LGPL v3.0</a> © 2026 <a href="https://1613661434.github.io/">ol木子李lo</a></p>
+]]></content>
+      <categories>
+        <category>个人项目</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>

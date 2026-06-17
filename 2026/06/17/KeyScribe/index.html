@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KeyScribe">
+<meta property="og:url" content="https://1613661434.github.io/2026/06/17/KeyScribe/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.shields.io/badge/license-MIT-blue.svg">
+<meta property="og:image" content="https://img.shields.io/badge/Python-3.8%2B-%233776AB?logo=python">
+<meta property="og:image" content="https://img.shields.io/badge/platform-Windows-%230078D6?logo=windows">
+<meta property="og:image" content="https://img.shields.io/badge/dependencies-zero-brightgreen">
+<meta property="og:image" content="https://img.shields.io/badge/release-v1.0.0-%23FF6F00">
+<meta property="article:published_time" content="2026-06-17T10:04:47.000Z">
+<meta property="article:modified_time" content="2026-06-17T10:05:47.352Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/badge/license-MIT-blue.svg">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2026/06/17/KeyScribe/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2026/06/17/KeyScribe/","path":"2026/06/17/KeyScribe/","title":"KeyScribe"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>KeyScribe | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">KeyScribe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">环境要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.3.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%80%89%E9%A1%B9"><span class="nav-number">1.4.</span> <span class="nav-text">命令行选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%A8%A1%E5%BC%8F%EF%BC%88Raw-Mode%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">原始模式（Raw Mode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%88%87%E6%8D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">语言切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E4%B8%AD%E6%96%AD%EF%BC%88%E9%BB%98%E8%AE%A4%E5%BC%80%E5%90%AF%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">按键中断（默认开启）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">JSON 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%8C%89%E9%94%AE%E6%A0%87%E8%AE%B0"><span class="nav-number">1.9.</span> <span class="nav-text">特殊按键标记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%8C%89%E9%94%AE"><span class="nav-number">1.9.1.</span> <span class="nav-text">基础按键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E9%94%AE"><span class="nav-number">1.9.2.</span> <span class="nav-text">方向键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E9%94%AE%E7%BB%84%E5%90%88"><span class="nav-number">1.9.3.</span> <span class="nav-text">修饰键组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.9.4.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E6%96%87%E6%9C%AC"><span class="nav-number">1.9.5.</span> <span class="nav-text">示例文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E8%BF%87%E6%BB%A4"><span class="nav-number">1.10.</span> <span class="nav-text">字符过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.11.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E4%B8%AD%E6%96%87%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%BE%93%E5%85%A5%E5%90%97%EF%BC%9F"><span class="nav-number">1.11.1.</span> <span class="nav-text">Q: 中文能正常输入吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E4%B8%8D%E5%AF%B9-%E4%B9%B1%E7%A0%81%EF%BC%9F"><span class="nav-number">1.11.2.</span> <span class="nav-text">Q: 为什么中文输入不对 &#x2F; 乱码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E4%BC%9A%E8%A2%AB%E6%A3%80%E6%B5%8B%E4%B8%BA%E8%84%9A%E6%9C%AC-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%90%97%EF%BC%9F"><span class="nav-number">1.11.3.</span> <span class="nav-text">Q: 会被检测为脚本&#x2F;自动化吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E5%A6%82%E4%BD%95%E4%B8%AD%E9%80%94%E5%8F%96%E6%B6%88%EF%BC%9F"><span class="nav-number">1.11.4.</span> <span class="nav-text">Q: 如何中途取消？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E6%96%87%E4%BB%B6%E5%BE%88%E5%A4%A7-10000-%E5%AD%97%E7%AC%A6-%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">1.11.5.</span> <span class="nav-text">Q: 文件很大 (&gt;10000 字符) 怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E8%83%BD%E5%9C%A8-macOS-Linux-%E4%B8%8A%E7%94%A8%E5%90%97%EF%BC%9F"><span class="nav-number">1.11.6.</span> <span class="nav-text">Q: 能在 macOS &#x2F; Linux 上用吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%EF%BC%9F%E6%80%8E%E4%B9%88%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9%EF%BC%9F"><span class="nav-number">1.11.7.</span> <span class="nav-text">Q: 有哪些参数？怎么查看帮助？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-%E6%80%8E%E4%B9%88%E5%88%87%E6%8D%A2%E6%88%90%E8%8B%B1%E6%96%87%EF%BC%9F"><span class="nav-number">1.11.8.</span> <span class="nav-text">Q: 怎么切换成英文？</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2026/06/17/KeyScribe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="KeyScribe | ol木子李lo的博客">
+      <meta itemprop="description" content="模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KeyScribe
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 18:04:47 / 修改时间：18:05:47" itemprop="dateCreated datePublished" datetime="2026-06-17T18:04:47+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">个人项目</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>KeyScribe</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/1613661434/KeyScribe/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a><br>
+<a target="_blank" rel="noopener" href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.8%2B-%233776AB?logo=python" alt="Python"></a><br>
+<a target="_blank" rel="noopener" href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/platform-Windows-%230078D6?logo=windows" alt="Platform"></a><br>
+<a target="_blank" rel="noopener" href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/dependencies-zero-brightgreen" alt="Dependencies"></a><br>
+<a target="_blank" rel="noopener" href="https://github.com/1613661434/KeyScribe"><img src="https://img.shields.io/badge/release-v1.0.0-%23FF6F00" alt="Release"></a></p>
+<p>模拟真实键盘打字的 Python 脚本 — 从文本文件读取内容，倒计时后自动逐字输入到目标位置。</p>
+<p><strong>核心特点：完全不走剪贴板</strong>，通过 Windows <code>SendInput</code> API 注入真实键盘事件，不会被识别为粘贴操作。</p>
+<blockquote>
+<p><strong>作者：</strong> ol木子李lo · <a href="https://1613661434.github.io/">博客</a> · <a target="_blank" rel="noopener" href="https://github.com/1613661434/KeyScribe">GitHub</a> · MIT License</p>
+</blockquote>
+<h2 id="适用场景">适用场景</h2>
+<ul>
+<li>网页/应用中禁止了 Ctrl+V 粘贴</li>
+<li>远程桌面、虚拟机等无法共享剪贴板的环境</li>
+<li>需要模拟真实打字节奏的演示/测试</li>
+</ul>
+<h2 id="环境要求">环境要求</h2>
+<ul>
+<li>Windows 系统</li>
+<li>Python 3.8 或更高版本</li>
+<li><strong>零第三方依赖</strong> — 只使用 Python 标准库</li>
+</ul>
+<h2 id="快速开始">快速开始</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 准备一个文本文件，写上要输入的内容</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;你好世界&#123;ENTER&#125;这是演示文本。&quot;</span> &gt; demo.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 运行脚本（默认 3 秒倒计时）</span></span><br><span class="line">python keyscribe.py demo.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在倒计时结束前，把光标放到输入位置（如记事本、浏览器输入框）</span></span><br><span class="line"><span class="comment"># 4. 倒计时归零 → 自动开始打字</span></span><br></pre></td></tr></table></figure>
+<h2 id="命令行选项">命令行选项</h2>
+<p>查看完整帮助：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python keyscribe.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p><code>--help</code> 会以中英双语显示所有参数说明和示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">python keyscribe.py &lt;file&gt; [options]</span><br><span class="line"></span><br><span class="line">参数:</span><br><span class="line">  file                    要输入的文本文件路径</span><br><span class="line"></span><br><span class="line">选项:</span><br><span class="line">  --help, -h              显示中英双语帮助信息</span><br><span class="line">  --config PATH           从 JSON 文件加载配置（可与 CLI 参数混用）</span><br><span class="line">  -c, --countdown SEC     倒计时秒数（默认: 3）</span><br><span class="line">  -d, --delay MS          字符间延迟毫秒数（默认: 60，自动 ±30ms 随机）</span><br><span class="line">  -f, --filter MODE       过滤模式: no-chinese / ascii-only / no-numbers</span><br><span class="line">  --filter-mode MODE      过滤方式: remove / keep（默认: remove）</span><br><span class="line">  -e, --encoding ENC      文件编码（默认: utf-8）</span><br><span class="line">  -l, --lang LANG         显示语言: zh(中文) / en(English)，默认 zh</span><br><span class="line">  --no-random             关闭延迟随机化</span><br><span class="line">  --no-cancel-on-keypress 关闭按键中断功能（默认: 启用）</span><br><span class="line">  -r, --raw              原始模式: 逐字原样输入，不解析特殊按键标记</span><br><span class="line">  -V, --version           显示版本号</span><br></pre></td></tr></table></figure>
+<h2 id="原始模式（Raw-Mode）">原始模式（Raw Mode）</h2>
+<p>当你只想<strong>原封不动</strong>地输入文件内容，不想要 <code>&#123;ENTER&#125;</code> 等特殊按键解析时，使用 <code>-r</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python keyscribe.py input.txt -r</span><br></pre></td></tr></table></figure>
+<p>文件中所有字符——包括 <code>&#123;</code>、<code>&#125;</code>、<code>&#123;ENTER&#125;</code> 等——都会被<strong>逐字原样打出</strong>，不做任何特殊解析。</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th style="text-align:center"><code>&#123;ENTER&#125;</code> 效果</th>
+<th style="text-align:center"><code>&#123;</code> <code>&#125;</code> 效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常模式</td>
+<td style="text-align:center">按下回车键</td>
+<td style="text-align:center">触发特殊键解析</td>
+</tr>
+<tr>
+<td><code>-r</code> 原始模式</td>
+<td style="text-align:center">打出 <code>&#123;ENTER&#125;</code> 这几个字符</td>
+<td style="text-align:center">打出 <code>&#123;</code> <code>&#125;</code> 字符</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>何时用？</strong> 你的文本文件本身就包含花括号 <code>&#123; &#125;</code> 时，用 <code>-r</code> 避免被误解析。不需要手动逐个加 <code>&#123;&#123;` `&#125;&#125;</code> 转义。</p>
+</blockquote>
+<h2 id="语言切换">语言切换</h2>
+<p>默认所有提示信息为中文。使用 <code>--lang en</code> 切换为英文：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 英文提示</span></span><br><span class="line">python keyscribe.py input.txt -l en</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中文提示（默认）</span></span><br><span class="line">python keyscribe.py input.txt -l zh</span><br></pre></td></tr></table></figure>
+<p>也支持在 JSON 配置中设置 <code>&quot;language&quot;: &quot;en&quot;</code>，这样该配置文件的所有输出都是英文。</p>
+<h2 id="按键中断（默认开启）">按键中断（默认开启）</h2>
+<p>这是 KeyScribe 最重要的安全特性。<strong>输入过程中，按下键盘上的任意键即可立即中断脚本。</strong></p>
+<p>原理：脚本通过 Windows 低级键盘钩子（<code>WH_KEYBOARD_LL</code>）监控键盘事件，利用 <code>LLKHF_INJECTED</code> 标志区分「脚本注入的按键」和「用户真实按键」——只有真实物理按键才会触发中断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打字中... → 按一下任意键（如 ESC、空格、任意字母）→ 脚本立即停止</span><br></pre></td></tr></table></figure>
+<p>不需要切回终端窗口按 <code>Ctrl+C</code>，只需在当前的输入框中按任意键即可。</p>
+<blockquote>
+<p><strong>关闭此功能：</strong> <code>--no-cancel-on-keypress</code>。如果你确定不需要中途打断，可以关闭它。</p>
+</blockquote>
+<h2 id="JSON-配置文件">JSON 配置文件</h2>
+<p>适合需要复用配置的场景。CLI 参数会覆盖 JSON 中的值。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;file&quot;</span><span class="punctuation">:</span> <span class="string">&quot;input.txt&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;countdown&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;delay&quot;</span><span class="punctuation">:</span> <span class="number">80</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;filter&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;filter_mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;remove&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;utf-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;no_random&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;cancel_on_keypress&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 JSON 配置</span></span><br><span class="line">python keyscribe.py --config example_config.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># JSON + CLI 覆盖（倒计时改为 10 秒）</span></span><br><span class="line">python keyscribe.py --config example_config.json -c 10</span><br></pre></td></tr></table></figure>
+<h2 id="特殊按键标记">特殊按键标记</h2>
+<p>在文本文件中使用 <code>&#123;键名&#125;</code> 格式插入特殊按键。不区分大小写。</p>
+<h3 id="基础按键">基础按键</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;ENTER&#125;</code> / <code>&#123;RETURN&#125;</code></td>
+<td>回车</td>
+</tr>
+<tr>
+<td><code>&#123;TAB&#125;</code></td>
+<td>Tab 键</td>
+</tr>
+<tr>
+<td><code>&#123;ESC&#125;</code> / <code>&#123;ESCAPE&#125;</code></td>
+<td>Escape</td>
+</tr>
+<tr>
+<td><code>&#123;BACKSPACE&#125;</code> / <code>&#123;BS&#125;</code></td>
+<td>退格</td>
+</tr>
+<tr>
+<td><code>&#123;DELETE&#125;</code> / <code>&#123;DEL&#125;</code></td>
+<td>Delete</td>
+</tr>
+<tr>
+<td><code>&#123;SPACE&#125;</code></td>
+<td>空格</td>
+</tr>
+<tr>
+<td><code>&#123;HOME&#125;</code></td>
+<td>跳到行首</td>
+</tr>
+<tr>
+<td><code>&#123;END&#125;</code></td>
+<td>跳到行尾</td>
+</tr>
+<tr>
+<td><code>&#123;PGUP&#125;</code> / <code>&#123;PAGEUP&#125;</code></td>
+<td>上翻页</td>
+</tr>
+<tr>
+<td><code>&#123;PGDN&#125;</code> / <code>&#123;PAGEDOWN&#125;</code></td>
+<td>下翻页</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方向键">方向键</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;UP&#125;</code> / <code>&#123;DOWN&#125;</code></td>
+<td>上/下</td>
+</tr>
+<tr>
+<td><code>&#123;LEFT&#125;</code> / <code>&#123;RIGHT&#125;</code></td>
+<td>左/右</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修饰键组合">修饰键组合</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;CTRL+A&#125;</code> ~ <code>&#123;CTRL+Z&#125;</code></td>
+<td>Ctrl 组合</td>
+</tr>
+<tr>
+<td><code>&#123;CTRL+HOME&#125;</code> / <code>&#123;CTRL+END&#125;</code></td>
+<td>Ctrl + 行首/行尾</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+TAB&#125;</code></td>
+<td>Shift + Tab</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+HOME&#125;</code> / <code>&#123;SHIFT+END&#125;</code></td>
+<td>Shift + 行首/行尾</td>
+</tr>
+<tr>
+<td><code>&#123;SHIFT+UP&#125;</code> 等方向键</td>
+<td>Shift + 方向键（选中）</td>
+</tr>
+<tr>
+<td><code>&#123;ALT+F4&#125;</code></td>
+<td>Alt + F4（关闭窗口）</td>
+</tr>
+<tr>
+<td><code>&#123;ALT+TAB&#125;</code></td>
+<td>Alt + Tab（切换窗口）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#123;WAIT:500&#125;</code></td>
+<td>暂停 500 毫秒（数字可自定义）</td>
+</tr>
+<tr>
+<td><code>&#123;&#123;` | 输出字面量 `&#123;` |
+| `&#125;&#125;</code></td>
+<td>输出字面量 <code>&#125;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例文本">示例文本</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户名&#123;TAB&#125;admin@example.com&#123;ENTER&#125;</span><br><span class="line">密码&#123;TAB&#125;password123&#123;ENTER&#125;</span><br><span class="line">&#123;WAIT:300&#125;</span><br><span class="line">&#123;ENTER&#125;</span><br><span class="line">&#123;TAB&#125;&#123;TAB&#125;&#123;TAB&#125;&#123;SPACE&#125;&#123;ENTER&#125;  ← 勾选&quot;记住我&quot;复选框</span><br></pre></td></tr></table></figure>
+<h2 id="字符过滤">字符过滤</h2>
+<p>使用 <code>--filter</code> 选项过滤文本中的特定字符：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>no-chinese</code></td>
+<td>移除所有中文字符（包括 CJK 扩展区）</td>
+</tr>
+<tr>
+<td><code>ascii-only</code></td>
+<td>仅保留 ASCII 可打印字符（英文、数字、符号）</td>
+</tr>
+<tr>
+<td><code>no-numbers</code></td>
+<td>移除所有数字</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 去掉所有中文再输入</span></span><br><span class="line">python keyscribe.py mixed.txt --filter no-chinese</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只要英文和符号</span></span><br><span class="line">python keyscribe.py mixed.txt --filter ascii-only</span><br><span class="line"></span><br><span class="line"><span class="comment"># 反向：只保留中文（删除非中文）</span></span><br><span class="line">python keyscribe.py mixed.txt --filter ascii-only --filter-mode keep</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong> <code>--filter-mode keep</code> 会反转过滤逻辑。如 <code>--filter ascii-only --filter-mode keep</code> 表示仅保留非 ASCII 字符（即中文等）。</p>
+</blockquote>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="Q-中文能正常输入吗？">Q: 中文能正常输入吗？</h3>
+<p>能。脚本使用 Windows <code>KEYEVENTF_UNICODE</code> 机制注入 Unicode 字符为真实键盘事件。只要目标应用接受键盘输入，就能正常输入中文。</p>
+<h3 id="Q-为什么中文输入不对-乱码？">Q: 为什么中文输入不对 / 乱码？</h3>
+<p>检查文件编码。用 <code>--encoding</code> 指定正确编码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python keyscribe.py text.txt -e gbk      <span class="comment"># GBK 编码的文件</span></span><br><span class="line">python keyscribe.py text.txt -e gb2312   <span class="comment"># GB2312 编码</span></span><br></pre></td></tr></table></figure>
+<h3 id="Q-会被检测为脚本-自动化吗？">Q: 会被检测为脚本/自动化吗？</h3>
+<p>本脚本产生的是 OS 层面的标准键盘事件，和物理键盘没有区别。但过于精确等速的输入可能不自然 — 默认启用的 ±30ms 随机延迟有助于模拟真人打字节奏。</p>
+<h3 id="Q-如何中途取消？">Q: 如何中途取消？</h3>
+<p><strong>最方便的方式：输入过程中直接按键盘上的任意键</strong>（如 ESC、空格等），脚本会立即停止，无需切换回终端。</p>
+<p>备选方式：</p>
+<ul>
+<li>倒计时阶段 → <code>Ctrl+C</code> 或任意键取消</li>
+<li>终端窗口 → <code>Ctrl+C</code> 始终有效</li>
+<li>如果不需要按键中断功能，使用 <code>--no-cancel-on-keypress</code> 关闭</li>
+</ul>
+<h3 id="Q-文件很大-10000-字符-怎么办？">Q: 文件很大 (&gt;10000 字符) 怎么办？</h3>
+<p>脚本会显示警告和预计时间，让你确认是否继续。你也可以随时按 <code>Ctrl+C</code> 中断。</p>
+<h3 id="Q-能在-macOS-Linux-上用吗？">Q: 能在 macOS / Linux 上用吗？</h3>
+<p>目前仅支持 Windows。macOS/Linux 需要不同的实现方式（如 <code>Quartz</code> 或 <code>uinput</code>），后续可扩展。</p>
+<h3 id="Q-有哪些参数？怎么查看帮助？">Q: 有哪些参数？怎么查看帮助？</h3>
+<p>运行 <code>python keyscribe.py --help</code>，会以中英双语显示所有参数、说明和使用示例。</p>
+<h3 id="Q-怎么切换成英文？">Q: 怎么切换成英文？</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令行方式</span></span><br><span class="line">python keyscribe.py input.txt -l en</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或在 JSON 配置中设置</span></span><br><span class="line">&#123; <span class="string">&quot;language&quot;</span>: <span class="string">&quot;en&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/06/17/Claude%20Code/" rel="prev" title="Claude Code">
+                  <i class="fa fa-angle-left"></i> Claude Code
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">40k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:27</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
