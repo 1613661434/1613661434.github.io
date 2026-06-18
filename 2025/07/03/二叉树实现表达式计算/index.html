@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4b4cc" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#f4b4cc">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"1613661434.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":true,"color":"#ff4574","save":"manual"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="二叉树实现表达式计算教学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树实现表达式计算">
+<meta property="og:url" content="https://1613661434.github.io/2025/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:site_name" content="ol木子李lo的博客">
+<meta property="og:description" content="二叉树实现表达式计算教学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-03T10:56:20.000Z">
+<meta property="article:modified_time" content="2026-06-18T05:32:28.587Z">
+<meta property="article:author" content="ol木子李lo">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://1613661434.github.io/2025/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1613661434.github.io/2025/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/","path":"2025/07/03/二叉树实现表达式计算/","title":"二叉树实现表达式计算"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>二叉树实现表达式计算 | ol木子李lo的博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ol木子李lo的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">二叉树实现表达式计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BC%A0%E7%BB%9F%E4%B8%89%E7%A7%8D%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">一、传统三种表达式求值算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%89%8D%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88Prefix-Notation%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 前缀表达式（Prefix Notation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88Infix-Notation%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 中缀表达式（Infix Notation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88Postfix-Notation%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 后缀表达式（Postfix Notation）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E4%BA%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E6%B1%82%E5%80%BC%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">二、基于二叉树递归求值方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%B1%82%E5%80%BC%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">递归求值算法步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E5%80%BC%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.2.</span> <span class="nav-text">求值核心代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BA%8C%E5%8F%89%E6%A0%91%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.</span> <span class="nav-text">三、表达式二叉树节点结构定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">结构体代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.3.2.</span> <span class="nav-text">示例表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%AC%A6%E5%8F%B7%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%A4%E5%AE%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">四、符号优先级判定函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BA%8C%E5%8F%89%E6%A0%91%E5%88%86%E6%AD%A5%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">五、表达式二叉树分步构建流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9Ai-0%EF%BC%8C%E8%AF%BB%E5%8F%96%E6%95%B0%E5%AD%971"><span class="nav-number">1.5.1.</span> <span class="nav-text">步骤1：i&#x3D;0，读取数字1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9Ai-1%EF%BC%8C%E8%AF%BB%E5%8F%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.5.2.</span> <span class="nav-text">步骤2：i&#x3D;1，读取运算符+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9Ai-2%EF%BC%8C%E8%AF%BB%E5%8F%96%E6%95%B0%E5%AD%972"><span class="nav-number">1.5.3.</span> <span class="nav-text">步骤3：i&#x3D;2，读取数字2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9Ai-3%EF%BC%8C%E8%AF%BB%E5%8F%96%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.5.4.</span> <span class="nav-text">步骤4：i&#x3D;3，读取运算符*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A45%EF%BC%9Ai-4%EF%BC%8C%E8%AF%BB%E5%8F%96%E5%B7%A6%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.5.5.</span> <span class="nav-text">步骤5：i&#x3D;4，读取左括号(</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E8%B4%9F%E5%8F%B7%E9%A2%84%E5%A4%84%E7%90%86%EF%BC%9AAddZeroMinus-%E5%87%BD%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">六、负号预处理：AddZeroMinus 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81"><span class="nav-number">1.6.1.</span> <span class="nav-text">处理代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%A4%9A%E4%BD%8D%E6%95%B0-%E5%B0%8F%E6%95%B0%E8%AF%BB%E5%8F%96-Number-%E5%87%BD%E6%95%B0"><span class="nav-number">1.7.</span> <span class="nav-text">七、多位数&#x2F;小数读取 Number 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%AE%8C%E6%95%B4%E5%BB%BA%E6%A0%91%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0-BiTreeCreatetemp"><span class="nav-number">1.8.</span> <span class="nav-text">八、完整建树递归函数 BiTreeCreatetemp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%EF%BC%9A%E9%94%80%E6%AF%81%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.9.</span> <span class="nav-text">九、内存释放：销毁二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E9%A1%B6%E5%B1%82%E5%B0%81%E8%A3%85-calculate-%E5%87%BD%E6%95%B0"><span class="nav-number">1.10.</span> <span class="nav-text">十、顶层封装 calculate 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E4%B8%BB%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.11.</span> <span class="nav-text">十一、主函数调用示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%8F%AF%E8%A7%86%E5%8C%96%E6%95%99%E8%82%B2%E7%89%88%E6%8B%93%E5%B1%95%E4%BB%A3%E7%A0%81"><span class="nav-number">1.12.</span> <span class="nav-text">十二、可视化教育版拓展代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E8%BE%85%E5%8A%A9%E7%BB%93%E6%9E%84"><span class="nav-number">1.12.1.</span> <span class="nav-text">队列辅助结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0"><span class="nav-number">1.12.2.</span> <span class="nav-text">遍历与统计函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E8%82%B2%E7%89%88-calculate-%E5%87%BD%E6%95%B0%EF%BC%88%E8%BE%93%E5%87%BA%E6%A0%91%E4%BF%A1%E6%81%AF%EF%BC%89"><span class="nav-number">1.12.3.</span> <span class="nav-text">教育版 calculate 函数（输出树信息）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-number">1.13.</span> <span class="nav-text">十三、补充说明</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ol木子李lo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ol木子李lo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/1613661434" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;1613661434" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1613661434@qq.com" title="E-Mail → mailto:1613661434@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/2302_80253020" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;2302_80253020" rel="noopener me" target="_blank">CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://leetcode.cn/u/nostalgic-tuqol/" title="LeetCode → https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;nostalgic-tuqol&#x2F;" rel="noopener me" target="_blank">LeetCode</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1613661434.github.io/2025/07/03/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%9E%E7%8E%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AE%A1%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ol木子李lo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ol木子李lo的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="二叉树实现表达式计算 | ol木子李lo的博客">
+      <meta itemprop="description" content="二叉树实现表达式计算教学">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二叉树实现表达式计算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-03 18:56:20" itemprop="dateCreated datePublished" datetime="2025-07-03T18:56:20+08:00">2025-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-18 13:32:28" itemprop="dateModified" datetime="2026-06-18T13:32:28+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">二叉树实现表达式计算教学</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>二叉树实现表达式计算</h1>
+<blockquote>
+<p>原贴地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2302_80253020/article/details/145367527">C++二叉树实现四则运算表达式计算(支持无限叠加括号，负数，小数，多位数字)</a></p>
+<p>由于之前在CSDN发布这篇文章，然后想移植到我的博客，但是下载下来做到和原文完全一样过于耗时，所以精简了一下。</p>
+</blockquote>
+<p>二叉树实现表达式计算有很多优点：先序遍历对应前缀表达式（波兰表达式），中序遍历对应中缀表达式，后序遍历对应后缀表达式（逆波兰表达式）；构建完成后可通过不同遍历方式配合对应算法完成求值。</p>
+<h2 id="一、传统三种表达式求值算法">一、传统三种表达式求值算法</h2>
+<h3 id="1-前缀表达式（Prefix-Notation）">1. 前缀表达式（Prefix Notation）</h3>
+<p><strong>算法步骤</strong></p>
+<ul>
+<li>
+<p>从右到左遍历表达式</p>
+</li>
+<li>
+<p>遇到操作数，压入栈</p>
+</li>
+<li>
+<p>遇到操作符，弹出栈顶两个操作数运算，结果重新入栈</p>
+</li>
+<li>
+<p>遍历结束，栈中剩余元素即为最终结果</p>
+</li>
+</ul>
+<h3 id="2-中缀表达式（Infix-Notation）">2. 中缀表达式（Infix Notation）</h3>
+<p><strong>算法步骤</strong></p>
+<ul>
+<li>
+<p>维护双栈：操作数栈、运算符栈</p>
+</li>
+<li>
+<p>遍历表达式：</p>
+<ol>
+<li>
+<p>字符为数字：压入操作数栈</p>
+</li>
+<li>
+<p>字符为运算符：循环判断栈顶运算符优先级，若栈顶优先级更高则弹出计算，最后将当前运算符入栈</p>
+</li>
+</ol>
+</li>
+<li>
+<p>遍历完成后，依次弹出剩余运算符完成计算</p>
+</li>
+</ul>
+<h3 id="3-后缀表达式（Postfix-Notation）">3. 后缀表达式（Postfix Notation）</h3>
+<p><strong>算法步骤</strong></p>
+<ul>
+<li>
+<p>从左到右遍历表达式</p>
+</li>
+<li>
+<p>遇到操作数，压入栈</p>
+</li>
+<li>
+<p>遇到操作符，弹出栈顶两个操作数运算，结果重新入栈</p>
+</li>
+<li>
+<p>遍历结束，栈中剩余元素即为最终结果</p>
+</li>
+</ul>
+<hr>
+<h2 id="二、基于二叉树递归求值方案">二、基于二叉树递归求值方案</h2>
+<p>与传统栈式算法不同，表达式二叉树构建完成后，仅需递归遍历即可完成计算。</p>
+<h3 id="递归求值算法步骤">递归求值算法步骤</h3>
+<ol>
+<li>
+<p>当前节点为操作数：直接返回节点存储数值</p>
+</li>
+<li>
+<p>当前节点为运算符：递归求出左、右子树结果，执行对应运算后返回</p>
+</li>
+</ol>
+<h3 id="求值核心代码">求值核心代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算表达式</span></span><br><span class="line"><span class="function">operandType <span class="title">CalculateExpression</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree == <span class="literal">nullptr</span>) &#123; ERROR = <span class="literal">true</span>; <span class="keyword">return</span> <span class="number">-314</span>; &#125;</span><br><span class="line">    <span class="keyword">if</span> (tree-&gt;isOperator) <span class="comment">//为运算符</span></span><br><span class="line">    &#123;</span><br><span class="line">        operandType a = <span class="built_in">CalculateExpression</span>(tree-&gt;lchild);  <span class="comment">//递归左子树</span></span><br><span class="line">        operandType b = <span class="built_in">CalculateExpression</span>(tree-&gt;rchild);  <span class="comment">//递归右子树</span></span><br><span class="line">        <span class="keyword">switch</span> (tree-&gt;Operator)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>: <span class="keyword">return</span> a + b;   <span class="comment">// 加法</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>: <span class="keyword">return</span> a - b;   <span class="comment">// 减法</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>: <span class="keyword">return</span> a * b;   <span class="comment">// 乘法</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>: </span><br><span class="line">            <span class="keyword">if</span> (b == <span class="number">0</span>) &#123; ERROR = <span class="literal">true</span>; <span class="keyword">return</span> <span class="number">-314</span>; &#125; </span><br><span class="line">            <span class="keyword">return</span> a / b;   <span class="comment">// 除法</span></span><br><span class="line">        <span class="keyword">default</span>: ERROR = <span class="literal">true</span>; <span class="keyword">return</span> <span class="number">-314</span>;     <span class="comment">// 错误值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="comment">//为运算数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> tree-&gt;Operand;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、表达式二叉树节点结构定义">三、表达式二叉树节点结构定义</h2>
+<h3 id="结构体代码">结构体代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 树存储结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">BiTNode</span> &#123;</span><br><span class="line">    <span class="type">bool</span> isOperator = <span class="literal">true</span>; <span class="comment">//是否是运算符，默认为 true</span></span><br><span class="line">    <span class="type">char</span> Operator = <span class="string">&#x27;#&#x27;</span>; <span class="comment">//运算符，默认为 #</span></span><br><span class="line">    <span class="type">int</span> OperatorLevel = <span class="number">0</span>; <span class="comment">//符号等级，默认为 0</span></span><br><span class="line">    operandType Operand = <span class="number">0</span>; <span class="comment">//运算数，默认为 0</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">BiTNode</span>* lchild = <span class="literal">nullptr</span>, * rchild = <span class="literal">nullptr</span>; <span class="comment">// 左右孩子指针，默认为 空指针</span></span><br><span class="line">&#125; BiTNode, * BiTree;</span><br></pre></td></tr></table></figure>
+<h3 id="示例表达式">示例表达式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1+2*(5-3)-8/4</span><br></pre></td></tr></table></figure>
+<p>构建规则：运算符优先级越低越靠近根节点，优先级越高越靠近叶子节点；建树时依据符号等级调整节点挂载关系。</p>
+<h2 id="四、符号优先级判定函数">四、符号优先级判定函数</h2>
+<h3 id="代码实现">代码实现</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算符号优先级</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">OperatorLevel</span><span class="params">(<span class="type">char</span> oper)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (oper) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>: <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// 加法</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>: <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// 减法</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>: <span class="keyword">return</span> <span class="number">2</span>;  <span class="comment">// 乘法</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>: <span class="keyword">return</span> <span class="number">2</span>;  <span class="comment">// 除法</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;(&#x27;</span>: <span class="keyword">return</span> <span class="number">3</span>;  <span class="comment">// 左括号</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;)&#x27;</span>: <span class="keyword">return</span> <span class="number">4</span>;  <span class="comment">// 右括号</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;.&#x27;</span>: <span class="keyword">return</span> <span class="number">7</span>;  <span class="comment">// 小数点</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;0&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字0</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;1&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字1</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;2&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;3&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字3</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;4&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字4</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;5&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字5</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;6&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;7&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字7</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;8&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字8</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;9&#x27;</span>: <span class="keyword">return</span> <span class="number">9</span>;  <span class="comment">// 数字9</span></span><br><span class="line">    <span class="keyword">default</span>: ERROR = <span class="literal">true</span>; <span class="keyword">return</span> <span class="number">-314</span>;     <span class="comment">// 错误值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>规则说明：</p>
+<ol>
+<li>
+<p>加减优先级相同，等级1；乘除优先级相同，等级2</p>
+</li>
+<li>
+<p>左括号等级3、右括号4，小数点7，所有数字统一等级9</p>
+</li>
+</ol>
+<h2 id="五、表达式二叉树分步构建流程">五、表达式二叉树分步构建流程</h2>
+<p>输入数组<code>nums[]</code>存储表达式，<code>i</code>为遍历下标，以<code>1+2*(5-3)-8/4</code>为例分步说明：</p>
+<h3 id="步骤1：i-0，读取数字1">步骤1：i=0，读取数字1</h3>
+<p>当前根节点为初始默认节点（OperatorLevel=0），将节点标记为数字节点，读取数值1存入Operand。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">OperatorLevel</span>(nums[i]) == <span class="number">9</span>) <span class="comment">//为运算数</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (node-&gt;OperatorLevel == <span class="number">0</span>) <span class="comment">//初始空节点</span></span><br><span class="line">    &#123;</span><br><span class="line">        node-&gt;isOperator = <span class="literal">false</span>; <span class="comment">//标识为运算数</span></span><br><span class="line">        node-&gt;OperatorLevel = <span class="number">9</span>; <span class="comment">//符号等级为9</span></span><br><span class="line">        node-&gt;Operand= <span class="built_in">Number</span>(nums, len, i); <span class="comment">//连续多位读取数字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤2：i-1，读取运算符">步骤2：i=1，读取运算符+</h3>
+<p>数字节点优先级9大于<code>+</code>的优先级1，新建运算符节点作为新根，原根挂载为左孩子。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="comment">//为运算符</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> currentLevel = <span class="built_in">OperatorLevel</span>(nums[i]); <span class="comment">//计算运算符优先级</span></span><br><span class="line">    <span class="comment">//根节点优先级大于等于当前符号优先级</span></span><br><span class="line">    <span class="keyword">if</span> (node-&gt;OperatorLevel &gt;= currentLevel)</span><br><span class="line">    &#123;</span><br><span class="line">        BiTree nodeTemp = <span class="keyword">new</span> BiTNode; <span class="comment">//新建节点</span></span><br><span class="line">        lastnode = nodeTemp; <span class="comment">//记录最新运算符节点</span></span><br><span class="line">        nodeTemp-&gt;isOperator = <span class="literal">true</span>;</span><br><span class="line">        nodeTemp-&gt;Operator = nums[i];</span><br><span class="line">        nodeTemp-&gt;OperatorLevel = currentLevel;</span><br><span class="line">        nodeTemp-&gt;lchild = node; <span class="comment">//原根作为左子树</span></span><br><span class="line">        node = nodeTemp; <span class="comment">//更新根节点</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤3：i-2，读取数字2">步骤3：i=2，读取数字2</h3>
+<p>当前根为<code>+</code>运算符，左子树已满，将数字节点挂载至根右子树。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    BiTree nodeTemp = <span class="keyword">new</span> BiTNode;</span><br><span class="line">    nodeTemp-&gt;isOperator = <span class="literal">false</span>;</span><br><span class="line">    nodeTemp-&gt;OperatorLevel = <span class="number">9</span>;</span><br><span class="line">    nodeTemp-&gt;Operand = <span class="built_in">Number</span>(nums, len, i);</span><br><span class="line">    <span class="keyword">if</span> (!node-&gt;lchild)</span><br><span class="line">        node-&gt;lchild = nodeTemp;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!node-&gt;rchild)</span><br><span class="line">        node-&gt;rchild = nodeTemp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤4：i-3，读取运算符">步骤4：i=3，读取运算符*</h3>
+<p><code>*</code>优先级2高于根<code>+</code>的优先级1，将原有右子树<code>2</code>挂载为<code>*</code>左子树，再将<code>*</code>作为<code>+</code>的新右孩子。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="comment">//根节点优先级低于当前运算符</span></span><br><span class="line">&#123;</span><br><span class="line">    BiTree nodeTemp = <span class="keyword">new</span> BiTNode;</span><br><span class="line">    lastnode = nodeTemp;</span><br><span class="line">    nodeTemp-&gt;isOperator = <span class="literal">true</span>;</span><br><span class="line">    nodeTemp-&gt;Operator = nums[i];</span><br><span class="line">    nodeTemp-&gt;OperatorLevel = currentLevel;</span><br><span class="line">    <span class="keyword">if</span> (!node-&gt;rchild)</span><br><span class="line">        node-&gt;rchild = nodeTemp;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (node-&gt;rchild)</span><br><span class="line">    &#123;</span><br><span class="line">        nodeTemp-&gt;lchild = node-&gt;rchild;</span><br><span class="line">        node-&gt;rchild = nodeTemp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤5：i-4，读取左括号">步骤5：i=4，读取左括号<code>(</code></h3>
+<p>括号内表达式递归构建，使用<code>lastnode</code>记录上一级运算符节点（当前为<code>*</code>），递归处理括号内部表达式。</p>
+<h2 id="六、负号预处理：AddZeroMinus-函数">六、负号预处理：AddZeroMinus 函数</h2>
+<p>表达式存在两种负号场景：</p>
+<ol>
+<li>
+<p>表达式开头负号：<code>-1+2</code> → <code>0-1+2</code></p>
+</li>
+<li>
+<p>括号内负号：<code>2+(-1)</code> → <code>2+(0-1)</code></p>
+</li>
+</ol>
+<h3 id="处理代码">处理代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//补充0，用于计算负数</span></span><br><span class="line"><span class="function">string <span class="title">AddZeroMinus</span><span class="params">(<span class="type">const</span> string&amp; expression)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string result;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; expression.<span class="built_in">length</span>(); ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (expression[i] == <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 情况1: 表达式开头负号</span></span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                result += <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 情况2: 左括号后负号</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; expression[i - <span class="number">1</span>] == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                result += <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result += expression[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="七、多位数-小数读取-Number-函数">七、多位数/小数读取 Number 函数</h2>
+<p>支持连续数字、小数点解析，检测重复小数点语法错误。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读取数字，支持小数</span></span><br><span class="line"><span class="function">operandType <span class="title">Number</span><span class="params">(<span class="type">char</span> nums[], <span class="type">int</span> len, <span class="type">int</span>&amp; i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    operandType num = <span class="number">0.0</span>;</span><br><span class="line">    <span class="type">double</span> decimalPlace = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">bool</span> isDecimal = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">OperatorLevel</span>(nums[i]) == <span class="number">9</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (isDecimal)</span><br><span class="line">            &#123;</span><br><span class="line">                decimalPlace *= <span class="number">0.1</span>;</span><br><span class="line">                num += (nums[i] - <span class="string">&#x27;0&#x27;</span>) * decimalPlace;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                num = num * <span class="number">10</span> + (nums[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i + <span class="number">1</span>] == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (isDecimal)</span><br><span class="line">                &#123;</span><br><span class="line">                    ERROR = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                isDecimal = <span class="literal">true</span>;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">OperatorLevel</span>(nums[i + <span class="number">1</span>]) == <span class="number">9</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="八、完整建树递归函数-BiTreeCreatetemp">八、完整建树递归函数 BiTreeCreatetemp</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nums 表达式数组、len 长度、i 当前下标（引用传递）</span></span><br><span class="line"><span class="function">BiTree <span class="title">BiTreeCreatetemp</span><span class="params">(<span class="type">char</span> nums[], <span class="type">int</span> len, <span class="type">int</span>&amp; i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= len || ERROR) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    BiTree node = <span class="keyword">new</span> BiTNode; <span class="comment">// 当前递归根</span></span><br><span class="line">    BiTree lastnode = node; <span class="comment">// 最近创建的运算符节点</span></span><br><span class="line">    <span class="keyword">for</span> (; i &lt; len; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR) &#123; <span class="keyword">return</span> node; &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">OperatorLevel</span>(nums[i]) == <span class="number">9</span>) <span class="comment">// 数字</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;OperatorLevel == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                node-&gt;isOperator = <span class="literal">false</span>;</span><br><span class="line">                node-&gt;OperatorLevel = <span class="number">9</span>;</span><br><span class="line">                node-&gt;Operand= <span class="built_in">Number</span>(nums, len, i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                BiTree nodeTemp = <span class="keyword">new</span> BiTNode;</span><br><span class="line">                nodeTemp-&gt;isOperator = <span class="literal">false</span>;</span><br><span class="line">                nodeTemp-&gt;OperatorLevel = <span class="number">9</span>;</span><br><span class="line">                nodeTemp-&gt;Operand = <span class="built_in">Number</span>(nums, len, i);</span><br><span class="line">                <span class="keyword">if</span> (!node-&gt;lchild)</span><br><span class="line">                    node-&gt;lchild = nodeTemp;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (!node-&gt;rchild)</span><br><span class="line">                    node-&gt;rchild = nodeTemp;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (!lastnode-&gt;lchild)</span><br><span class="line">                    lastnode-&gt;lchild = nodeTemp;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    lastnode-&gt;rchild = nodeTemp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// 运算符</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> currentLevel = <span class="built_in">OperatorLevel</span>(nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (currentLevel == <span class="number">4</span>) <span class="comment">// 右括号，回溯返回</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;isOperator)</span><br><span class="line">                    node-&gt;Operand = <span class="number">8</span>; <span class="comment">// 标记回溯节点</span></span><br><span class="line">                <span class="keyword">return</span> node;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (currentLevel == <span class="number">3</span>) <span class="comment">// 左括号，递归处理内部</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i + <span class="number">1</span>] == <span class="string">&#x27;)&#x27;</span>) &#123; ERROR = <span class="literal">true</span>; &#125;</span><br><span class="line">                BiTree nodeTemp= <span class="built_in">BiTreeCreatetemp</span>(nums, len, ++i);</span><br><span class="line">                <span class="keyword">if</span> (lastnode-&gt;OperatorLevel == <span class="number">0</span>) <span class="comment">// 多层空括号 (((1)))</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">delete</span> lastnode;</span><br><span class="line">                    node = lastnode = nodeTemp;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(lastnode-&gt;isOperator)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!lastnode-&gt;lchild)</span><br><span class="line">                        lastnode-&gt;lchild = nodeTemp;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (!lastnode-&gt;rchild)</span><br><span class="line">                        lastnode-&gt;rchild = nodeTemp;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    ERROR = <span class="literal">true</span>; <span class="comment">// 数字后直接跟括号，语法错误</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 当前运算符优先级低于根节点，新建节点提升为根</span></span><br><span class="line">            <span class="keyword">if</span> (node-&gt;OperatorLevel &gt;= currentLevel || node-&gt;Operand == <span class="number">8</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                BiTree nodeTemp = <span class="keyword">new</span> BiTNode;</span><br><span class="line">                lastnode = nodeTemp;</span><br><span class="line">                nodeTemp-&gt;isOperator = <span class="literal">true</span>;</span><br><span class="line">                nodeTemp-&gt;Operator = nums[i];</span><br><span class="line">                nodeTemp-&gt;OperatorLevel = currentLevel;</span><br><span class="line">                nodeTemp-&gt;lchild = node;</span><br><span class="line">                node = nodeTemp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// 优先级更高，挂载至右子树</span></span><br><span class="line">            &#123;</span><br><span class="line">                BiTree nodeTemp = <span class="keyword">new</span> BiTNode;</span><br><span class="line">                lastnode = nodeTemp;</span><br><span class="line">                nodeTemp-&gt;isOperator = <span class="literal">true</span>;</span><br><span class="line">                nodeTemp-&gt;Operator = nums[i];</span><br><span class="line">                nodeTemp-&gt;OperatorLevel = currentLevel;</span><br><span class="line">                <span class="keyword">if</span> (!node-&gt;rchild)</span><br><span class="line">                    node-&gt;rchild = nodeTemp;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (node-&gt;rchild)</span><br><span class="line">                &#123;</span><br><span class="line">                    nodeTemp-&gt;lchild = node-&gt;rchild;</span><br><span class="line">                    node-&gt;rchild = nodeTemp;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (!node-&gt;lchild)</span><br><span class="line">                    node-&gt;lchild = nodeTemp;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    nodeTemp-&gt;lchild = node-&gt;lchild;</span><br><span class="line">                    node-&gt;lchild = nodeTemp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对外建树封装，默认i从0开始</span></span><br><span class="line"><span class="function">BiTree <span class="title">BiTreeCreate</span><span class="params">(<span class="type">char</span> nums[], <span class="type">int</span> len, <span class="type">int</span> i = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BiTree tree = <span class="built_in">BiTreeCreatetemp</span>(nums, len, i);</span><br><span class="line">    <span class="keyword">if</span> (i != len) &#123; ERROR = <span class="literal">true</span>; &#125; <span class="comment">// 括号不匹配，未遍历完全部字符</span></span><br><span class="line">    <span class="keyword">return</span> tree;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="九、内存释放：销毁二叉树">九、内存释放：销毁二叉树</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 后序递归释放节点，防止内存泄漏</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DestroyBiTree</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!tree)<span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">DestroyBiTree</span>(tree-&gt;lchild);</span><br><span class="line">    <span class="built_in">DestroyBiTree</span>(tree-&gt;rchild);</span><br><span class="line">    <span class="keyword">delete</span> tree;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十、顶层封装-calculate-函数">十、顶层封装 calculate 函数</h2>
+<p>整合预处理、建树、求值、内存释放，外部仅传入字符串即可计算。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> operandType double</span></span><br><span class="line"><span class="type">bool</span> ERROR = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">operandType <span class="title">calculate</span><span class="params">(string&amp; expression)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ERROR = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">// 去除所有空格</span></span><br><span class="line">    expression.<span class="built_in">erase</span>(<span class="built_in">remove</span>(expression.<span class="built_in">begin</span>(), expression.<span class="built_in">end</span>(), <span class="string">&#x27; &#x27;</span>), expression.<span class="built_in">end</span>());</span><br><span class="line">    string addZeroExpression = <span class="built_in">AddZeroMinus</span>(expression);</span><br><span class="line">    <span class="type">int</span> len = addZeroExpression.<span class="built_in">size</span>();</span><br><span class="line">    <span class="type">char</span>* modifiableStr = <span class="keyword">new</span> <span class="type">char</span>[len + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">copy</span>(addZeroExpression.<span class="built_in">begin</span>(), addZeroExpression.<span class="built_in">end</span>(), modifiableStr);</span><br><span class="line">    modifiableStr[len] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    BiTree tree = <span class="built_in">BiTreeCreate</span>(modifiableStr, len);</span><br><span class="line">    operandType result = <span class="built_in">CalculateExpression</span>(tree);</span><br><span class="line">    <span class="built_in">DestroyBiTree</span>(tree);</span><br><span class="line">    <span class="keyword">delete</span>[] modifiableStr;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十一、主函数调用示例">十一、主函数调用示例</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string expression;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;输入表达式(空行则退出)：&quot;</span>;</span><br><span class="line">        <span class="built_in">getline</span>(cin, expression);</span><br><span class="line">        <span class="keyword">if</span> (expression.<span class="built_in">empty</span>()) &#123; <span class="keyword">break</span>; &#125;</span><br><span class="line">        operandType res = <span class="built_in">calculate</span>(expression);</span><br><span class="line">        cout &lt;&lt; expression &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">if</span> (ERROR)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;表达式错误!!!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十二、可视化教育版拓展代码">十二、可视化教育版拓展代码</h2>
+<p>额外增加二叉树遍历、统计工具函数，用于观察树结构：</p>
+<ol>
+<li>
+<p>先序/中序/后序/层次遍历</p>
+</li>
+<li>
+<p>统计总节点数、叶子节点数、树深度</p>
+</li>
+<li>
+<p>循环队列实现层次遍历</p>
+</li>
+</ol>
+<h3 id="队列辅助结构">队列辅助结构</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> MaxSize = <span class="number">50</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SqQueue</span> &#123;</span><br><span class="line">    BiTree* data = <span class="keyword">new</span> BiTree[MaxSize];</span><br><span class="line">    <span class="type">int</span> front = <span class="number">0</span>, rear = <span class="number">0</span>;</span><br><span class="line">&#125; SqQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DestroyQueue</span><span class="params">(SqQueue&amp; Q)</span> </span>&#123; <span class="keyword">delete</span>[] Q.data; Q.data = <span class="literal">nullptr</span>; &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">QueueEmpty</span><span class="params">(SqQueue&amp; Q)</span> </span>&#123; <span class="keyword">return</span> Q.front == Q.rear; &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">QueueEn</span><span class="params">(SqQueue&amp; Q, BiTree&amp; e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((Q.rear + <span class="number">1</span>) % MaxSize == Q.front) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    Q.data[Q.rear] = e;</span><br><span class="line">    Q.rear = (Q.rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">QueueDe</span><span class="params">(SqQueue&amp; Q, BiTree&amp; e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">QueueEmpty</span>(Q)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    e = Q.data[Q.front];</span><br><span class="line">    Q.front = (Q.front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="遍历与统计函数">遍历与统计函数</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 叶子节点数量</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">CalculateLeafNode</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!tree)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (!tree-&gt;lchild &amp;&amp; !tree-&gt;rchild)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">CalculateLeafNode</span>(tree-&gt;lchild) + <span class="built_in">CalculateLeafNode</span>(tree-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 总节点数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">CalculateNode</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!tree)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">CalculateNode</span>(tree-&gt;lchild) + <span class="built_in">CalculateNode</span>(tree-&gt;rchild) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 树深度</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BiTreeDepth</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!tree)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">BiTreeDepth</span>(tree-&gt;lchild), <span class="built_in">BiTreeDepth</span>(tree-&gt;rchild)) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先序遍历 NLR</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OrderPre</span><span class="params">(BiTree tree, <span class="type">bool</span> head = <span class="literal">false</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (head)cout &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (tree-&gt;isOperator) cout &lt;&lt; tree-&gt;Operator;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; tree-&gt;Operand;</span><br><span class="line">    <span class="built_in">OrderPre</span>(tree-&gt;lchild, <span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">OrderPre</span>(tree-&gt;rchild, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中序遍历 LNR</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OrderInTemp</span><span class="params">(BiTree tree, <span class="type">bool</span>&amp; head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">OrderInTemp</span>(tree-&gt;lchild, head);</span><br><span class="line">    <span class="keyword">if</span> (head)cout &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> head = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (tree-&gt;isOperator) cout &lt;&lt; tree-&gt;Operator;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; tree-&gt;Operand;</span><br><span class="line">    <span class="built_in">OrderInTemp</span>(tree-&gt;rchild, head);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OrderIn</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">bool</span> head = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">OrderInTemp</span>(tree, head);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后序遍历 LRN</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OrderPost</span><span class="params">(BiTree tree, <span class="type">bool</span> head = <span class="literal">false</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">OrderPost</span>(tree-&gt;lchild, <span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">OrderPost</span>(tree-&gt;rchild, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">if</span> (tree-&gt;isOperator) cout &lt;&lt; tree-&gt;Operator;</span><br><span class="line">    <span class="keyword">else</span> cout &lt;&lt; tree-&gt;Operand;</span><br><span class="line">    <span class="keyword">if</span> (head)cout &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 层次遍历</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OrderLevel</span><span class="params">(BiTree tree)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tree == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">    ::MaxSize = (<span class="type">int</span>)(<span class="built_in">pow</span>(<span class="number">2</span>, (<span class="built_in">BiTreeDepth</span>(tree) - <span class="number">1</span>)) + <span class="number">1</span>);</span><br><span class="line">    SqQueue Q;</span><br><span class="line">    BiTree p = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="built_in">QueueEn</span>(Q, tree);</span><br><span class="line">    <span class="type">bool</span> head = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">QueueEmpty</span>(Q))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">QueueDe</span>(Q, p);</span><br><span class="line">        <span class="keyword">if</span> (head)cout &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;isOperator) cout &lt;&lt; p-&gt;Operator;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; p-&gt;Operand;</span><br><span class="line">        head = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;lchild != <span class="literal">nullptr</span>) <span class="built_in">QueueEn</span>(Q, p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;rchild != <span class="literal">nullptr</span>) <span class="built_in">QueueEn</span>(Q, p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">DestroyQueue</span>(Q);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="教育版-calculate-函数（输出树信息）">教育版 calculate 函数（输出树信息）</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">operandType <span class="title">calculate</span><span class="params">(string&amp; expression)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ERROR = <span class="literal">false</span>;</span><br><span class="line">    expression.<span class="built_in">erase</span>(<span class="built_in">remove</span>(expression.<span class="built_in">begin</span>(), expression.<span class="built_in">end</span>(), <span class="string">&#x27; &#x27;</span>), expression.<span class="built_in">end</span>());</span><br><span class="line">    string addZeroExpression = <span class="built_in">AddZeroMinus</span>(expression);</span><br><span class="line">    <span class="type">int</span> len = addZeroExpression.<span class="built_in">size</span>();</span><br><span class="line">    <span class="type">char</span>* modifiableStr = <span class="keyword">new</span> <span class="type">char</span>[len + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">copy</span>(addZeroExpression.<span class="built_in">begin</span>(), addZeroExpression.<span class="built_in">end</span>(), modifiableStr);</span><br><span class="line">    modifiableStr[len] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    BiTree tree = <span class="built_in">BiTreeCreate</span>(modifiableStr, len);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;先序遍历：&quot;</span>; <span class="built_in">OrderPre</span>(tree); cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;中序遍历：&quot;</span>; <span class="built_in">OrderIn</span>(tree); cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;后序遍历：&quot;</span>; <span class="built_in">OrderPost</span>(tree); cout &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;层次遍历: &quot;</span>; <span class="built_in">OrderLevel</span>(tree); cout &lt;&lt; endl;</span><br><span class="line">    operandType result = <span class="built_in">CalculateExpression</span>(tree);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;总节点数: &quot;</span> &lt;&lt; <span class="built_in">CalculateNode</span>(tree) &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;叶子节点数: &quot;</span> &lt;&lt; <span class="built_in">CalculateLeafNode</span>(tree) &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;树深度: &quot;</span> &lt;&lt; <span class="built_in">BiTreeDepth</span>(tree) &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;预处理表达式:&quot;</span> &lt;&lt; addZeroExpression &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; expression &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; result &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ERROR) cout &lt;&lt; <span class="string">&quot;表达式错误!!!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">DestroyBiTree</span>(tree);</span><br><span class="line">    <span class="keyword">delete</span>[] modifiableStr;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="十三、补充说明">十三、补充说明</h2>
+<ol>
+<li>
+<p>适配 LeetCode 224 基本计算器，仅需封装为类、调整输入输出逻辑；</p>
+</li>
+<li>
+<p>优缺点：完整二叉树结构直观区分三种表达式，支持遍历打印，但额外存储节点，时间与内存开销高于纯栈算法；</p>
+</li>
+<li>
+<p>项目开源地址：<a target="_blank" rel="noopener" href="https://github.com/1613661434/CalculateExpression">https://github.com/1613661434/CalculateExpression</a></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/10/29/Git%20Memo/" rel="next" title="Git Memo">
+                  Git Memo <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ol木子李lo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">43k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:37</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
