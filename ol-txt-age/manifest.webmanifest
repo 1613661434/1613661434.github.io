@@ -1,0 +1,18 @@
+{
+  "name": "ol_txt · age 文本工具",
+  "short_name": "ol_txt",
+  "description": "离线优先的 age 文本加密与解密工具",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f8",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
