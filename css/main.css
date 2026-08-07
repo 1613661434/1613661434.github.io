@@ -1414,7 +1414,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #1fddc8;
+    background: #126293;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1670,6 +1670,108 @@ pre code {
   color: var(--text-color);
   font-weight: 600;
   margin: 0;
+}
+.site-reward-entry {
+  height: 44px;
+  margin: 2px 0;
+}
+.coffee-reward-button {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  height: 44px;
+  line-height: 1;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  touch-action: manipulation;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  width: 44px;
+}
+.coffee-reward-button i {
+  font-size: 19px;
+}
+.coffee-reward-button:hover {
+  background: rgba(244,180,204,0.24);
+  color: #e33e7c;
+}
+.coffee-reward-button:focus-visible {
+  background: rgba(244,180,204,0.18);
+  box-shadow: 0 0 0 2px #e75b90;
+  color: #e33e7c;
+}
+.coffee-reward-button:active {
+  background: rgba(244,180,204,0.32);
+  transform: scale(0.94);
+}
+.site-reward-dialog {
+  background: var(--content-bg-color);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.24);
+  box-sizing: border-box;
+  color: var(--text-color);
+  max-width: calc(100vw - 32px);
+  padding: 28px 28px 24px;
+  text-align: center;
+  width: 300px;
+}
+.site-reward-dialog::backdrop {
+  background: rgba(0,0,0,0.48);
+}
+.site-reward-dialog-close {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  height: 44px;
+  line-height: 44px;
+  margin: 0;
+  opacity: 0.72;
+  padding: 0;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  touch-action: manipulation;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  width: 44px;
+}
+.site-reward-dialog-close:hover,
+.site-reward-dialog-close:focus-visible {
+  background: var(--body-bg-color);
+  color: #e33e7c;
+  opacity: 1;
+  outline: 0;
+}
+.site-reward-dialog-title {
+  font-size: 1.125em;
+  font-weight: 600;
+  margin: 4px 24px 16px;
+}
+.site-reward-payment-item {
+  display: inline-block;
+}
+.site-reward-payment-item img {
+  display: block;
+  margin: 0 auto 8px;
+  max-width: 100%;
+  width: 180px;
+}
+.site-reward-payment-item span {
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .coffee-reward-button,
+  .site-reward-dialog-close {
+    transition: none;
+  }
 }
 .site-description {
   color: #999;
@@ -2323,20 +2425,9 @@ pre code {
   padding: 1em 0;
   text-align: center;
 }
-.reward-container button {
-  background: transparent;
-  color: #fc6423;
-  cursor: pointer;
-  line-height: 2;
-  padding: 0 15px;
-  border: 2px solid #fc6423;
-  border-radius: 2px;
-  outline: 0;
-  vertical-align: text-top;
-}
-.reward-container button:hover {
-  background: #fc6423;
-  color: #fff;
+.reward-container .post-reward-button {
+  margin-top: 8px;
+  vertical-align: middle;
 }
 .post-reward {
   display: none;
