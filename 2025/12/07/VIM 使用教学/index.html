@@ -175,8 +175,28 @@
     <img class="site-author-image" itemprop="image" alt="ol木子李lo"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ol木子李lo</p>
+    <div class="site-reward-entry">
+      <button type="button" class="coffee-reward-button site-reward-button"
+        aria-label="请我一杯咖啡吧！" aria-haspopup="dialog"
+        aria-controls="site-reward-dialog" aria-expanded="false"
+        title="请我一杯咖啡吧！">
+        <i class="fa fa-mug-hot" aria-hidden="true"></i>
+      </button>
+    </div>
   <div class="site-description" itemprop="description"></div>
 </div>
+<dialog class="site-reward-dialog" id="site-reward-dialog" aria-labelledby="site-reward-dialog-title">
+  <button type="button" class="site-reward-dialog-close" aria-label="关闭赞赏窗口">
+    <i class="fa fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="site-reward-dialog-title" id="site-reward-dialog-title">请我一杯咖啡吧！</div>
+  <div class="site-reward-payment-list">
+      <div class="site-reward-payment-item">
+        <img src="/images/wechatpay.png" alt="ol木子李lo 微信" loading="lazy">
+        <span>微信</span>
+      </div>
+  </div>
+</dialog>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
@@ -826,10 +846,13 @@
     <footer class="post-footer">
           <div class="reward-container">
   <div>请我一杯咖啡吧！</div>
-  <button>
-    赞赏
+  <button type="button" class="coffee-reward-button post-reward-button"
+    aria-label="赞赏：请我一杯咖啡吧！"
+    aria-controls="post-reward" aria-expanded="false"
+    title="赞赏">
+    <i class="fa fa-mug-hot" aria-hidden="true"></i>
   </button>
-  <div class="post-reward">
+  <div class="post-reward" id="post-reward" aria-hidden="true">
       <div>
         <img src="/images/wechatpay.png" alt="ol木子李lo 微信">
         <span>微信</span>

@@ -327,10 +327,50 @@ NexT.utils = {
   },
 
   registerPostReward() {
-    const button = document.querySelector('.reward-container button');
-    if (!button) return;
-    button.addEventListener('click', () => {
-      document.querySelector('.post-reward').classList.toggle('active');
+    const postButton = document.querySelector('.post-reward-button');
+    const postReward = document.querySelector('.post-reward');
+    if (postButton && postReward && !postButton.dataset.rewardRegistered) {
+      postButton.dataset.rewardRegistered = 'true';
+      postButton.addEventListener('click', () => {
+        const expanded = postReward.classList.toggle('active');
+        postButton.setAttribute('aria-expanded', String(expanded));
+        postReward.setAttribute('aria-hidden', String(!expanded));
+      });
+    }
+
+    const siteButton = document.querySelector('.site-reward-button');
+    const dialog = document.querySelector('.site-reward-dialog');
+    if (!siteButton || !dialog || siteButton.dataset.rewardRegistered) return;
+
+    const closeButton = dialog.querySelector('.site-reward-dialog-close');
+    const closeDialog = () => {
+      if (typeof dialog.close === 'function') {
+        dialog.close();
+      } else {
+        dialog.removeAttribute('open');
+      }
+    };
+
+    siteButton.dataset.rewardRegistered = 'true';
+    siteButton.addEventListener('click', () => {
+      siteButton.setAttribute('aria-expanded', 'true');
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+    });
+    closeButton?.addEventListener('click', closeDialog);
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const inside = event.clientX >= rect.left && event.clientX <= rect.right &&
+        event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (!inside) closeDialog();
+    });
+    dialog.addEventListener('close', () => {
+      siteButton.setAttribute('aria-expanded', 'false');
+      siteButton.focus();
     });
   },
 
