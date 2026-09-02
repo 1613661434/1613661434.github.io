@@ -1414,7 +1414,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #9eff47;
+    background: #ffe09d;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1508,6 +1508,7 @@ pre code {
   transform: rotate(-45deg);
 }
 .sidebar-nav {
+  flex-shrink: 0;
   font-size: 0.875em;
   height: 0;
   margin: 0;
