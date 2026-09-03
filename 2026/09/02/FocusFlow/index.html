@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="ol木子李lo的博客">
 <meta property="og:description" content="一款使用 C++17、Qt 6 和 SQLite 开发的本地优先个人任务规划与专注管理桌面应用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.shields.io/badge/version-v0.1.38-4F6EF7?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/badge/version-v0.1.39-4F6EF7?style=flat-square">
 <meta property="og:image" content="https://img.shields.io/github/stars/1613661434/FocusFlow?style=flat-square&amp;logo=github">
 <meta property="og:image" content="https://img.shields.io/github/last-commit/1613661434/FocusFlow?style=flat-square&amp;logo=git">
 <meta property="og:image" content="https://img.shields.io/badge/license-All%20Rights%20Reserved-6B7280?style=flat-square">
@@ -35,13 +35,13 @@
 <meta property="og:image" content="https://img.shields.io/badge/Qt-6-41CD52?style=flat-square&amp;logo=qt&amp;logoColor=white">
 <meta property="og:image" content="https://img.shields.io/badge/platform-Windows-0078D4?style=flat-square&amp;logo=windows11&amp;logoColor=white">
 <meta property="article:published_time" content="2026-09-02T10:06:35.000Z">
-<meta property="article:modified_time" content="2026-09-03T11:54:36.847Z">
+<meta property="article:modified_time" content="2026-09-03T13:11:19.305Z">
 <meta property="article:author" content="ol木子李lo">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Qt6">
 <meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.shields.io/badge/version-v0.1.38-4F6EF7?style=flat-square">
+<meta name="twitter:image" content="https://img.shields.io/badge/version-v0.1.39-4F6EF7?style=flat-square">
 
 
 <link rel="canonical" href="https://1613661434.github.io/2026/09/02/FocusFlow/">
@@ -290,7 +290,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-03 19:54:36" itemprop="dateModified" datetime="2026-09-03T19:54:36+08:00">2026-09-03</time>
+      <time title="修改时间：2026-09-03 21:11:19" itemprop="dateModified" datetime="2026-09-03T21:11:19+08:00">2026-09-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -309,7 +309,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.1k</span>
+      <span>4.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -328,7 +328,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1>FocusFlow</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow/tree/v0.1.38"><img src="https://img.shields.io/badge/version-v0.1.38-4F6EF7?style=flat-square" alt="Version"></a><br>
+<p><a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow/tree/v0.1.39"><img src="https://img.shields.io/badge/version-v0.1.39-4F6EF7?style=flat-square" alt="Version"></a><br>
 <a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow/stargazers"><img src="https://img.shields.io/github/stars/1613661434/FocusFlow?style=flat-square&amp;logo=github" alt="GitHub Stars"></a><br>
 <a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow/commits/main"><img src="https://img.shields.io/github/last-commit/1613661434/FocusFlow?style=flat-square&amp;logo=git" alt="Last Commit"></a><br>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-All%20Rights%20Reserved-6B7280?style=flat-square" alt="License"></a><br>
@@ -336,7 +336,7 @@
 <img src="https://img.shields.io/badge/Qt-6-41CD52?style=flat-square&amp;logo=qt&amp;logoColor=white" alt="Qt 6"><br>
 <img src="https://img.shields.io/badge/platform-Windows-0078D4?style=flat-square&amp;logo=windows11&amp;logoColor=white" alt="Windows"></p>
 <p>FocusFlow 是一款使用 C++17、Qt 6 Widgets 与 SQLite 开发的 Windows<br>
-个人任务规划与专注管理工具，当前版本为 <strong>v0.1.38</strong>。</p>
+个人任务规划与专注管理工具，当前版本为 <strong>v0.1.39</strong>。</p>
 <p>中文定位：<strong>个人任务规划与专注管理系统</strong></p>
 <p>英文名称：<strong>FocusFlow — Personal Task Planning and Focus Management System</strong></p>
 <p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow">https://github.com/1613661434/FocusFlow</a></p>
@@ -395,6 +395,7 @@
 <li>保存自定义方案时自动建议可用名称；已有“我的专注方案”后依次使用“我的专注方案2、3……”避免重名。</li>
 <li>选择“自定义本次方案”后直接展开编辑项，不再重复显示同名标题；操作按钮、长休息间隔和自动衔接选项不会被裁切。</li>
 <li>主按钮根据状态在“开始 / 暂停 / 继续”之间切换，另设“终止”按钮。</li>
+<li>中央大数字明确标注为“剩余时间”；进度条下方同时显示精确的已用时长、当前周期和计划总时长，专注及两种休息阶段保持一致。</li>
 <li>计时空闲时中央状态统一显示“准备开始”，不随专注、短休息或长休息类型变化。</li>
 <li>可按项目、分类筛选关联任务；任务按推荐分从高到低排列并显示推荐分。</li>
 <li>专注正常结束或被终止后都会保存实际用时；终止关联任务的专注时可选择是否同时完成任务。</li>
@@ -418,7 +419,7 @@
 <li>自定义声音会复制到应用数据目录；更换或恢复默认后会清理不再使用的托管副本。</li>
 <li>最小化窗口时仍保留在任务栏；关闭窗口时隐藏到系统托盘。</li>
 <li>只有从托盘图标右键菜单选择“退出”，程序才会真正结束；托盘菜单采用紧凑纯文字布局，不保留无用的图标列。</li>
-<li>鼠标悬停托盘图标可查看任务、专注/休息状态及实时剩余时间，休息阶段仍统一显示“任务”。</li>
+<li>鼠标悬停托盘图标可同时查看任务、专注/休息状态、已用时长、计划总时长及实时剩余时间，休息阶段仍统一显示“任务”。</li>
 <li>关闭到托盘提醒可在设置中关闭或重新开启。</li>
 <li>程序采用单实例运行；再次打开 FocusFlow 会直接恢复原窗口，不会创建第二套界面。</li>
 </ul>
@@ -577,7 +578,10 @@ Qt Multimedia 和 Qt SQL 的 Qt 6 Kit 后构建。</p>
 <h2 id="Windows-打包">Windows 打包</h2>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\tools\package.ps1</span><br></pre></td></tr></table></figure>
 <p>打包脚本会重新执行 Release 构建和全部测试，随后调用 <code>windeployqt</code> 收集 Qt<br>
-运行库与中文翻译文件，最终在 <code>dist/</code> 下生成独立目录和 ZIP 压缩包。</p>
+运行库与中文翻译文件，并附带面向用户的 <code>README.md</code> 与版权许可 <code>LICENSE</code>，<br>
+最终在 <code>dist/</code> 下生成独立目录和 ZIP 压缩包。发布包根目录同时包含标准命名的<br>
+<code>Uninstall.exe</code>：运行后可卸载当前程序，并永久删除 FocusFlow 的本地数据库、<br>
+设置、托管提示音和自动备份。卸载前会再次确认；程序仍在运行时不会执行删除。</p>
 <h2 id="本地数据与恢复">本地数据与恢复</h2>
 <p>数据库的准确位置显示在“设置 → 数据管理 → 本地数据库位置”。同一应用数据目录<br>
 还会保存托管声音、自动保护备份和待恢复数据库。运行数据、个人音频、构建目录和<br>
@@ -585,7 +589,7 @@ Qt Multimedia 和 Qt SQL 的 Qt 6 Kit 后构建。</p>
 <p>恢复流程不会在程序运行时直接覆盖已经打开的 SQLite 文件：系统先验证所选备份，<br>
 再一致性备份当前数据库并暂存恢复文件；退出并重新打开 FocusFlow 后才执行替换。</p>
 <h2 id="自动化测试">自动化测试</h2>
-<p>项目当前注册 12 个 CTest 测试目标，覆盖：</p>
+<p>项目当前注册 13 个 CTest 测试目标，覆盖：</p>
 <ul>
 <li>倒计时开始、暂停、继续、自然结束和系统时间校正基础行为。</li>
 <li>推荐分计算。</li>
@@ -598,13 +602,14 @@ Qt Multimedia 和 Qt SQL 的 Qt 6 Kit 后构建。</p>
 <li>Qt 标准按钮中文化。</li>
 <li>版权信息和作者链接。</li>
 <li>单实例锁、重复启动通知和主实例退出后的锁释放。</li>
+<li>卸载目标目录保护、递归删除和本地数据目录精确匹配。</li>
 </ul>
 <h2 id="Git-与版本回档">Git 与版本回档</h2>
 <p>查看提交与版本标签：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log <span class="literal">--oneline</span> <span class="literal">--decorate</span></span><br><span class="line">git tag <span class="literal">--list</span></span><br></pre></td></tr></table></figure>
 <p>如需检查旧版本，建议从目标提交创建临时分支：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">switch</span> <span class="literal">-c</span> inspect<span class="literal">-old-version</span> &lt;提交号或标签&gt;</span><br></pre></td></tr></table></figure>
-<p>当前稳定程序版本标签为 <code>v0.1.38</code>。</p>
+<p>当前稳定程序版本标签为 <code>v0.1.39</code>。</p>
 <h2 id="作者与版权">作者与版权</h2>
 <ul>
 <li>作者：ol木子李lo</li>
