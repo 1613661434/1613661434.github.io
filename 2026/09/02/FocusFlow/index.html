@@ -28,7 +28,7 @@
 <meta property="og:description" content="一款使用 C++17、Qt 6 和 SQLite 开发的本地优先个人任务规划与专注管理桌面应用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-02T10:06:35.000Z">
-<meta property="article:modified_time" content="2026-09-02T10:07:38.536Z">
+<meta property="article:modified_time" content="2026-09-03T04:16:27.871Z">
 <meta property="article:author" content="ol木子李lo">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Qt6">
@@ -274,9 +274,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-09-02 18:06:35 / 修改时间：18:07:38" itemprop="dateCreated datePublished" datetime="2026-09-02T18:06:35+08:00">2026-09-02</time>
+      <time title="创建时间：2026-09-02 18:06:35" itemprop="dateCreated datePublished" datetime="2026-09-02T18:06:35+08:00">2026-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-09-03 12:16:27" itemprop="dateModified" datetime="2026-09-03T12:16:27+08:00">2026-09-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,14 +301,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.7k</span>
+      <span>3.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>10 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -315,11 +321,8 @@
     
     <div class="post-body" itemprop="articleBody"><h1>FocusFlow</h1>
 <p>FocusFlow 是一款使用 C++17、Qt 6 Widgets 与 SQLite 开发的 Windows<br>
-个人任务规划与专注管理工具，当前版本为 <strong>v0.1.24</strong>。</p>
-<p>课程自拟题目：</p>
-<blockquote>
-<p>基于 C++/Qt 的个人任务规划与专注管理系统设计与实现</p>
-</blockquote>
+个人任务规划与专注管理工具，当前版本为 <strong>v0.1.32</strong>。</p>
+<p>中文定位：<strong>个人任务规划与专注管理系统</strong></p>
 <p>英文名称：<strong>FocusFlow — Personal Task Planning and Focus Management System</strong></p>
 <p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow">https://github.com/1613661434/FocusFlow</a></p>
 <p>系统面向学生、职场人士、自由职业者以及希望改善个人时间安排的普通用户。<br>
@@ -331,6 +334,7 @@
 <li><strong>任务闭环</strong>：从任务创建、优先建议到关联专注和统计回顾形成完整流程。</li>
 <li><strong>可解释推荐</strong>：推荐分由重要程度、截止时间、逾期程度、预计耗时和任务状态共同计算。</li>
 <li><strong>准确计时</strong>：倒计时使用系统时间校正，窗口最小化或短暂卡顿不会持续累积误差。</li>
+<li><strong>多种节奏</strong>：可为不同任务绑定不同专注方案，也可在开始前临时配置并保存完整方案。</li>
 <li><strong>操作安全</strong>：永久删除前确认；备份恢复前验证并自动保护当前数据库。</li>
 <li><strong>界面一致</strong>：项目、分类、重要度、推荐分和状态在不同页面保持一致的颜色语义。</li>
 </ul>
@@ -346,11 +350,15 @@
 <h3 id="任务管理">任务管理</h3>
 <ul>
 <li>新建、编辑、完成、重新打开和永久删除任务。</li>
-<li>支持任务标题、详细描述、项目、分类、1～5 级重要度、截止时间和预计耗时。</li>
+<li>支持任务标题、详细描述、项目、分类、1～5 级重要度、截止时间、预计耗时和默认专注方案。</li>
 <li>新任务默认启用“今天 23:59”作为截止时间，也可以关闭截止时间。</li>
 <li>支持全部任务、智能推荐、今日任务、未来 7 天、已经逾期和已完成筛选。</li>
 <li>支持搜索任务、项目或分类，点击任意列标题即可排序。</li>
+<li>任务表直接显示绑定的专注方案；未绑定时显示当前实际全局默认方案。</li>
 <li>截止时间完整显示年份；逾期任务使用红色提示。</li>
+<li>待处理任务的状态按钮显示“完成”，已完成任务显示“恢复”；两者字数相同，切换时不会引起界面跳动。操作后会刷新状态并取消当前选择，防止排序导致选中行跳动或连续误操作。</li>
+<li>正在进行专注计时的关联任务会在任务表显示紫色“进行中”，并禁用“编辑”“完成”和“删除”；任务数据刷新后，计时页仍会保留当前关联任务。</li>
+<li>点击任务表的空白区域会取消当前选择，“编辑”“完成/恢复”和“删除”随即变为禁用状态，避免误操作。</li>
 <li>任务删除后，已经产生的专注历史仍会保留，并显示为“无关联任务”。</li>
 </ul>
 <h3 id="项目与分类">项目与分类</h3>
@@ -363,9 +371,15 @@
 </ul>
 <h3 id="专注计时">专注计时</h3>
 <ul>
-<li>默认采用 25 分钟专注、5 分钟短休息、15 分钟长休息和每 4 次专注一次长休息。</li>
-<li>专注、短休息和长休息时长均可在设置中修改。</li>
+<li>内置经典番茄钟、快速处理、深度工作和长时专注方案；内置预设保持固定，不能修改或删除，可复制后自定义。</li>
+<li>每个方案可独立设置专注、短休息、长休息、长休息间隔及自动衔接行为。</li>
+<li>任务可绑定默认方案；未绑定时跟随系统默认方案，开始前仍可临时切换。</li>
+<li>可选择“自定义本次方案”，独立设置专注、短休息、长休息、长休息间隔和两项自动衔接行为。</li>
+<li>自定义修改点击“确定”后才应用；确认后可输入名称“保存为方案”，方便下次直接复用。</li>
+<li>保存自定义方案时自动建议可用名称；已有“我的专注方案”后依次使用“我的专注方案2、3……”避免重名。</li>
+<li>选择“自定义本次方案”后直接展开编辑项，不再重复显示同名标题；操作按钮、长休息间隔和自动衔接选项不会被裁切。</li>
 <li>主按钮根据状态在“开始 / 暂停 / 继续”之间切换，另设“终止”按钮。</li>
+<li>计时空闲时中央状态统一显示“准备开始”，不随专注、短休息或长休息类型变化。</li>
 <li>可按项目、分类筛选关联任务；任务按推荐分从高到低排列并显示推荐分。</li>
 <li>专注正常结束或被终止后都会保存实际用时；终止关联任务的专注时可选择是否同时完成任务。</li>
 <li>休息时间会保存为记录，但不会计入专注统计。</li>
@@ -376,10 +390,11 @@
 <li>计时自然结束时显示桌面通知，并可播放系统默认提示音或自定义声音。</li>
 <li>专注结束声音和休息结束声音可分别设置。</li>
 <li>支持 WAV、MP3、AAC、M4A、OGG 和 FLAC。</li>
-<li>可调节音量、最长播放时间和播放次数；播放限制不会修改原始音频。</li>
+<li>可调节音量、最长播放时间和播放次数；自定义声音达到限制前会平滑淡出，且不会修改原始音频。</li>
 <li>自定义声音会复制到应用数据目录；更换或恢复默认后会清理不再使用的托管副本。</li>
 <li>最小化窗口时仍保留在任务栏；关闭窗口时隐藏到系统托盘。</li>
 <li>只有从托盘图标右键菜单选择“退出”，程序才会真正结束。</li>
+<li>鼠标悬停托盘图标可查看任务、专注/休息状态及实时剩余时间，休息阶段仍统一显示“任务”。</li>
 <li>关闭到托盘提醒可在设置中关闭或重新开启。</li>
 <li>程序采用单实例运行；再次打开 FocusFlow 会直接恢复原窗口，不会创建第二套界面。</li>
 </ul>
@@ -388,19 +403,24 @@
 <li>汇总今日专注、近 7 天专注和今日完成任务数量。</li>
 <li>“图表分析”页显示近 7 天专注柱形图、近 30 天分类占比和项目占比。</li>
 <li>鼠标移到柱形上时，柱顶正上方居中显示无边框的精确秒数。</li>
+<li>分类和项目饼图为相邻小扇区错开外侧引导线，避免标签文字重叠。</li>
 <li>“最近记录”页一次显示最近 10 条专注记录，无内层滚动条。</li>
 <li>最近记录包含编号、开始时间、任务、项目、分类、时长和结果，并支持所有列排序。</li>
 <li>已完成与已终止、进行中与已归档、待处理与已完成均使用不同的语义颜色。</li>
 </ul>
 <h3 id="设置与数据管理">设置与数据管理</h3>
 <ul>
-<li>修改专注周期、声音和窗口行为后统一保存。</li>
+<li>用户方案支持新建、编辑、复制、设为默认和删除；内置预设只读，但可复制为用户方案。</li>
+<li>专注方案表所有列均可排序，默认按“默认、系统默认、系统预设、用户自定义”的状态顺序显示。</li>
+<li>专注方案表固定显示 5 行，更多方案在表内滚动；表格必须先被点击选中才响应滚轮，获得焦点后即使滚到边界也不会带动外层页面。</li>
+<li>选择方案行后可点击方案卡片、说明或页面空白取消选中；计时页方案下拉框点击空白后也会退出焦点状态。</li>
+<li>声音和窗口行为修改后统一保存。</li>
 <li>设置尚未保存时切换页面，会询问“保存并切换 / 放弃修改 / 取消切换”。</li>
 <li>数值框和音量滑块只有获得焦点后才响应滚轮，避免与页面滚动冲突。</li>
 <li>支持 SQLite 一致性备份、备份验证和下次启动恢复。</li>
 <li>支持导出任务 CSV 与专注记录 CSV，文件采用 UTF-8 BOM，便于中文表格软件打开。</li>
 <li>可以清空全部专注与休息记录，同时保留任务、项目、分类和设置。</li>
-<li>设置页提供版权信息、作者资料和作者博客入口。</li>
+<li>设置页提供版权信息、作者资料、作者博客和项目 GitHub 入口。</li>
 </ul>
 <h2 id="推荐分算法">推荐分算法</h2>
 <p>推荐分用于“今日概览”“智能推荐”和“关联任务”排序。已完成或已取消任务的<br>
@@ -447,8 +467,8 @@
 </tr>
 </tbody>
 </table>
-<p>该算法是确定性的规则模型，不使用网络服务或用户隐私数据，便于解释、测试和<br>
-课程答辩展示。</p>
+<p>该算法是确定性的规则模型，不使用网络服务或用户隐私数据，便于用户理解、<br>
+自动化验证和长期维护。</p>
 <h2 id="技术栈">技术栈</h2>
 <table>
 <thead>
@@ -497,11 +517,11 @@
 </tbody>
 </table>
 <h2 id="项目结构">项目结构</h2>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FocusFlow/</span><br><span class="line">├── resources/          应用图标、Windows 资源和 Qt 资源文件</span><br><span class="line">├── src/</span><br><span class="line">│   ├── app/            主窗口、导航、主题、系统托盘和单实例协调</span><br><span class="line">│   ├── data/           SQLite 初始化、连接和启动恢复</span><br><span class="line">│   ├── models/         任务、项目和计时设置数据模型</span><br><span class="line">│   ├── repositories/   任务、项目、设置、专注记录和统计查询</span><br><span class="line">│   ├── services/       计时、推荐、声音、备份、恢复和导出</span><br><span class="line">│   ├── views/          六个主页面、任务对话框和版权界面</span><br><span class="line">│   └── widgets/        日历、颜色下拉框、防误滚轮控件等</span><br><span class="line">├── tests/              11 组 Qt Test / CTest 自动化测试</span><br><span class="line">├── docs/               用户指南、项目计划和架构文档</span><br><span class="line">├── tools/              构建与 Windows 打包脚本</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FocusFlow/</span><br><span class="line">├── resources/          应用图标、Windows 资源和 Qt 资源文件</span><br><span class="line">├── src/</span><br><span class="line">│   ├── app/            主窗口、导航、主题、系统托盘和单实例协调</span><br><span class="line">│   ├── data/           SQLite 初始化、连接和启动恢复</span><br><span class="line">│   ├── models/         任务、项目和计时设置数据模型</span><br><span class="line">│   ├── repositories/   任务、项目、设置、专注记录和统计查询</span><br><span class="line">│   ├── services/       计时、推荐、声音、备份、恢复和导出</span><br><span class="line">│   ├── views/          六个主页面、任务对话框和版权界面</span><br><span class="line">│   └── widgets/        日历、颜色下拉框、防误滚轮控件等</span><br><span class="line">├── tests/              12 组 Qt Test / CTest 自动化测试</span><br><span class="line">├── docs/               用户指南、项目计划和架构文档</span><br><span class="line">├── tools/              构建与 Windows 打包脚本</span><br><span class="line">├── CMakeLists.txt</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
 <p>详细资料：</p>
 <ul>
 <li><a href="docs/USER_GUIDE.md">用户使用指南</a></li>
-<li><a href="docs/PROJECT_PLAN.md">项目计划与验收基线</a></li>
+<li><a href="docs/PROJECT_PLAN.md">产品路线与发布标准</a></li>
 <li><a href="docs/ARCHITECTURE.md">系统架构与详细设计</a></li>
 </ul>
 <h2 id="开发环境">开发环境</h2>
@@ -540,13 +560,14 @@ Qt Multimedia 和 Qt SQL 的 Qt 6 Kit 后构建。</p>
 <p>恢复流程不会在程序运行时直接覆盖已经打开的 SQLite 文件：系统先验证所选备份，<br>
 再一致性备份当前数据库并暂存恢复文件；退出并重新打开 FocusFlow 后才执行替换。</p>
 <h2 id="自动化测试">自动化测试</h2>
-<p>项目当前注册 11 个 CTest 测试目标，覆盖：</p>
+<p>项目当前注册 12 个 CTest 测试目标，覆盖：</p>
 <ul>
 <li>倒计时开始、暂停、继续、自然结束和系统时间校正基础行为。</li>
 <li>推荐分计算。</li>
-<li>专注页面按钮状态、任务筛选、推荐分展示和排序。</li>
+<li>专注页面按钮状态、完整自定义方案确认与保存、短暂反馈、任务筛选、方案绑定、托盘倒计时、推荐分展示和排序。</li>
+<li>专注方案默认数据、内置只读约束、用户方案增删改及任务删除方案后的回退行为。</li>
 <li>新任务默认截止时间、中文日历和时间输入。</li>
-<li>数值框与滑块防误滚轮行为。</li>
+<li>数值框、滑块和内嵌方案表的焦点滚轮保护行为。</li>
 <li>数据库备份、恢复验证、CSV 导出、统计清空和声音副本清理。</li>
 <li>概览、统计、表格排序、颜色同步、永久删除与历史数据保留。</li>
 <li>Qt 标准按钮中文化。</li>
@@ -558,12 +579,13 @@ Qt Multimedia 和 Qt SQL 的 Qt 6 Kit 后构建。</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log <span class="literal">--oneline</span> <span class="literal">--decorate</span></span><br><span class="line">git tag <span class="literal">--list</span></span><br></pre></td></tr></table></figure>
 <p>如需检查旧版本，建议从目标提交创建临时分支：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">switch</span> <span class="literal">-c</span> inspect<span class="literal">-old-version</span> &lt;提交号或标签&gt;</span><br></pre></td></tr></table></figure>
-<p>当前稳定程序版本标签为 <code>v0.1.24</code>。</p>
+<p>当前稳定程序版本标签为 <code>v0.1.32</code>。</p>
 <h2 id="作者与版权">作者与版权</h2>
 <ul>
 <li>作者：ol木子李lo</li>
 <li>简称：OL</li>
 <li>作者博客：<a href="https://1613661434.github.io/">https://1613661434.github.io/</a></li>
+<li>项目 GitHub：<a target="_blank" rel="noopener" href="https://github.com/1613661434/FocusFlow">https://github.com/1613661434/FocusFlow</a></li>
 </ul>
 <p>版权所有 © 2026 ol木子李lo（OL）。<br>
 Copyright © 2026 OL. All rights reserved.</p>
@@ -646,7 +668,7 @@ Copyright © 2026 OL. All rights reserved.</p>
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:01</span>
+    <span title="站点阅读时长">3:04</span>
   </span>
 </div>
 
