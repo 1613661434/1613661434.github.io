@@ -1414,7 +1414,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #74ff94;
+    background: #96f7ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3015,4 +3015,16 @@ header.header {
   .pagination {
     margin-bottom: 10px;
   }
+}
+.post-body img[src*='img.shields.io/'],
+.post-body img[src*='/actions/workflows/'][src*='/badge.svg'] {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  vertical-align: middle;
+}
+.post-body br:has(+ a > img[src*='img.shields.io/']),
+.post-body br:has(+ img[src*='img.shields.io/']),
+.post-body br:has(+ a > img[src*='/actions/workflows/'][src*='/badge.svg']),
+.post-body br:has(+ img[src*='/actions/workflows/'][src*='/badge.svg']) {
+  display: none;
 }
