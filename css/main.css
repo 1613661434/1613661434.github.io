@@ -1414,7 +1414,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #e29cb1;
+    background: #ffffc8;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3027,4 +3027,10 @@ header.header {
 .post-body br:has(+ a > img[src*='/actions/workflows/'][src*='/badge.svg']),
 .post-body br:has(+ img[src*='/actions/workflows/'][src*='/badge.svg']) {
   display: none;
+}
+@media (hover: none) and (pointer: coarse) {
+  .coffee-reward-button:hover:not(:active) {
+    background: transparent;
+    color: var(--text-color);
+  }
 }
